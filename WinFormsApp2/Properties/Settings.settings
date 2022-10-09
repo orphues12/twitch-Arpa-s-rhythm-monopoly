@@ -1,0 +1,111 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="WinFormsApp2.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="TopCategory01" Type="System.String" Scope="User">
+      <Value Profile="(Default)">동시 수록 곡!!</Value>
+    </Setting>
+    <Setting Name="TopCategory02" Type="System.String" Scope="User">
+      <Value Profile="(Default)">삐슝빠슝</Value>
+    </Setting>
+    <Setting Name="TopCategory03" Type="System.String" Scope="User">
+      <Value Profile="(Default)">전파곡</Value>
+    </Setting>
+    <Setting Name="TopCategory04" Type="System.String" Scope="User">
+      <Value Profile="(Default)">아침 알람 곡</Value>
+    </Setting>
+    <Setting Name="TopCategory05" Type="System.String" Scope="User">
+      <Value Profile="(Default)">더미</Value>
+    </Setting>
+    <Setting Name="TopCategory06" Type="System.String" Scope="User">
+      <Value Profile="(Default)">더미</Value>
+    </Setting>
+    <Setting Name="BotCategory01" Type="System.String" Scope="User">
+      <Value Profile="(Default)">하위 포함 더미</Value>
+    </Setting>
+    <Setting Name="BotCategory02" Type="System.String" Scope="User">
+      <Value Profile="(Default)">하위 포함 더미</Value>
+    </Setting>
+    <Setting Name="BotCategory03" Type="System.String" Scope="User">
+      <Value Profile="(Default)">하위 포함 더미</Value>
+    </Setting>
+    <Setting Name="feelcontent1" Type="System.String" Scope="User">
+      <Value Profile="(Default)">귀여운 </Value>
+    </Setting>
+    <Setting Name="feelcontent2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">웅장한 </Value>
+    </Setting>
+    <Setting Name="feelcontent3" Type="System.String" Scope="User">
+      <Value Profile="(Default)">빠른 </Value>
+    </Setting>
+    <Setting Name="feelcontent4" Type="System.String" Scope="User">
+      <Value Profile="(Default)">무서운 </Value>
+    </Setting>
+    <Setting Name="feelcontent5" Type="System.String" Scope="User">
+      <Value Profile="(Default)">초고속 </Value>
+    </Setting>
+    <Setting Name="bgacontent1" Type="System.String" Scope="User">
+      <Value Profile="(Default)">동물</Value>
+    </Setting>
+    <Setting Name="bgacontent2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">식물</Value>
+    </Setting>
+    <Setting Name="bgacontent3" Type="System.String" Scope="User">
+      <Value Profile="(Default)">보석</Value>
+    </Setting>
+    <Setting Name="bgacontent4" Type="System.String" Scope="User">
+      <Value Profile="(Default)">곤충</Value>
+    </Setting>
+    <Setting Name="bgacontent5" Type="System.String" Scope="User">
+      <Value Profile="(Default)">사람</Value>
+    </Setting>
+    <Setting Name="languagecontent1" Type="System.String" Scope="User">
+      <Value Profile="(Default)">영어</Value>
+    </Setting>
+    <Setting Name="languagecontent2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">일본어</Value>
+    </Setting>
+    <Setting Name="languagecontent3" Type="System.String" Scope="User">
+      <Value Profile="(Default)">한국어</Value>
+    </Setting>
+    <Setting Name="dummycontent1_1" Type="System.String" Scope="User">
+      <Value Profile="(Default)">더미</Value>
+    </Setting>
+    <Setting Name="dummycontent1_2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">더미</Value>
+    </Setting>
+    <Setting Name="dummycontent1_3" Type="System.String" Scope="User">
+      <Value Profile="(Default)">더미</Value>
+    </Setting>
+    <Setting Name="dummycontent2_1" Type="System.String" Scope="User">
+      <Value Profile="(Default)">더미</Value>
+    </Setting>
+    <Setting Name="dummycontent2_2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">더미</Value>
+    </Setting>
+    <Setting Name="dummycontent2_3" Type="System.String" Scope="User">
+      <Value Profile="(Default)">더미</Value>
+    </Setting>
+    <Setting Name="dummycontent2_4" Type="System.String" Scope="User">
+      <Value Profile="(Default)">더미</Value>
+    </Setting>
+    <Setting Name="dummycontent3_1" Type="System.String" Scope="User">
+      <Value Profile="(Default)">더미</Value>
+    </Setting>
+    <Setting Name="dummycontent3_2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">더미</Value>
+    </Setting>
+    <Setting Name="dummycontent3_3" Type="System.String" Scope="User">
+      <Value Profile="(Default)">더미</Value>
+    </Setting>
+    <Setting Name="dummycontent3_4" Type="System.String" Scope="User">
+      <Value Profile="(Default)">더미</Value>
+    </Setting>
+    <Setting Name="dummycontent3_5" Type="System.String" Scope="User">
+      <Value Profile="(Default)">더미</Value>
+    </Setting>
+    <Setting Name="Settings" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -18,6 +18,8 @@ namespace RhythmMonopoly
             //랜덤함수
             Random rd = new Random();
 
+            Font font1 = new Font(FontManager.fontFamilys[0], 14, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+
             #endregion
 
             #region :: 변수 불러오기 ::
@@ -280,6 +282,7 @@ namespace RhythmMonopoly
                 //라벨마다 반복문
                 if (control is System.Windows.Forms.Label)
                 {
+                    ((System.Windows.Forms.Label)control).Font = font1;
                     //밑에 배너 적을 내용
                     if (((System.Windows.Forms.Label)control).Text == "TESTING BUILD")
                     {
@@ -293,7 +296,7 @@ namespace RhythmMonopoly
 
                         if (lblname.Contains("Island"))
                         {
-                            ((System.Windows.Forms.Label)control).Image = Properties.Resources.무인도;
+                            ((System.Windows.Forms.Label)control).Image = Properties.Resources.무인도v2;
                             ((System.Windows.Forms.Label)control).BackColor = Color.White;
                             ((System.Windows.Forms.Label)control).Text = null;
                         }
@@ -354,7 +357,11 @@ namespace RhythmMonopoly
             Popup popup = new Popup();
             popup.ShowDialog();
         }
-        #endregion
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("이 프로그램에는 메이플스토리가 제공한\r메이플스토리 서체가 적용되어 있습니다.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        #endregion
     }
 }

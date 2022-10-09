@@ -60,6 +60,7 @@
             this.buttonSetup = new System.Windows.Forms.Button();
             this.label27 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label2
@@ -430,6 +431,16 @@
             this.label29.Size = new System.Drawing.Size(920, 673);
             this.label29.TabIndex = 62;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(1366, 1013);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(130, 30);
+            this.button1.TabIndex = 63;
+            this.button1.Text = "폰트 관련";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // TEST1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -437,6 +448,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label29);
             this.Controls.Add(this.label27);
             this.Controls.Add(this.buttonSetup);
@@ -508,5 +520,6 @@
         private Button buttonSetup;
         private Label label27;
         private Label label29;
+        private Button button1;
     }
 }

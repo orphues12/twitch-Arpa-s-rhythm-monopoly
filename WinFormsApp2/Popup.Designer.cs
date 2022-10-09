@@ -1,4 +1,4 @@
-﻿namespace WinFormsApp2
+﻿namespace RhythmMonopoly
 {
     partial class Popup
     {

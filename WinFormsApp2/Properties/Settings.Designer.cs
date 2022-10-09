@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WinFormsApp2.Properties {
+namespace RhythmMonopoly.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -434,12 +434,12 @@ namespace WinFormsApp2.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Settings {
+        public string HappyHome {
             get {
-                return ((string)(this["Settings"]));
+                return ((string)(this["HappyHome"]));
             }
             set {
-                this["Settings"] = value;
+                this["HappyHome"] = value;
             }
         }
     }

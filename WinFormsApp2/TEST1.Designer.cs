@@ -1,4 +1,4 @@
-﻿namespace WinFormsApp2
+﻿namespace RhythmMonopoly
 {
     partial class TEST1
     {
@@ -424,7 +424,7 @@
             // label29
             // 
             this.label29.BackColor = System.Drawing.Color.Transparent;
-            this.label29.Image = global::WinFormsApp2.Properties.Resources.P;
+            this.label29.Image = global::RhythmMonopoly.Properties.Resources.P;
             this.label29.Location = new System.Drawing.Point(235, 195);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(920, 673);

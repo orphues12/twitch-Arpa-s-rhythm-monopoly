@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WinFormsApp2
+namespace RhythmMonopoly
 {
     public partial class Popup : Form
     {

@@ -3,7 +3,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Collections.Generic;
 
-namespace WinFormsApp2
+namespace RhythmMonopoly
 {
     public partial class TEST1 : Form
     {

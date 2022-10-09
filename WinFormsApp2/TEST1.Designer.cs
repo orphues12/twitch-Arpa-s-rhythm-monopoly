@@ -34,8 +34,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelIsland2 = new System.Windows.Forms.Label();
+            this.labelFree1 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -48,7 +48,7 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
+            this.labelIsland = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
@@ -134,29 +134,29 @@
             this.label7.Text = "0";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label8
+            // labelIsland2
             // 
-            this.label8.BackColor = System.Drawing.Color.Gray;
-            this.label8.Font = new System.Drawing.Font("맑은 고딕", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(1675, -2);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(240, 145);
-            this.label8.TabIndex = 35;
-            this.label8.Text = "자유";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelIsland2.BackColor = System.Drawing.Color.Black;
+            this.labelIsland2.Font = new System.Drawing.Font("맑은 고딕", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelIsland2.ForeColor = System.Drawing.Color.White;
+            this.labelIsland2.Location = new System.Drawing.Point(1675, -2);
+            this.labelIsland2.Name = "labelIsland2";
+            this.labelIsland2.Size = new System.Drawing.Size(240, 145);
+            this.labelIsland2.TabIndex = 35;
+            this.labelIsland2.Text = "무인도";
+            this.labelIsland2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label1
+            // labelFree1
             // 
-            this.label1.BackColor = System.Drawing.Color.Gray;
-            this.label1.Font = new System.Drawing.Font("맑은 고딕", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(-5, -2);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(240, 145);
-            this.label1.TabIndex = 36;
-            this.label1.Text = "무인도";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelFree1.BackColor = System.Drawing.Color.Black;
+            this.labelFree1.Font = new System.Drawing.Font("맑은 고딕", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelFree1.ForeColor = System.Drawing.Color.White;
+            this.labelFree1.Location = new System.Drawing.Point(-5, -2);
+            this.labelFree1.Name = "labelFree1";
+            this.labelFree1.Size = new System.Drawing.Size(240, 145);
+            this.labelFree1.TabIndex = 36;
+            this.labelFree1.Text = "자유";
+            this.labelFree1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label9
             // 
@@ -220,7 +220,7 @@
             // 
             // label14
             // 
-            this.label14.BackColor = System.Drawing.Color.Gray;
+            this.label14.BackColor = System.Drawing.Color.Black;
             this.label14.Font = new System.Drawing.Font("맑은 고딕", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label14.ForeColor = System.Drawing.Color.White;
             this.label14.Location = new System.Drawing.Point(1675, 868);
@@ -302,17 +302,17 @@
             this.label20.Text = "0";
             this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label21
+            // labelIsland
             // 
-            this.label21.BackColor = System.Drawing.Color.Gray;
-            this.label21.Font = new System.Drawing.Font("맑은 고딕", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label21.ForeColor = System.Drawing.Color.White;
-            this.label21.Location = new System.Drawing.Point(-5, 868);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(240, 145);
-            this.label21.TabIndex = 50;
-            this.label21.Text = "무인도";
-            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelIsland.BackColor = System.Drawing.Color.Black;
+            this.labelIsland.Font = new System.Drawing.Font("맑은 고딕", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelIsland.ForeColor = System.Drawing.Color.White;
+            this.labelIsland.Location = new System.Drawing.Point(-5, 868);
+            this.labelIsland.Name = "labelIsland";
+            this.labelIsland.Size = new System.Drawing.Size(240, 145);
+            this.labelIsland.TabIndex = 50;
+            this.labelIsland.Text = "무인도";
+            this.labelIsland.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label22
             // 
@@ -448,7 +448,7 @@
             this.Controls.Add(this.label24);
             this.Controls.Add(this.label23);
             this.Controls.Add(this.label22);
-            this.Controls.Add(this.label21);
+            this.Controls.Add(this.labelIsland);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label18);
@@ -461,8 +461,8 @@
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.label8);
+            this.Controls.Add(this.labelFree1);
+            this.Controls.Add(this.labelIsland2);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -482,8 +482,8 @@
         private Label label5;
         private Label label6;
         private Label label7;
-        private Label label8;
-        private Label label1;
+        private Label labelIsland2;
+        private Label labelFree1;
         private Label label9;
         private Label label10;
         private Label label11;
@@ -496,7 +496,7 @@
         private Label label18;
         private Label label19;
         private Label label20;
-        private Label label21;
+        private Label labelIsland;
         private Label label22;
         private Label label23;
         private Label label24;

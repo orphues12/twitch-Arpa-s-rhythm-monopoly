@@ -286,11 +286,24 @@ namespace RhythmMonopoly
                         ((System.Windows.Forms.Label)control).BackColor = Color.White;
                         continue;
                     }
-                    //변함없는 값들은 변경 안하도록
-                    else if (((System.Windows.Forms.Label)control).Text == "무인도" || ((System.Windows.Forms.Label)control).Text == "START" || ((System.Windows.Forms.Label)control).Text == "자유")
+                    //변함없는 값들은 변경 안하도록 (BackColor = Black)
+                    else if (((System.Windows.Forms.Label)control).BackColor == Color.Black)
                     {
+                        string lblname = ((System.Windows.Forms.Label)control).Name;
+
+                        if (lblname.Contains("Island"))
+                        {
+                            ((System.Windows.Forms.Label)control).Image = Properties.Resources.무인도;
+                            ((System.Windows.Forms.Label)control).BackColor = Color.White;
+                            ((System.Windows.Forms.Label)control).Text = null;
+                        }
                         continue;
                     }
+
+                    //else if (((System.Windows.Forms.Label)control).Text == "무인도" || ((System.Windows.Forms.Label)control).Text == "START" || ((System.Windows.Forms.Label)control).Text == "자유")
+                    //{
+                    //    continue;
+                    //}
                     //아닌 항목들은 말처럼 쓸수있도록
                     else if (((System.Windows.Forms.Label)control).Text != "")
                     {

@@ -391,7 +391,7 @@
             this.btnExit.TabIndex = 58;
             this.btnExit.Text = "종료";
             this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.button1_Click);
+            this.btnExit.Click += new System.EventHandler(this.btnexit_Click);
             // 
             // btnReset
             // 

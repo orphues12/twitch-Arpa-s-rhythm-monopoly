@@ -316,7 +316,7 @@ namespace RhythmMonopoly
         }
 
         #region :: ButtonEvent ::
-        private void button1_Click(object sender, EventArgs e)
+        private void btnexit_Click(object sender, EventArgs e)
         {
             DialogResult Result = MessageBox.Show("정말로 판을 엎으시겠습니까?","확인", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
             if (Result == DialogResult.OK)

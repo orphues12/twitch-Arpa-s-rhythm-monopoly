@@ -25,78 +25,6 @@ namespace RhythmMonopoly.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("동시 수록 곡!!")]
-        public string TopCategory01 {
-            get {
-                return ((string)(this["TopCategory01"]));
-            }
-            set {
-                this["TopCategory01"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("삐슝빠슝")]
-        public string TopCategory02 {
-            get {
-                return ((string)(this["TopCategory02"]));
-            }
-            set {
-                this["TopCategory02"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("전파곡")]
-        public string TopCategory03 {
-            get {
-                return ((string)(this["TopCategory03"]));
-            }
-            set {
-                this["TopCategory03"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("아침 알람 곡")]
-        public string TopCategory04 {
-            get {
-                return ((string)(this["TopCategory04"]));
-            }
-            set {
-                this["TopCategory04"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("더미")]
-        public string TopCategory05 {
-            get {
-                return ((string)(this["TopCategory05"]));
-            }
-            set {
-                this["TopCategory05"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("더미")]
-        public string TopCategory06 {
-            get {
-                return ((string)(this["TopCategory06"]));
-            }
-            set {
-                this["TopCategory06"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("하위 포함 더미")]
         public string BotCategory01 {
             get {
@@ -440,6 +368,90 @@ namespace RhythmMonopoly.Properties {
             }
             set {
                 this["HappyHome"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("동시 수록 곡")]
+        public string TopCategory01 {
+            get {
+                return ((string)(this["TopCategory01"]));
+            }
+            set {
+                this["TopCategory01"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("전자 음 많은 노래")]
+        public string TopCategory02 {
+            get {
+                return ((string)(this["TopCategory02"]));
+            }
+            set {
+                this["TopCategory02"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("나나히라")]
+        public string TopCategory03 {
+            get {
+                return ((string)(this["TopCategory03"]));
+            }
+            set {
+                this["TopCategory03"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("아침 알람으로 쓸 곡")]
+        public string TopCategory04 {
+            get {
+                return ((string)(this["TopCategory04"]));
+            }
+            set {
+                this["TopCategory04"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("뭐적지")]
+        public string TopCategory05 {
+            get {
+                return ((string)(this["TopCategory05"]));
+            }
+            set {
+                this["TopCategory05"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("몰루")]
+        public string TopCategory06 {
+            get {
+                return ((string)(this["TopCategory06"]));
+            }
+            set {
+                this["TopCategory06"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("White")]
+        public global::System.Drawing.Color TestColor {
+            get {
+                return ((global::System.Drawing.Color)(this["TestColor"]));
+            }
+            set {
+                this["TestColor"] = value;
             }
         }
     }

@@ -2,24 +2,6 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="RhythmMonopoly.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="TopCategory01" Type="System.String" Scope="User">
-      <Value Profile="(Default)">동시 수록 곡!!</Value>
-    </Setting>
-    <Setting Name="TopCategory02" Type="System.String" Scope="User">
-      <Value Profile="(Default)">삐슝빠슝</Value>
-    </Setting>
-    <Setting Name="TopCategory03" Type="System.String" Scope="User">
-      <Value Profile="(Default)">전파곡</Value>
-    </Setting>
-    <Setting Name="TopCategory04" Type="System.String" Scope="User">
-      <Value Profile="(Default)">아침 알람 곡</Value>
-    </Setting>
-    <Setting Name="TopCategory05" Type="System.String" Scope="User">
-      <Value Profile="(Default)">더미</Value>
-    </Setting>
-    <Setting Name="TopCategory06" Type="System.String" Scope="User">
-      <Value Profile="(Default)">더미</Value>
-    </Setting>
     <Setting Name="BotCategory01" Type="System.String" Scope="User">
       <Value Profile="(Default)">하위 포함 더미</Value>
     </Setting>
@@ -106,6 +88,27 @@
     </Setting>
     <Setting Name="HappyHome" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="TopCategory01" Type="System.String" Scope="User">
+      <Value Profile="(Default)">동시 수록 곡</Value>
+    </Setting>
+    <Setting Name="TopCategory02" Type="System.String" Scope="User">
+      <Value Profile="(Default)">전자 음 많은 노래</Value>
+    </Setting>
+    <Setting Name="TopCategory03" Type="System.String" Scope="User">
+      <Value Profile="(Default)">나나히라</Value>
+    </Setting>
+    <Setting Name="TopCategory04" Type="System.String" Scope="User">
+      <Value Profile="(Default)">아침 알람으로 쓸 곡</Value>
+    </Setting>
+    <Setting Name="TopCategory05" Type="System.String" Scope="User">
+      <Value Profile="(Default)">뭐적지</Value>
+    </Setting>
+    <Setting Name="TopCategory06" Type="System.String" Scope="User">
+      <Value Profile="(Default)">몰루</Value>
+    </Setting>
+    <Setting Name="TestColor" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">White</Value>
     </Setting>
   </Settings>
 </SettingsFile>

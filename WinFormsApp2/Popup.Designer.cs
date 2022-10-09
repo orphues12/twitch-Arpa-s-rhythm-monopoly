@@ -42,7 +42,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.cmbCategorybottom = new System.Windows.Forms.ComboBox();
+            this.cmbCategoryBottom = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -51,7 +51,7 @@
             this.label16 = new System.Windows.Forms.Label();
             this.cmbCategoryTop2 = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.cmbCategorybottom2 = new System.Windows.Forms.ComboBox();
+            this.cmbCategoryBottom2 = new System.Windows.Forms.ComboBox();
             this.txtCategoryBottom2 = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.Savebutton2 = new System.Windows.Forms.Button();
@@ -192,16 +192,16 @@
             this.label11.TabIndex = 16;
             this.label11.Text = "준비중";
             // 
-            // cmbCategorybottom
+            // cmbCategoryBottom
             // 
-            this.cmbCategorybottom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCategorybottom.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.cmbCategorybottom.FormattingEnabled = true;
-            this.cmbCategorybottom.Location = new System.Drawing.Point(24, 214);
-            this.cmbCategorybottom.Name = "cmbCategorybottom";
-            this.cmbCategorybottom.Size = new System.Drawing.Size(151, 23);
-            this.cmbCategorybottom.TabIndex = 17;
-            this.cmbCategorybottom.SelectedValueChanged += new System.EventHandler(this.cmbCategorybottom_SelectedValueChanged);
+            this.cmbCategoryBottom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCategoryBottom.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.cmbCategoryBottom.FormattingEnabled = true;
+            this.cmbCategoryBottom.Location = new System.Drawing.Point(24, 214);
+            this.cmbCategoryBottom.Name = "cmbCategoryBottom";
+            this.cmbCategoryBottom.Size = new System.Drawing.Size(151, 23);
+            this.cmbCategoryBottom.TabIndex = 17;
+            this.cmbCategoryBottom.SelectedValueChanged += new System.EventHandler(this.cmbCategorybottom_SelectedValueChanged);
             // 
             // label12
             // 
@@ -280,16 +280,16 @@
             this.label17.TabIndex = 24;
             this.label17.Text = "하위 항목";
             // 
-            // cmbCategorybottom2
+            // cmbCategoryBottom2
             // 
-            this.cmbCategorybottom2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCategorybottom2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.cmbCategorybottom2.FormattingEnabled = true;
-            this.cmbCategorybottom2.Location = new System.Drawing.Point(411, 214);
-            this.cmbCategorybottom2.Name = "cmbCategorybottom2";
-            this.cmbCategorybottom2.Size = new System.Drawing.Size(151, 23);
-            this.cmbCategorybottom2.TabIndex = 25;
-            this.cmbCategorybottom2.SelectedValueChanged += new System.EventHandler(this.cmbCategorybottom2_SelectedValueChanged);
+            this.cmbCategoryBottom2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCategoryBottom2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.cmbCategoryBottom2.FormattingEnabled = true;
+            this.cmbCategoryBottom2.Location = new System.Drawing.Point(411, 214);
+            this.cmbCategoryBottom2.Name = "cmbCategoryBottom2";
+            this.cmbCategoryBottom2.Size = new System.Drawing.Size(151, 23);
+            this.cmbCategoryBottom2.TabIndex = 25;
+            this.cmbCategoryBottom2.SelectedValueChanged += new System.EventHandler(this.cmbCategorybottom2_SelectedValueChanged);
             // 
             // txtCategoryBottom2
             // 
@@ -297,6 +297,7 @@
             this.txtCategoryBottom2.Name = "txtCategoryBottom2";
             this.txtCategoryBottom2.Size = new System.Drawing.Size(151, 23);
             this.txtCategoryBottom2.TabIndex = 26;
+            this.txtCategoryBottom2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_KeyDown2);
             // 
             // label18
             // 
@@ -328,7 +329,7 @@
             this.Controls.Add(this.Savebutton2);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.txtCategoryBottom2);
-            this.Controls.Add(this.cmbCategorybottom2);
+            this.Controls.Add(this.cmbCategoryBottom2);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.cmbCategoryTop2);
             this.Controls.Add(this.label16);
@@ -336,7 +337,7 @@
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.cmbCategorybottom);
+            this.Controls.Add(this.cmbCategoryBottom);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
@@ -376,7 +377,7 @@
         private Label label9;
         private Label label10;
         private Label label11;
-        private ComboBox cmbCategorybottom;
+        private ComboBox cmbCategoryBottom;
         private Label label12;
         private Label label13;
         private Label label14;
@@ -385,7 +386,7 @@
         private Label label16;
         private ComboBox cmbCategoryTop2;
         private Label label17;
-        private ComboBox cmbCategorybottom2;
+        private ComboBox cmbCategoryBottom2;
         private TextBox txtCategoryBottom2;
         private Label label18;
         private Button Savebutton2;

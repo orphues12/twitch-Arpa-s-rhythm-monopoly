@@ -17,8 +17,8 @@ namespace RhythmMonopoly
             this.ControlBox = false;
             //랜덤함수
             Random rd = new Random();
-
-            Font font1 = new Font(FontManager.fontFamilys[0], 14, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            //폰트설정
+            Font font1 = new Font(FontManager.fontFamilys[0], 16, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
 
             #endregion
 
@@ -294,6 +294,7 @@ namespace RhythmMonopoly
                     {
                         string lblname = ((System.Windows.Forms.Label)control).Name;
 
+                        //라벨
                         if (lblname.Contains("Island"))
                         {
                             ((System.Windows.Forms.Label)control).Image = Properties.Resources.무인도v2;
@@ -302,7 +303,6 @@ namespace RhythmMonopoly
                         }
                         continue;
                     }
-
                     //else if (((System.Windows.Forms.Label)control).Text == "무인도" || ((System.Windows.Forms.Label)control).Text == "START" || ((System.Windows.Forms.Label)control).Text == "자유")
                     //{
                     //    continue;
@@ -324,6 +324,13 @@ namespace RhythmMonopoly
                             stack++;
                             break;
                         }
+                    }
+
+                    if (((System.Windows.Forms.Label)control).Text.Equals("황금 열쇠"))
+                    {
+                        ((System.Windows.Forms.Label)control).BackColor = Color.Yellow;
+                        ((System.Windows.Forms.Label)control).Image = Properties.Resources.golden_keys;
+                        ((System.Windows.Forms.Label)control).Text = null;
                     }
                 }
             }

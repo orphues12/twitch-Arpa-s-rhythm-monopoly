@@ -59,18 +59,19 @@
             // 
             // label1
             // 
-            this.label1.BackColor = System.Drawing.Color.White;
+            this.label1.BackColor = System.Drawing.Color.LightGray;
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label1.Font = new System.Drawing.Font("맑은 고딕", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(-1, -6);
+            this.label1.Location = new System.Drawing.Point(-6, -5);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(786, 70);
+            this.label1.Size = new System.Drawing.Size(792, 70);
             this.label1.TabIndex = 0;
             this.label1.Text = "설정";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label2
             // 
+            this.label2.BackColor = System.Drawing.Color.LightGray;
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label2.Location = new System.Drawing.Point(-1, 63);
             this.label2.Name = "label2";
@@ -79,6 +80,7 @@
             // 
             // label3
             // 
+            this.label3.BackColor = System.Drawing.Color.LightGray;
             this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label3.Location = new System.Drawing.Point(-2, 286);
             this.label3.Name = "label3";
@@ -205,6 +207,7 @@
             // 
             // label12
             // 
+            this.label12.BackColor = System.Drawing.Color.LightGray;
             this.label12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label12.Location = new System.Drawing.Point(384, 63);
             this.label12.Name = "label12";
@@ -324,7 +327,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.Savebutton2);
             this.Controls.Add(this.label18);

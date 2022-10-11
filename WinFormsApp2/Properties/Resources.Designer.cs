@@ -113,6 +113,16 @@ namespace RhythmMonopoly.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
+        internal static System.Drawing.Bitmap Free {
+            get {
+                object obj = ResourceManager.GetObject("Free", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
         internal static System.Drawing.Bitmap golden_keys {
             get {
                 object obj = ResourceManager.GetObject("golden_keys", resourceCulture);
@@ -133,6 +143,16 @@ namespace RhythmMonopoly.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
+        internal static System.Drawing.Bitmap Start {
+            get {
+                object obj = ResourceManager.GetObject("Start", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
         internal static System.Drawing.Bitmap 무인도 {
             get {
                 object obj = ResourceManager.GetObject("무인도", resourceCulture);
@@ -146,6 +166,26 @@ namespace RhythmMonopoly.Properties {
         internal static System.Drawing.Bitmap 무인도v2 {
             get {
                 object obj = ResourceManager.GetObject("무인도v2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap 뱅하싶 {
+            get {
+                object obj = ResourceManager.GetObject("뱅하싶", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap 뱅하싶2 {
+            get {
+                object obj = ResourceManager.GetObject("뱅하싶2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

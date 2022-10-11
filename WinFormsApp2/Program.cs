@@ -12,7 +12,7 @@ namespace RhythmMonopoly
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             //시작 프로젝트 선택
-            Application.Run(new TEST1());
+            Application.Run(new MainBoard());
         }
     }
 }

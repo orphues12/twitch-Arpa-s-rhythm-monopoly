@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblPanel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.Savebutton1 = new System.Windows.Forms.Button();
@@ -57,17 +57,17 @@
             this.Savebutton2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // label1
+            // lblPanel
             // 
-            this.label1.BackColor = System.Drawing.Color.LightGray;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Font = new System.Drawing.Font("맑은 고딕", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(-6, -5);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(792, 70);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "설정";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblPanel.BackColor = System.Drawing.Color.LightGray;
+            this.lblPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblPanel.Font = new System.Drawing.Font("맑은 고딕", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblPanel.Location = new System.Drawing.Point(-6, -5);
+            this.lblPanel.Name = "lblPanel";
+            this.lblPanel.Size = new System.Drawing.Size(792, 70);
+            this.lblPanel.TabIndex = 0;
+            this.lblPanel.Text = "설정";
+            this.lblPanel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label2
             // 
@@ -355,7 +355,7 @@
             this.Controls.Add(this.Savebutton1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblPanel);
             this.Name = "Popup";
             this.Text = "설정";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Popup_FormClosing);
@@ -366,7 +366,7 @@
 
         #endregion
 
-        private Label label1;
+        private Label lblPanel;
         private Label label2;
         private Label label3;
         private Button Savebutton1;

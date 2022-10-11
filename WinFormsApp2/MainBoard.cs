@@ -2,12 +2,14 @@ using System;
 using System.Security.Cryptography;
 using System.Text;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 namespace RhythmMonopoly
 {
-    public partial class TEST1 : Form
+    public partial class MainBoard : Form
     {
-        public TEST1()
+        public MainBoard()
         {
             InitializeComponent();
 
@@ -274,7 +276,7 @@ namespace RhythmMonopoly
 
             #endregion
 
-            #region :: 라벨 채우기 관련 ::
+            #region :: 라벨 채우기 ::
 
             //모든 컨트롤을 검사
             foreach (System.Windows.Forms.Control control in this.Controls)
@@ -283,10 +285,12 @@ namespace RhythmMonopoly
                 if (control is System.Windows.Forms.Label)
                 {
                     ((System.Windows.Forms.Label)control).Font = font1;
-                    //밑에 배너 적을 내용
-                    if (((System.Windows.Forms.Label)control).Text == "TESTING BUILD")
+
+                    //밑에 배너
+                    if (((System.Windows.Forms.Label)control).Name.Equals("lblBanner"))
                     {
-                        ((System.Windows.Forms.Label)control).BackColor = Color.White;
+                        ((System.Windows.Forms.Label)control).BackColor = Color.White; ;
+                        ((System.Windows.Forms.Label)control).Text = "* 현재는 판 제작 기능만 제공하고 있습니다.";
                         continue;
                     }
                     //변함없는 값들은 변경 안하도록 (BackColor = Black)
@@ -301,12 +305,21 @@ namespace RhythmMonopoly
                             ((System.Windows.Forms.Label)control).BackColor = Color.White;
                             ((System.Windows.Forms.Label)control).Text = null;
                         }
+                        else if (lblname.Contains("Start"))
+                        {
+                            ((System.Windows.Forms.Label)control).Image = Properties.Resources.Start;
+                            ((System.Windows.Forms.Label)control).BackColor = Color.White;
+                            ((System.Windows.Forms.Label)control).Text = null;
+                        }
+                        else if (lblname.Contains("Free"))
+                        {
+                            ((System.Windows.Forms.Label)control).Image = Properties.Resources.뱅하싶2;
+                            ((System.Windows.Forms.Label)control).BackColor = Color.Black;
+                            ((System.Windows.Forms.Label)control).Text = null;
+                        }
+
                         continue;
                     }
-                    //else if (((System.Windows.Forms.Label)control).Text == "무인도" || ((System.Windows.Forms.Label)control).Text == "START" || ((System.Windows.Forms.Label)control).Text == "자유")
-                    //{
-                    //    continue;
-                    //}
                     //아닌 항목들은 말처럼 쓸수있도록
                     else if (((System.Windows.Forms.Label)control).Text != "")
                     {
@@ -339,15 +352,18 @@ namespace RhythmMonopoly
         }
 
         #region :: ButtonEvent ::
+
+        //종료
         private void btnexit_Click(object sender, EventArgs e)
         {
-            DialogResult Result = MessageBox.Show("정말로 판을 엎으시겠습니까?","확인", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            DialogResult Result = MessageBox.Show("정말로 종료하시겠습니까?", "확인", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
             if (Result == DialogResult.OK)
             {
                 Environment.Exit(0);
             }
         }
 
+        //판 섞기
         private void btnReset_Click(object sender, EventArgs e)
         {
 
@@ -359,15 +375,57 @@ namespace RhythmMonopoly
             }
         }
 
+        //옵션
         private void buttonSetup_Click(object sender, EventArgs e)
         {
             Popup popup = new Popup();
             popup.ShowDialog();
         }
 
+        //폰트 정보
         private void button1_Click(object sender, EventArgs e)
         {
             MessageBox.Show("이 프로그램에는 메이플스토리가 제공한\r메이플스토리 서체가 적용되어 있습니다.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        //스크린샷
+        private void btnScreenshot_Click(object sender, EventArgs e)
+        {
+
+            MessageBox.Show("하루동안 만졌는데 에러떠서 막아놨습니다.\r언젠간 정상화 되겠죠?.", "확인", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return;
+
+            //DialogResult Result = MessageBox.Show("현재 판을 저장 하시겠습니까? \r바탕화면에 저장됩니다.", "저장 확인", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            //if (Result == DialogResult.OK)
+            //{
+            //    //저장 위치 지정 (바탕화면)
+            //    string localpath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            //    string filename = "\\판때기.png";
+            //    string _path = localpath + filename;
+
+
+            //    //테스트
+            //    string Hello = string.Empty;
+
+
+            //    //변수 지정 필요
+            //    Capture ImgCapture = new Capture(0,0,100,100);
+            //    ImgCapture.SetPath(_path);
+            //    ImgCapture.CaptureImage();
+
+            //    MessageBox.Show("바탕화면에 저장되었습니다.", "확인", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            //    return;
+            //}
+        }
+
+        #endregion
+
+        #region :: ETC Event ::
+        //크기 고정 이벤트
+        private void MainBoard_Resize(object sender, EventArgs e)
+        {
+            this.Size = new Size(1920, 1080);
         }
         #endregion
     }

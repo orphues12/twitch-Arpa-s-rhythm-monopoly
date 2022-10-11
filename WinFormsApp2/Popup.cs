@@ -72,6 +72,23 @@ namespace RhythmMonopoly
         public Popup()
         {
             InitializeComponent();
+            //폰트설정
+            Font font1 = new Font(FontManager.fontFamilys[0], 16, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            Font font2 = new Font(FontManager.fontFamilys[0], 40, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+
+            foreach (System.Windows.Forms.Control control in this.Controls)
+            {
+                if (control is System.Windows.Forms.Label)
+                {
+                    string lblname = ((System.Windows.Forms.Label)control).Name;
+                    ((System.Windows.Forms.Label)control).Font = font1;
+                    //라벨마다 반복문
+                    if (lblname.Contains("Panel"))
+                    {
+                        ((System.Windows.Forms.Label)control).Font = font2;
+                    }
+                }
+            }
 
             #region :: 항목 추가 설정 ::
             cmbCategoryTop.Items.Add("상위 항목 1");  //TopCategory01

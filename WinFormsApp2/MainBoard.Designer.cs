@@ -417,6 +417,7 @@
             // label27
             // 
             this.label27.BackColor = System.Drawing.Color.Transparent;
+            this.label27.Image = global::RhythmMonopoly.Properties.Resources.LOGOv3;
             this.label27.Location = new System.Drawing.Point(235, 143);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(1440, 725);

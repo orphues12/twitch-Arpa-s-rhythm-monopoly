@@ -110,9 +110,9 @@ namespace RhythmMonopoly
             //cmbCategoryTop.Items.Add("상위 항목 5");  //TopCategory05
             //cmbCategoryTop.Items.Add("상위 항목 6");  //TopCategory06
 
-            cmbCategoryTop.Items.Add("상위 항목 7 - 하위 항목 3개"); //BotCategory01
-            cmbCategoryTop.Items.Add("상위 항목 8 - 하위 항목 4개"); //BotCategory02
-            cmbCategoryTop.Items.Add("상위 항목 9 - 하위 항목 5개"); //BotCategory03
+            cmbCategoryTop.Items.Add("상위 항목 - 하위 항목 3개"); //BotCategory01
+            cmbCategoryTop.Items.Add("상위 항목 - 하위 항목 4개"); //BotCategory02
+            cmbCategoryTop.Items.Add("상위 항목 - 하위 항목 5개"); //BotCategory03
 
 
             txtCategoryTop.Enabled = false;
@@ -193,7 +193,7 @@ namespace RhythmMonopoly
                     cmbCategoryBottom.Items.Clear();
                     txtCategoryBottom.Text = "";
                 }
-                else if (cmbCategoryTop.Text.ToString() == "상위 항목 7 - 하위 항목 3개")
+                else if (cmbCategoryTop.Text.ToString() == "상위 항목 - 하위 항목 3개")
                 {
                     txtCategoryTop.Text = BotCategory01;
                     txtCategoryTop.Enabled = true;
@@ -208,7 +208,7 @@ namespace RhythmMonopoly
 
                     cmbCategoryBottom.SelectedIndex = 0;
                 }
-                else if (cmbCategoryTop.Text.ToString() == "상위 항목 8 - 하위 항목 4개")
+                else if (cmbCategoryTop.Text.ToString() == "상위 항목 - 하위 항목 4개")
                 {
                     txtCategoryTop.Text = BotCategory02;
                     txtCategoryTop.Enabled = true;
@@ -225,7 +225,7 @@ namespace RhythmMonopoly
 
                     cmbCategoryBottom.SelectedIndex = 0;
                 }
-                else if (cmbCategoryTop.Text.ToString() == "상위 항목 9 - 하위 항목 5개")
+                else if (cmbCategoryTop.Text.ToString() == "상위 항목 - 하위 항목 5개")
                 {
                     txtCategoryTop.Text = BotCategory03;
                     txtCategoryTop.Enabled = true;
@@ -258,7 +258,7 @@ namespace RhythmMonopoly
             {
                 txtCategoryBottom.Clear();
 
-                if (cmbCategoryTop.Text.ToString() == "상위 항목 7 - 하위 항목 3개")
+                if (cmbCategoryTop.Text.Contains("3개"))
                 {
                     if (cmbCategoryBottom.Text.ToString() == "하위 항목 1")
                     {
@@ -273,7 +273,7 @@ namespace RhythmMonopoly
                         txtCategoryBottom.Text = dummycontent1_3;
                     }
                 }
-                else if (cmbCategoryTop.Text.ToString() == "상위 항목 8 - 하위 항목 4개")
+                else if (cmbCategoryTop.Text.Contains("4개"))
                 {
 
                     if (cmbCategoryBottom.Text.ToString() == "하위 항목 1")
@@ -293,7 +293,7 @@ namespace RhythmMonopoly
                         txtCategoryBottom.Text = dummycontent2_4;
                     }
                 }
-                else if (cmbCategoryTop.Text.ToString() == "상위 항목 9 - 하위 항목 5개")
+                else if (cmbCategoryTop.Text.Contains("5개"))
                 {
 
                     if (cmbCategoryBottom.Text.ToString() == "하위 항목 1")

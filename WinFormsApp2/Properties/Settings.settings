@@ -11,43 +11,43 @@
     <Setting Name="BotCategory03" Type="System.String" Scope="User">
       <Value Profile="(Default)">하위 포함 더미</Value>
     </Setting>
-    <Setting Name="feelcontent1" Type="System.String" Scope="User">
+    <Setting Name="dummycontent5_1" Type="System.String" Scope="User">
       <Value Profile="(Default)">귀여운 </Value>
     </Setting>
-    <Setting Name="feelcontent2" Type="System.String" Scope="User">
+    <Setting Name="dummycontent5_2" Type="System.String" Scope="User">
       <Value Profile="(Default)">웅장한 </Value>
     </Setting>
-    <Setting Name="feelcontent3" Type="System.String" Scope="User">
+    <Setting Name="dummycontent5_3" Type="System.String" Scope="User">
       <Value Profile="(Default)">빠른 </Value>
     </Setting>
-    <Setting Name="feelcontent4" Type="System.String" Scope="User">
+    <Setting Name="dummycontent5_4" Type="System.String" Scope="User">
       <Value Profile="(Default)">무서운 </Value>
     </Setting>
-    <Setting Name="feelcontent5" Type="System.String" Scope="User">
+    <Setting Name="dummycontent5_5" Type="System.String" Scope="User">
       <Value Profile="(Default)">초고속 </Value>
     </Setting>
-    <Setting Name="bgacontent1" Type="System.String" Scope="User">
+    <Setting Name="dummycontent4_1" Type="System.String" Scope="User">
       <Value Profile="(Default)">동물</Value>
     </Setting>
-    <Setting Name="bgacontent2" Type="System.String" Scope="User">
+    <Setting Name="dummycontent4_2" Type="System.String" Scope="User">
       <Value Profile="(Default)">식물</Value>
     </Setting>
-    <Setting Name="bgacontent3" Type="System.String" Scope="User">
+    <Setting Name="dummycontent4_3" Type="System.String" Scope="User">
       <Value Profile="(Default)">보석</Value>
     </Setting>
-    <Setting Name="bgacontent4" Type="System.String" Scope="User">
+    <Setting Name="dummycontent4_4" Type="System.String" Scope="User">
       <Value Profile="(Default)">곤충</Value>
     </Setting>
-    <Setting Name="bgacontent5" Type="System.String" Scope="User">
+    <Setting Name="dummycontent4_5" Type="System.String" Scope="User">
       <Value Profile="(Default)">사람</Value>
     </Setting>
-    <Setting Name="languagecontent1" Type="System.String" Scope="User">
+    <Setting Name="dummycontent6_1" Type="System.String" Scope="User">
       <Value Profile="(Default)">영어</Value>
     </Setting>
-    <Setting Name="languagecontent2" Type="System.String" Scope="User">
+    <Setting Name="dummycontent6_2" Type="System.String" Scope="User">
       <Value Profile="(Default)">일본어</Value>
     </Setting>
-    <Setting Name="languagecontent3" Type="System.String" Scope="User">
+    <Setting Name="dummycontent6_3" Type="System.String" Scope="User">
       <Value Profile="(Default)">한국어</Value>
     </Setting>
     <Setting Name="dummycontent1_1" Type="System.String" Scope="User">
@@ -127,6 +127,15 @@
     </Setting>
     <Setting Name="GoldenFix" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="BotCategory04" Type="System.String" Scope="User">
+      <Value Profile="(Default)">BGA</Value>
+    </Setting>
+    <Setting Name="BotCategory05" Type="System.String" Scope="User">
+      <Value Profile="(Default)">느낌</Value>
+    </Setting>
+    <Setting Name="BotCategory06" Type="System.String" Scope="User">
+      <Value Profile="(Default)">보컬 언어</Value>
     </Setting>
   </Settings>
 </SettingsFile>

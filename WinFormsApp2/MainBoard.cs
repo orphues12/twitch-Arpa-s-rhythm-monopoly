@@ -44,25 +44,10 @@ namespace RhythmMonopoly
             string BotCategory01 = Properties.Settings.Default.BotCategory01; //상위 + 하위
             string BotCategory02 = Properties.Settings.Default.BotCategory02; //상위 + 하위
             string BotCategory03 = Properties.Settings.Default.BotCategory03; //상위 + 하위
+            string BotCategory04 = Properties.Settings.Default.BotCategory01; //상위 + 하위
+            string BotCategory05 = Properties.Settings.Default.BotCategory02; //상위 + 하위
+            string BotCategory06 = Properties.Settings.Default.BotCategory03; //상위 + 하위
 
-            //느낌 5개
-            string feelcontent1 = Properties.Settings.Default.feelcontent1;
-            string feelcontent2 = Properties.Settings.Default.feelcontent2;
-            string feelcontent3 = Properties.Settings.Default.feelcontent3;
-            string feelcontent4 = Properties.Settings.Default.feelcontent4;
-            string feelcontent5 = Properties.Settings.Default.feelcontent5;
-
-            //BGA 내용물 5개
-            string bgacontent1 = Properties.Settings.Default.bgacontent1;
-            string bgacontent2 = Properties.Settings.Default.bgacontent2;
-            string bgacontent3 = Properties.Settings.Default.bgacontent3;
-            string bgacontent4 = Properties.Settings.Default.bgacontent4;
-            string bgacontent5 = Properties.Settings.Default.bgacontent5;
-
-            //언어
-            string languagecontent1 = Properties.Settings.Default.languagecontent1;
-            string languagecontent2 = Properties.Settings.Default.languagecontent2;
-            string languagecontent3 = Properties.Settings.Default.languagecontent3;
 
             //하위 더미데이터 불러오는 곳 3,4,5
             string dummycontent1_1 = Properties.Settings.Default.dummycontent1_1;
@@ -79,6 +64,22 @@ namespace RhythmMonopoly
             string dummycontent3_3 = Properties.Settings.Default.dummycontent3_3;
             string dummycontent3_4 = Properties.Settings.Default.dummycontent3_4;
             string dummycontent3_5 = Properties.Settings.Default.dummycontent3_5;
+
+            string dummycontent4_1 = Properties.Settings.Default.dummycontent4_1;
+            string dummycontent4_2 = Properties.Settings.Default.dummycontent4_2;
+            string dummycontent4_3 = Properties.Settings.Default.dummycontent4_3;
+            string dummycontent4_4 = Properties.Settings.Default.dummycontent4_4;
+            string dummycontent4_5 = Properties.Settings.Default.dummycontent4_5;
+
+            string dummycontent5_1 = Properties.Settings.Default.dummycontent5_1;
+            string dummycontent5_2 = Properties.Settings.Default.dummycontent5_2;
+            string dummycontent5_3 = Properties.Settings.Default.dummycontent5_3;
+            string dummycontent5_4 = Properties.Settings.Default.dummycontent5_4;
+            string dummycontent5_5 = Properties.Settings.Default.dummycontent5_5;
+
+            string dummycontent6_1 = Properties.Settings.Default.dummycontent6_1;
+            string dummycontent6_2 = Properties.Settings.Default.dummycontent6_2;
+            string dummycontent6_3 = Properties.Settings.Default.dummycontent6_3;
 
             //항목 숫자 변수
             int AlphaNum = Properties.Settings.Default.AlphaNum;
@@ -98,12 +99,6 @@ namespace RhythmMonopoly
             string text1_1 = "알파벳 ";
             string text1_2 = " 로 시작되는 곡";
 
-            //브가 (1) - 4
-            string text2_1 = "BGA 안에 ";
-            string text2_2 = " 이(가) 포함된 곡";
-
-            //노래보컬 언어 (1) - 5
-            string text3 = " 보컬이 포함된 곡";
 
             //자음 (3) - 8
             string text5_1 = "발음이 ";
@@ -133,6 +128,10 @@ namespace RhythmMonopoly
             string text16 = BotCategory01; //Dummydata1_1 ~ 1_3
             string text17 = BotCategory02; //Dummydata2_1 ~ 2_4
             string text18 = BotCategory03; //Dummydata3_1 ~ 3_5
+            //브가 (1) - 4
+            string text19 = BotCategory04;
+            string text20 = BotCategory05;
+            string text21 = BotCategory06;
 
             //항목회전용
             int stack = 0;
@@ -150,19 +149,14 @@ namespace RhythmMonopoly
             string[] gameclass_ = { "PC", "모바일", "콘솔" };
             //자음
             string[] consonant_ = { "ㄱ", "ㄴ", "ㄷ", "ㄹ", "ㅁ", "ㅂ", "ㅅ", "ㅇ", "ㅈ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"};
-            //언어 변경은 3개까지
-            string[] language_ = { languagecontent1, languagecontent2, languagecontent3 };
-
-            ///변경 할 수 있어야 되는 것들
-            //느낌
-            string[] feels_ = { feelcontent1, feelcontent2, feelcontent3, feelcontent4, feelcontent5 };
-            //브가 포함
-            string[] bga_ = { bgacontent1, bgacontent2, bgacontent3, bgacontent4, bgacontent5 };
 
             //추가적으로 제공되는 더미 데이터들 저장소 (3,4,5)
             string[] Dummy1_ = { dummycontent1_1, dummycontent1_2, dummycontent1_3};
             string[] Dummy2_ = { dummycontent2_1, dummycontent2_2, dummycontent2_3, dummycontent2_4};
             string[] Dummy3_ = { dummycontent3_1, dummycontent3_2, dummycontent3_3, dummycontent3_4, dummycontent3_5};
+            string[] Dummy4_ = { dummycontent4_1, dummycontent4_2, dummycontent4_3, dummycontent4_4, dummycontent4_5};
+            string[] Dummy5_ = { dummycontent5_1, dummycontent5_2, dummycontent5_3, dummycontent5_4, dummycontent5_5};
+            string[] Dummy6_ = { dummycontent6_1, dummycontent6_2, dummycontent6_3 };
 
 
             ///배열 섞기
@@ -173,14 +167,14 @@ namespace RhythmMonopoly
             string[] rdbutton_ = button_.OrderBy(x => rd.Next()).ToArray();
             string[] rdseason_ = season_.OrderBy(x => rd.Next()).ToArray();
             string[] rdgameclass_ = gameclass_.OrderBy(x => rd.Next()).ToArray();
-            string[] rdfeels_ = feels_.OrderBy(x => rd.Next()).ToArray();
-            string[] rdBGA_ = bga_.OrderBy(x => rd.Next()).ToArray();
-            string[] rdlang_ = language_.OrderBy(x => rd.Next()).ToArray();
             //변경 가능한 더미
             string[] rddummy1_ = Dummy1_.OrderBy(x => rd.Next()).ToArray();
             string[] rddummy2_ = Dummy2_.OrderBy(x => rd.Next()).ToArray();
             string[] rddummy3_ = Dummy3_.OrderBy(x => rd.Next()).ToArray();
-            
+            string[] rddummy4_ = Dummy4_.OrderBy(x => rd.Next()).ToArray();
+            string[] rddummy5_ = Dummy5_.OrderBy(x => rd.Next()).ToArray();
+            string[] rddummy6_ = Dummy6_.OrderBy(x => rd.Next()).ToArray();
+
 
             //배열 변수 문자열
             //만약 개수 조정이 필요할 경우에는 많은 수정이 필요합니다람쥐
@@ -198,10 +192,6 @@ namespace RhythmMonopoly
 
 
 
-            //BGA 1개
-            string textBGA1 = rdBGA_[0].ToString();
-            //보컬 언어 1개
-            string textLang1 = rdlang_[0].ToString();
             //X버튼 1개
             string textButton1 = rdbutton_[0].ToString();
             //계절 1개
@@ -209,12 +199,13 @@ namespace RhythmMonopoly
             //기종 1개
             string textGameclass1 = rdgameclass_[0].ToString();
             //느낌 1개
-            string textFeels1 = rdfeels_[0].ToString();
             //하위 더미 3개
             string textDummy1 = rddummy1_[0].ToString();
             string textDummy2 = rddummy2_[0].ToString();
             string textDummy3 = rddummy3_[0].ToString();
-
+            string textDummy4 = rddummy4_[0].ToString();
+            string textDummy5 = rddummy5_[0].ToString();
+            string textDummy6 = rddummy6_[0].ToString();
             //15개 + 황금열쇠 2개 + 변경 가능 상위 항목 5개 = 22개
 
             #endregion
@@ -234,33 +225,31 @@ namespace RhythmMonopoly
             string Category6 = text8;
             string Category7 = text8;
             string Category8 = text8;
-            string Category14 = text8;
             string Category15 = text8;
             string Category16 = text8;
             string Category17 = text8;
+            string Category18 = text8;
             //X라인 리듬게임 (1)
             string Category9 = textButton1 + text6;
-            //노래보컬 언어 (1)
-            string Category10 = textLang1 + text3;
             //플랫폼 (1)
             string Category11 = textGameclass1 + text7;
             //계절 곡 (1)
             string Category12 = textSeason1 + text9;
             //BGA or 포토 (1)
-            string Category13 = text2_1 + textBGA1 + text2_2;
-
             //더미, 변경 가능한 것들B
-            //상위 항목만 (6) - / 10/12 황금열쇠 숫자 변경으로 인해 임시 변경입니다. -2
-            //string Category14 = text10;
+            //상위 항목만 (6) - / 10/12 황금열쇠 숫자 변경으로 인해 임시 변경입니다. -5
+            string Category14 = text10;
             //string Category15 = text11;
             //string Category16 = text12;
             //string Category17 = text13;
-            string Category18 = text14;
-            string Category19 = text15;
+            //string Category18 = text14;
             //상위 + 하위 항목 (3)
             string Category20 = textDummy1 + text16;
-            string Category21 = textDummy2 + text17; 
+            string Category21 = textDummy2 + text17;
             string Category22 = textDummy3 + text18;
+            string Category23 = textDummy4 + text19;
+            string Category24 = textDummy1 + text20;
+            string Category25 = textDummy6 + text21;
 
             #region :: 구버전 ::
 
@@ -305,7 +294,7 @@ namespace RhythmMonopoly
             //황금열쇠 위치 고정일 시
             if (GoldenFix)
             {
-                string[] CategoryArray = { Category1, Category2, Category4, Category5, Category9, Category10, Category11, Category12, Category13, Category18, Category19, Category20, Category21, Category22 };
+                string[] CategoryArray = { Category1, Category2, Category4, Category5, Category9, Category11, Category12, Category18, Category20, Category21, Category22, Category23, Category24, Category25 };
                 rdcate_ = CategoryArray.OrderBy(x => rd.Next()).ToArray();
             }
             #endregion
@@ -397,7 +386,7 @@ namespace RhythmMonopoly
             //전체 랜덤
             else if(Randomize)
             {
-                string[] CategoryArray = { Category1, Category2, Category3, Category4, Category5, Category6, Category7, Category8, Category9, Category10, Category11, Category12, Category13, Category14, Category15, Category16, Category17, Category18, Category19, Category20, Category21, Category22 };
+                string[] CategoryArray = { Category1, Category2, Category3, Category4, Category5, Category6, Category7, Category8, Category9,  Category11, Category12, Category14, Category15, Category16, Category17, Category18, Category20, Category21, Category22, Category23, Category24, Category25 };
                 rdcate_ = CategoryArray.OrderBy(x => rd.Next()).ToArray();
 
                 //모든 컨트롤을 검사

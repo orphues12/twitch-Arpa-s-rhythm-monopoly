@@ -62,156 +62,156 @@ namespace RhythmMonopoly.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("귀여운 ")]
-        public string feelcontent1 {
+        public string dummycontent5_1 {
             get {
-                return ((string)(this["feelcontent1"]));
+                return ((string)(this["dummycontent5_1"]));
             }
             set {
-                this["feelcontent1"] = value;
+                this["dummycontent5_1"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("웅장한 ")]
-        public string feelcontent2 {
+        public string dummycontent5_2 {
             get {
-                return ((string)(this["feelcontent2"]));
+                return ((string)(this["dummycontent5_2"]));
             }
             set {
-                this["feelcontent2"] = value;
+                this["dummycontent5_2"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("빠른 ")]
-        public string feelcontent3 {
+        public string dummycontent5_3 {
             get {
-                return ((string)(this["feelcontent3"]));
+                return ((string)(this["dummycontent5_3"]));
             }
             set {
-                this["feelcontent3"] = value;
+                this["dummycontent5_3"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("무서운 ")]
-        public string feelcontent4 {
+        public string dummycontent5_4 {
             get {
-                return ((string)(this["feelcontent4"]));
+                return ((string)(this["dummycontent5_4"]));
             }
             set {
-                this["feelcontent4"] = value;
+                this["dummycontent5_4"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("초고속 ")]
-        public string feelcontent5 {
+        public string dummycontent5_5 {
             get {
-                return ((string)(this["feelcontent5"]));
+                return ((string)(this["dummycontent5_5"]));
             }
             set {
-                this["feelcontent5"] = value;
+                this["dummycontent5_5"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("동물")]
-        public string bgacontent1 {
+        public string dummycontent4_1 {
             get {
-                return ((string)(this["bgacontent1"]));
+                return ((string)(this["dummycontent4_1"]));
             }
             set {
-                this["bgacontent1"] = value;
+                this["dummycontent4_1"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("식물")]
-        public string bgacontent2 {
+        public string dummycontent4_2 {
             get {
-                return ((string)(this["bgacontent2"]));
+                return ((string)(this["dummycontent4_2"]));
             }
             set {
-                this["bgacontent2"] = value;
+                this["dummycontent4_2"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("보석")]
-        public string bgacontent3 {
+        public string dummycontent4_3 {
             get {
-                return ((string)(this["bgacontent3"]));
+                return ((string)(this["dummycontent4_3"]));
             }
             set {
-                this["bgacontent3"] = value;
+                this["dummycontent4_3"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("곤충")]
-        public string bgacontent4 {
+        public string dummycontent4_4 {
             get {
-                return ((string)(this["bgacontent4"]));
+                return ((string)(this["dummycontent4_4"]));
             }
             set {
-                this["bgacontent4"] = value;
+                this["dummycontent4_4"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("사람")]
-        public string bgacontent5 {
+        public string dummycontent4_5 {
             get {
-                return ((string)(this["bgacontent5"]));
+                return ((string)(this["dummycontent4_5"]));
             }
             set {
-                this["bgacontent5"] = value;
+                this["dummycontent4_5"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("영어")]
-        public string languagecontent1 {
+        public string dummycontent6_1 {
             get {
-                return ((string)(this["languagecontent1"]));
+                return ((string)(this["dummycontent6_1"]));
             }
             set {
-                this["languagecontent1"] = value;
+                this["dummycontent6_1"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("일본어")]
-        public string languagecontent2 {
+        public string dummycontent6_2 {
             get {
-                return ((string)(this["languagecontent2"]));
+                return ((string)(this["dummycontent6_2"]));
             }
             set {
-                this["languagecontent2"] = value;
+                this["dummycontent6_2"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("한국어")]
-        public string languagecontent3 {
+        public string dummycontent6_3 {
             get {
-                return ((string)(this["languagecontent3"]));
+                return ((string)(this["dummycontent6_3"]));
             }
             set {
-                this["languagecontent3"] = value;
+                this["dummycontent6_3"] = value;
             }
         }
         
@@ -524,6 +524,42 @@ namespace RhythmMonopoly.Properties {
             }
             set {
                 this["GoldenFix"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("BGA")]
+        public string BotCategory04 {
+            get {
+                return ((string)(this["BotCategory04"]));
+            }
+            set {
+                this["BotCategory04"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("느낌")]
+        public string BotCategory05 {
+            get {
+                return ((string)(this["BotCategory05"]));
+            }
+            set {
+                this["BotCategory05"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("보컬 언어")]
+        public string BotCategory06 {
+            get {
+                return ((string)(this["BotCategory06"]));
+            }
+            set {
+                this["BotCategory06"] = value;
             }
         }
     }

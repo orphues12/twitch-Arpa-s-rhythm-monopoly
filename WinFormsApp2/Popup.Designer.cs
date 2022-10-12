@@ -68,7 +68,7 @@
             this.lblPanel.Font = new System.Drawing.Font("맑은 고딕", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblPanel.Location = new System.Drawing.Point(-6, -5);
             this.lblPanel.Name = "lblPanel";
-            this.lblPanel.Size = new System.Drawing.Size(792, 70);
+            this.lblPanel.Size = new System.Drawing.Size(391, 70);
             this.lblPanel.TabIndex = 0;
             this.lblPanel.Text = "설정";
             this.lblPanel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -350,7 +350,7 @@
             // 
             this.ChkRandom.AutoSize = true;
             this.ChkRandom.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ChkRandom.Location = new System.Drawing.Point(593, 67);
+            this.ChkRandom.Location = new System.Drawing.Point(208, 68);
             this.ChkRandom.Name = "ChkRandom";
             this.ChkRandom.Size = new System.Drawing.Size(159, 25);
             this.ChkRandom.TabIndex = 31;
@@ -373,7 +373,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.LightGray;
-            this.ClientSize = new System.Drawing.Size(784, 286);
+            this.ClientSize = new System.Drawing.Size(383, 286);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.ChkRandom);
             this.Controls.Add(this.label1);

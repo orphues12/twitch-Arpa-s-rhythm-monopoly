@@ -4,6 +4,8 @@ using System.Text;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.Globalization;
+using System.ComponentModel.Design;
 
 namespace RhythmMonopoly
 {
@@ -17,10 +19,16 @@ namespace RhythmMonopoly
 
             //컨트롤박스 제거
             this.ControlBox = false;
+            //StringBuilder
+            StringBuilder sb = new StringBuilder(); 
             //랜덤함수
             Random rd = new Random();
             //폰트설정
             Font font1 = new Font(FontManager.fontFamilys[0], 16, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+
+            //크기 관련
+            this.MinimumSize = new Size(1920, 1080);
+            this.MaximumSize = new Size(1920, 1080);
 
             #endregion
 
@@ -72,6 +80,15 @@ namespace RhythmMonopoly
             string dummycontent3_4 = Properties.Settings.Default.dummycontent3_4;
             string dummycontent3_5 = Properties.Settings.Default.dummycontent3_5;
 
+            //항목 숫자 변수
+            int AlphaNum = Properties.Settings.Default.AlphaNum;
+            int ConsoNum = Properties.Settings.Default.ConsoNum;
+            int TopNum = Properties.Settings.Default.TopNum;
+            int BotNum = Properties.Settings.Default.BotNum;
+
+            //랜덤변수
+            bool Randomize = Properties.Settings.Default.Randomize;
+            bool GoldenFix = Properties.Settings.Default.GoldenFix;
 
             #endregion
 
@@ -167,14 +184,20 @@ namespace RhythmMonopoly
 
             //배열 변수 문자열
             //만약 개수 조정이 필요할 경우에는 많은 수정이 필요합니다람쥐
-            //알파벳 3개
+            //알파벳 3개 / 2개로 임시 변경
             string textAlpha1 = rdalphabet_[0].ToString() + ", " + rdalphabet_[1].ToString() + ", " + rdalphabet_[2].ToString();
             string textAlpha2 = rdalphabet_[3].ToString() + ", " + rdalphabet_[4].ToString() + ", " + rdalphabet_[5].ToString();
-            string textAlpha3 = rdalphabet_[6].ToString() + ", " + rdalphabet_[7].ToString() + ", " + rdalphabet_[8].ToString();
-            //자음 3개
+            //string textAlpha3 = rdalphabet_[6].ToString() + ", " + rdalphabet_[7].ToString() + ", " + rdalphabet_[8].ToString();
+            //자음 3개 / 2개로 임시 변경
             string textcons1 = rdConsonant_[0].ToString() + ", " + rdConsonant_[1].ToString() + ", " + rdConsonant_[2].ToString();
             string textcons2 = rdConsonant_[3].ToString() + ", " + rdConsonant_[4].ToString() + ", " + rdConsonant_[5].ToString();
-            string textcons3 = rdConsonant_[6].ToString() + ", " + rdConsonant_[7].ToString() + ", " + rdConsonant_[8].ToString();
+            //string textcons3 = rdConsonant_[6].ToString() + ", " + rdConsonant_[7].ToString() + ", " + rdConsonant_[8].ToString();
+
+
+
+
+
+
             //BGA 1개
             string textBGA1 = rdBGA_[0].ToString();
             //보컬 언어 1개
@@ -198,17 +221,23 @@ namespace RhythmMonopoly
 
             #region :: 변수 최종 정리 ::
             //카테고리는 최종 22개가 되야 함.
-            //알파벳 (3)
+            //알파벳 (3) / 10/12 황금열쇠 숫자 변경으로 인해 임시 변경입니다.
             string Category1 = text1_1 + textAlpha1 + text1_2;
             string Category2 = text1_1 + textAlpha2 + text1_2;
-            string Category3 = text1_1 + textAlpha3 + text1_2;
-            //자음 (3)
+            //string Category3 = text1_1 + textAlpha3 + text1_2;
+            //자음 (2) / 10/12 황금열쇠 숫자 변경으로 인해 임시 변경입니다.
             string Category4 = text5_1 + textcons1 + text5_2;
             string Category5 = text5_1 + textcons2 + text5_2;
-            string Category6 = text5_1 + textcons3 + text5_2;
-            //황금 열쇠 (2)
+            //string Category6 = text5_1 + textcons3 + text5_2;
+            //황금 열쇠 (4) - 3, 6
+            string Category3 = text8;
+            string Category6 = text8;
             string Category7 = text8;
             string Category8 = text8;
+            string Category14 = text8;
+            string Category15 = text8;
+            string Category16 = text8;
+            string Category17 = text8;
             //X라인 리듬게임 (1)
             string Category9 = textButton1 + text6;
             //노래보컬 언어 (1)
@@ -219,13 +248,13 @@ namespace RhythmMonopoly
             string Category12 = textSeason1 + text9;
             //BGA or 포토 (1)
             string Category13 = text2_1 + textBGA1 + text2_2;
-            //더미, 변경 가능한 것들B
 
-            //상위 항목만 (6)
-            string Category14 = text10;
-            string Category15 = text11;
-            string Category16 = text12;
-            string Category17 = text13;
+            //더미, 변경 가능한 것들B
+            //상위 항목만 (6) - / 10/12 황금열쇠 숫자 변경으로 인해 임시 변경입니다. -2
+            //string Category14 = text10;
+            //string Category15 = text11;
+            //string Category16 = text12;
+            //string Category17 = text13;
             string Category18 = text14;
             string Category19 = text15;
             //상위 + 하위 항목 (3)
@@ -271,82 +300,450 @@ namespace RhythmMonopoly
 
             #region :: 항목 배열 최종 제작 ::
 
-            string[] CategoryArray = { Category1, Category2, Category3, Category4, Category5, Category6, Category7, Category8, Category9, Category10, Category11, Category12, Category13, Category14, Category15, Category16, Category17, Category18, Category19, Category20, Category21, Category22 };
-            string[] rdcate_ = CategoryArray.OrderBy(x => rd.Next()).ToArray();
+            string[] rdcate_ = { };
 
+            //황금열쇠 위치 고정일 시
+            if (GoldenFix)
+            {
+                string[] CategoryArray = { Category1, Category2, Category4, Category5, Category9, Category10, Category11, Category12, Category13, Category18, Category19, Category20, Category21, Category22 };
+                rdcate_ = CategoryArray.OrderBy(x => rd.Next()).ToArray();
+            }
             #endregion
 
             #region :: 라벨 채우기 ::
 
-            //모든 컨트롤을 검사
-            foreach (System.Windows.Forms.Control control in this.Controls)
+
+            /* 황금 열쇠가 정해진 위치 + 다른 항목들은 랜덤으로 배치*/
+            if (GoldenFix && !Randomize)
             {
-                //라벨마다 반복문
-                if (control is System.Windows.Forms.Label)
+                //모든 컨트롤을 검사
+                foreach (System.Windows.Forms.Control control in this.Controls)
                 {
-                    ((System.Windows.Forms.Label)control).Font = font1;
 
-                    //밑에 배너
-                    if (((System.Windows.Forms.Label)control).Name.Equals("lblBanner"))
+                    //라벨마다 반복문 + 황금 열쇠아닐 경우 진행
+                    if (control is System.Windows.Forms.Label && ((System.Windows.Forms.Label)control).Text != "Golden")
                     {
-                        ((System.Windows.Forms.Label)control).BackColor = Color.White; ;
-                        ((System.Windows.Forms.Label)control).Text = "* 현재는 판 제작 기능만 제공하고 있습니다.";
-                        continue;
+
+                        ((System.Windows.Forms.Label)control).Font = font1;
+
+                        //밑에 배너
+                        if (((System.Windows.Forms.Label)control).Name.Equals("lblBanner"))
+                        {
+                            ((System.Windows.Forms.Label)control).BackColor = Color.White; ;
+                            ((System.Windows.Forms.Label)control).Text = "* 현재는 판 제작 기능만 제공하고 있습니다.";
+                            continue;
+                        }
+
+                        //변함없는 값들은 변경 안하도록 (BackColor = Black)
+                        else if (((System.Windows.Forms.Label)control).BackColor == Color.Black)
+                        {
+                            string lblname = ((System.Windows.Forms.Label)control).Name;
+
+                            //라벨
+                            if (lblname.Contains("Island"))
+                            {
+                                ((System.Windows.Forms.Label)control).Image = Properties.Resources.무인도v2;
+                                ((System.Windows.Forms.Label)control).BackColor = Color.White;
+                                ((System.Windows.Forms.Label)control).Text = null;
+                            }
+                            else if (lblname.Contains("Start"))
+                            {
+                                ((System.Windows.Forms.Label)control).Image = Properties.Resources.Start;
+                                ((System.Windows.Forms.Label)control).BackColor = Color.White;
+                                ((System.Windows.Forms.Label)control).Text = null;
+                            }
+                            else if (lblname.Contains("Free"))
+                            {
+                                ((System.Windows.Forms.Label)control).Image = Properties.Resources.뱅하싶2;
+                                ((System.Windows.Forms.Label)control).BackColor = Color.Black;
+                                ((System.Windows.Forms.Label)control).Text = null;
+                            }
+
+                            continue;
+                        }
+
+                        //아닌 항목들은 말처럼 쓸수있도록
+                        else if (((System.Windows.Forms.Label)control).Text != "")
+                        {
+                            //색 변경
+                            Color randomColor = Color.FromArgb(rd.Next(100, 256), rd.Next(100, 256), rd.Next(64, 256));
+
+                            ((System.Windows.Forms.Label)control).BackColor = randomColor;
+                            ((System.Windows.Forms.Label)control).BorderStyle = BorderStyle.FixedSingle;
+                            ((System.Windows.Forms.Label)control).ForeColor = Color.Black;
+
+                            //라벨 항목마다 텍스트 변경
+                            for (int i = stack; i < rdcate_.Length;)
+                            {
+                                ((System.Windows.Forms.Label)control).Text = rdcate_[i].ToString();
+                                stack++;
+                                break;
+                            }
+                        }
+
                     }
-                    //변함없는 값들은 변경 안하도록 (BackColor = Black)
-                    else if (((System.Windows.Forms.Label)control).BackColor == Color.Black)
-                    {
-                        string lblname = ((System.Windows.Forms.Label)control).Name;
-
-                        //라벨
-                        if (lblname.Contains("Island"))
-                        {
-                            ((System.Windows.Forms.Label)control).Image = Properties.Resources.무인도v2;
-                            ((System.Windows.Forms.Label)control).BackColor = Color.White;
-                            ((System.Windows.Forms.Label)control).Text = null;
-                        }
-                        else if (lblname.Contains("Start"))
-                        {
-                            ((System.Windows.Forms.Label)control).Image = Properties.Resources.Start;
-                            ((System.Windows.Forms.Label)control).BackColor = Color.White;
-                            ((System.Windows.Forms.Label)control).Text = null;
-                        }
-                        else if (lblname.Contains("Free"))
-                        {
-                            ((System.Windows.Forms.Label)control).Image = Properties.Resources.뱅하싶2;
-                            ((System.Windows.Forms.Label)control).BackColor = Color.Black;
-                            ((System.Windows.Forms.Label)control).Text = null;
-                        }
-
-                        continue;
-                    }
-                    //아닌 항목들은 말처럼 쓸수있도록
-                    else if (((System.Windows.Forms.Label)control).Text != "")
-                    {
-                        //색 변경
-                        Color randomColor = Color.FromArgb(rd.Next(100, 256), rd.Next(100, 256), rd.Next(64, 256));
-
-                        ((System.Windows.Forms.Label)control).BackColor = randomColor;
-                        ((System.Windows.Forms.Label)control).BorderStyle = BorderStyle.FixedSingle;
-                        ((System.Windows.Forms.Label)control).ForeColor = Color.Black;
-
-                        //라벨 항목마다 텍스트 변경
-                        for (int i = stack; i < rdcate_.Length;)
-                        {
-                            ((System.Windows.Forms.Label)control).Text = rdcate_[i].ToString();
-                            stack++;
-                            break;
-                        }
-                    }
-
-                    if (((System.Windows.Forms.Label)control).Text.Equals("황금 열쇠"))
+                    //황금열쇠 일 경우
+                    else if (control is System.Windows.Forms.Label && ((System.Windows.Forms.Label)control).Text.Contains("Golden"))
                     {
                         ((System.Windows.Forms.Label)control).BackColor = Color.Yellow;
                         ((System.Windows.Forms.Label)control).Image = Properties.Resources.golden_keys;
+                        ((System.Windows.Forms.Label)control).BorderStyle = BorderStyle.FixedSingle;
                         ((System.Windows.Forms.Label)control).Text = null;
+                        continue;
+                    }
+                }
+
+            }
+            //전체 랜덤
+            else if(Randomize)
+            {
+                string[] CategoryArray = { Category1, Category2, Category3, Category4, Category5, Category6, Category7, Category8, Category9, Category10, Category11, Category12, Category13, Category14, Category15, Category16, Category17, Category18, Category19, Category20, Category21, Category22 };
+                rdcate_ = CategoryArray.OrderBy(x => rd.Next()).ToArray();
+
+                //모든 컨트롤을 검사
+                foreach (System.Windows.Forms.Control control in this.Controls)
+                {
+                    //라벨마다 반복문
+                    if (control is System.Windows.Forms.Label)
+                    {
+                        ((System.Windows.Forms.Label)control).Font = font1;
+
+
+                        //밑에 배너
+                        if (((System.Windows.Forms.Label)control).Name.Equals("lblBanner"))
+                        {
+                            ((System.Windows.Forms.Label)control).BackColor = Color.White; ;
+                            ((System.Windows.Forms.Label)control).Text = "* 현재는 판 제작 기능만 제공하고 있습니다.";
+                            continue;
+                        }
+                        //변함없는 값들은 변경 안하도록 (BackColor = Black)
+                        else if (((System.Windows.Forms.Label)control).BackColor == Color.Black)
+                        {
+                            string lblname = ((System.Windows.Forms.Label)control).Name;
+
+                            //라벨
+                            if (lblname.Contains("Island"))
+                            {
+                                ((System.Windows.Forms.Label)control).Image = Properties.Resources.무인도v2;
+                                ((System.Windows.Forms.Label)control).BackColor = Color.White;
+                                ((System.Windows.Forms.Label)control).Text = null;
+                            }
+                            else if (lblname.Contains("Start"))
+                            {
+                                ((System.Windows.Forms.Label)control).Image = Properties.Resources.Start;
+                                ((System.Windows.Forms.Label)control).BackColor = Color.White;
+                                ((System.Windows.Forms.Label)control).Text = null;
+                            }
+                            else if (lblname.Contains("Free"))
+                            {
+                                ((System.Windows.Forms.Label)control).Image = Properties.Resources.뱅하싶2;
+                                ((System.Windows.Forms.Label)control).BackColor = Color.Black;
+                                ((System.Windows.Forms.Label)control).Text = null;
+                            }
+
+                            continue;
+                        }
+
+                        //아닌 항목들은 말처럼 쓸수있도록
+                        else if (((System.Windows.Forms.Label)control).Text != "")
+                        {
+                            //색 변경
+                            Color randomColor = Color.FromArgb(rd.Next(100, 256), rd.Next(100, 256), rd.Next(64, 256));
+
+                            ((System.Windows.Forms.Label)control).BackColor = randomColor;
+                            ((System.Windows.Forms.Label)control).BorderStyle = BorderStyle.FixedSingle;
+                            ((System.Windows.Forms.Label)control).ForeColor = Color.Black;
+
+                            //라벨 항목마다 텍스트 변경
+                            for (int i = stack; i < rdcate_.Length;)
+                            {
+                                ((System.Windows.Forms.Label)control).Text = rdcate_[i].ToString();
+                                stack++;
+                                break;
+                            }
+                        }
+
+                        if (((System.Windows.Forms.Label)control).Text.Equals("황금 열쇠"))
+                        {
+                            ((System.Windows.Forms.Label)control).BackColor = Color.Yellow;
+                            ((System.Windows.Forms.Label)control).Image = Properties.Resources.golden_keys;
+                            ((System.Windows.Forms.Label)control).Text = null;
+                        }
                     }
                 }
             }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            ////랜덤활성화
+            //if (Randomize)
+            //{
+            //    //모든 컨트롤을 검사
+            //    foreach (System.Windows.Forms.Control control in this.Controls)
+            //    {
+            //        //라벨마다 반복문
+            //        if (control is System.Windows.Forms.Label)
+            //        {
+            //            ((System.Windows.Forms.Label)control).Font = font1;
+
+            //            //////////////////////////////////////////////////// 여기부터하세요
+            //            rdcate_ = CategoryArray.OrderBy(x => rd.Next()).ToArray();
+
+            //            //밑에 배너
+            //            if (((System.Windows.Forms.Label)control).Name.Equals("lblBanner"))
+            //            {
+            //                ((System.Windows.Forms.Label)control).BackColor = Color.White; ;
+            //                ((System.Windows.Forms.Label)control).Text = "* 현재는 판 제작 기능만 제공하고 있습니다.";
+            //                continue;
+            //            }
+            //            //변함없는 값들은 변경 안하도록 (BackColor = Black)
+            //            else if (((System.Windows.Forms.Label)control).BackColor == Color.Black)
+            //            {
+            //                string lblname = ((System.Windows.Forms.Label)control).Name;
+
+            //                //라벨
+            //                if (lblname.Contains("Island"))
+            //                {
+            //                    ((System.Windows.Forms.Label)control).Image = Properties.Resources.무인도v2;
+            //                    ((System.Windows.Forms.Label)control).BackColor = Color.White;
+            //                    ((System.Windows.Forms.Label)control).Text = null;
+            //                }
+            //                else if (lblname.Contains("Start"))
+            //                {
+            //                    ((System.Windows.Forms.Label)control).Image = Properties.Resources.Start;
+            //                    ((System.Windows.Forms.Label)control).BackColor = Color.White;
+            //                    ((System.Windows.Forms.Label)control).Text = null;
+            //                }
+            //                else if (lblname.Contains("Free"))
+            //                {
+            //                    ((System.Windows.Forms.Label)control).Image = Properties.Resources.뱅하싶2;
+            //                    ((System.Windows.Forms.Label)control).BackColor = Color.Black;
+            //                    ((System.Windows.Forms.Label)control).Text = null;
+            //                }
+
+            //                continue;
+            //            }
+
+            //            //아닌 항목들은 말처럼 쓸수있도록
+            //            //    else if (((System.Windows.Forms.Label)control).Text != "")
+            //            //    {
+            //            //        //색 변경
+            //            //        Color randomColor = Color.FromArgb(rd.Next(100, 256), rd.Next(100, 256), rd.Next(64, 256));
+
+            //            //        ((System.Windows.Forms.Label)control).BackColor = randomColor;
+            //            //        ((System.Windows.Forms.Label)control).BorderStyle = BorderStyle.FixedSingle;
+            //            //        ((System.Windows.Forms.Label)control).ForeColor = Color.Black;
+
+            //            //        //라벨 항목마다 텍스트 변경
+            //            //        for (int i = stack; i < rdcate_.Length;)
+            //            //        {
+            //            //            ((System.Windows.Forms.Label)control).Text = rdcate_[i].ToString();
+            //            //            stack++;
+            //            //            break;
+            //            //        }
+            //            //    }
+
+            //            //    if (((System.Windows.Forms.Label)control).Text.Equals("황금 열쇠"))
+            //            //    {
+            //            //        ((System.Windows.Forms.Label)control).BackColor = Color.Yellow;
+            //            //        ((System.Windows.Forms.Label)control).Image = Properties.Resources.golden_keys;
+            //            //        ((System.Windows.Forms.Label)control).Text = null;
+            //            //    }
+
+            //        }
+            //    }
+            //}
+            ////랜덤이 아닐 시 정해진 순서대로!
+            //else
+            //{
+            //    //모든 컨트롤을 검사
+            //    foreach (System.Windows.Forms.Control control in this.Controls)
+            //    {
+            //        //라벨마다 반복문
+            //        if (control is System.Windows.Forms.Label)
+            //        {
+            //            ((System.Windows.Forms.Label)control).Font = font1;
+
+            //            //밑에 배너
+            //            if (((System.Windows.Forms.Label)control).Name.Equals("lblBanner"))
+            //            {
+            //                ((System.Windows.Forms.Label)control).BackColor = Color.White; ;
+            //                ((System.Windows.Forms.Label)control).Text = "* 현재는 판 제작 기능만 제공하고 있습니다.";
+            //                continue;
+            //            }
+            //            //변함없는 값들은 변경 안하도록 (BackColor = Black)
+            //            else if (((System.Windows.Forms.Label)control).BackColor == Color.Black)
+            //            {
+            //                string lblname = ((System.Windows.Forms.Label)control).Name;
+
+            //                //라벨
+            //                if (lblname.Contains("Island"))
+            //                {
+            //                    ((System.Windows.Forms.Label)control).Image = Properties.Resources.무인도v2;
+            //                    ((System.Windows.Forms.Label)control).BackColor = Color.White;
+            //                    ((System.Windows.Forms.Label)control).Text = null;
+            //                }
+            //                else if (lblname.Contains("Start"))
+            //                {
+            //                    ((System.Windows.Forms.Label)control).Image = Properties.Resources.Start;
+            //                    ((System.Windows.Forms.Label)control).BackColor = Color.White;
+            //                    ((System.Windows.Forms.Label)control).Text = null;
+            //                }
+            //                else if (lblname.Contains("Free"))
+            //                {
+            //                    ((System.Windows.Forms.Label)control).Image = Properties.Resources.뱅하싶2;
+            //                    ((System.Windows.Forms.Label)control).BackColor = Color.Black;
+            //                    ((System.Windows.Forms.Label)control).Text = null;
+            //                }
+
+            //                continue;
+            //            }
+
+            //            //4그룹으로 나누기
+            //            //그룹 A
+            //            else if (((System.Windows.Forms.Label)control).Text.Contains("A"))
+            //            {
+            //                //색 변경
+            //                Color randomColor = Color.FromArgb(rd.Next(100, 256), rd.Next(100, 256), rd.Next(64, 256));
+
+            //                ((System.Windows.Forms.Label)control).BackColor = randomColor;
+            //                ((System.Windows.Forms.Label)control).BorderStyle = BorderStyle.FixedSingle;
+            //                ((System.Windows.Forms.Label)control).ForeColor = Color.Black;
+
+            //                //라벨 항목마다 텍스트 변경
+            //                for (int i = stack; i < rdcate_.Length;)
+            //                {
+            //                    ((System.Windows.Forms.Label)control).Text = rdcate_[i].ToString();
+            //                    stack++;
+            //                    break;
+            //                }
+            //            }
+            //            if (((System.Windows.Forms.Label)control).Text.Equals("황금 열쇠"))
+            //            {
+            //                ((System.Windows.Forms.Label)control).BackColor = Color.Yellow;
+            //                ((System.Windows.Forms.Label)control).Image = Properties.Resources.golden_keys;
+            //                ((System.Windows.Forms.Label)control).Text = null;
+            //            }
+
+            //            //그룹 B
+            //            else if (((System.Windows.Forms.Label)control).Text.Contains("B"))
+            //            {
+            //                //색 변경
+            //                Color randomColor = Color.FromArgb(rd.Next(100, 256), rd.Next(100, 256), rd.Next(64, 256));
+
+            //                ((System.Windows.Forms.Label)control).BackColor = randomColor;
+            //                ((System.Windows.Forms.Label)control).BorderStyle = BorderStyle.FixedSingle;
+            //                ((System.Windows.Forms.Label)control).ForeColor = Color.Black;
+
+            //                //라벨 항목마다 텍스트 변경
+            //                for (int i = stack; i < rdcate_.Length;)
+            //                {
+            //                    ((System.Windows.Forms.Label)control).Text = rdcate_[i].ToString();
+            //                    stack++;
+            //                    break;
+            //                }
+            //            }
+            //            if (((System.Windows.Forms.Label)control).Text.Equals("황금 열쇠"))
+            //            {
+            //                ((System.Windows.Forms.Label)control).BackColor = Color.Yellow;
+            //                ((System.Windows.Forms.Label)control).Image = Properties.Resources.golden_keys;
+            //                ((System.Windows.Forms.Label)control).Text = null;
+            //            }
+
+            //            //그룹 C
+            //            else if (((System.Windows.Forms.Label)control).Text.Contains("C"))
+            //            {
+            //                //색 변경
+            //                Color randomColor = Color.FromArgb(rd.Next(100, 256), rd.Next(100, 256), rd.Next(64, 256));
+
+            //                ((System.Windows.Forms.Label)control).BackColor = randomColor;
+            //                ((System.Windows.Forms.Label)control).BorderStyle = BorderStyle.FixedSingle;
+            //                ((System.Windows.Forms.Label)control).ForeColor = Color.Black;
+
+            //                //라벨 항목마다 텍스트 변경
+            //                for (int i = stack; i < rdcate_.Length;)
+            //                {
+            //                    ((System.Windows.Forms.Label)control).Text = rdcate_[i].ToString();
+            //                    stack++;
+            //                    break;
+            //                }
+            //            }
+            //            if (((System.Windows.Forms.Label)control).Text.Equals("황금 열쇠"))
+            //            {
+            //                ((System.Windows.Forms.Label)control).BackColor = Color.Yellow;
+            //                ((System.Windows.Forms.Label)control).Image = Properties.Resources.golden_keys;
+            //                ((System.Windows.Forms.Label)control).Text = null;
+            //            }
+
+            //            //그룹 D
+            //            else if (((System.Windows.Forms.Label)control).Text.Contains("D"))
+            //            {
+            //                //색 변경
+            //                Color randomColor = Color.FromArgb(rd.Next(100, 256), rd.Next(100, 256), rd.Next(64, 256));
+
+            //                ((System.Windows.Forms.Label)control).BackColor = randomColor;
+            //                ((System.Windows.Forms.Label)control).BorderStyle = BorderStyle.FixedSingle;
+            //                ((System.Windows.Forms.Label)control).ForeColor = Color.Black;
+
+            //                //라벨 항목마다 텍스트 변경
+            //                for (int i = stack; i < rdcate_.Length;)
+            //                {
+            //                    ((System.Windows.Forms.Label)control).Text = rdcate_[i].ToString();
+            //                    stack++;
+            //                    break;
+            //                }
+            //            }
+
+            //            if (((System.Windows.Forms.Label)control).Text.Equals("황금 열쇠"))
+            //            {
+            //                ((System.Windows.Forms.Label)control).BackColor = Color.Yellow;
+            //                ((System.Windows.Forms.Label)control).Image = Properties.Resources.golden_keys;
+            //                ((System.Windows.Forms.Label)control).Text = null;
+            //            }
+            //        }
+
+            //        //아닌 항목들은 말처럼 쓸수있도록
+            //        //    else if (((System.Windows.Forms.Label)control).Text != "")
+            //        //    {
+            //        //        //색 변경
+            //        //        Color randomColor = Color.FromArgb(rd.Next(100, 256), rd.Next(100, 256), rd.Next(64, 256));
+
+            //        //        ((System.Windows.Forms.Label)control).BackColor = randomColor;
+            //        //        ((System.Windows.Forms.Label)control).BorderStyle = BorderStyle.FixedSingle;
+            //        //        ((System.Windows.Forms.Label)control).ForeColor = Color.Black;
+
+            //        //        //라벨 항목마다 텍스트 변경
+            //        //        for (int i = stack; i < rdcate_.Length;)
+            //        //        {
+            //        //            ((System.Windows.Forms.Label)control).Text = rdcate_[i].ToString();
+            //        //            stack++;
+            //        //            break;
+            //        //        }
+            //        //    }
+
+            //        //    if (((System.Windows.Forms.Label)control).Text.Equals("황금 열쇠"))
+            //        //    {
+            //        //        ((System.Windows.Forms.Label)control).BackColor = Color.Yellow;
+            //        //        ((System.Windows.Forms.Label)control).Image = Properties.Resources.golden_keys;
+            //        //        ((System.Windows.Forms.Label)control).Text = null;
+            //        //    }
+            //    }
+            //}
+
             #endregion
 
         }

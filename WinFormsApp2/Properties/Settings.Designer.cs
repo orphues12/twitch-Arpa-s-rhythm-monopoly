@@ -454,5 +454,77 @@ namespace RhythmMonopoly.Properties {
                 this["TestColor"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public int AlphaNum {
+            get {
+                return ((int)(this["AlphaNum"]));
+            }
+            set {
+                this["AlphaNum"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public int ConsoNum {
+            get {
+                return ((int)(this["ConsoNum"]));
+            }
+            set {
+                this["ConsoNum"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int TopNum {
+            get {
+                return ((int)(this["TopNum"]));
+            }
+            set {
+                this["TopNum"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        public int BotNum {
+            get {
+                return ((int)(this["BotNum"]));
+            }
+            set {
+                this["BotNum"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Randomize {
+            get {
+                return ((bool)(this["Randomize"]));
+            }
+            set {
+                this["Randomize"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool GoldenFix {
+            get {
+                return ((bool)(this["GoldenFix"]));
+            }
+            set {
+                this["GoldenFix"] = value;
+            }
+        }
     }
 }

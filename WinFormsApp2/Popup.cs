@@ -62,8 +62,12 @@ namespace RhythmMonopoly
         string dummycontent3_4 = Properties.Settings.Default.dummycontent3_4;
         string dummycontent3_5 = Properties.Settings.Default.dummycontent3_5;
 
+        bool Randomize = Properties.Settings.Default.Randomize;
+        bool GoldenFix = Properties.Settings.Default.GoldenFix;
 
+        //저장 여부
         bool SaveChecked = false;
+        bool SaveChecked2 = false;
 
 
 
@@ -75,6 +79,10 @@ namespace RhythmMonopoly
             //폰트설정
             Font font1 = new Font(FontManager.fontFamilys[0], 16, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             Font font2 = new Font(FontManager.fontFamilys[0], 40, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            Font font3 = new Font(FontManager.fontFamilys[0], 24, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+
+            ChkRandom.Font = font1;
+            ChkRandom.Checked = Randomize;
 
             foreach (System.Windows.Forms.Control control in this.Controls)
             {
@@ -87,16 +95,20 @@ namespace RhythmMonopoly
                     {
                         ((System.Windows.Forms.Label)control).Font = font2;
                     }
+                    else if (lblname.Contains("Title"))
+                    {
+                        ((System.Windows.Forms.Label)control).Font = font3;
+                    }
                 }
             }
 
             #region :: 항목 추가 설정 ::
             cmbCategoryTop.Items.Add("상위 항목 1");  //TopCategory01
-            cmbCategoryTop.Items.Add("상위 항목 2");  //TopCategory02
-            cmbCategoryTop.Items.Add("상위 항목 3");  //TopCategory03
-            cmbCategoryTop.Items.Add("상위 항목 4");  //TopCategory04
-            cmbCategoryTop.Items.Add("상위 항목 5");  //TopCategory05
-            cmbCategoryTop.Items.Add("상위 항목 6");  //TopCategory06
+            //cmbCategoryTop.Items.Add("상위 항목 2");  //TopCategory02
+            //cmbCategoryTop.Items.Add("상위 항목 3");  //TopCategory03
+            //cmbCategoryTop.Items.Add("상위 항목 4");  //TopCategory04
+            //cmbCategoryTop.Items.Add("상위 항목 5");  //TopCategory05
+            //cmbCategoryTop.Items.Add("상위 항목 6");  //TopCategory06
 
             cmbCategoryTop.Items.Add("상위 항목 7 - 하위 항목 3개"); //BotCategory01
             cmbCategoryTop.Items.Add("상위 항목 8 - 하위 항목 4개"); //BotCategory02
@@ -816,16 +828,14 @@ namespace RhythmMonopoly
                         }
                     }
                     #endregion
-                    //데이터 저장
 
+                    //데이터 저장
                     if (BotCatadata == string.Empty)
                     {
                         MessageBox.Show("하위 항목은 공백이 될 수 없습니다.", "저장 오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                     Properties.Settings.Default[BotCatadata] = _TempCateChangeBot;
-
-                    Properties.Settings.Default.Save();
                     CataSaveText2();
 
                     MessageBox.Show("저장이 완료되었습니다.", "저장 완료", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -841,6 +851,15 @@ namespace RhythmMonopoly
                     Console.WriteLine("IOException source: {0}", ex.Source);
                 throw;
             }
+        }
+
+        private void btnController_Click(object sender, EventArgs e)
+        {
+
+            MessageBox.Show("공사중입니다 미안해요.", "저장 완료", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            //Controller con = new Controller();
+            //con.ShowDialog();
         }
         #endregion
 
@@ -903,6 +922,7 @@ namespace RhythmMonopoly
                     feelcontent5 = txtCategoryBottom2.Text;
                 }
             }
+
             else if (cmbCategoryTop2.Text.Equals("보컬 언어"))
             {
                 if (cmbCategoryBottom2.Text.Equals("하위 항목 1"))
@@ -933,11 +953,40 @@ namespace RhythmMonopoly
                 if (dialogResult == DialogResult.Yes)
                 {
                     SaveChecked = false;
+                    SaveChecked2 = false;
+                    Application.Restart();
+                    Environment.Exit(0);
+                }
+            }
+            else if (SaveChecked2)
+            {
+                DialogResult dialogResult = MessageBox.Show("수정된 항목이 있습니다. 프로그램을 재시작 하시겠습니까?", "종료 확인", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (dialogResult == DialogResult.Yes)
+                {
+                    SaveChecked = false;
+                    SaveChecked2 = false;
                     Application.Restart();
                     Environment.Exit(0);
                 }
             }
         }
         #endregion
+
+
+        private void ChkRandom_CheckedChanged(object sender, EventArgs e)
+        {
+            bool _TempRandomize = ChkRandom.Checked;
+
+            if (_TempRandomize == Randomize)
+            {
+                SaveChecked2 = false;
+                return;
+            }
+            Properties.Settings.Default.Randomize = _TempRandomize;
+            Properties.Settings.Default.Save();
+
+            SaveChecked2 = true;
+        }
     }
 }

@@ -32,7 +32,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.Savebutton1 = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
+            this.labelTitle1 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.cmbCategoryTop = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -44,7 +44,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.cmbCategoryBottom = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.labelTitle2 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -55,6 +55,10 @@
             this.txtCategoryBottom2 = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.Savebutton2 = new System.Windows.Forms.Button();
+            this.btnController = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.ChkRandom = new System.Windows.Forms.CheckBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblPanel
@@ -97,15 +101,15 @@
             this.Savebutton1.UseVisualStyleBackColor = true;
             this.Savebutton1.Click += new System.EventHandler(this.Savebutton1_Click);
             // 
-            // label5
+            // labelTitle1
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("맑은 고딕", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(1, 64);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(174, 32);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "항목 추가 설정";
+            this.labelTitle1.AutoSize = true;
+            this.labelTitle1.Font = new System.Drawing.Font("맑은 고딕", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelTitle1.Location = new System.Drawing.Point(-1, 64);
+            this.labelTitle1.Name = "labelTitle1";
+            this.labelTitle1.Size = new System.Drawing.Size(174, 32);
+            this.labelTitle1.TabIndex = 6;
+            this.labelTitle1.Text = "항목 추가 설정";
             // 
             // label6
             // 
@@ -188,7 +192,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("맑은 고딕", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label11.Location = new System.Drawing.Point(262, 381);
+            this.label11.Location = new System.Drawing.Point(344, 394);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(86, 32);
             this.label11.TabIndex = 16;
@@ -214,15 +218,15 @@
             this.label12.Size = new System.Drawing.Size(402, 224);
             this.label12.TabIndex = 18;
             // 
-            // label13
+            // labelTitle2
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("맑은 고딕", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label13.Location = new System.Drawing.Point(388, 65);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(174, 32);
-            this.label13.TabIndex = 19;
-            this.label13.Text = "기본 항목 설정";
+            this.labelTitle2.AutoSize = true;
+            this.labelTitle2.Font = new System.Drawing.Font("맑은 고딕", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelTitle2.Location = new System.Drawing.Point(385, 64);
+            this.labelTitle2.Name = "labelTitle2";
+            this.labelTitle2.Size = new System.Drawing.Size(174, 32);
+            this.labelTitle2.TabIndex = 19;
+            this.labelTitle2.Text = "기본 항목 설정";
             // 
             // label14
             // 
@@ -258,9 +262,9 @@
             this.label16.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label16.Location = new System.Drawing.Point(406, 115);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(95, 25);
+            this.label16.Size = new System.Drawing.Size(140, 25);
             this.label16.TabIndex = 22;
-            this.label16.Text = "상위 항목";
+            this.label16.Text = "상위 항목 선택";
             // 
             // cmbCategoryTop2
             // 
@@ -296,7 +300,7 @@
             // 
             // txtCategoryBottom2
             // 
-            this.txtCategoryBottom2.Location = new System.Drawing.Point(585, 214);
+            this.txtCategoryBottom2.Location = new System.Drawing.Point(596, 214);
             this.txtCategoryBottom2.Name = "txtCategoryBottom2";
             this.txtCategoryBottom2.Size = new System.Drawing.Size(151, 23);
             this.txtCategoryBottom2.TabIndex = 26;
@@ -306,7 +310,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label18.Location = new System.Drawing.Point(585, 184);
+            this.label18.Location = new System.Drawing.Point(596, 184);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(140, 25);
             this.label18.TabIndex = 27;
@@ -322,6 +326,47 @@
             this.Savebutton2.UseVisualStyleBackColor = true;
             this.Savebutton2.Click += new System.EventHandler(this.Savebutton2_Click);
             // 
+            // btnController
+            // 
+            this.btnController.Location = new System.Drawing.Point(629, 143);
+            this.btnController.Name = "btnController";
+            this.btnController.Size = new System.Drawing.Size(75, 23);
+            this.btnController.TabIndex = 29;
+            this.btnController.Text = "설정";
+            this.btnController.UseVisualStyleBackColor = true;
+            this.btnController.Click += new System.EventHandler(this.btnController_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(596, 115);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(140, 25);
+            this.label1.TabIndex = 30;
+            this.label1.Text = "항목 숫자 설정";
+            // 
+            // ChkRandom
+            // 
+            this.ChkRandom.AutoSize = true;
+            this.ChkRandom.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ChkRandom.Location = new System.Drawing.Point(593, 67);
+            this.ChkRandom.Name = "ChkRandom";
+            this.ChkRandom.Size = new System.Drawing.Size(159, 25);
+            this.ChkRandom.TabIndex = 31;
+            this.ChkRandom.Text = "판 항목 전체 랜덤";
+            this.ChkRandom.UseVisualStyleBackColor = true;
+            this.ChkRandom.CheckedChanged += new System.EventHandler(this.ChkRandom_CheckedChanged);
+            // 
+            // label19
+            // 
+            this.label19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label19.Location = new System.Drawing.Point(-6, 101);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(800, 1);
+            this.label19.TabIndex = 32;
+            this.label19.Text = "label19";
+            // 
             // Popup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -329,6 +374,10 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.label19);
+            this.Controls.Add(this.ChkRandom);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnController);
             this.Controls.Add(this.Savebutton2);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.txtCategoryBottom2);
@@ -338,7 +387,7 @@
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.label13);
+            this.Controls.Add(this.labelTitle2);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.cmbCategoryBottom);
             this.Controls.Add(this.label11);
@@ -351,7 +400,7 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.cmbCategoryTop);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.labelTitle1);
             this.Controls.Add(this.Savebutton1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -370,7 +419,7 @@
         private Label label2;
         private Label label3;
         private Button Savebutton1;
-        private Label label5;
+        private Label labelTitle1;
         private Label label6;
         private ComboBox cmbCategoryTop;
         private Label label7;
@@ -382,7 +431,7 @@
         private Label label11;
         private ComboBox cmbCategoryBottom;
         private Label label12;
-        private Label label13;
+        private Label labelTitle2;
         private Label label14;
         private Label label15;
         private Label label4;
@@ -393,5 +442,9 @@
         private TextBox txtCategoryBottom2;
         private Label label18;
         private Button Savebutton2;
+        private Button btnController;
+        private Label label1;
+        private CheckBox ChkRandom;
+        private Label label19;
     }
 }

@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Globalization;
 using System.ComponentModel.Design;
+using System.Windows.Forms;
 
 namespace RhythmMonopoly
 {
@@ -30,6 +31,11 @@ namespace RhythmMonopoly
             this.MinimumSize = new Size(1920, 1080);
             this.MaximumSize = new Size(1920, 1080);
 
+            //테스트
+
+            labelLogo.Left = (this.ClientSize.Width - labelLogo.Width) / 2;
+            labelLogo.Top = (this.ClientSize.Height - labelLogo.Height) / 2;
+
             #endregion
 
             #region :: 변수 불러오기 ::
@@ -41,12 +47,13 @@ namespace RhythmMonopoly
             string TopCategory04 = Properties.Settings.Default.TopCategory04; //상위
             string TopCategory05 = Properties.Settings.Default.TopCategory05; //상위
             string TopCategory06 = Properties.Settings.Default.TopCategory06; //상위
+
             string BotCategory01 = Properties.Settings.Default.BotCategory01; //상위 + 하위
             string BotCategory02 = Properties.Settings.Default.BotCategory02; //상위 + 하위
             string BotCategory03 = Properties.Settings.Default.BotCategory03; //상위 + 하위
-            string BotCategory04 = Properties.Settings.Default.BotCategory01; //상위 + 하위
-            string BotCategory05 = Properties.Settings.Default.BotCategory02; //상위 + 하위
-            string BotCategory06 = Properties.Settings.Default.BotCategory03; //상위 + 하위
+            string BotCategory04 = Properties.Settings.Default.BotCategory04; //상위 + 하위
+            string BotCategory05 = Properties.Settings.Default.BotCategory05; //상위 + 하위
+            string BotCategory06 = Properties.Settings.Default.BotCategory06; //상위 + 하위
 
 
             //하위 더미데이터 불러오는 곳 3,4,5
@@ -124,11 +131,11 @@ namespace RhythmMonopoly
             string text13 = TopCategory04;
             string text14 = TopCategory05;
             string text15 = TopCategory06;
+
             //3개 - 상위 정하고 하위항목 3,4,5 1개씩
             string text16 = BotCategory01; //Dummydata1_1 ~ 1_3
             string text17 = BotCategory02; //Dummydata2_1 ~ 2_4
             string text18 = BotCategory03; //Dummydata3_1 ~ 3_5
-            //브가 (1) - 4
             string text19 = BotCategory04;
             string text20 = BotCategory05;
             string text21 = BotCategory06;
@@ -248,7 +255,7 @@ namespace RhythmMonopoly
             string Category21 = textDummy2 + text17;
             string Category22 = textDummy3 + text18;
             string Category23 = textDummy4 + text19;
-            string Category24 = textDummy1 + text20;
+            string Category24 = textDummy5 + text20;
             string Category25 = textDummy6 + text21;
 
             #region :: 구버전 ::
@@ -294,7 +301,7 @@ namespace RhythmMonopoly
             //황금열쇠 위치 고정일 시
             if (GoldenFix)
             {
-                string[] CategoryArray = { Category1, Category2, Category4, Category5, Category9, Category11, Category12, Category18, Category20, Category21, Category22, Category23, Category24, Category25 };
+                string[] CategoryArray = { Category1, Category2, Category4, Category5, Category9, Category11, Category12, Category14, Category20, Category21, Category22, Category23, Category24, Category25 };
                 rdcate_ = CategoryArray.OrderBy(x => rd.Next()).ToArray();
             }
             #endregion
@@ -329,21 +336,27 @@ namespace RhythmMonopoly
                             string lblname = ((System.Windows.Forms.Label)control).Name;
 
                             //라벨
-                            if (lblname.Contains("Island"))
+                            if (lblname.Contains("EZ2ON"))
                             {
-                                ((System.Windows.Forms.Label)control).Image = Properties.Resources.무인도v2;
+                                ((System.Windows.Forms.Label)control).Image = Properties.Resources.무인도_EZ2;
+                                ((System.Windows.Forms.Label)control).BackColor = Color.White;
+                                ((System.Windows.Forms.Label)control).Text = null;
+                            }
+                            else if (lblname.Contains("DJMAX"))
+                            {
+                                ((System.Windows.Forms.Label)control).Image = Properties.Resources.무인도_DJMAX;
                                 ((System.Windows.Forms.Label)control).BackColor = Color.White;
                                 ((System.Windows.Forms.Label)control).Text = null;
                             }
                             else if (lblname.Contains("Start"))
                             {
-                                ((System.Windows.Forms.Label)control).Image = Properties.Resources.Start;
+                                ((System.Windows.Forms.Label)control).Image = Properties.Resources.STARTv2;
                                 ((System.Windows.Forms.Label)control).BackColor = Color.White;
                                 ((System.Windows.Forms.Label)control).Text = null;
                             }
                             else if (lblname.Contains("Free"))
                             {
-                                ((System.Windows.Forms.Label)control).Image = Properties.Resources.뱅하싶2;
+                                ((System.Windows.Forms.Label)control).Image = Properties.Resources.FREEv2;
                                 ((System.Windows.Forms.Label)control).BackColor = Color.Black;
                                 ((System.Windows.Forms.Label)control).Text = null;
                             }

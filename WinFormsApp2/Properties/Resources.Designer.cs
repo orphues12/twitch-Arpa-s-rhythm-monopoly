@@ -123,6 +123,16 @@ namespace RhythmMonopoly.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
+        internal static System.Drawing.Bitmap FREEv2 {
+            get {
+                object obj = ResourceManager.GetObject("FREEv2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
         internal static System.Drawing.Bitmap golden_keys {
             get {
                 object obj = ResourceManager.GetObject("golden_keys", resourceCulture);
@@ -183,9 +193,29 @@ namespace RhythmMonopoly.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Bitmap 무인도 {
+        internal static System.Drawing.Bitmap STARTv2 {
             get {
-                object obj = ResourceManager.GetObject("무인도", resourceCulture);
+                object obj = ResourceManager.GetObject("STARTv2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap 무인도_DJMAX {
+            get {
+                object obj = ResourceManager.GetObject("무인도_DJMAX", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap 무인도_EZ2 {
+            get {
+                object obj = ResourceManager.GetObject("무인도_EZ2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

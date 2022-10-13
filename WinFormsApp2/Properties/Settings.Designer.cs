@@ -25,7 +25,7 @@ namespace RhythmMonopoly.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("하위 포함 더미")]
+        [global::System.Configuration.DefaultSettingValueAttribute(" 에 수록된 곡")]
         public string BotCategory01 {
             get {
                 return ((string)(this["BotCategory01"]));
@@ -37,7 +37,7 @@ namespace RhythmMonopoly.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("하위 포함 더미")]
+        [global::System.Configuration.DefaultSettingValueAttribute(" 에 수록된 콜라보 노래")]
         public string BotCategory02 {
             get {
                 return ((string)(this["BotCategory02"]));
@@ -49,7 +49,7 @@ namespace RhythmMonopoly.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("하위 포함 더미")]
+        [global::System.Configuration.DefaultSettingValueAttribute(" 분위기 노래")]
         public string BotCategory03 {
             get {
                 return ((string)(this["BotCategory03"]));
@@ -121,7 +121,7 @@ namespace RhythmMonopoly.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("동물")]
+        [global::System.Configuration.DefaultSettingValueAttribute("댕댕이")]
         public string dummycontent4_1 {
             get {
                 return ((string)(this["dummycontent4_1"]));
@@ -217,7 +217,7 @@ namespace RhythmMonopoly.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("더미")]
+        [global::System.Configuration.DefaultSettingValueAttribute("ARCAEA")]
         public string dummycontent1_1 {
             get {
                 return ((string)(this["dummycontent1_1"]));
@@ -229,7 +229,7 @@ namespace RhythmMonopoly.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("더미")]
+        [global::System.Configuration.DefaultSettingValueAttribute("디제이맥스")]
         public string dummycontent1_2 {
             get {
                 return ((string)(this["dummycontent1_2"]));
@@ -241,7 +241,7 @@ namespace RhythmMonopoly.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("더미")]
+        [global::System.Configuration.DefaultSettingValueAttribute("벨루시티")]
         public string dummycontent1_3 {
             get {
                 return ((string)(this["dummycontent1_3"]));
@@ -253,7 +253,7 @@ namespace RhythmMonopoly.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("더미")]
+        [global::System.Configuration.DefaultSettingValueAttribute("이지투온")]
         public string dummycontent2_1 {
             get {
                 return ((string)(this["dummycontent2_1"]));
@@ -265,7 +265,7 @@ namespace RhythmMonopoly.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("더미")]
+        [global::System.Configuration.DefaultSettingValueAttribute("그루브 코스터")]
         public string dummycontent2_2 {
             get {
                 return ((string)(this["dummycontent2_2"]));
@@ -277,7 +277,7 @@ namespace RhythmMonopoly.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("더미")]
+        [global::System.Configuration.DefaultSettingValueAttribute("뮤즈대쉬")]
         public string dummycontent2_3 {
             get {
                 return ((string)(this["dummycontent2_3"]));
@@ -289,7 +289,7 @@ namespace RhythmMonopoly.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("더미")]
+        [global::System.Configuration.DefaultSettingValueAttribute("BMS")]
         public string dummycontent2_4 {
             get {
                 return ((string)(this["dummycontent2_4"]));
@@ -301,7 +301,7 @@ namespace RhythmMonopoly.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("더미")]
+        [global::System.Configuration.DefaultSettingValueAttribute("즐거운")]
         public string dummycontent3_1 {
             get {
                 return ((string)(this["dummycontent3_1"]));
@@ -313,7 +313,7 @@ namespace RhythmMonopoly.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("더미")]
+        [global::System.Configuration.DefaultSettingValueAttribute("귀여운")]
         public string dummycontent3_2 {
             get {
                 return ((string)(this["dummycontent3_2"]));
@@ -325,7 +325,7 @@ namespace RhythmMonopoly.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("더미")]
+        [global::System.Configuration.DefaultSettingValueAttribute("씹덕같은")]
         public string dummycontent3_3 {
             get {
                 return ((string)(this["dummycontent3_3"]));
@@ -337,7 +337,7 @@ namespace RhythmMonopoly.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("더미")]
+        [global::System.Configuration.DefaultSettingValueAttribute("행복한")]
         public string dummycontent3_4 {
             get {
                 return ((string)(this["dummycontent3_4"]));
@@ -349,7 +349,7 @@ namespace RhythmMonopoly.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("더미")]
+        [global::System.Configuration.DefaultSettingValueAttribute("세기말")]
         public string dummycontent3_5 {
             get {
                 return ((string)(this["dummycontent3_5"]));
@@ -385,7 +385,7 @@ namespace RhythmMonopoly.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("전자 음 많은 노래")]
+        [global::System.Configuration.DefaultSettingValueAttribute("더미")]
         public string TopCategory02 {
             get {
                 return ((string)(this["TopCategory02"]));
@@ -397,7 +397,7 @@ namespace RhythmMonopoly.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("나나히라")]
+        [global::System.Configuration.DefaultSettingValueAttribute("더미")]
         public string TopCategory03 {
             get {
                 return ((string)(this["TopCategory03"]));
@@ -409,7 +409,7 @@ namespace RhythmMonopoly.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("아침 알람으로 쓸 곡")]
+        [global::System.Configuration.DefaultSettingValueAttribute("더미")]
         public string TopCategory04 {
             get {
                 return ((string)(this["TopCategory04"]));
@@ -421,7 +421,7 @@ namespace RhythmMonopoly.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("뭐적지")]
+        [global::System.Configuration.DefaultSettingValueAttribute("더미")]
         public string TopCategory05 {
             get {
                 return ((string)(this["TopCategory05"]));
@@ -433,7 +433,7 @@ namespace RhythmMonopoly.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("몰루")]
+        [global::System.Configuration.DefaultSettingValueAttribute("더미")]
         public string TopCategory06 {
             get {
                 return ((string)(this["TopCategory06"]));
@@ -529,7 +529,7 @@ namespace RhythmMonopoly.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("BGA")]
+        [global::System.Configuration.DefaultSettingValueAttribute(" 이(가) BGA에 나오는 곡")]
         public string BotCategory04 {
             get {
                 return ((string)(this["BotCategory04"]));
@@ -541,7 +541,7 @@ namespace RhythmMonopoly.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("느낌")]
+        [global::System.Configuration.DefaultSettingValueAttribute(" 느낌이 나는 곡")]
         public string BotCategory05 {
             get {
                 return ((string)(this["BotCategory05"]));
@@ -553,7 +553,7 @@ namespace RhythmMonopoly.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("보컬 언어")]
+        [global::System.Configuration.DefaultSettingValueAttribute(" 로 된 보컬 언어 곡")]
         public string BotCategory06 {
             get {
                 return ((string)(this["BotCategory06"]));

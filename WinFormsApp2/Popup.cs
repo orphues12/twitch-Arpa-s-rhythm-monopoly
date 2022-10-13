@@ -84,6 +84,16 @@ namespace RhythmMonopoly
         public Popup()
         {
             InitializeComponent();
+
+            //크기 고정
+
+            //컨트롤박스 제거
+            this.MinimizeBox = false;
+            this.MaximizeBox = false;
+            //크기 관련
+            this.MinimumSize = new Size(399,325);
+            this.MaximumSize = new Size(399, 325);
+
             //폰트설정
             Font font1 = new Font(FontManager.fontFamilys[0], 16, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             Font font2 = new Font(FontManager.fontFamilys[0], 40, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));

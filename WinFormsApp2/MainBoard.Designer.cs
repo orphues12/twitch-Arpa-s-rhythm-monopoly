@@ -382,11 +382,12 @@
             this.lblBanner.Name = "lblBanner";
             this.lblBanner.Size = new System.Drawing.Size(1909, 33);
             this.lblBanner.TabIndex = 57;
-            this.lblBanner.Text = "TESTING BUILD";
+            this.lblBanner.Text = "모두의마블모두해모두의마블모두해모두의마블모두해모두의마블모두해모두의마블모두해모두의마블모두해모두의마블모두해모두의마블모두해모두의마블모두해모두의마블모두해모" +
+    "두의마블모두해모두의마블모두해";
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(1774, 1013);
+            this.btnExit.Location = new System.Drawing.Point(1357, 693);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(130, 30);
             this.btnExit.TabIndex = 58;
@@ -396,7 +397,7 @@
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(1638, 1013);
+            this.btnReset.Location = new System.Drawing.Point(1129, 693);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(130, 30);
             this.btnReset.TabIndex = 59;
@@ -406,7 +407,7 @@
             // 
             // btnOption
             // 
-            this.btnOption.Location = new System.Drawing.Point(1502, 1013);
+            this.btnOption.Location = new System.Drawing.Point(890, 693);
             this.btnOption.Name = "btnOption";
             this.btnOption.Size = new System.Drawing.Size(130, 30);
             this.btnOption.TabIndex = 60;
@@ -425,7 +426,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(1075, 1013);
+            this.button1.Location = new System.Drawing.Point(453, 693);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(130, 30);
             this.button1.TabIndex = 63;
@@ -435,7 +436,7 @@
             // 
             // btnScreenshot
             // 
-            this.btnScreenshot.Location = new System.Drawing.Point(1367, 1013);
+            this.btnScreenshot.Location = new System.Drawing.Point(668, 693);
             this.btnScreenshot.Name = "btnScreenshot";
             this.btnScreenshot.Size = new System.Drawing.Size(130, 30);
             this.btnScreenshot.TabIndex = 64;
@@ -452,7 +453,6 @@
             this.ClientSize = new System.Drawing.Size(1904, 1041);
             this.Controls.Add(this.btnScreenshot);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.label27);
             this.Controls.Add(this.btnOption);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.btnExit);
@@ -483,6 +483,7 @@
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
+            this.Controls.Add(this.label27);
             this.Name = "MainBoard";
             this.Text = "판때기";
             this.Resize += new System.EventHandler(this.MainBoard_Resize);

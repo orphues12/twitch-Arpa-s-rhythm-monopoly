@@ -17,8 +17,6 @@ namespace RhythmMonopoly
 
             #region :: 어플 설정 ::
 
-            //컨트롤박스 제거
-            this.ControlBox = false;
             //StringBuilder
             StringBuilder sb = new StringBuilder(); 
             //랜덤함수
@@ -26,6 +24,8 @@ namespace RhythmMonopoly
             //폰트설정
             Font font1 = new Font(FontManager.fontFamilys[0], 16, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
 
+            //컨트롤박스 제거
+            this.ControlBox = false;
             //크기 관련
             this.MinimumSize = new Size(1920, 1080);
             this.MaximumSize = new Size(1920, 1080);
@@ -303,7 +303,7 @@ namespace RhythmMonopoly
 
 
             /* 황금 열쇠가 정해진 위치 + 다른 항목들은 랜덤으로 배치*/
-            if (GoldenFix && !Randomize)
+            if (!Randomize)
             {
                 //모든 컨트롤을 검사
                 foreach (System.Windows.Forms.Control control in this.Controls)
@@ -461,20 +461,6 @@ namespace RhythmMonopoly
                     }
                 }
             }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

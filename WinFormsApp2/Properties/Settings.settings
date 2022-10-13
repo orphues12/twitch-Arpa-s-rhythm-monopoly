@@ -3,13 +3,13 @@
   <Profiles />
   <Settings>
     <Setting Name="BotCategory01" Type="System.String" Scope="User">
-      <Value Profile="(Default)">하위 포함 더미</Value>
+      <Value Profile="(Default)"> 에 수록된 곡</Value>
     </Setting>
     <Setting Name="BotCategory02" Type="System.String" Scope="User">
-      <Value Profile="(Default)">하위 포함 더미</Value>
+      <Value Profile="(Default)"> 에 수록된 콜라보 노래</Value>
     </Setting>
     <Setting Name="BotCategory03" Type="System.String" Scope="User">
-      <Value Profile="(Default)">하위 포함 더미</Value>
+      <Value Profile="(Default)"> 분위기 노래</Value>
     </Setting>
     <Setting Name="dummycontent5_1" Type="System.String" Scope="User">
       <Value Profile="(Default)">귀여운 </Value>
@@ -27,7 +27,7 @@
       <Value Profile="(Default)">초고속 </Value>
     </Setting>
     <Setting Name="dummycontent4_1" Type="System.String" Scope="User">
-      <Value Profile="(Default)">동물</Value>
+      <Value Profile="(Default)">댕댕이</Value>
     </Setting>
     <Setting Name="dummycontent4_2" Type="System.String" Scope="User">
       <Value Profile="(Default)">식물</Value>
@@ -51,40 +51,40 @@
       <Value Profile="(Default)">한국어</Value>
     </Setting>
     <Setting Name="dummycontent1_1" Type="System.String" Scope="User">
-      <Value Profile="(Default)">더미</Value>
+      <Value Profile="(Default)">ARCAEA</Value>
     </Setting>
     <Setting Name="dummycontent1_2" Type="System.String" Scope="User">
-      <Value Profile="(Default)">더미</Value>
+      <Value Profile="(Default)">디제이맥스</Value>
     </Setting>
     <Setting Name="dummycontent1_3" Type="System.String" Scope="User">
-      <Value Profile="(Default)">더미</Value>
+      <Value Profile="(Default)">벨루시티</Value>
     </Setting>
     <Setting Name="dummycontent2_1" Type="System.String" Scope="User">
-      <Value Profile="(Default)">더미</Value>
+      <Value Profile="(Default)">이지투온</Value>
     </Setting>
     <Setting Name="dummycontent2_2" Type="System.String" Scope="User">
-      <Value Profile="(Default)">더미</Value>
+      <Value Profile="(Default)">그루브 코스터</Value>
     </Setting>
     <Setting Name="dummycontent2_3" Type="System.String" Scope="User">
-      <Value Profile="(Default)">더미</Value>
+      <Value Profile="(Default)">뮤즈대쉬</Value>
     </Setting>
     <Setting Name="dummycontent2_4" Type="System.String" Scope="User">
-      <Value Profile="(Default)">더미</Value>
+      <Value Profile="(Default)">BMS</Value>
     </Setting>
     <Setting Name="dummycontent3_1" Type="System.String" Scope="User">
-      <Value Profile="(Default)">더미</Value>
+      <Value Profile="(Default)">즐거운</Value>
     </Setting>
     <Setting Name="dummycontent3_2" Type="System.String" Scope="User">
-      <Value Profile="(Default)">더미</Value>
+      <Value Profile="(Default)">귀여운</Value>
     </Setting>
     <Setting Name="dummycontent3_3" Type="System.String" Scope="User">
-      <Value Profile="(Default)">더미</Value>
+      <Value Profile="(Default)">씹덕같은</Value>
     </Setting>
     <Setting Name="dummycontent3_4" Type="System.String" Scope="User">
-      <Value Profile="(Default)">더미</Value>
+      <Value Profile="(Default)">행복한</Value>
     </Setting>
     <Setting Name="dummycontent3_5" Type="System.String" Scope="User">
-      <Value Profile="(Default)">더미</Value>
+      <Value Profile="(Default)">세기말</Value>
     </Setting>
     <Setting Name="HappyHome" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
@@ -93,19 +93,19 @@
       <Value Profile="(Default)">동시 수록 곡</Value>
     </Setting>
     <Setting Name="TopCategory02" Type="System.String" Scope="User">
-      <Value Profile="(Default)">전자 음 많은 노래</Value>
+      <Value Profile="(Default)">더미</Value>
     </Setting>
     <Setting Name="TopCategory03" Type="System.String" Scope="User">
-      <Value Profile="(Default)">나나히라</Value>
+      <Value Profile="(Default)">더미</Value>
     </Setting>
     <Setting Name="TopCategory04" Type="System.String" Scope="User">
-      <Value Profile="(Default)">아침 알람으로 쓸 곡</Value>
+      <Value Profile="(Default)">더미</Value>
     </Setting>
     <Setting Name="TopCategory05" Type="System.String" Scope="User">
-      <Value Profile="(Default)">뭐적지</Value>
+      <Value Profile="(Default)">더미</Value>
     </Setting>
     <Setting Name="TopCategory06" Type="System.String" Scope="User">
-      <Value Profile="(Default)">몰루</Value>
+      <Value Profile="(Default)">더미</Value>
     </Setting>
     <Setting Name="TestColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">White</Value>
@@ -129,13 +129,13 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="BotCategory04" Type="System.String" Scope="User">
-      <Value Profile="(Default)">BGA</Value>
+      <Value Profile="(Default)"> 이(가) BGA에 나오는 곡</Value>
     </Setting>
     <Setting Name="BotCategory05" Type="System.String" Scope="User">
-      <Value Profile="(Default)">느낌</Value>
+      <Value Profile="(Default)"> 느낌이 나는 곡</Value>
     </Setting>
     <Setting Name="BotCategory06" Type="System.String" Scope="User">
-      <Value Profile="(Default)">보컬 언어</Value>
+      <Value Profile="(Default)"> 로 된 보컬 언어 곡</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -102,7 +102,7 @@ namespace RhythmMonopoly
 
 
 
-        // Windows 의 Position 을 가져옴.
+        //위치값 구하기
 
         void GetWindowPos(IntPtr hwnd, ref int ptrPhwnd, ref int ptrNhwnd, ref Point ptPoint, ref Size szSize, ref WNDSTATE intShowCmd)
         {
@@ -115,8 +115,8 @@ namespace RhythmMonopoly
         }
         public Point getLocationPoint()
         {
-            Process me = Process.GetCurrentProcess(); // 현재 실행중인 Program 의 Process 를 가져온다.                       
-            IntPtr hwnd = (IntPtr)me.MainWindowHandle; // me.ID 는 자신의 PID, me.MainWindowHandle 은 Spy++ 에서 확인할 수 있는 핸들 값이다.
+            Process me = Process.GetCurrentProcess();                 
+            IntPtr hwnd = (IntPtr)me.MainWindowHandle; //
             int ptrPhwnd = 0, ptrNhwnd = 0;
             Point ptPoint = new Point();
             Size szSize = new Size();

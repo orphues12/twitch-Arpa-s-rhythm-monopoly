@@ -7,6 +7,8 @@ using System.Runtime.InteropServices;
 using System.Globalization;
 using System.ComponentModel.Design;
 using System.Windows.Forms;
+using System.Drawing.Imaging;
+using System.IO;
 
 namespace RhythmMonopoly
 {
@@ -315,36 +317,27 @@ namespace RhythmMonopoly
                 //모든 컨트롤을 검사
                 foreach (System.Windows.Forms.Control control in this.Controls)
                 {
-
                     //라벨마다 반복문 + 황금 열쇠아닐 경우 진행
                     if (control is System.Windows.Forms.Label && ((System.Windows.Forms.Label)control).Text != "Golden")
                     {
 
                         ((System.Windows.Forms.Label)control).Font = font1;
 
-                        //밑에 배너
-                        if (((System.Windows.Forms.Label)control).Name.Equals("lblBanner"))
-                        {
-                            ((System.Windows.Forms.Label)control).BackColor = Color.White; ;
-                            ((System.Windows.Forms.Label)control).Text = "* 현재는 판 제작 기능만 제공하고 있습니다.";
-                            continue;
-                        }
-
                         //변함없는 값들은 변경 안하도록 (BackColor = Black)
-                        else if (((System.Windows.Forms.Label)control).BackColor == Color.Black)
+                        if (((System.Windows.Forms.Label)control).BackColor == Color.Black)
                         {
                             string lblname = ((System.Windows.Forms.Label)control).Name;
 
                             //라벨
                             if (lblname.Contains("EZ2ON"))
                             {
-                                ((System.Windows.Forms.Label)control).Image = Properties.Resources.무인도_EZ2;
+                                ((System.Windows.Forms.Label)control).Image = Properties.Resources.무인도_EZ2v2;
                                 ((System.Windows.Forms.Label)control).BackColor = Color.White;
                                 ((System.Windows.Forms.Label)control).Text = null;
                             }
                             else if (lblname.Contains("DJMAX"))
                             {
-                                ((System.Windows.Forms.Label)control).Image = Properties.Resources.무인도_DJMAX;
+                                ((System.Windows.Forms.Label)control).Image = Properties.Resources.무인도_DJMAXv2;
                                 ((System.Windows.Forms.Label)control).BackColor = Color.White;
                                 ((System.Windows.Forms.Label)control).Text = null;
                             }
@@ -409,7 +402,6 @@ namespace RhythmMonopoly
                     if (control is System.Windows.Forms.Label)
                     {
                         ((System.Windows.Forms.Label)control).Font = font1;
-
 
                         //밑에 배너
                         if (((System.Windows.Forms.Label)control).Name.Equals("lblBanner"))
@@ -777,31 +769,31 @@ namespace RhythmMonopoly
         private void btnScreenshot_Click(object sender, EventArgs e)
         {
 
-            MessageBox.Show("하루동안 만졌는데 에러떠서 막아놨습니다.\r언젠간 정상화 되겠죠?.", "확인", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            return;
-
-            //DialogResult Result = MessageBox.Show("현재 판을 저장 하시겠습니까? \r바탕화면에 저장됩니다.", "저장 확인", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-            //if (Result == DialogResult.OK)
-            //{
-            //    //저장 위치 지정 (바탕화면)
-            //    string localpath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            //    string filename = "\\판때기.png";
-            //    string _path = localpath + filename;
+            DialogResult Result = MessageBox.Show("현재 판을 저장 하시겠습니까? \r바탕화면에 저장됩니다.", "저장 확인", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            if (Result == DialogResult.OK)
+            {
+                //저장 위치 지정 (바탕화면)
+                string localpath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                string filename = "\\판때기.png";
+                string _path = localpath + filename;
 
 
-            //    //테스트
-            //    string Hello = string.Empty;
+                //테스트
+                string Hello = string.Empty;
 
 
-            //    //변수 지정 필요
-            //    Capture ImgCapture = new Capture(0,0,100,100);
-            //    ImgCapture.SetPath(_path);
-            //    ImgCapture.CaptureImage();
+                //변수 지정 필요
+                //Capture ImgCapture = new Capture(0, 0, 1920, 1080);
+                //ImgCapture.SetPath(_path);
 
-            //    MessageBox.Show("바탕화면에 저장되었습니다.", "확인", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //ImgCapture.CaptureImage();
 
-            //    return;
-            //}
+                CaptureImage(_path);
+
+                MessageBox.Show("바탕화면에 저장되었습니다.", "확인", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                return;
+            }
         }
 
         #endregion
@@ -811,6 +803,29 @@ namespace RhythmMonopoly
         private void MainBoard_Resize(object sender, EventArgs e)
         {
             this.Size = new Size(1920, 1080);
+        }
+
+        private void CaptureImage(string _path)
+        {
+            int _refX = 0;
+            int _refY = 0;
+            int _imgW = 1920;
+            int _imgH = 1080;
+
+            string Filepath = _path;
+
+            if (Filepath != string.Empty)
+            {
+                using (System.Drawing.Bitmap bitmap = new System.Drawing.Bitmap((int)_imgW, (int)_imgH))
+                {
+                    using (System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(bitmap))
+                    {
+                        g.CopyFromScreen(_refX, _refY, 0, 0, bitmap.Size);
+                    }
+
+                    bitmap.Save(Filepath, ImageFormat.Png);
+                }
+            }
         }
         #endregion
     }

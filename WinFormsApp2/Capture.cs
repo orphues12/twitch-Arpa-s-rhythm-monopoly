@@ -44,6 +44,7 @@ namespace RhythmMonopoly
                     using (System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(bitmap))
                     {
                         g.CopyFromScreen(_refX, _refY, 0, 0, bitmap.Size);
+
                     }
 
                     bitmap.Save(Filepath, ImageFormat.Png);

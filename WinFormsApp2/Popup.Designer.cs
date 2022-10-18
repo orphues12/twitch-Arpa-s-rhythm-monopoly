@@ -93,7 +93,7 @@
             // 
             // Savebutton1
             // 
-            this.Savebutton1.Location = new System.Drawing.Point(140, 254);
+            this.Savebutton1.Location = new System.Drawing.Point(233, 254);
             this.Savebutton1.Name = "Savebutton1";
             this.Savebutton1.Size = new System.Drawing.Size(93, 23);
             this.Savebutton1.TabIndex = 4;
@@ -328,11 +328,11 @@
             // 
             // btnController
             // 
-            this.btnController.Location = new System.Drawing.Point(629, 143);
+            this.btnController.Location = new System.Drawing.Point(36, 254);
             this.btnController.Name = "btnController";
-            this.btnController.Size = new System.Drawing.Size(75, 23);
+            this.btnController.Size = new System.Drawing.Size(118, 23);
             this.btnController.TabIndex = 29;
-            this.btnController.Text = "설정";
+            this.btnController.Text = "항목 개수 설정";
             this.btnController.UseVisualStyleBackColor = true;
             this.btnController.Click += new System.EventHandler(this.btnController_Click);
             // 
@@ -373,7 +373,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.LightGray;
-            this.ClientSize = new System.Drawing.Size(383, 286);
+            this.ClientSize = new System.Drawing.Size(384, 286);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.ChkRandom);
             this.Controls.Add(this.label1);

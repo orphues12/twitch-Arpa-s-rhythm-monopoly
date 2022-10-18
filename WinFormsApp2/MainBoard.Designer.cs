@@ -376,7 +376,7 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(1256, 708);
+            this.btnExit.Location = new System.Drawing.Point(1265, 778);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(130, 30);
             this.btnExit.TabIndex = 58;
@@ -386,7 +386,7 @@
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(1073, 708);
+            this.btnReset.Location = new System.Drawing.Point(1082, 778);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(130, 30);
             this.btnReset.TabIndex = 59;
@@ -396,7 +396,7 @@
             // 
             // btnOption
             // 
-            this.btnOption.Location = new System.Drawing.Point(904, 708);
+            this.btnOption.Location = new System.Drawing.Point(913, 778);
             this.btnOption.Name = "btnOption";
             this.btnOption.Size = new System.Drawing.Size(130, 30);
             this.btnOption.TabIndex = 60;
@@ -406,7 +406,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(547, 708);
+            this.button1.Location = new System.Drawing.Point(556, 778);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(130, 30);
             this.button1.TabIndex = 63;
@@ -416,7 +416,7 @@
             // 
             // btnScreenshot
             // 
-            this.btnScreenshot.Location = new System.Drawing.Point(727, 708);
+            this.btnScreenshot.Location = new System.Drawing.Point(736, 778);
             this.btnScreenshot.Name = "btnScreenshot";
             this.btnScreenshot.Size = new System.Drawing.Size(130, 30);
             this.btnScreenshot.TabIndex = 64;
@@ -426,7 +426,7 @@
             // 
             // labelLogo
             // 
-            this.labelLogo.BackColor = System.Drawing.Color.Transparent;
+            this.labelLogo.BackColor = System.Drawing.Color.White;
             this.labelLogo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.labelLogo.Image = global::RhythmMonopoly.Properties.Resources.LOGOv3;
             this.labelLogo.Location = new System.Drawing.Point(320, 180);
@@ -474,6 +474,7 @@
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.labelLogo);
+            this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MainBoard";
             this.Text = "판때기";

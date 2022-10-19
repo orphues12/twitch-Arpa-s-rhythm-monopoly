@@ -478,6 +478,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MainBoard";
             this.Text = "판때기";
+            this.TransparencyKey = System.Drawing.Color.Navy;
             this.Resize += new System.EventHandler(this.MainBoard_Resize);
             this.ResumeLayout(false);
 

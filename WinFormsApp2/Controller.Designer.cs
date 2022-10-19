@@ -29,36 +29,48 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.SpinBot = new System.Windows.Forms.NumericUpDown();
             this.SpinTop = new System.Windows.Forms.NumericUpDown();
-            this.ConsoSpin = new System.Windows.Forms.NumericUpDown();
+            this.SpinConso = new System.Windows.Forms.NumericUpDown();
             this.SpinAlpha = new System.Windows.Forms.NumericUpDown();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SpinBot)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpinTop)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ConsoSpin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpinConso)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpinAlpha)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.SpinBot);
             this.groupBox1.Controls.Add(this.SpinTop);
-            this.groupBox1.Controls.Add(this.ConsoSpin);
+            this.groupBox1.Controls.Add(this.SpinConso);
             this.groupBox1.Controls.Add(this.SpinAlpha);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(260, 287);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(95, 250);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "저장";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label4
             // 
@@ -98,30 +110,50 @@
             // 
             // SpinBot
             // 
-            this.SpinBot.Location = new System.Drawing.Point(139, 205);
+            this.SpinBot.Location = new System.Drawing.Point(195, 205);
+            this.SpinBot.Maximum = new decimal(new int[] {
+            6,
+            0,
+            0,
+            0});
             this.SpinBot.Name = "SpinBot";
-            this.SpinBot.Size = new System.Drawing.Size(100, 23);
+            this.SpinBot.Size = new System.Drawing.Size(40, 23);
             this.SpinBot.TabIndex = 3;
             // 
             // SpinTop
             // 
-            this.SpinTop.Location = new System.Drawing.Point(139, 150);
+            this.SpinTop.Location = new System.Drawing.Point(195, 150);
+            this.SpinTop.Maximum = new decimal(new int[] {
+            6,
+            0,
+            0,
+            0});
             this.SpinTop.Name = "SpinTop";
-            this.SpinTop.Size = new System.Drawing.Size(100, 23);
+            this.SpinTop.Size = new System.Drawing.Size(40, 23);
             this.SpinTop.TabIndex = 2;
             // 
-            // ConsoSpin
+            // SpinConso
             // 
-            this.ConsoSpin.Location = new System.Drawing.Point(139, 95);
-            this.ConsoSpin.Name = "ConsoSpin";
-            this.ConsoSpin.Size = new System.Drawing.Size(100, 23);
-            this.ConsoSpin.TabIndex = 1;
+            this.SpinConso.Location = new System.Drawing.Point(195, 95);
+            this.SpinConso.Maximum = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            this.SpinConso.Name = "SpinConso";
+            this.SpinConso.Size = new System.Drawing.Size(40, 23);
+            this.SpinConso.TabIndex = 1;
             // 
             // SpinAlpha
             // 
-            this.SpinAlpha.Location = new System.Drawing.Point(139, 40);
+            this.SpinAlpha.Location = new System.Drawing.Point(195, 40);
+            this.SpinAlpha.Maximum = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
             this.SpinAlpha.Name = "SpinAlpha";
-            this.SpinAlpha.Size = new System.Drawing.Size(100, 23);
+            this.SpinAlpha.Size = new System.Drawing.Size(40, 23);
             this.SpinAlpha.TabIndex = 0;
             // 
             // Controller
@@ -131,12 +163,13 @@
             this.ClientSize = new System.Drawing.Size(284, 311);
             this.Controls.Add(this.groupBox1);
             this.Name = "Controller";
-            this.Text = "Controller";
+            this.Text = "항목 개수 설정";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Controller_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SpinBot)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpinTop)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ConsoSpin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpinConso)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpinAlpha)).EndInit();
             this.ResumeLayout(false);
 
@@ -151,7 +184,8 @@
         private Label label1;
         private NumericUpDown SpinBot;
         private NumericUpDown SpinTop;
-        private NumericUpDown ConsoSpin;
+        private NumericUpDown SpinConso;
         private NumericUpDown SpinAlpha;
+        private Button button1;
     }
 }

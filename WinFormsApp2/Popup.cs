@@ -24,6 +24,7 @@ namespace RhythmMonopoly
         string TopCategory04 = Properties.Settings.Default.TopCategory04; //상위
         string TopCategory05 = Properties.Settings.Default.TopCategory05; //상위
         string TopCategory06 = Properties.Settings.Default.TopCategory06; //상위
+
         string BotCategory01 = Properties.Settings.Default.BotCategory01; //상위 + 하위
         string BotCategory02 = Properties.Settings.Default.BotCategory02; //상위 + 하위
         string BotCategory03 = Properties.Settings.Default.BotCategory03; //상위 + 하위
@@ -64,8 +65,6 @@ namespace RhythmMonopoly
         string dummycontent6_2 = Properties.Settings.Default.dummycontent6_2;
         string dummycontent6_3 = Properties.Settings.Default.dummycontent6_3;
 
-
-
         bool Randomize = Properties.Settings.Default.Randomize;
         bool GoldenFix = Properties.Settings.Default.GoldenFix;
 
@@ -75,9 +74,16 @@ namespace RhythmMonopoly
         bool SaveChecked2 = false;
         bool StartCheck = true;
 
+        //목차
         int TopIndex = -1;
         int botIndex = 0;
 
+        //Combobox 숫자관련
+        int TopNum = Properties.Settings.Default.TopNum;
+        int BotNum = Properties.Settings.Default.BottomNum;
+
+        //상위 하위 배열
+        
 
         #endregion
 
@@ -495,7 +501,6 @@ namespace RhythmMonopoly
             }
         }
 
-
         private void cmbCategoryTop_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtCategoryTop.Text = cmbCategoryTop.SelectedItem.ToString();
@@ -716,7 +721,7 @@ namespace RhythmMonopoly
                     {
                         Properties.Settings.Default[BotCatadata] = _TempCateChangeBot;
                     }
-
+                    
                     Properties.Settings.Default.Save();
 
                     TopIndex = cmbCategoryTop.SelectedIndex;
@@ -740,6 +745,22 @@ namespace RhythmMonopoly
 
         }
 
+        //컨트롤러
+        private void btnController_Click(object sender, EventArgs e)
+        {
+            Controller con = new Controller();
+            con.ShowDialog();
+
+            if (con.SaveChecking)
+            {
+                MessageBox.Show("항목 수의 변경으로 인하여 강제적으로\n프로그램을 재시작 합니다.", "종료 확인", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                SaveChecked = false;
+                SaveChecked2 = false;
+                Application.Restart();
+                Environment.Exit(0);
+            }
+        }
         #endregion
 
         #region :: ETC Event ::
@@ -913,7 +934,6 @@ namespace RhythmMonopoly
 
         private void addCombobox()
         {
-
             //하위 항목만 저장했을때 안바뀌도록
             if (cmbCategoryTop.Items.Contains(txtCategoryTop.Text) && txtCategoryTop.Text != "")
             {
@@ -924,14 +944,19 @@ namespace RhythmMonopoly
             txtCategoryBottom.Text = "";
             txtCategoryTop.Text = "";
 
-            cmbCategoryTop.Items.Add("(상-1) - " + TopCategory01);  //TopCategory01
+            string[] TopList = { TopCategory01, TopCategory02, TopCategory03, TopCategory04, TopCategory05, TopCategory06 };
+            string[] BotList = { BotCategory01, BotCategory02, BotCategory03, BotCategory04, BotCategory05, BotCategory06 };
 
-            cmbCategoryTop.Items.Add("(하-1) - " + BotCategory01); //BotCategory01
-            cmbCategoryTop.Items.Add("(하-2) - " + BotCategory02); //BotCategory02
-            cmbCategoryTop.Items.Add("(하-3) - " + BotCategory03); //BotCategory03
-            cmbCategoryTop.Items.Add("(하-4) - " + BotCategory04); //dummycontent4_
-            cmbCategoryTop.Items.Add("(하-5) - " + BotCategory05); //feelscontent
-            cmbCategoryTop.Items.Add("(하-6) - " + BotCategory06); //BotCategory03
+            //상위 항목 추가
+            for (int i = 1; i < TopNum + 1; i++)
+            {
+                cmbCategoryTop.Items.Add(String.Format("(상-{0}) - " + TopList[i-1], i.ToString()));
+            }
+            //하위 항목 추가
+            for (int i = 1; i < BotNum + 1; i++)
+            {
+                cmbCategoryTop.Items.Add(String.Format("(하-{0}) - " + BotList[i - 1], i.ToString()));
+            }
 
             cmbCategoryTop.SelectedIndex = TopIndex;
 
@@ -1101,11 +1126,249 @@ namespace RhythmMonopoly
             }
 
             StartCheck = false;
+
+            #region :: 백업 ::
+            ////하위 항목만 저장했을때 안바뀌도록
+            //if (cmbCategoryTop.Items.Contains(txtCategoryTop.Text) && txtCategoryTop.Text != "")
+            //{
+            //}
+            //cmbCategoryTop.Items.Clear();
+            //cmbCategoryBottom.Items.Clear();
+
+            //txtCategoryBottom.Text = "";
+            //txtCategoryTop.Text = "";
+
+            //cmbCategoryTop.Items.Add("(상-1) - " + TopCategory01);  //TopCategory01
+
+            //cmbCategoryTop.Items.Add("(하-1) - " + BotCategory01); //BotCategory01
+            //cmbCategoryTop.Items.Add("(하-2) - " + BotCategory02); //BotCategory02
+            //cmbCategoryTop.Items.Add("(하-3) - " + BotCategory03); //BotCategory03
+            //cmbCategoryTop.Items.Add("(하-4) - " + BotCategory04); //dummycontent4_
+            //cmbCategoryTop.Items.Add("(하-5) - " + BotCategory05); //feelscontent
+            //cmbCategoryTop.Items.Add("(하-6) - " + BotCategory06); //BotCategory03
+
+            //cmbCategoryTop.SelectedIndex = TopIndex;
+
+            //#region :: 보지마 :: 
+            //if (cmbCategoryTop.Text.Contains("상-1"))
+            //{
+            //    txtCategoryTop.Text = TopCategory01;
+            //    txtCategoryTop.Enabled = true;
+            //    cmbCategoryBottom.Enabled = false;
+            //    txtCategoryBottom.Enabled = false;
+            //    cmbCategoryBottom.Items.Clear();
+            //    txtCategoryBottom.Text = "";
+            //}
+            //else if (cmbCategoryTop.Text.Contains("상-2"))
+            //{
+            //    txtCategoryTop.Text = TopCategory02;
+            //    txtCategoryTop.Enabled = true;
+            //    cmbCategoryBottom.Enabled = false;
+            //    txtCategoryBottom.Enabled = false;
+            //    cmbCategoryBottom.Items.Clear();
+            //    txtCategoryBottom.Text = "";
+            //}
+            //else if (cmbCategoryTop.Text.Contains("상-3"))
+            //{
+            //    txtCategoryTop.Text = TopCategory03;
+            //    txtCategoryTop.Enabled = true;
+            //    cmbCategoryBottom.Enabled = false;
+            //    txtCategoryBottom.Enabled = false;
+            //    cmbCategoryBottom.Items.Clear();
+            //    txtCategoryBottom.Text = "";
+            //}
+            //else if (cmbCategoryTop.Text.Contains("상-4"))
+            //{
+            //    txtCategoryTop.Text = TopCategory04;
+            //    txtCategoryTop.Enabled = true;
+            //    cmbCategoryBottom.Enabled = false;
+            //    txtCategoryBottom.Enabled = false;
+            //    cmbCategoryBottom.Items.Clear();
+            //    txtCategoryBottom.Text = "";
+            //}
+            //else if (cmbCategoryTop.Text.Contains("상-5"))
+            //{
+            //    txtCategoryTop.Text = TopCategory05;
+            //    txtCategoryTop.Enabled = true;
+            //    cmbCategoryBottom.Enabled = false;
+            //    txtCategoryBottom.Enabled = false;
+            //    cmbCategoryBottom.Items.Clear();
+            //    txtCategoryBottom.Text = "";
+            //}
+            //else if (cmbCategoryTop.Text.Contains("상-6"))
+            //{
+            //    txtCategoryTop.Text = TopCategory06;
+            //    txtCategoryTop.Enabled = true;
+
+            //    cmbCategoryBottom.Enabled = false;
+            //    txtCategoryBottom.Enabled = false;
+            //    cmbCategoryBottom.Items.Clear();
+            //    txtCategoryBottom.Text = "";
+            //}
+            //else if (cmbCategoryTop.Text.Contains("하-1"))
+            //{
+            //    txtCategoryTop.Text = BotCategory01;
+            //    txtCategoryTop.Enabled = true;
+            //    cmbCategoryBottom.Enabled = true;
+            //    txtCategoryBottom.Enabled = true;
+
+            //    cmbCategoryBottom.Items.Clear();
+
+            //    cmbCategoryBottom.Items.Add("하위1 - " + dummycontent1_1);
+            //    cmbCategoryBottom.Items.Add("하위2 - " + dummycontent1_2);
+            //    cmbCategoryBottom.Items.Add("하위3 - " + dummycontent1_3);
+
+            //    cmbCategoryBottom.SelectedIndex = 0;
+            //}
+            //else if (cmbCategoryTop.Text.Contains("하-2"))
+            //{
+            //    txtCategoryTop.Text = BotCategory02;
+            //    txtCategoryTop.Enabled = true;
+
+            //    cmbCategoryBottom.Enabled = true;
+            //    txtCategoryBottom.Enabled = true;
+
+            //    cmbCategoryBottom.Items.Clear();
+
+            //    cmbCategoryBottom.Items.Add("하위1 - " + dummycontent2_1);
+            //    cmbCategoryBottom.Items.Add("하위2 - " + dummycontent2_2);
+            //    cmbCategoryBottom.Items.Add("하위3 - " + dummycontent2_3);
+            //    cmbCategoryBottom.Items.Add("하위4 - " + dummycontent2_4);
+
+            //    cmbCategoryBottom.SelectedIndex = 0;
+            //}
+            //else if (cmbCategoryTop.Text.Contains("하-3"))
+            //{
+            //    txtCategoryTop.Text = BotCategory03;
+            //    txtCategoryTop.Enabled = true;
+
+            //    cmbCategoryBottom.Enabled = true;
+            //    txtCategoryBottom.Enabled = true;
+
+            //    cmbCategoryBottom.Items.Clear();
+
+            //    cmbCategoryBottom.Items.Add("하위1 - " + dummycontent3_1);
+            //    cmbCategoryBottom.Items.Add("하위2 - " + dummycontent3_2);
+            //    cmbCategoryBottom.Items.Add("하위3 - " + dummycontent3_3);
+            //    cmbCategoryBottom.Items.Add("하위4 - " + dummycontent3_4);
+            //    cmbCategoryBottom.Items.Add("하위5 - " + dummycontent3_5);
+
+            //    cmbCategoryBottom.SelectedIndex = 0;
+            //}
+            //else if (cmbCategoryTop.Text.Contains("하-4"))
+            //{
+            //    txtCategoryTop.Text = BotCategory04;
+            //    txtCategoryTop.Enabled = true;
+
+            //    cmbCategoryBottom.Enabled = true;
+            //    txtCategoryBottom.Enabled = true;
+
+            //    cmbCategoryBottom.Items.Clear();
+
+            //    cmbCategoryBottom.Items.Add("하위1 - " + dummycontent4_1);
+            //    cmbCategoryBottom.Items.Add("하위2 - " + dummycontent4_2);
+            //    cmbCategoryBottom.Items.Add("하위3 - " + dummycontent4_3);
+            //    cmbCategoryBottom.Items.Add("하위4 - " + dummycontent4_4);
+            //    cmbCategoryBottom.Items.Add("하위5 - " + dummycontent4_5);
+
+            //    cmbCategoryBottom.SelectedIndex = 0;
+            //}
+            //else if (cmbCategoryTop.Text.Contains("하-5"))
+            //{
+            //    txtCategoryTop.Text = BotCategory05;
+            //    txtCategoryTop.Enabled = true;
+
+            //    cmbCategoryBottom.Enabled = true;
+            //    txtCategoryBottom.Enabled = true;
+
+            //    cmbCategoryBottom.Items.Clear();
+
+            //    cmbCategoryBottom.Items.Add("하위1 - " + dummycontent5_1);
+            //    cmbCategoryBottom.Items.Add("하위2 - " + dummycontent5_2);
+            //    cmbCategoryBottom.Items.Add("하위3 - " + dummycontent5_3);
+            //    cmbCategoryBottom.Items.Add("하위4 - " + dummycontent5_4);
+            //    cmbCategoryBottom.Items.Add("하위5 - " + dummycontent5_5);
+
+            //    cmbCategoryBottom.SelectedIndex = 0;
+            //}
+            //else if (cmbCategoryTop.Text.Contains("하-6"))
+            //{
+            //    txtCategoryTop.Text = BotCategory06;
+            //    txtCategoryTop.Enabled = true;
+
+            //    cmbCategoryBottom.Enabled = true;
+            //    txtCategoryBottom.Enabled = true;
+
+            //    cmbCategoryBottom.Items.Clear();
+
+            //    cmbCategoryBottom.Items.Add("하위1 - " + dummycontent6_1);
+            //    cmbCategoryBottom.Items.Add("하위2 - " + dummycontent6_2);
+            //    cmbCategoryBottom.Items.Add("하위3 - " + dummycontent6_3);
+
+            //    cmbCategoryBottom.SelectedIndex = 0;
+            //}
+            //#endregion
+
+            //if (!StartCheck)
+            //{
+            //    cmbCategoryBottom.SelectedIndex = botIndex;
+            //}
+
+            //StartCheck = false;
+            #endregion
         }
         #endregion
 
         #endregion
 
+        #region :: ETC 이벤트 ::
+        //창닫기 이벤트
+        private void Popup_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (SaveChecked)
+            {
+                DialogResult dialogResult = MessageBox.Show("수정된 항목이 있습니다. 프로그램을 재시작 하시겠습니까?", "종료 확인", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (dialogResult == DialogResult.Yes)
+                {
+                    SaveChecked = false;
+                    SaveChecked2 = false;
+                    Application.Restart();
+                    Environment.Exit(0);
+                }
+            }
+            else if (SaveChecked2)
+            {
+                DialogResult dialogResult = MessageBox.Show("수정된 항목이 있습니다. 프로그램을 재시작 하시겠습니까?", "종료 확인", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (dialogResult == DialogResult.Yes)
+                {
+                    SaveChecked = false;
+                    SaveChecked2 = false;
+                    Application.Restart();
+                    Environment.Exit(0);
+                }
+            }
+        }
+
+        //랜덤 체크 확인 이벤트
+        private void ChkRandom_CheckedChanged(object sender, EventArgs e)
+        {
+            bool _TempRandomize = ChkRandom.Checked;
+
+            if (_TempRandomize == Randomize)
+            {
+                SaveChecked2 = false;
+                return;
+            }
+            Properties.Settings.Default.Randomize = _TempRandomize;
+            Properties.Settings.Default.Save();
+
+            SaveChecked2 = true;
+        }
+        #endregion
+
+        #region :: 미사용 ::
         #region ::: 기존 항목 설정 이벤트 모음 :::
 
         #region :: Combobox Event ::
@@ -1359,14 +1622,6 @@ namespace RhythmMonopoly
             }
         }
 
-        private void btnController_Click(object sender, EventArgs e)
-        {
-
-            MessageBox.Show("공사중입니다 미안해요.", "저장 완료", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            //Controller con = new Controller();
-            //con.ShowDialog();
-        }
         #endregion
 
         #region :: ETC Event ::
@@ -1448,53 +1703,6 @@ namespace RhythmMonopoly
         #endregion
 
         #endregion
-
-        #region :: ETC 이벤트 ::
-        //창닫기 이벤트
-        private void Popup_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (SaveChecked)
-            {
-                DialogResult dialogResult = MessageBox.Show("수정된 항목이 있습니다. 프로그램을 재시작 하시겠습니까?", "종료 확인", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-                if (dialogResult == DialogResult.Yes)
-                {
-                    SaveChecked = false;
-                    SaveChecked2 = false;
-                    Application.Restart();
-                    Environment.Exit(0);
-                }
-            }
-            else if (SaveChecked2)
-            {
-                DialogResult dialogResult = MessageBox.Show("수정된 항목이 있습니다. 프로그램을 재시작 하시겠습니까?", "종료 확인", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-                if (dialogResult == DialogResult.Yes)
-                {
-                    SaveChecked = false;
-                    SaveChecked2 = false;
-                    Application.Restart();
-                    Environment.Exit(0);
-                }
-            }
-        }
-
-        //랜덤 체크 확인 이벤트
-        private void ChkRandom_CheckedChanged(object sender, EventArgs e)
-        {
-            bool _TempRandomize = ChkRandom.Checked;
-
-            if (_TempRandomize == Randomize)
-            {
-                SaveChecked2 = false;
-                return;
-            }
-            Properties.Settings.Default.Randomize = _TempRandomize;
-            Properties.Settings.Default.Save();
-
-            SaveChecked2 = true;
-        }
         #endregion
-
     }
 }

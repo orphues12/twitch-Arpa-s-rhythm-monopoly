@@ -93,19 +93,19 @@
       <Value Profile="(Default)">동시 수록 곡</Value>
     </Setting>
     <Setting Name="TopCategory02" Type="System.String" Scope="User">
-      <Value Profile="(Default)">더미</Value>
+      <Value Profile="(Default)">변속 곡</Value>
     </Setting>
     <Setting Name="TopCategory03" Type="System.String" Scope="User">
-      <Value Profile="(Default)">더미</Value>
+      <Value Profile="(Default)">솔직히 뭐적어야할지몰라서대충채워놨음</Value>
     </Setting>
     <Setting Name="TopCategory04" Type="System.String" Scope="User">
-      <Value Profile="(Default)">더미</Value>
+      <Value Profile="(Default)">바꿔서 쓰세요</Value>
     </Setting>
     <Setting Name="TopCategory05" Type="System.String" Scope="User">
-      <Value Profile="(Default)">더미</Value>
+      <Value Profile="(Default)">바꿔서 쓰세요</Value>
     </Setting>
     <Setting Name="TopCategory06" Type="System.String" Scope="User">
-      <Value Profile="(Default)">더미</Value>
+      <Value Profile="(Default)">바꿔서 쓰세요</Value>
     </Setting>
     <Setting Name="TestColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">White</Value>
@@ -117,9 +117,9 @@
       <Value Profile="(Default)">2</Value>
     </Setting>
     <Setting Name="TopNum" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">1</Value>
+      <Value Profile="(Default)">3</Value>
     </Setting>
-    <Setting Name="BotNum" Type="System.Int32" Scope="User">
+    <Setting Name="BottomNum" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">3</Value>
     </Setting>
     <Setting Name="Randomize" Type="System.Boolean" Scope="User">
@@ -136,6 +136,9 @@
     </Setting>
     <Setting Name="BotCategory06" Type="System.String" Scope="User">
       <Value Profile="(Default)"> 로 된 보컬 언어 곡</Value>
+    </Setting>
+    <Setting Name="GoldenNum" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">8</Value>
     </Setting>
   </Settings>
 </SettingsFile>

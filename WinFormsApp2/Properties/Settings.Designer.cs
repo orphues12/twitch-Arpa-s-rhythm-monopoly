@@ -385,7 +385,7 @@ namespace RhythmMonopoly.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("더미")]
+        [global::System.Configuration.DefaultSettingValueAttribute("변속 곡")]
         public string TopCategory02 {
             get {
                 return ((string)(this["TopCategory02"]));
@@ -397,7 +397,7 @@ namespace RhythmMonopoly.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("더미")]
+        [global::System.Configuration.DefaultSettingValueAttribute("솔직히 뭐적어야할지몰라서대충채워놨음")]
         public string TopCategory03 {
             get {
                 return ((string)(this["TopCategory03"]));
@@ -409,7 +409,7 @@ namespace RhythmMonopoly.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("더미")]
+        [global::System.Configuration.DefaultSettingValueAttribute("바꿔서 쓰세요")]
         public string TopCategory04 {
             get {
                 return ((string)(this["TopCategory04"]));
@@ -421,7 +421,7 @@ namespace RhythmMonopoly.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("더미")]
+        [global::System.Configuration.DefaultSettingValueAttribute("바꿔서 쓰세요")]
         public string TopCategory05 {
             get {
                 return ((string)(this["TopCategory05"]));
@@ -433,7 +433,7 @@ namespace RhythmMonopoly.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("더미")]
+        [global::System.Configuration.DefaultSettingValueAttribute("바꿔서 쓰세요")]
         public string TopCategory06 {
             get {
                 return ((string)(this["TopCategory06"]));
@@ -481,7 +481,7 @@ namespace RhythmMonopoly.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
         public int TopNum {
             get {
                 return ((int)(this["TopNum"]));
@@ -494,12 +494,12 @@ namespace RhythmMonopoly.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("3")]
-        public int BotNum {
+        public int BottomNum {
             get {
-                return ((int)(this["BotNum"]));
+                return ((int)(this["BottomNum"]));
             }
             set {
-                this["BotNum"] = value;
+                this["BottomNum"] = value;
             }
         }
         
@@ -560,6 +560,18 @@ namespace RhythmMonopoly.Properties {
             }
             set {
                 this["BotCategory06"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("8")]
+        public int GoldenNum {
+            get {
+                return ((int)(this["GoldenNum"]));
+            }
+            set {
+                this["GoldenNum"] = value;
             }
         }
     }

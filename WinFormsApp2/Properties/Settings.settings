@@ -111,13 +111,13 @@
       <Value Profile="(Default)">White</Value>
     </Setting>
     <Setting Name="AlphaNum" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">2</Value>
+      <Value Profile="(Default)">3</Value>
     </Setting>
     <Setting Name="ConsoNum" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">2</Value>
+      <Value Profile="(Default)">3</Value>
     </Setting>
     <Setting Name="TopNum" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">3</Value>
+      <Value Profile="(Default)">2</Value>
     </Setting>
     <Setting Name="BottomNum" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">3</Value>

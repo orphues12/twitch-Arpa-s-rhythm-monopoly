@@ -8,6 +8,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
@@ -31,6 +32,7 @@ namespace RhythmMonopoly
         string BotCategory04 = Properties.Settings.Default.BotCategory04; //상위 + 하위
         string BotCategory05 = Properties.Settings.Default.BotCategory05; //상위 + 하위
         string BotCategory06 = Properties.Settings.Default.BotCategory06; //상위 + 하위
+
 
 
         //하위 더미데이터 불러오는 곳
@@ -81,8 +83,6 @@ namespace RhythmMonopoly
         //Combobox 숫자관련
         int TopNum = Properties.Settings.Default.TopNum;
         int BotNum = Properties.Settings.Default.BottomNum;
-
-        //상위 하위 배열
         
 
         #endregion
@@ -100,6 +100,7 @@ namespace RhythmMonopoly
             this.MinimumSize = new Size(399,325);
             this.MaximumSize = new Size(399, 325);
 
+
             //폰트설정
             Font font1 = new Font(FontManager.fontFamilys[0], 16, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             Font font2 = new Font(FontManager.fontFamilys[0], 40, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
@@ -108,26 +109,32 @@ namespace RhythmMonopoly
             ChkRandom.Font = font1;
             ChkRandom.Checked = Randomize;
 
+            //모든 컨트롤 점검
             foreach (System.Windows.Forms.Control control in this.Controls)
             {
+                //라벨 확인
                 if (control is System.Windows.Forms.Label)
                 {
+                    //라벨 이름으로 원하는 항목의 폰트 설정 변경
                     string lblname = ((System.Windows.Forms.Label)control).Name;
+                    //일반 라벨
                     ((System.Windows.Forms.Label)control).Font = font1;
-                    //라벨마다 반복문
+                    //패널 라벨
                     if (lblname.Contains("Panel"))
                     {
                         ((System.Windows.Forms.Label)control).Font = font2;
                     }
+                    //타이틀 라벨
                     else if (lblname.Contains("Title"))
                     {
                         ((System.Windows.Forms.Label)control).Font = font3;
                     }
                 }
             }
-
+            //콤보박스 항목 추가 이벤트
             addCombobox();
 
+            //콤보박스 설정에 대한 사용가능 여부 초기 값(False)
             txtCategoryTop.Enabled = false;
             cmbCategoryBottom.Enabled = false;
             txtCategoryBottom.Enabled = false;
@@ -140,6 +147,7 @@ namespace RhythmMonopoly
         {
             try
             {
+                //상위 항목 선택 후 그것에 대한 설정
                 if (cmbCategoryTop.Text.Contains("상-1"))
                 {
                     txtCategoryTop.Text = TopCategory01;
@@ -310,70 +318,10 @@ namespace RhythmMonopoly
         {
             try
             {
+                //하위 콤보박스 정리
                 txtCategoryBottom.Clear();
 
-                #region :: 구버전 ::
-                //if (cmbCategoryTop.Text.Contains("3개"))
-                //{
-                //    if (cmbCategoryBottom.Text.ToString() == "하위 항목 1")
-                //    {
-                //        txtCategoryBottom.Text = dummycontent1_1;
-                //    }
-                //    else if (cmbCategoryBottom.Text.ToString() == "하위 항목 2")
-                //    {
-                //        txtCategoryBottom.Text = dummycontent1_2;
-                //    }
-                //    else if (cmbCategoryBottom.Text.ToString() == "하위 항목 3")
-                //    {
-                //        txtCategoryBottom.Text = dummycontent1_3;
-                //    }
-                //}
-                //else if (cmbCategoryTop.Text.Contains("4개"))
-                //{
-
-                //    if (cmbCategoryBottom.Text.ToString() == "하위 항목 1")
-                //    {
-                //        txtCategoryBottom.Text = dummycontent2_1;
-                //    }
-                //    else if (cmbCategoryBottom.Text.ToString() == "하위 항목 2")
-                //    {
-                //        txtCategoryBottom.Text = dummycontent2_2;
-                //    }
-                //    else if (cmbCategoryBottom.Text.ToString() == "하위 항목 3")
-                //    {
-                //        txtCategoryBottom.Text = dummycontent2_3;
-                //    }
-                //    else if (cmbCategoryBottom.Text.ToString() == "하위 항목 4")
-                //    {
-                //        txtCategoryBottom.Text = dummycontent2_4;
-                //    }
-                //}
-                //else if (cmbCategoryTop.Text.Contains("5개"))
-                //{
-
-                //    if (cmbCategoryBottom.Text.ToString() == "하위 항목 1")
-                //    {
-                //        txtCategoryBottom.Text = dummycontent3_1;
-                //    }
-                //    else if (cmbCategoryBottom.Text.ToString() == "하위 항목 2")
-                //    {
-                //        txtCategoryBottom.Text = dummycontent3_2;
-                //    }
-                //    else if (cmbCategoryBottom.Text.ToString() == "하위 항목 3")
-                //    {
-                //        txtCategoryBottom.Text = dummycontent3_3;
-                //    }
-                //    else if (cmbCategoryBottom.Text.ToString() == "하위 항목 4")
-                //    {
-                //        txtCategoryBottom.Text = dummycontent3_4;
-                //    }
-                //    else if (cmbCategoryBottom.Text.ToString() == "하위 항목 5")
-                //    {
-                //        txtCategoryBottom.Text = dummycontent3_5;
-                //    }
-                //}
-                #endregion
-
+                //상위+하위 항목 선택시 그것에 대한 설정
                 if (cmbCategoryTop.Text.Contains("하-1"))
                 {
                     if (cmbCategoryBottom.Text.Contains("하위1"))
@@ -501,10 +449,6 @@ namespace RhythmMonopoly
             }
         }
 
-        private void cmbCategoryTop_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            txtCategoryTop.Text = cmbCategoryTop.SelectedItem.ToString();
-        }
         #endregion
 
         #region :: Button Event ::
@@ -513,6 +457,7 @@ namespace RhythmMonopoly
         {
             try
             {
+                //예외처리
                 if (cmbCategoryTop.SelectedItem == null)
                 {
                     MessageBox.Show("항목을 선택하여 주십시오.", "저장 오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -550,171 +495,57 @@ namespace RhythmMonopoly
                     //아랫라인
                     string _TempCateBot = cmbCategoryBottom.Text;
                     string _TempCateChangeBot = txtCategoryBottom.Text;
-                    
+
+
                     //목차용 변수 지정 및 초기화
                     string TopCatadata = string.Empty;
                     string BotCatadata = string.Empty;
 
                     #region :: 목차 데이터 찾는 코드 ::
+                    //상위
+                    if (_TempCateTop.Contains("(상-"))
+                    {
+                        //값 찾아서 목차용 변수에 값 대입
+                        for (int i = 1; i < TopNum+1; i++)
+                        {
+                            if (_TempCateTop.Contains(String.Format("(상-{0})",i.ToString())))
+                            {
+                                TopCatadata = String.Format("TopCategory0{0}",i.ToString());
+                                break;
+                            }
+                        }
+                    }
 
-                    if (_TempCateTop.Contains("(상-1)"))
+                    //하위
+                    else if (_TempCateTop.Contains("(하-"))
                     {
-                        TopCatadata = "TopCategory01";
-                    }
-                    else if (_TempCateTop.Contains("(상-2)"))
-                    {
-                        TopCatadata = "TopCategory02";
-                    }
-                    else if (_TempCateTop.Contains("(상-3)"))
-                    {
-                        TopCatadata = "TopCategory03";
-                    }
-                    else if (_TempCateTop.Contains("(상-4)"))
-                    {
-                        TopCatadata = "TopCategory04";
-                    }
-                    else if (_TempCateTop.Contains("(상-5)"))
-                    {
-                        TopCatadata = "TopCategory05";
-                    }
-                    else if (_TempCateTop.Contains("(상-6)"))
-                    {
-                        TopCatadata = "TopCategory06";
-                    }
-                    else if (_TempCateTop.Contains("(하-1)"))
-                    {
-                        TopCatadata = "BotCategory01";
+                        for (int i = 1; i < BotNum + 1; i++)
+                        {
+                            //i값을 항목과 검사
+                            if (_TempCateTop.Contains(String.Format("(하-{0})", i.ToString())))
+                            {
+                                TopCatadata = String.Format("BotCategory0{0}", i.ToString());
 
-                        if (_TempCateBot.Contains("하위1"))
-                        {
-                            BotCatadata = "dummycontent1_1";
-                        }
-                        else if (_TempCateBot.Contains("하위2"))
-                        {
-                            BotCatadata = "dummycontent1_2";
-                        }
-                        else if (_TempCateBot.Contains("하위3"))
-                        {
-                            BotCatadata = "dummycontent1_3";
+                                //하위 배열 담기
+                                string[] BotArray = BotarrayCheck(i);
+                                for (int j = 1; j < 6; j++)
+                                {
+                                    if (_TempCateBot.Contains(String.Format("하위{0}", j.ToString())))
+                                    {
+                                        string TempBot = BotArray[j - 1];
+                                        BotCatadata = TempBot;
+                                        break;
+                                    }
+                                }
+                                break;
+                            }
+                            
                         }
                     }
-                    else if (_TempCateTop.Contains("(하-2)"))
-                    {
-                        TopCatadata = "BotCategory02";
 
-                        if (_TempCateBot.Contains("하위1"))
-                        {
-                            BotCatadata = "dummycontent2_1";
-                        }
-                        else if (_TempCateBot.Contains("하위2"))
-                        {
-                            BotCatadata = "dummycontent2_2";
-                        }
-                        else if (_TempCateBot.Contains("하위3"))
-                        {
-                            BotCatadata = "dummycontent2_3";
-                        }
-                        else if (_TempCateBot.Contains("하위4"))
-                        {
-                            BotCatadata = "dummycontent2_4";
-                        }
-                    }
-                    else if (_TempCateTop.Contains("(하-3)"))
-                    {
-                        TopCatadata = "BotCategory03";
-
-                        if (_TempCateBot.Contains("하위1"))
-                        {
-                            BotCatadata = "dummycontent3_1";
-                        }
-                        else if (_TempCateBot.Contains("하위2"))
-                        {
-                            BotCatadata = "dummycontent3_2";
-                        }
-                        else if (_TempCateBot.Contains("하위3"))
-                        {
-                            BotCatadata = "dummycontent3_3";
-                        }
-                        else if (_TempCateBot.Contains("하위4"))
-                        {
-                            BotCatadata = "dummycontent3_4";
-                        }
-                        else if (_TempCateBot.Contains("하위5"))
-                        {
-                            BotCatadata = "dummycontent3_5";
-                        }
-                    }
-                    else if (_TempCateTop.Contains("(하-4)"))
-                    {
-                        TopCatadata = "BotCategory04";
-
-                        if (_TempCateBot.Contains("하위1"))
-                        {
-                            BotCatadata = "dummycontent4_1";
-                        }
-                        else if (_TempCateBot.Contains("하위2"))
-                        {
-                            BotCatadata = "dummycontent4_2";
-                        }
-                        else if (_TempCateBot.Contains("하위3"))
-                        {
-                            BotCatadata = "dummycontent4_3";
-                        }
-                        else if (_TempCateBot.Contains("하위4"))
-                        {
-                            BotCatadata = "dummycontent4_4";
-                        }
-                        else if (_TempCateBot.Contains("하위5"))
-                        {
-                            BotCatadata = "dummycontent4_5";
-                        }
-                    }
-                    else if (_TempCateTop.Contains("(하-5)"))
-                    {
-                        TopCatadata = "BotCategory05";
-
-                        if (_TempCateBot.Contains("하위1"))
-                        {
-                            BotCatadata = "dummycontent5_1";
-                        }
-                        else if (_TempCateBot.Contains("하위2"))
-                        {
-                            BotCatadata = "dummycontent5_2";
-                        }
-                        else if (_TempCateBot.Contains("하위3"))
-                        {
-                            BotCatadata = "dummycontent5_3";
-                        }
-                        else if (_TempCateBot.Contains("하위4"))
-                        {
-                            BotCatadata = "dummycontent5_4";
-                        }
-                        else if (_TempCateBot.Contains("하위5"))
-                        {
-                            BotCatadata = "dummycontent5_5";
-                        }
-                    }
-                    else if (_TempCateTop.Contains("(하-6)"))
-                    {
-                        TopCatadata = "BotCategory06";
-
-                        if (_TempCateBot.Contains("하위1"))
-                        {
-                            BotCatadata = "dummycontent6_1";
-                        }
-                        else if (_TempCateBot.Contains("하위2"))
-                        {
-                            BotCatadata = "dummycontent6_2";
-                        }
-                        else if (_TempCateBot.Contains("하위3"))
-                        {
-                            BotCatadata = "dummycontent6_3";
-                        }
-                    }
                     #endregion
 
                     //데이터 저장
-                    
                     Properties.Settings.Default[TopCatadata] = _TempCateChangeTop;
 
                     if (BotCatadata != string.Empty)
@@ -1366,6 +1197,55 @@ namespace RhythmMonopoly
 
             SaveChecked2 = true;
         }
+
+        string[] BotarrayCheck (int a)
+        {
+            string[] TempBot1 = new string[5];
+
+            switch (a)
+            {
+                case 1:
+                    TempBot1.SetValue("dummycontent1_1", 0);
+                    TempBot1.SetValue("dummycontent1_2", 1);
+                    TempBot1.SetValue("dummycontent1_3", 2); 
+                    break;
+                case 2:
+                    TempBot1.SetValue("dummycontent2_1", 0);
+                    TempBot1.SetValue("dummycontent2_2", 1);
+                    TempBot1.SetValue("dummycontent2_3", 2);
+                    TempBot1.SetValue("dummycontent2_4", 3);
+                    break;
+                case 3:
+                    TempBot1.SetValue("dummycontent3_1", 0);
+                    TempBot1.SetValue("dummycontent3_2", 1);
+                    TempBot1.SetValue("dummycontent3_3", 2);
+                    TempBot1.SetValue("dummycontent3_4", 3);
+                    TempBot1.SetValue("dummycontent3_5", 4);
+                    break;
+                case 4:
+                    TempBot1.SetValue("dummycontent4_1", 0);
+                    TempBot1.SetValue("dummycontent4_2", 1);
+                    TempBot1.SetValue("dummycontent4_3", 2);
+                    TempBot1.SetValue("dummycontent4_4", 3);
+                    TempBot1.SetValue("dummycontent4_5", 4);
+                    break;
+                case 5:
+                    TempBot1.SetValue("dummycontent5_1", 0);
+                    TempBot1.SetValue("dummycontent5_2", 1);
+                    TempBot1.SetValue("dummycontent5_3", 2);
+                    TempBot1.SetValue("dummycontent5_4", 3);
+                    TempBot1.SetValue("dummycontent5_5", 4);
+                    break;
+                case 6:
+                    TempBot1.SetValue("dummycontent6_1", 0);
+                    TempBot1.SetValue("dummycontent6_2", 1);
+                    TempBot1.SetValue("dummycontent6_3", 2);
+                    break;
+
+            }
+            return TempBot1;
+        }
+
         #endregion
 
         #region :: 미사용 ::

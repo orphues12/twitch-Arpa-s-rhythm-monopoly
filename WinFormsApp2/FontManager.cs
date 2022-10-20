@@ -29,7 +29,7 @@ namespace RhythmMonopoly
         private void AddFontFromMemory()
         {
             List<byte[]> fonts = new List<byte[]>();
-            fonts.Add(Properties.Resources.신메이플스토리_YDSapphIIM);//메이플스토리 글씨체
+            fonts.Add(Properties.Resources.Maplestory_Light);//메이플스토리 글씨체
 
             foreach (byte[] font in fonts)
             {

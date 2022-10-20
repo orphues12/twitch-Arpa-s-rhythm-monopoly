@@ -21,8 +21,6 @@ namespace RhythmMonopoly
 
             #region :: 어플 설정 ::
 
-            //StringBuilder
-            StringBuilder sb = new StringBuilder(); 
             //랜덤함수
             Random rd = new Random();
             //폰트설정
@@ -30,11 +28,12 @@ namespace RhythmMonopoly
 
             //컨트롤박스 제거
             this.ControlBox = false;
+
             //크기 관련
             this.MinimumSize = new Size(1920, 1080);
             this.MaximumSize = new Size(1920, 1080);
-            //테스트
 
+            //로고 좌표
             labelLogo.Left = (this.ClientSize.Width - labelLogo.Width) / 2;
             labelLogo.Top = (this.ClientSize.Height - labelLogo.Height) / 2;
 
@@ -58,7 +57,7 @@ namespace RhythmMonopoly
             string BotCategory06 = Properties.Settings.Default.BotCategory06; //상위 + 하위
 
 
-            //하위 더미데이터 불러오는 곳 3,4,5
+            //하위 더미데이터
             string dummycontent1_1 = Properties.Settings.Default.dummycontent1_1;
             string dummycontent1_2 = Properties.Settings.Default.dummycontent1_2;
             string dummycontent1_3 = Properties.Settings.Default.dummycontent1_3;
@@ -103,8 +102,7 @@ namespace RhythmMonopoly
             #endregion
 
             #region :: 변수 텍스트 ::
-            /* 변경 불가능 한 항목들 14개 */
-            //알파벳 (2) - 3
+            //알파벳
             string Alpha1_1 = "알파벳 ";
             string Alpha1_2 = " 로 시작되는 곡";
 
@@ -112,40 +110,11 @@ namespace RhythmMonopoly
             string Conso1_1 = "발음이 ";
             string Conso1_2 = " 로 시작되는 곡";
 
-            //X라인 리듬게임 (1) - 9
-            string text6 = " 라인 리듬게임";
-
-            //플랫폼 (1) - 10
-            string text7 = " 기종 게임";
-
-            //황금열쇠 (2) - 12
-            string text8 = "황금 열쇠";
-
-            //계절 곡 (1) - 13
-            string text9 = " 계절 곡";
-
-            //변경 가능한 항목들 - 9개
-            //6개 - 상위항목만
-            string text10 = TopCategory01;
-            string text11 = TopCategory02;
-            string text12 = TopCategory03;
-            string text13 = TopCategory04;
-            string text14 = TopCategory05;
-            string text15 = TopCategory06;
-
-            //3개 - 상위 정하고 하위항목 3,4,5 1개씩
-            string text16 = BotCategory01; //Dummydata1_1 ~ 1_3
-            string text17 = BotCategory02; //Dummydata2_1 ~ 2_4
-            string text18 = BotCategory03; //Dummydata3_1 ~ 3_5
-            string text19 = BotCategory04;
-            string text20 = BotCategory05;
-            string text21 = BotCategory06;
-
             //항목회전용
             int stack = 0;
             #endregion
 
-            #region :: 대충 변수용 내용 설정 ::
+            #region :: 변수 랜덤 내용 설정 ::
             //바꿀 필요 없는 것
             //알파벳
             string[] alphabet_ = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
@@ -184,8 +153,7 @@ namespace RhythmMonopoly
 
 
             //배열 변수 문자열
-            //만약 개수 조정이 필요할 경우에는 많은 수정이 필요합니다람쥐
-            //알파벳 기본값 2개, 최대 8개까지
+            //알파벳 최대 8개까지
             string textAlpha1 = rdalphabet_[0].ToString() + ", " + rdalphabet_[1].ToString() + ", " + rdalphabet_[2].ToString();
             string textAlpha2 = rdalphabet_[3].ToString() + ", " + rdalphabet_[4].ToString() + ", " + rdalphabet_[5].ToString();
             string textAlpha3 = rdalphabet_[6].ToString() + ", " + rdalphabet_[7].ToString() + ", " + rdalphabet_[8].ToString();
@@ -195,7 +163,7 @@ namespace RhythmMonopoly
             string textAlpha7 = rdalphabet_[18].ToString() + ", " + rdalphabet_[19].ToString() + ", " + rdalphabet_[20].ToString();
             string textAlpha8 = rdalphabet_[21].ToString() + ", " + rdalphabet_[22].ToString() + ", " + rdalphabet_[23].ToString();
 
-            //자음 기본값 2개, 최대 4개까지
+            //자음 최대 4개까지
             string textConso1 = rdConsonant_[0].ToString() + ", " + rdConsonant_[1].ToString() + ", " + rdConsonant_[2].ToString();
             string textConso2 = rdConsonant_[3].ToString() + ", " + rdConsonant_[4].ToString() + ", " + rdConsonant_[5].ToString();
             string textConso3 = rdConsonant_[6].ToString() + ", " + rdConsonant_[7].ToString() + ", " + rdConsonant_[8].ToString();
@@ -207,8 +175,8 @@ namespace RhythmMonopoly
             string textSeason1 = rdseason_[0].ToString();
             //기종 1개
             string textGameclass1 = rdgameclass_[0].ToString();
-            //느낌 1개
-            //하위 더미 3개
+
+            //하위 항목 6개
             string textDummy1 = rddummy1_[0].ToString();
             string textDummy2 = rddummy2_[0].ToString();
             string textDummy3 = rddummy3_[0].ToString();
@@ -279,33 +247,33 @@ namespace RhythmMonopoly
 
             #region :: 신형 배열 제작 ::
 
-            //항목들을 담을 그릇 생성
+            //항목들을 담을 Dictionary 생성
             Dictionary<string, string> CateDictionary = new Dictionary<string, string>();
 
-            //고정 항목
+            //고정 항목들을 Dictionary에 추가
             CateDictionary.Add("CateButton", CateButton);
             CateDictionary.Add("CateGameClass", CateGameClass);
             CateDictionary.Add("CateSeason", CateSeason);
 
-            //알파벳
+            //알파벳 항목들을 Dictionary에 추가
             for (int i = 1; i < AlphaNum + 1; i++)
             {
                 CateDictionary.Add(String.Format("CateAlpha{0}", i.ToString()), CateAlpha[i-1]);
             }
 
-            //자음
+            //자음 항목들을 Dictionary에 추가
             for (int i = 1; i < ConsoNum + 1; i++)
             {
                 CateDictionary.Add(String.Format("CateConso{0}", i.ToString()), CateConso[i - 1]);
             }
 
-            //상위만
+            //상위 항목들을 Dictionary에 추가
             for (int i = 1; i < TopNum + 1; i++)
             {
                 CateDictionary.Add(String.Format("CateTop{0}", i.ToString()), CateTop[i - 1]);
             }
 
-            //하위만
+            //상위 + 하위 항목들을 Dictionary에 추가
             for (int i = 1; i < BotNum + 1; i++)
             {
                 CateDictionary.Add(String.Format("CateBot{0}", i.ToString()), CateBot[i - 1]);
@@ -315,8 +283,9 @@ namespace RhythmMonopoly
             var CateList = new List<string>(CateDictionary.Values);
             #endregion
 
-            #region :: 신형 배열 제작 ::
+            #region :: 항목 삽입 ::
 
+            //제작 리스트에서 무작위 배열로 담을 Array 지정
             string[] rdcate_ = { };
             //황금열쇠 위치 고정일 시
             if (GoldenFix)
@@ -325,53 +294,55 @@ namespace RhythmMonopoly
             }
 
 
-            /* 황금 열쇠가 정해진 위치 + 다른 항목들은 랜덤으로 배치*/
+            /* 황금 열쇠가 정해진 위치 + 다른 항목들은 랜덤으로 배치 */
             if (!Randomize)
             {
                 //모든 컨트롤을 검사
                 foreach (System.Windows.Forms.Control control in this.Controls)
                 {
-                    //라벨마다 반복문 + 황금 열쇠아닐 경우 진행
+                    //라벨 검사 + 황금 열쇠가 아닐 경우
                     if (control is System.Windows.Forms.Label && ((System.Windows.Forms.Label)control).Text != "Golden")
                     {
-
+                        //폰트 변경 (신메이플 스토리)
                         ((System.Windows.Forms.Label)control).Font = font1;
 
                         //변함없는 값들은 변경 안하도록 (BackColor = Black)
                         if (((System.Windows.Forms.Label)control).BackColor == Color.Black)
                         {
+                            //라벨 이름 검사
                             string lblname = ((System.Windows.Forms.Label)control).Name;
 
-                            //라벨
+                            //투온섬
                             if (lblname.Contains("EZ2ON"))
                             {
                                 ((System.Windows.Forms.Label)control).Image = Properties.Resources.무인도_EZ2v2;
                                 ((System.Windows.Forms.Label)control).BackColor = Color.White;
                                 ((System.Windows.Forms.Label)control).Text = null;
                             }
+                            //디맥섬
                             else if (lblname.Contains("DJMAX"))
                             {
                                 ((System.Windows.Forms.Label)control).Image = Properties.Resources.무인도_DJMAXv2;
                                 ((System.Windows.Forms.Label)control).BackColor = Color.White;
                                 ((System.Windows.Forms.Label)control).Text = null;
                             }
+                            //출발지점
                             else if (lblname.Contains("Start"))
                             {
                                 ((System.Windows.Forms.Label)control).Image = Properties.Resources.STARTv2;
                                 ((System.Windows.Forms.Label)control).BackColor = Color.White;
                                 ((System.Windows.Forms.Label)control).Text = null;
                             }
+                            //자유
                             else if (lblname.Contains("Free"))
                             {
                                 ((System.Windows.Forms.Label)control).Image = Properties.Resources.FREEv2;
                                 ((System.Windows.Forms.Label)control).BackColor = Color.Black;
                                 ((System.Windows.Forms.Label)control).Text = null;
                             }
-
                             continue;
                         }
-
-                        //아닌 항목들은 말처럼 쓸수있도록
+                        //항목 부분
                         else if (((System.Windows.Forms.Label)control).Text != "")
                         {
                             //색 변경
@@ -381,7 +352,7 @@ namespace RhythmMonopoly
                             ((System.Windows.Forms.Label)control).BorderStyle = BorderStyle.FixedSingle;
                             ((System.Windows.Forms.Label)control).ForeColor = Color.Black;
 
-                            //라벨 항목마다 텍스트 변경
+                            //무작위로 항목 추가
                             for (int i = stack; i < rdcate_.Length;)
                             {
                                 ((System.Windows.Forms.Label)control).Text = rdcate_[i].ToString();
@@ -403,56 +374,54 @@ namespace RhythmMonopoly
                 }
 
             }
-            //전체 랜덤
+            //전체 랜덤 체크 시
             else if (Randomize)
             {
-                //황금열쇠 개수만큼 추가
+                //황금열쇠 개수 만큼 추가
                 for (int i = 0; i < GoldenNum; i++)
                 {
                     CateList.Add("황금 열쇠");
                 }
 
+                //황금열쇠 추가 후 새롭게 무작위
                 rdcate_ = CateList.OrderBy(x => rd.Next()).ToArray();
 
                 //모든 컨트롤을 검사
                 foreach (System.Windows.Forms.Control control in this.Controls)
                 {
-                    //라벨마다 반복문
+                    //라벨 검사 + 황금 열쇠가 아닐 경우
                     if (control is System.Windows.Forms.Label)
                     {
+                        //폰트 설정
                         ((System.Windows.Forms.Label)control).Font = font1;
 
-                        //밑에 배너
-                        if (((System.Windows.Forms.Label)control).Name.Equals("lblBanner"))
-                        {
-                            ((System.Windows.Forms.Label)control).BackColor = Color.White; ;
-                            ((System.Windows.Forms.Label)control).Text = "* 현재는 판 제작 기능만 제공하고 있습니다.";
-                            continue;
-                        }
                         //변함없는 값들은 변경 안하도록 (BackColor = Black)
-                        else if (((System.Windows.Forms.Label)control).BackColor == Color.Black)
+                        if (((System.Windows.Forms.Label)control).BackColor == Color.Black)
                         {
                             string lblname = ((System.Windows.Forms.Label)control).Name;
 
-                            //라벨
+                            //투온섬
                             if (lblname.Contains("EZ2ON"))
                             {
                                 ((System.Windows.Forms.Label)control).Image = Properties.Resources.무인도_EZ2v2;
                                 ((System.Windows.Forms.Label)control).BackColor = Color.White;
                                 ((System.Windows.Forms.Label)control).Text = null;
                             }
+                            //디맥섬
                             else if (lblname.Contains("DJMAX"))
                             {
                                 ((System.Windows.Forms.Label)control).Image = Properties.Resources.무인도_DJMAXv2;
                                 ((System.Windows.Forms.Label)control).BackColor = Color.White;
                                 ((System.Windows.Forms.Label)control).Text = null;
                             }
+                            //출발지점
                             else if (lblname.Contains("Start"))
                             {
                                 ((System.Windows.Forms.Label)control).Image = Properties.Resources.STARTv2;
                                 ((System.Windows.Forms.Label)control).BackColor = Color.White;
                                 ((System.Windows.Forms.Label)control).Text = null;
                             }
+                            //자유
                             else if (lblname.Contains("Free"))
                             {
                                 ((System.Windows.Forms.Label)control).Image = Properties.Resources.FREEv2;
@@ -462,8 +431,7 @@ namespace RhythmMonopoly
 
                             continue;
                         }
-
-                        //아닌 항목들은 말처럼 쓸수있도록
+                        //항목 부분
                         else if (((System.Windows.Forms.Label)control).Text != "")
                         {
                             //색 변경
@@ -481,7 +449,7 @@ namespace RhythmMonopoly
                                 break;
                             }
                         }
-
+                        //황금 열쇠 일 경우
                         if (((System.Windows.Forms.Label)control).Text.Equals("황금 열쇠"))
                         {
                             ((System.Windows.Forms.Label)control).BackColor = Color.Yellow;
@@ -493,7 +461,6 @@ namespace RhythmMonopoly
             }
 
             #endregion
-
 
             #region :: 구형 변수 ::
             //카테고리는 최종 22개가 되야 함.
@@ -703,9 +670,6 @@ namespace RhythmMonopoly
             //        }
             //    }
             //}
-
-
-
             ////랜덤활성화
             //if (Randomize)
             //{
@@ -960,14 +924,13 @@ namespace RhythmMonopoly
             //        //    }
             //    }
             //}
-
             #endregion
 
         }
 
         #region :: ButtonEvent ::
 
-        //종료
+        //종료 버튼 클릭 이벤트
         private void btnexit_Click(object sender, EventArgs e)
         {
             DialogResult Result = MessageBox.Show("정말로 종료하시겠습니까?", "확인", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
@@ -977,7 +940,7 @@ namespace RhythmMonopoly
             }
         }
 
-        //판 섞기
+        //판 섞기 버튼 이벤트
         private void btnReset_Click(object sender, EventArgs e)
         {
 
@@ -989,20 +952,20 @@ namespace RhythmMonopoly
             }
         }
 
-        //옵션
+        //항목 설정 버튼 클릭 이벤트
         private void buttonSetup_Click(object sender, EventArgs e)
         {
             Popup popup = new Popup();
             popup.ShowDialog();
         }
 
-        //폰트 정보
+        //폰트 정보 버튼 클릭 이벤트
         private void button1_Click(object sender, EventArgs e)
         {
             MessageBox.Show("이 프로그램에는 메이플스토리가 제공한\r메이플스토리 서체가 적용되어 있습니다.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        //스크린샷
+        //스크린샷 버튼 클릭 이벤트
         private void btnScreenshot_Click(object sender, EventArgs e)
         {
 
@@ -1014,12 +977,7 @@ namespace RhythmMonopoly
                 string filename = "\\판때기.png";
                 string _path = localpath + filename;
 
-
-                //테스트
-                string Hello = string.Empty;
-
-
-                //변수 지정 필요
+                //FHD 크기 지정
                 Capture ImgCapture = new Capture(0, 0, 1920, 1080);
                 ImgCapture.SetPath(_path);
 
@@ -1042,6 +1000,7 @@ namespace RhythmMonopoly
             this.Size = new Size(1920, 1080);
         }
 
+        //이미지 캡쳐 이벤트
         private void CaptureImage(string _path)
         {
             int _refX = 0;

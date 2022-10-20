@@ -457,7 +457,7 @@ namespace RhythmMonopoly.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
         public int AlphaNum {
             get {
                 return ((int)(this["AlphaNum"]));
@@ -469,7 +469,7 @@ namespace RhythmMonopoly.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
         public int ConsoNum {
             get {
                 return ((int)(this["ConsoNum"]));
@@ -481,7 +481,7 @@ namespace RhythmMonopoly.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
         public int TopNum {
             get {
                 return ((int)(this["TopNum"]));

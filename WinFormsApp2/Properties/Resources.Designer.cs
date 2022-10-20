@@ -171,6 +171,16 @@ namespace RhythmMonopoly.Properties {
         }
         
         /// <summary>
+        ///   System.Byte[] 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static byte[] Maplestory_Light {
+            get {
+                object obj = ResourceManager.GetObject("Maplestory_Light", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
         internal static System.Drawing.Bitmap P {
@@ -267,16 +277,6 @@ namespace RhythmMonopoly.Properties {
             get {
                 object obj = ResourceManager.GetObject("뱅하싶2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   System.Byte[] 형식의 지역화된 리소스를 찾습니다.
-        /// </summary>
-        internal static byte[] 신메이플스토리_YDSapphIIM {
-            get {
-                object obj = ResourceManager.GetObject("신메이플스토리_YDSapphIIM", resourceCulture);
-                return ((byte[])(obj));
             }
         }
     }

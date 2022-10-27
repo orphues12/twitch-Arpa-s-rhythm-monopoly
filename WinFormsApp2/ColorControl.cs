@@ -13,8 +13,7 @@ namespace RhythmMonopoly
         public ColorControl()
         {
             InitializeComponent();
-
-
+            
             #region :: 변수 불러오기 ::
             //뒷배경 코드
             string BackCurrentColor = Properties.Settings.Default.BackCurrentColor;

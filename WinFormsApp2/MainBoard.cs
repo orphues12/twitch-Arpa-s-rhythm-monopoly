@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Security.Policy;
+using static System.Net.WebRequestMethods;
 
 namespace RhythmMonopoly
 {
@@ -92,13 +93,19 @@ namespace RhythmMonopoly
             string dummycontent6_2 = Properties.Settings.Default.dummycontent6_2;
             string dummycontent6_3 = Properties.Settings.Default.dummycontent6_3;
 
-
-            //항목 숫자 변수
+            //항목 숫자 변수 (랜덤X)
             int AlphaNum = Properties.Settings.Default.AlphaNum;
             int ConsoNum = Properties.Settings.Default.ConsoNum;
             int TopNum = Properties.Settings.Default.TopNum;
             int BotNum = Properties.Settings.Default.BottomNum;
             int GoldenNum = Properties.Settings.Default.GoldenNum;
+
+            //항목 숫자 변수 (랜덤O)
+            int AlphaNum2 = Properties.Settings.Default.AlphaNum2;
+            int ConsoNum2 = Properties.Settings.Default.ConsoNum2;
+            int TopNum2 = Properties.Settings.Default.TopNum2;
+            int BotNum2 = Properties.Settings.Default.BottomNum2;
+            int GoldenNum2 = Properties.Settings.Default.GoldenNum2;
 
             //랜덤변수
             bool Randomize = Properties.Settings.Default.Randomize;
@@ -244,8 +251,21 @@ namespace RhythmMonopoly
             string CateGolden6 = "황금 열쇠";
             string CateGolden7 = "황금 열쇠";
             string CateGolden8 = "황금 열쇠";
+            string CateGolden9 = "황금 열쇠";
+            string CateGolden10 = "황금 열쇠";
+            string CateGolden11 = "황금 열쇠";
+            string CateGolden12 = "황금 열쇠";
+            string CateGolden13 = "황금 열쇠";
+            string CateGolden14 = "황금 열쇠";
+            string CateGolden15 = "황금 열쇠";
+            string CateGolden16 = "황금 열쇠";
+            string CateGolden17 = "황금 열쇠";
+            string CateGolden18 = "황금 열쇠";
+            string CateGolden19 = "황금 열쇠";
+            string CateGolden20 = "황금 열쇠";
+            string CateGolden21 = "황금 열쇠";
 
-            string[] CateGolden = { CateGolden1, CateGolden2, CateGolden3, CateGolden4, CateGolden5, CateGolden6, CateGolden7, CateGolden8 };
+            string[] CateGolden = { CateGolden1, CateGolden2, CateGolden3, CateGolden4, CateGolden5, CateGolden6, CateGolden7, CateGolden8, CateGolden9, CateGolden10, CateGolden11, CateGolden12, CateGolden13, CateGolden14, CateGolden15, CateGolden16, CateGolden17, CateGolden18, CateGolden19, CateGolden20, CateGolden21};
 
             //고정 항목
             string CateButton = textButton1 + " 라인 리듬게임";
@@ -263,28 +283,65 @@ namespace RhythmMonopoly
             CateDictionary.Add("CateGameClass", CateGameClass);
             CateDictionary.Add("CateSeason", CateSeason);
 
-            //알파벳 항목들을 Dictionary에 추가
-            for (int i = 1; i < AlphaNum + 1; i++)
+            //랜덤아닌 배열 제작
+            if (!Randomize)
             {
-                CateDictionary.Add(String.Format("CateAlpha{0}", i.ToString()), CateAlpha[i-1]);
-            }
+                //알파벳 항목들을 Dictionary에 추가
+                for (int i = 1; i < AlphaNum + 1; i++)
+                {
+                    CateDictionary.Add(String.Format("CateAlpha{0}", i.ToString()), CateAlpha[i - 1]);
+                }
 
-            //자음 항목들을 Dictionary에 추가
-            for (int i = 1; i < ConsoNum + 1; i++)
-            {
-                CateDictionary.Add(String.Format("CateConso{0}", i.ToString()), CateConso[i - 1]);
-            }
+                //자음 항목들을 Dictionary에 추가
+                for (int i = 1; i < ConsoNum + 1; i++)
+                {
+                    CateDictionary.Add(String.Format("CateConso{0}", i.ToString()), CateConso[i - 1]);
+                }
 
-            //상위 항목들을 Dictionary에 추가
-            for (int i = 1; i < TopNum + 1; i++)
-            {
-                CateDictionary.Add(String.Format("CateTop{0}", i.ToString()), CateTop[i - 1]);
-            }
+                //상위 항목들을 Dictionary에 추가
+                for (int i = 1; i < TopNum + 1; i++)
+                {
+                    CateDictionary.Add(String.Format("CateTop{0}", i.ToString()), CateTop[i - 1]);
+                }
 
-            //상위 + 하위 항목들을 Dictionary에 추가
-            for (int i = 1; i < BotNum + 1; i++)
+                //상위 + 하위 항목들을 Dictionary에 추가
+                for (int i = 1; i < BotNum + 1; i++)
+                {
+                    CateDictionary.Add(String.Format("CateBot{0}", i.ToString()), CateBot[i - 1]);
+                }
+            }
+            //랜덤 배열 제작
+            else
             {
-                CateDictionary.Add(String.Format("CateBot{0}", i.ToString()), CateBot[i - 1]);
+                //알파벳 항목들을 Dictionary에 추가
+                for (int i = 1; i < AlphaNum2 + 1; i++)
+                {
+                    CateDictionary.Add(String.Format("CateAlpha{0}", i.ToString()), CateAlpha[i - 1]);
+                }
+
+                //자음 항목들을 Dictionary에 추가
+                for (int i = 1; i < ConsoNum2 + 1; i++)
+                {
+                    CateDictionary.Add(String.Format("CateConso{0}", i.ToString()), CateConso[i - 1]);
+                }
+
+                //상위 항목들을 Dictionary에 추가
+                for (int i = 1; i < TopNum2 + 1; i++)
+                {
+                    CateDictionary.Add(String.Format("CateTop{0}", i.ToString()), CateTop[i - 1]);
+                }
+
+                //상위 + 하위 항목들을 Dictionary에 추가
+                for (int i = 1; i < BotNum2 + 1; i++)
+                {
+                    CateDictionary.Add(String.Format("CateBot{0}", i.ToString()), CateBot[i - 1]);
+                }
+
+                //황금열쇠 항목들을 Dictionary에 추가
+                for (int i = 1; i < GoldenNum2 + 1; i++)
+                {
+                    CateDictionary.Add(String.Format("CateGolden{0}", i.ToString()), CateGolden[i - 1]);
+                }
             }
 
             //Dictionary에서 Value 값 추출 후 새 리스트 제작 
@@ -296,7 +353,8 @@ namespace RhythmMonopoly
             //제작 리스트에서 무작위 배열로 담을 Array 지정
             string[] rdcate_ = { };
             //황금열쇠 위치 고정일 시
-            if (GoldenFix)
+
+            if (!Randomize)
             {
                 rdcate_ = CateList.OrderBy(x => rd.Next()).ToArray();
             }
@@ -358,7 +416,13 @@ namespace RhythmMonopoly
                         else if (((System.Windows.Forms.Label)control).Text != "")
                         {
                             //색 변경
-                            Color randomColor = Color.FromArgb(rd.Next(64, 256), rd.Next(0, 20), rd.Next(64, 256));
+                            Color randomColor = Color.FromArgb(rd.Next(64, 256), rd.Next(64, 256), rd.Next(64, 256));
+
+                            //크로마 키 용 화면이랑 색이 같을 경우 다시 색을 조정함 (16진수 - 10진수 //나중에 수정해야됨)
+                            if (randomColor.ToString().Equals(BackCurrentColor))
+                            {
+                                randomColor = Color.FromArgb(rd.Next(64, 256), rd.Next(64, 256), rd.Next(64, 256));
+                            }
 
                             ((System.Windows.Forms.Label)control).BackColor = randomColor;
                             ((System.Windows.Forms.Label)control).BorderStyle = BorderStyle.FixedSingle;
@@ -389,13 +453,7 @@ namespace RhythmMonopoly
             //전체 랜덤 체크 시
             else if (Randomize)
             {
-                //황금열쇠 개수 만큼 추가
-                for (int i = 0; i < GoldenNum; i++)
-                {
-                    CateList.Add("황금 열쇠");
-                }
-
-                //황금열쇠 추가 후 새롭게 무작위
+                // 새롭게 무작위
                 rdcate_ = CateList.OrderBy(x => rd.Next()).ToArray();
 
                 //모든 컨트롤을 검사
@@ -452,7 +510,13 @@ namespace RhythmMonopoly
                         else if (((System.Windows.Forms.Label)control).Text != "")
                         {
                             //색 변경
-                            Color randomColor = Color.FromArgb(rd.Next(64, 256), rd.Next(0, 20), rd.Next(64, 256));
+                            Color randomColor = Color.FromArgb(rd.Next(64, 256), rd.Next(64, 256), rd.Next(64, 256));
+
+                            //크로마 키 용 화면이랑 색이 같을 경우 다시 색을 조정함 (16진수 - 10진수 //나중에 수정해야됨)
+                            if (randomColor.ToString().Equals(BackCurrentColor))
+                            {
+                                randomColor = Color.FromArgb(rd.Next(64, 256), rd.Next(64, 256), rd.Next(64, 256));
+                            }
 
                             ((System.Windows.Forms.Label)control).BackColor = randomColor;
                             ((System.Windows.Forms.Label)control).BorderStyle = BorderStyle.FixedSingle;
@@ -985,13 +1049,13 @@ namespace RhythmMonopoly
         private void btnScreenshot_Click(object sender, EventArgs e)
         {
 
-            DialogResult Result = MessageBox.Show("현재 판을 저장 하시겠습니까? \r바탕화면에 저장됩니다.", "저장 확인", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            DialogResult Result = MessageBox.Show("현재 판을 저장 하시겠습니까? \r실행파일 폴더에 저장됩니다.", "저장 확인", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
             if (Result == DialogResult.OK)
             {
                 MessageBox.Show("확인을 누르시면 3초 뒤 스크린 캡쳐가 됩니다.", "저장 확인", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 //저장 위치 지정 (바탕화면)
-                string localpath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                string localpath = System.Environment.CurrentDirectory;
                 string filename = "\\판때기.png";
                 string _path = localpath + filename;
 
@@ -1009,7 +1073,7 @@ namespace RhythmMonopoly
 
                 CaptureImage(_path);
 
-                MessageBox.Show("바탕화면에 저장되었습니다.", "확인", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("사진이 저장되었습니다.", "확인", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                 if (!Labellocation) BackScreen.SendToBack();
                 return;

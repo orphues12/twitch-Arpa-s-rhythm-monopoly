@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.SpinGolden = new System.Windows.Forms.NumericUpDown();
             this.button1 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -39,6 +41,7 @@
             this.SpinConso = new System.Windows.Forms.NumericUpDown();
             this.SpinAlpha = new System.Windows.Forms.NumericUpDown();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SpinGolden)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpinBot)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpinTop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpinConso)).BeginInit();
@@ -47,6 +50,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.SpinGolden);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
@@ -58,13 +63,34 @@
             this.groupBox1.Controls.Add(this.SpinAlpha);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(260, 287);
+            this.groupBox1.Size = new System.Drawing.Size(260, 357);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(13, 266);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(59, 15);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "황금 열쇠";
+            // 
+            // SpinGolden
+            // 
+            this.SpinGolden.Location = new System.Drawing.Point(195, 266);
+            this.SpinGolden.Maximum = new decimal(new int[] {
+            19,
+            0,
+            0,
+            0});
+            this.SpinGolden.Name = "SpinGolden";
+            this.SpinGolden.Size = new System.Drawing.Size(40, 23);
+            this.SpinGolden.TabIndex = 9;
+            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(95, 250);
+            this.button1.Location = new System.Drawing.Point(95, 320);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 8;
@@ -110,7 +136,7 @@
             // 
             // SpinBot
             // 
-            this.SpinBot.Location = new System.Drawing.Point(195, 205);
+            this.SpinBot.Location = new System.Drawing.Point(195, 206);
             this.SpinBot.Maximum = new decimal(new int[] {
             6,
             0,
@@ -160,13 +186,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 311);
+            this.ClientSize = new System.Drawing.Size(284, 381);
             this.Controls.Add(this.groupBox1);
             this.Name = "Controller";
             this.Text = "항목 개수 설정";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Controller_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SpinGolden)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpinBot)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpinTop)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpinConso)).EndInit();
@@ -187,5 +214,7 @@
         private NumericUpDown SpinConso;
         private NumericUpDown SpinAlpha;
         private Button button1;
+        private Label label5;
+        private NumericUpDown SpinGolden;
     }
 }

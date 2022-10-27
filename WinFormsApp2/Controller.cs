@@ -14,20 +14,29 @@ namespace RhythmMonopoly
     public partial class Controller : Form
     {
         #region :: 변수 설정 ::
-        //숫자
+        //숫자 (랜덤X)
         int AlphaNum = Properties.Settings.Default.AlphaNum;  //알파벳
         int ConsoNum = Properties.Settings.Default.ConsoNum;  //자음
         int TopNum = Properties.Settings.Default.TopNum;    //상위만  
         int BotNum = Properties.Settings.Default.BottomNum;    //상위+하위
         int GoldenNum = Properties.Settings.Default.GoldenNum; //황금열쇠
 
+        //숫자 (랜덤O)
+        int AlphaNum2 = Properties.Settings.Default.AlphaNum2;  //알파벳
+        int ConsoNum2 = Properties.Settings.Default.ConsoNum2;  //자음
+        int TopNum2 = Properties.Settings.Default.TopNum2;    //상위만  
+        int BotNum2 = Properties.Settings.Default.BottomNum2;    //상위+하위
+        int GoldenNum2 = Properties.Settings.Default.GoldenNum2; //황금열쇠
+
         int TempAlpha = 0;
         int TempConso = 0;
         int TempTop = 0;
         int TempBot = 0;
+        int TempGolden = 0;
         #endregion
 
         bool SaveChecked = false;
+        bool Randomize;
 
         //저장 여부 Popup으로 보내는 용도
         public bool SaveChecking
@@ -44,14 +53,31 @@ namespace RhythmMonopoly
             this.MinimizeBox = false;
             this.MaximizeBox = false;
             //크기 관련
-            this.MinimumSize = new Size(300, 350);
-            this.MaximumSize = new Size(300, 350);
+            this.MinimumSize = new Size(300, 420);
+            this.MaximumSize = new Size(300, 420);
+
+            //랜덤 (황금 열쇠 변동과 연동됨)
+            Popup popup1 = new Popup();
+            Randomize = popup1.RandomizeCheck;
+            popup1.Close();
 
             #region :: 변수 삽입 :: 
-            SpinAlpha.Value = AlphaNum;
-            SpinConso.Value = ConsoNum;
-            SpinTop.Value = TopNum;
-            SpinBot.Value = BotNum;
+            if (!Randomize)
+            {
+                SpinAlpha.Value = AlphaNum;
+                SpinConso.Value = ConsoNum;
+                SpinTop.Value = TopNum;
+                SpinBot.Value = BotNum;
+                SpinGolden.Value = GoldenNum;
+            }
+            else
+            {
+                SpinAlpha.Value = AlphaNum2;
+                SpinConso.Value = ConsoNum2;
+                SpinTop.Value = TopNum2;
+                SpinBot.Value = BotNum2;
+                SpinGolden.Value = GoldenNum2;
+            }
             #endregion
 
             //폰트 설정
@@ -66,6 +92,11 @@ namespace RhythmMonopoly
                     ((System.Windows.Forms.Label)control).Font = font1;
                 }
             }
+
+            if (!Randomize)
+            {
+                SpinGolden.Enabled = false;
+            }
         }
 
         //GroupBox 내부 Control 찾기
@@ -79,23 +110,36 @@ namespace RhythmMonopoly
         #region :: Event ::
         //저장 버튼 이벤트 
         private void button1_Click(object sender, EventArgs e)
-        {            
+        {
             //임시 변수
             TempAlpha = int.Parse(SpinAlpha.Value.ToString());
             TempConso = int.Parse(SpinConso.Value.ToString());
             TempTop = int.Parse(SpinTop.Value.ToString());
             TempBot = int.Parse(SpinBot.Value.ToString());
+            TempGolden = int.Parse(SpinGolden.Value.ToString());
 
-            if (SaveCheck(TempAlpha, TempConso, TempTop, TempBot))
+            if (SaveCheck(TempAlpha, TempConso, TempTop, TempBot, TempGolden))
             {
                 DialogResult result = MessageBox.Show("값을 저장하시겠습니까?", "저장 확인", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
-                    Properties.Settings.Default.AlphaNum = TempAlpha;
-                    Properties.Settings.Default.ConsoNum = TempConso;
-                    Properties.Settings.Default.TopNum = TempTop;
-                    Properties.Settings.Default.BottomNum = TempBot;
+                    if (!Randomize)
+                    {
+                        Properties.Settings.Default.AlphaNum = TempAlpha;
+                        Properties.Settings.Default.ConsoNum = TempConso;
+                        Properties.Settings.Default.TopNum = TempTop;
+                        Properties.Settings.Default.BottomNum = TempBot;
+                        Properties.Settings.Default.GoldenNum = TempGolden;
+                    }
+                    else
+                    {
+                        Properties.Settings.Default.AlphaNum2 = TempAlpha;
+                        Properties.Settings.Default.ConsoNum2 = TempConso;
+                        Properties.Settings.Default.TopNum2 = TempTop;
+                        Properties.Settings.Default.BottomNum2 = TempBot;
+                        Properties.Settings.Default.GoldenNum2 = TempGolden;
+                    }
 
                     Properties.Settings.Default.Save();
 
@@ -113,18 +157,19 @@ namespace RhythmMonopoly
         }
 
         //저장 확인 이벤트
-        private bool SaveCheck(int Alpha, int Conso, int Top, int Bot)
+        private bool SaveCheck(int Alpha, int Conso, int Top, int Bot, int Golden)
         {
-            TempAlpha = Alpha;
-            TempConso = Conso;
-            TempTop = Top;
-            TempBot = Bot;
-
-            if (Alpha + Conso + Top + Bot != 11)
+            if (!Randomize && Alpha + Conso + Top + Bot != 11)
             {
                 MessageBox.Show("모든 항목의 합은 11이 되어야 합니다.", "저장 오류", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
+            else if (Randomize && Alpha + Conso + Top + Bot + Golden != 19)
+            {
+                MessageBox.Show("모든 항목의 합은 19가 되어야 합니다.", "저장 오류", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
             return true;
         }
         #endregion

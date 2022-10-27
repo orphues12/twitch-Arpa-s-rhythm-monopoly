@@ -586,5 +586,65 @@ namespace RhythmMonopoly.Properties {
                 this["BackCurrentColor"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        public int AlphaNum2 {
+            get {
+                return ((int)(this["AlphaNum2"]));
+            }
+            set {
+                this["AlphaNum2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        public int ConsoNum2 {
+            get {
+                return ((int)(this["ConsoNum2"]));
+            }
+            set {
+                this["ConsoNum2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public int TopNum2 {
+            get {
+                return ((int)(this["TopNum2"]));
+            }
+            set {
+                this["TopNum2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        public int BottomNum2 {
+            get {
+                return ((int)(this["BottomNum2"]));
+            }
+            set {
+                this["BottomNum2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("8")]
+        public int GoldenNum2 {
+            get {
+                return ((int)(this["GoldenNum2"]));
+            }
+            set {
+                this["GoldenNum2"] = value;
+            }
+        }
     }
 }

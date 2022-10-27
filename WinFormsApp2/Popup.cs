@@ -83,7 +83,16 @@ namespace RhythmMonopoly
         //Combobox 숫자관련
         int TopNum = Properties.Settings.Default.TopNum;
         int BotNum = Properties.Settings.Default.BottomNum;
-        
+
+        int TopNum2 = Properties.Settings.Default.TopNum2;
+        int BotNum2 = Properties.Settings.Default.BottomNum2;
+
+        //랜덤 체크 데이터 넘겨주기
+        public bool RandomizeCheck
+        {
+            get { return this.ChkRandom.Checked; }
+            set { this.ChkRandom.Checked = value; }
+        }
 
         #endregion
 
@@ -778,15 +787,38 @@ namespace RhythmMonopoly
             string[] TopList = { TopCategory01, TopCategory02, TopCategory03, TopCategory04, TopCategory05, TopCategory06 };
             string[] BotList = { BotCategory01, BotCategory02, BotCategory03, BotCategory04, BotCategory05, BotCategory06 };
 
-            //상위 항목 추가
-            for (int i = 1; i < TopNum + 1; i++)
+            //랜덤
+            if (Randomize)
             {
-                cmbCategoryTop.Items.Add(String.Format("(상-{0}) - " + TopList[i-1], i.ToString()));
+                //상위 항목 추가
+                if (TopNum2 != 0)
+                {
+                    for (int i = 1; i < TopNum2 + 1; i++)
+                    {
+                        cmbCategoryTop.Items.Add(String.Format("(상-{0}) - " + TopList[i - 1], i.ToString()));
+                    }
+                }
+                //하위 항목 추가
+                if (BotNum2 != 0)
+                {
+                    for (int i = 1; i < BotNum2 + 1; i++)
+                    {
+                        cmbCategoryTop.Items.Add(String.Format("(하-{0}) - " + BotList[i - 1], i.ToString()));
+                    }
+                }
             }
-            //하위 항목 추가
-            for (int i = 1; i < BotNum + 1; i++)
+            //랜덤아니면
+            else
             {
-                cmbCategoryTop.Items.Add(String.Format("(하-{0}) - " + BotList[i - 1], i.ToString()));
+                for (int i = 1; i < TopNum + 1; i++)
+                {
+                    cmbCategoryTop.Items.Add(String.Format("(상-{0}) - " + TopList[i - 1], i.ToString()));
+                }
+
+                for (int i = 1; i < BotNum + 1; i++)
+                {
+                    cmbCategoryTop.Items.Add(String.Format("(하-{0}) - " + BotList[i - 1], i.ToString()));
+                }
             }
 
             cmbCategoryTop.SelectedIndex = TopIndex;

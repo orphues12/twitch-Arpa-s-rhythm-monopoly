@@ -60,6 +60,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.btnScreenshot = new System.Windows.Forms.Button();
             this.labelLogo = new System.Windows.Forms.Label();
+            this.BackScreen = new System.Windows.Forms.Label();
+            this.btn_Color = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label12
@@ -229,6 +231,7 @@
             this.labelStart.TabIndex = 43;
             this.labelStart.Text = "START";
             this.labelStart.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelStart.Click += new System.EventHandler(this.labelStart_Click);
             // 
             // label01
             // 
@@ -376,7 +379,7 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(1265, 778);
+            this.btnExit.Location = new System.Drawing.Point(1356, 778);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(130, 30);
             this.btnExit.TabIndex = 58;
@@ -386,7 +389,7 @@
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(1082, 778);
+            this.btnReset.Location = new System.Drawing.Point(1182, 778);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(130, 30);
             this.btnReset.TabIndex = 59;
@@ -396,7 +399,7 @@
             // 
             // btnOption
             // 
-            this.btnOption.Location = new System.Drawing.Point(913, 778);
+            this.btnOption.Location = new System.Drawing.Point(819, 778);
             this.btnOption.Name = "btnOption";
             this.btnOption.Size = new System.Drawing.Size(130, 30);
             this.btnOption.TabIndex = 60;
@@ -406,7 +409,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(556, 778);
+            this.button1.Location = new System.Drawing.Point(462, 778);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(130, 30);
             this.button1.TabIndex = 63;
@@ -416,7 +419,7 @@
             // 
             // btnScreenshot
             // 
-            this.btnScreenshot.Location = new System.Drawing.Point(736, 778);
+            this.btnScreenshot.Location = new System.Drawing.Point(642, 778);
             this.btnScreenshot.Name = "btnScreenshot";
             this.btnScreenshot.Size = new System.Drawing.Size(130, 30);
             this.btnScreenshot.TabIndex = 64;
@@ -435,6 +438,25 @@
             this.labelLogo.Size = new System.Drawing.Size(1280, 720);
             this.labelLogo.TabIndex = 65;
             // 
+            // BackScreen
+            // 
+            this.BackScreen.BackColor = System.Drawing.Color.Chartreuse;
+            this.BackScreen.ForeColor = System.Drawing.Color.LawnGreen;
+            this.BackScreen.Location = new System.Drawing.Point(320, 180);
+            this.BackScreen.Name = "BackScreen";
+            this.BackScreen.Size = new System.Drawing.Size(1280, 720);
+            this.BackScreen.TabIndex = 66;
+            // 
+            // btn_Color
+            // 
+            this.btn_Color.Location = new System.Drawing.Point(1001, 778);
+            this.btn_Color.Name = "btn_Color";
+            this.btn_Color.Size = new System.Drawing.Size(130, 30);
+            this.btn_Color.TabIndex = 67;
+            this.btn_Color.Text = "판 색 설정";
+            this.btn_Color.UseVisualStyleBackColor = true;
+            this.btn_Color.Click += new System.EventHandler(this.btn_Color_Click);
+            // 
             // MainBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -442,6 +464,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.Controls.Add(this.btn_Color);
             this.Controls.Add(this.btnScreenshot);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnOption);
@@ -474,11 +497,12 @@
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.labelLogo);
+            this.Controls.Add(this.BackScreen);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MainBoard";
             this.Text = "판때기";
-            this.TransparencyKey = System.Drawing.Color.Navy;
+            this.TransparencyKey = System.Drawing.Color.Gray;
             this.Resize += new System.EventHandler(this.MainBoard_Resize);
             this.ResumeLayout(false);
 
@@ -517,5 +541,7 @@
         private Button button1;
         private Button btnScreenshot;
         private Label labelLogo;
+        private Label BackScreen;
+        private Button btn_Color;
     }
 }

@@ -140,5 +140,8 @@
     <Setting Name="GoldenNum" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">8</Value>
     </Setting>
+    <Setting Name="BackCurrentColor" Type="System.String" Scope="User">
+      <Value Profile="(Default)">0,255,100</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -15,12 +15,15 @@ namespace RhythmMonopoly
 {
     public partial class MainBoard : Form
     {
+
+        //라벨 위치 변수
+        bool Labellocation = false;
+
         public MainBoard()
         {
             InitializeComponent();
 
             #region :: 어플 설정 ::
-
             //랜덤함수
             Random rd = new Random();
             //폰트설정
@@ -89,6 +92,7 @@ namespace RhythmMonopoly
             string dummycontent6_2 = Properties.Settings.Default.dummycontent6_2;
             string dummycontent6_3 = Properties.Settings.Default.dummycontent6_3;
 
+
             //항목 숫자 변수
             int AlphaNum = Properties.Settings.Default.AlphaNum;
             int ConsoNum = Properties.Settings.Default.ConsoNum;
@@ -99,6 +103,10 @@ namespace RhythmMonopoly
             //랜덤변수
             bool Randomize = Properties.Settings.Default.Randomize;
             bool GoldenFix = Properties.Settings.Default.GoldenFix;
+
+            //뒷배경
+            string BackCurrentColor = Properties.Settings.Default.BackCurrentColor;
+
             #endregion
 
             #region :: 변수 텍스트 ::
@@ -305,12 +313,16 @@ namespace RhythmMonopoly
                     {
                         //폰트 변경 (신메이플 스토리)
                         ((System.Windows.Forms.Label)control).Font = font1;
-
-                        //변함없는 값들은 변경 안하도록 (BackColor = Black)
-                        if (((System.Windows.Forms.Label)control).BackColor == Color.Black)
+                        //라벨 이름 검사
+                        string lblname = ((System.Windows.Forms.Label)control).Name;
+                        if (lblname.Contains("BackScreen"))
                         {
-                            //라벨 이름 검사
-                            string lblname = ((System.Windows.Forms.Label)control).Name;
+                            ((System.Windows.Forms.Label)control).BackColor = System.Drawing.ColorTranslator.FromHtml(BackCurrentColor);
+                            continue;
+                        }
+                        //변함없는 값들은 변경 안하도록 (BackColor = Black)
+                        else if (((System.Windows.Forms.Label)control).BackColor == Color.Black)
+                        {
 
                             //투온섬
                             if (lblname.Contains("EZ2ON"))
@@ -346,7 +358,7 @@ namespace RhythmMonopoly
                         else if (((System.Windows.Forms.Label)control).Text != "")
                         {
                             //색 변경
-                            Color randomColor = Color.FromArgb(rd.Next(100, 256), rd.Next(100, 256), rd.Next(64, 256));
+                            Color randomColor = Color.FromArgb(rd.Next(64, 256), rd.Next(0, 20), rd.Next(64, 256));
 
                             ((System.Windows.Forms.Label)control).BackColor = randomColor;
                             ((System.Windows.Forms.Label)control).BorderStyle = BorderStyle.FixedSingle;
@@ -394,11 +406,16 @@ namespace RhythmMonopoly
                     {
                         //폰트 설정
                         ((System.Windows.Forms.Label)control).Font = font1;
-
-                        //변함없는 값들은 변경 안하도록 (BackColor = Black)
-                        if (((System.Windows.Forms.Label)control).BackColor == Color.Black)
+                        //라벨 이름 검사
+                        string lblname = ((System.Windows.Forms.Label)control).Name;
+                        if (lblname.Contains("BackScreen"))
                         {
-                            string lblname = ((System.Windows.Forms.Label)control).Name;
+                            ((System.Windows.Forms.Label)control).BackColor = System.Drawing.ColorTranslator.FromHtml(BackCurrentColor);
+                            continue;
+                        }
+                        //변함없는 값들은 변경 안하도록 (BackColor = Black)
+                        else if (((System.Windows.Forms.Label)control).BackColor == Color.Black)
+                        {
 
                             //투온섬
                             if (lblname.Contains("EZ2ON"))
@@ -435,7 +452,7 @@ namespace RhythmMonopoly
                         else if (((System.Windows.Forms.Label)control).Text != "")
                         {
                             //색 변경
-                            Color randomColor = Color.FromArgb(rd.Next(100, 256), rd.Next(100, 256), rd.Next(64, 256));
+                            Color randomColor = Color.FromArgb(rd.Next(64, 256), rd.Next(0, 20), rd.Next(64, 256));
 
                             ((System.Windows.Forms.Label)control).BackColor = randomColor;
                             ((System.Windows.Forms.Label)control).BorderStyle = BorderStyle.FixedSingle;
@@ -943,7 +960,6 @@ namespace RhythmMonopoly
         //판 섞기 버튼 이벤트
         private void btnReset_Click(object sender, EventArgs e)
         {
-
             DialogResult Result = MessageBox.Show("정말로 판을 섞으시겠습니까?", "확인", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
             if (Result == DialogResult.OK)
             {
@@ -972,6 +988,8 @@ namespace RhythmMonopoly
             DialogResult Result = MessageBox.Show("현재 판을 저장 하시겠습니까? \r바탕화면에 저장됩니다.", "저장 확인", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
             if (Result == DialogResult.OK)
             {
+                MessageBox.Show("확인을 누르시면 3초 뒤 스크린 캡쳐가 됩니다.", "저장 확인", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 //저장 위치 지정 (바탕화면)
                 string localpath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
                 string filename = "\\판때기.png";
@@ -983,14 +1001,44 @@ namespace RhythmMonopoly
 
                 ImgCapture.CaptureImage();
 
+                //라벨 색 최종 확인
+                string ChangedColor = Properties.Settings.Default.BackCurrentColor;
+                BackScreen.BackColor = System.Drawing.ColorTranslator.FromHtml(ChangedColor);
+
+                if (!Labellocation)  BackScreen.BringToFront();
+
                 CaptureImage(_path);
 
                 MessageBox.Show("바탕화면에 저장되었습니다.", "확인", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
+                if (!Labellocation) BackScreen.SendToBack();
                 return;
             }
         }
+        //라벨 클릭 시 화면 전환 이벤트
+        private void labelStart_Click(object sender, EventArgs e)
+        {
+            if (!Labellocation)
+            {
+                string ChangedColor = Properties.Settings.Default.BackCurrentColor;
+                BackScreen.BackColor = System.Drawing.ColorTranslator.FromHtml(ChangedColor);
 
+                BackScreen.BringToFront();
+                Labellocation = true;
+            }
+            else
+            {
+                BackScreen.SendToBack();
+                Labellocation = false;
+            }
+            
+        }
+        //색 설정 버튼
+        private void btn_Color_Click(object sender, EventArgs e)
+        {
+            ColorControl color = new ColorControl();
+            color.ShowDialog();
+        }
         #endregion
 
         #region :: ETC Event ::
@@ -1017,13 +1065,27 @@ namespace RhythmMonopoly
                 {
                     using (System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(bitmap))
                     {
+                        Delay(2555);
                         g.CopyFromScreen(_refX, _refY, 0, 0, bitmap.Size);
                     }
-
                     bitmap.Save(Filepath, ImageFormat.Png);
                 }
             }
         }
+        //딜레이 이벤트
+        public void Delay(int ms)
+        {
+            DateTime dateTimeNow = DateTime.Now;
+            TimeSpan duration = new TimeSpan(0, 0, 0, 0, ms);
+            DateTime dateTimeAdd = dateTimeNow.Add(duration);
+            while (dateTimeAdd >= dateTimeNow)
+            {
+                System.Windows.Forms.Application.DoEvents();
+                dateTimeNow = DateTime.Now;
+            }
+            return;
+        }
         #endregion
+
     }
 }

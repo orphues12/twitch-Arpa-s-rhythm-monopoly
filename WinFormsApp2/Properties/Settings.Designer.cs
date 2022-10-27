@@ -574,5 +574,17 @@ namespace RhythmMonopoly.Properties {
                 this["GoldenNum"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0,255,100")]
+        public string BackCurrentColor {
+            get {
+                return ((string)(this["BackCurrentColor"]));
+            }
+            set {
+                this["BackCurrentColor"] = value;
+            }
+        }
     }
 }

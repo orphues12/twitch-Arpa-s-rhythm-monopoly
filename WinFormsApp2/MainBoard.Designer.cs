@@ -379,7 +379,7 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(1356, 778);
+            this.btnExit.Location = new System.Drawing.Point(1356, 820);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(130, 30);
             this.btnExit.TabIndex = 58;
@@ -389,7 +389,7 @@
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(1182, 778);
+            this.btnReset.Location = new System.Drawing.Point(1173, 821);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(130, 30);
             this.btnReset.TabIndex = 59;
@@ -399,7 +399,7 @@
             // 
             // btnOption
             // 
-            this.btnOption.Location = new System.Drawing.Point(819, 778);
+            this.btnOption.Location = new System.Drawing.Point(816, 820);
             this.btnOption.Name = "btnOption";
             this.btnOption.Size = new System.Drawing.Size(130, 30);
             this.btnOption.TabIndex = 60;
@@ -409,7 +409,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(462, 778);
+            this.button1.Location = new System.Drawing.Point(462, 820);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(130, 30);
             this.button1.TabIndex = 63;
@@ -419,7 +419,7 @@
             // 
             // btnScreenshot
             // 
-            this.btnScreenshot.Location = new System.Drawing.Point(642, 778);
+            this.btnScreenshot.Location = new System.Drawing.Point(642, 820);
             this.btnScreenshot.Name = "btnScreenshot";
             this.btnScreenshot.Size = new System.Drawing.Size(130, 30);
             this.btnScreenshot.TabIndex = 64;
@@ -431,7 +431,7 @@
             // 
             this.labelLogo.BackColor = System.Drawing.Color.White;
             this.labelLogo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelLogo.Image = global::RhythmMonopoly.Properties.Resources.LOGOv3;
+            this.labelLogo.Image = global::RhythmMonopoly.Properties.Resources.고급;
             this.labelLogo.Location = new System.Drawing.Point(320, 180);
             this.labelLogo.Margin = new System.Windows.Forms.Padding(0);
             this.labelLogo.Name = "labelLogo";
@@ -449,7 +449,7 @@
             // 
             // btn_Color
             // 
-            this.btn_Color.Location = new System.Drawing.Point(1001, 778);
+            this.btn_Color.Location = new System.Drawing.Point(995, 820);
             this.btn_Color.Name = "btn_Color";
             this.btn_Color.Size = new System.Drawing.Size(130, 30);
             this.btn_Color.TabIndex = 67;

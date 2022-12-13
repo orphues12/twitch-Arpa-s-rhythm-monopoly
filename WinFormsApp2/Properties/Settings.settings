@@ -57,7 +57,7 @@
       <Value Profile="(Default)">디제이맥스</Value>
     </Setting>
     <Setting Name="dummycontent1_3" Type="System.String" Scope="User">
-      <Value Profile="(Default)">벨루시티</Value>
+      <Value Profile="(Default)">이지투디제이</Value>
     </Setting>
     <Setting Name="dummycontent2_1" Type="System.String" Scope="User">
       <Value Profile="(Default)">이지투온</Value>
@@ -69,7 +69,7 @@
       <Value Profile="(Default)">뮤즈대쉬</Value>
     </Setting>
     <Setting Name="dummycontent2_4" Type="System.String" Scope="User">
-      <Value Profile="(Default)">BMS</Value>
+      <Value Profile="(Default)">KALPA</Value>
     </Setting>
     <Setting Name="dummycontent3_1" Type="System.String" Scope="User">
       <Value Profile="(Default)">즐거운</Value>
@@ -90,13 +90,13 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="TopCategory01" Type="System.String" Scope="User">
-      <Value Profile="(Default)">동시 수록 곡</Value>
+      <Value Profile="(Default)">3글자 알파벳 곡</Value>
     </Setting>
     <Setting Name="TopCategory02" Type="System.String" Scope="User">
-      <Value Profile="(Default)">변속 곡</Value>
+      <Value Profile="(Default)">특수문자 포함 곡</Value>
     </Setting>
     <Setting Name="TopCategory03" Type="System.String" Scope="User">
-      <Value Profile="(Default)">솔직히 뭐적어야할지몰라서대충채워놨음</Value>
+      <Value Profile="(Default)">야스</Value>
     </Setting>
     <Setting Name="TopCategory04" Type="System.String" Scope="User">
       <Value Profile="(Default)">바꿔서 쓰세요</Value>

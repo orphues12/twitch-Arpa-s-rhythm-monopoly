@@ -1054,7 +1054,7 @@ namespace RhythmMonopoly
             {
                 MessageBox.Show("확인을 누르시면 3초 뒤 스크린 캡쳐가 됩니다.", "저장 확인", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                //저장 위치 지정 (바탕화면)
+                //저장 위치 지정 (프로그램 폴더)
                 string localpath = System.Environment.CurrentDirectory;
                 string filename = "\\판때기.png";
                 string _path = localpath + filename;

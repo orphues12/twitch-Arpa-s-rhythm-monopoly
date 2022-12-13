@@ -213,6 +213,26 @@ namespace RhythmMonopoly.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
+        internal static System.Drawing.Bitmap 고급 {
+            get {
+                object obj = ResourceManager.GetObject("고급", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap 고급LOGO {
+            get {
+                object obj = ResourceManager.GetObject("고급LOGO", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
         internal static System.Drawing.Bitmap 무인도_DJMAX {
             get {
                 object obj = ResourceManager.GetObject("무인도_DJMAX", resourceCulture);

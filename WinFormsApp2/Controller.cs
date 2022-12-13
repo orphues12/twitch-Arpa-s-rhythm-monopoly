@@ -172,6 +172,14 @@ namespace RhythmMonopoly
 
             return true;
         }
+
+        //도움말 버튼
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("알파벳 6, 자음 4\n상위 6, 상위+하위 6\n이 각 항목마다 최대 수입니다.", "도움말", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("황금 열쇠는 랜덤 일시에만 조정이 가능합니다.", "도움말", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("모든 항목의 수의 합은\n랜덤 O: 19개\n랜덤 X: 11개\n을(를) 정확하게 맞추어 주세요.", "도움말", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
         #endregion
 
     }

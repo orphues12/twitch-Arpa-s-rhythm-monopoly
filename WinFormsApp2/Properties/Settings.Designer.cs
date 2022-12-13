@@ -241,7 +241,7 @@ namespace RhythmMonopoly.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("벨루시티")]
+        [global::System.Configuration.DefaultSettingValueAttribute("이지투디제이")]
         public string dummycontent1_3 {
             get {
                 return ((string)(this["dummycontent1_3"]));
@@ -289,7 +289,7 @@ namespace RhythmMonopoly.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("BMS")]
+        [global::System.Configuration.DefaultSettingValueAttribute("KALPA")]
         public string dummycontent2_4 {
             get {
                 return ((string)(this["dummycontent2_4"]));
@@ -373,7 +373,7 @@ namespace RhythmMonopoly.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("동시 수록 곡")]
+        [global::System.Configuration.DefaultSettingValueAttribute("3글자 알파벳 곡")]
         public string TopCategory01 {
             get {
                 return ((string)(this["TopCategory01"]));
@@ -385,7 +385,7 @@ namespace RhythmMonopoly.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("변속 곡")]
+        [global::System.Configuration.DefaultSettingValueAttribute("특수문자 포함 곡")]
         public string TopCategory02 {
             get {
                 return ((string)(this["TopCategory02"]));
@@ -397,7 +397,7 @@ namespace RhythmMonopoly.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("솔직히 뭐적어야할지몰라서대충채워놨음")]
+        [global::System.Configuration.DefaultSettingValueAttribute("야스")]
         public string TopCategory03 {
             get {
                 return ((string)(this["TopCategory03"]));

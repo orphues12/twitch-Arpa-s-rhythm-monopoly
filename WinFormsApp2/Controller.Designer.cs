@@ -40,6 +40,7 @@
             this.SpinTop = new System.Windows.Forms.NumericUpDown();
             this.SpinConso = new System.Windows.Forms.NumericUpDown();
             this.SpinAlpha = new System.Windows.Forms.NumericUpDown();
+            this.btnHelp = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SpinGolden)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpinBot)).BeginInit();
@@ -50,6 +51,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnHelp);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.SpinGolden);
             this.groupBox1.Controls.Add(this.button1);
@@ -90,7 +92,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(95, 320);
+            this.button1.Location = new System.Drawing.Point(140, 320);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 8;
@@ -182,6 +184,16 @@
             this.SpinAlpha.Size = new System.Drawing.Size(40, 23);
             this.SpinAlpha.TabIndex = 0;
             // 
+            // btnHelp
+            // 
+            this.btnHelp.Location = new System.Drawing.Point(33, 320);
+            this.btnHelp.Name = "btnHelp";
+            this.btnHelp.Size = new System.Drawing.Size(75, 23);
+            this.btnHelp.TabIndex = 11;
+            this.btnHelp.Text = "도움말";
+            this.btnHelp.UseVisualStyleBackColor = true;
+            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
+            // 
             // Controller
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -216,5 +228,6 @@
         private Button button1;
         private Label label5;
         private NumericUpDown SpinGolden;
+        private Button btnHelp;
     }
 }

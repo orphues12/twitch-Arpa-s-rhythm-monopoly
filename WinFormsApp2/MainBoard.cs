@@ -11,18 +11,22 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Security.Policy;
 using static System.Net.WebRequestMethods;
+using System.Reflection;
 
 namespace RhythmMonopoly
 {
     public partial class MainBoard : Form
     {
-
+        IniFile ini = new IniFile();
+        string inipath = Application.StartupPath + @"/Settings.ini";
         //라벨 위치 변수
         bool Labellocation = false;
 
         public MainBoard()
         {
             InitializeComponent();
+
+            InitializeINI(inipath);
 
             #region :: 어플 설정 ::
             //랜덤함수
@@ -114,6 +118,76 @@ namespace RhythmMonopoly
             //뒷배경
             string BackCurrentColor = Properties.Settings.Default.BackCurrentColor;
 
+            #region :: INI 저장 하는 곳 (Data 연동)
+            ini["Top"]["TopCategory1"] = TopCategory01;
+            ini["Top"]["TopCategory2"] = TopCategory02;
+            ini["Top"]["TopCategory3"] = TopCategory03;
+            ini["Top"]["TopCategory4"] = TopCategory04;
+            ini["Top"]["TopCategory5"] = TopCategory05;
+            ini["Top"]["TopCategory6"] = TopCategory06;
+
+            ini["Bot"]["BotCategory1"] = BotCategory01;
+            ini["Bot"]["BotCategory2"] = BotCategory02;
+            ini["Bot"]["BotCategory3"] = BotCategory03;
+            ini["Bot"]["BotCategory4"] = BotCategory04;
+            ini["Bot"]["BotCategory5"] = BotCategory05;
+            ini["Bot"]["BotCategory6"] = BotCategory06;
+
+            ini["Top_Menu1"]["TopContent1"] = dummycontent1_1;
+            ini["Top_Menu1"]["TopContent2"] = dummycontent1_2;
+            ini["Top_Menu1"]["TopContent3"] = dummycontent1_3;
+
+            ini["Top_Menu2"]["TopContent1"] = dummycontent2_1;
+            ini["Top_Menu2"]["TopContent2"] = dummycontent2_2;
+            ini["Top_Menu2"]["TopContent3"] = dummycontent2_3;
+            ini["Top_Menu2"]["TopContent4"] = dummycontent2_4;
+
+            ini["Top_Menu3"]["TopContent1"] = dummycontent3_1;
+            ini["Top_Menu3"]["TopContent2"] = dummycontent3_2;
+            ini["Top_Menu3"]["TopContent3"] = dummycontent3_3;
+            ini["Top_Menu3"]["TopContent4"] = dummycontent3_4;
+            ini["Top_Menu3"]["TopContent4"] = dummycontent3_5;
+
+            ini["Top_Menu4"]["TopContent1"] = dummycontent4_1;
+            ini["Top_Menu4"]["TopContent2"] = dummycontent4_2;
+            ini["Top_Menu4"]["TopContent3"] = dummycontent4_3;
+            ini["Top_Menu4"]["TopContent4"] = dummycontent4_4;
+            ini["Top_Menu4"]["TopContent4"] = dummycontent4_5;
+
+            ini["Top_Menu5"]["TopContent1"] = dummycontent5_1;
+            ini["Top_Menu5"]["TopContent2"] = dummycontent5_2;
+            ini["Top_Menu5"]["TopContent3"] = dummycontent5_3;
+            ini["Top_Menu5"]["TopContent4"] = dummycontent5_4;
+            ini["Top_Menu5"]["TopContent4"] = dummycontent5_5;
+
+            ini["Top_Menu6"]["TopContent1"] = dummycontent6_1;
+            ini["Top_Menu6"]["TopContent2"] = dummycontent6_2;
+            ini["Top_Menu6"]["TopContent3"] = dummycontent6_3;
+
+
+            //항목 숫자 변수 (랜덤X)
+            ini["CategoryQty"]["AlphaNum"] = AlphaNum;
+            ini["CategoryQty"]["ConsoNum"]  = ConsoNum;
+            ini["CategoryQty"]["TopNum"]  = TopNum;
+            ini["CategoryQty"]["BotNum"]  = BotNum;
+            ini["CategoryQty"]["GoldenNum"]  = GoldenNum;
+
+            //항목 숫자 변수 (랜덤O)
+            ini["CategoryQty"]["RandAlphaNum"] = AlphaNum2;
+            ini["CategoryQty"]["RandConsoNum"] = ConsoNum2;
+            ini["CategoryQty"]["RandTopNum"] = TopNum2;
+            ini["CategoryQty"]["RandBotNum"] = BotNum2;
+            ini["CategoryQty"]["RandGoldenNum"] = GoldenNum2;
+
+            //랜덤 관련
+            ini["Option"]["Randomize"] = Randomize;
+            ini["Option"]["GoldenFix"] = GoldenFix;
+            ini["Option"]["backCurrentColor"] = BackCurrentColor;
+
+            ini.Save(inipath);
+            #endregion
+
+
             #endregion
 
             #region :: 변수 텍스트 ::
@@ -133,10 +207,11 @@ namespace RhythmMonopoly
             //바꿀 필요 없는 것
             //알파벳
             string[] alphabet_ = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
+
             //버튼
-            string[] button_ = { "4", "5", "6", "8" };
+            string[] button_ = { "1", "5", "6", "8" };
             //계절
-            string[] season_ = { "봄", "여름", "가을", "겨울" };
+            string[] season_ = { "3", "4", "5", "6" };
             //기종
             string[] gameclass_ = { "PC", "모바일", "콘솔" };
             //자음
@@ -270,7 +345,7 @@ namespace RhythmMonopoly
             //고정 항목
             string CateButton = textButton1 + " 라인 리듬게임";
             string CateGameClass = textGameclass1 + " 플랫폼 리듬게임";
-            string CateSeason = textSeason1 + " 계절 곡";
+            string CateSeason = textSeason1 + "글자 곡";
             #endregion
 
             #region :: 신형 배열 제작 ::
@@ -345,7 +420,7 @@ namespace RhythmMonopoly
             }
 
             //Dictionary에서 Value 값 추출 후 새 리스트 제작 
-            var CateList = new List<string>(CateDictionary.Values);
+            List<string> CateList = new List<string>(CateDictionary.Values);
             #endregion
 
             #region :: 항목 삽입 ::
@@ -353,7 +428,6 @@ namespace RhythmMonopoly
             //제작 리스트에서 무작위 배열로 담을 Array 지정
             string[] rdcate_ = { };
             //황금열쇠 위치 고정일 시
-
             if (!Randomize)
             {
                 rdcate_ = CateList.OrderBy(x => rd.Next()).ToArray();
@@ -367,53 +441,53 @@ namespace RhythmMonopoly
                 foreach (System.Windows.Forms.Control control in this.Controls)
                 {
                     //라벨 검사 + 황금 열쇠가 아닐 경우
-                    if (control is System.Windows.Forms.Label && ((System.Windows.Forms.Label)control).Text != "Golden")
+                    if (control is Label && ((Label)control).Text != "Golden")
                     {
                         //폰트 변경 (신메이플 스토리)
-                        ((System.Windows.Forms.Label)control).Font = font1;
+                        ((Label)control).Font = font1;
                         //라벨 이름 검사
-                        string lblname = ((System.Windows.Forms.Label)control).Name;
+                        string lblname = ((Label)control).Name;
                         if (lblname.Contains("BackScreen"))
                         {
-                            ((System.Windows.Forms.Label)control).BackColor = System.Drawing.ColorTranslator.FromHtml(BackCurrentColor);
+                            ((Label)control).BackColor = System.Drawing.ColorTranslator.FromHtml(BackCurrentColor);
                             continue;
                         }
                         //변함없는 값들은 변경 안하도록 (BackColor = Black)
-                        else if (((System.Windows.Forms.Label)control).BackColor == Color.Black)
+                        else if (((Label)control).BackColor == Color.Black)
                         {
 
                             //투온섬
                             if (lblname.Contains("EZ2ON"))
                             {
-                                ((System.Windows.Forms.Label)control).Image = Properties.Resources.무인도_EZ2v2;
-                                ((System.Windows.Forms.Label)control).BackColor = Color.White;
-                                ((System.Windows.Forms.Label)control).Text = null;
+                                ((Label)control).Image = Properties.Resources.무인도_EZ2v2;
+                                ((Label)control).BackColor = Color.White;
+                                ((Label)control).Text = null;
                             }
                             //디맥섬
                             else if (lblname.Contains("DJMAX"))
                             {
-                                ((System.Windows.Forms.Label)control).Image = Properties.Resources.무인도_DJMAXv2;
-                                ((System.Windows.Forms.Label)control).BackColor = Color.White;
-                                ((System.Windows.Forms.Label)control).Text = null;
+                                ((Label)control).Image = Properties.Resources.무인도_DJMAXv2;
+                                ((Label)control).BackColor = Color.White;
+                                ((Label)control).Text = null;
                             }
                             //출발지점
                             else if (lblname.Contains("Start"))
                             {
-                                ((System.Windows.Forms.Label)control).Image = Properties.Resources.STARTv2;
-                                ((System.Windows.Forms.Label)control).BackColor = Color.White;
-                                ((System.Windows.Forms.Label)control).Text = null;
+                                ((Label)control).Image = Properties.Resources.STARTv2;
+                                ((Label)control).BackColor = Color.White;
+                                ((Label)control).Text = null;
                             }
                             //자유
                             else if (lblname.Contains("Free"))
                             {
-                                ((System.Windows.Forms.Label)control).Image = Properties.Resources.FREEv2;
-                                ((System.Windows.Forms.Label)control).BackColor = Color.Black;
-                                ((System.Windows.Forms.Label)control).Text = null;
+                                ((Label)control).Image = Properties.Resources.FREEv2;
+                                ((Label)control).BackColor = Color.Black;
+                                ((Label)control).Text = null;
                             }
                             continue;
                         }
                         //항목 부분
-                        else if (((System.Windows.Forms.Label)control).Text != "")
+                        else if (((Label)control).Text != "")
                         {
                             //색 변경
                             Color randomColor = Color.FromArgb(rd.Next(64, 256), rd.Next(64, 256), rd.Next(64, 256));
@@ -424,14 +498,14 @@ namespace RhythmMonopoly
                                 randomColor = Color.FromArgb(rd.Next(64, 256), rd.Next(64, 256), rd.Next(64, 256));
                             }
 
-                            ((System.Windows.Forms.Label)control).BackColor = randomColor;
-                            ((System.Windows.Forms.Label)control).BorderStyle = BorderStyle.FixedSingle;
-                            ((System.Windows.Forms.Label)control).ForeColor = Color.Black;
+                            ((Label)control).BackColor = randomColor;
+                            ((Label)control).BorderStyle = BorderStyle.FixedSingle;
+                            ((Label)control).ForeColor = Color.Black;
 
                             //무작위로 항목 추가
                             for (int i = stack; i < rdcate_.Length;)
                             {
-                                ((System.Windows.Forms.Label)control).Text = rdcate_[i].ToString();
+                                ((Label)control).Text = rdcate_[i].ToString();
                                 stack++;
                                 break;
                             }
@@ -439,12 +513,12 @@ namespace RhythmMonopoly
 
                     }
                     //황금열쇠 일 경우
-                    else if (control is System.Windows.Forms.Label && ((System.Windows.Forms.Label)control).Text.Contains("Golden"))
+                    else if (control is Label && ((Label)control).Text.Contains("Golden"))
                     {
-                        ((System.Windows.Forms.Label)control).BackColor = Color.Yellow;
-                        ((System.Windows.Forms.Label)control).Image = Properties.Resources.golden_keys;
-                        ((System.Windows.Forms.Label)control).BorderStyle = BorderStyle.FixedSingle;
-                        ((System.Windows.Forms.Label)control).Text = null;
+                        ((Label)control).BackColor = Color.Yellow;
+                        ((Label)control).Image = Properties.Resources.golden_keys;
+                        ((Label)control).BorderStyle = BorderStyle.FixedSingle;
+                        ((Label)control).Text = null;
                         continue;
                     }
                 }
@@ -457,57 +531,56 @@ namespace RhythmMonopoly
                 rdcate_ = CateList.OrderBy(x => rd.Next()).ToArray();
 
                 //모든 컨트롤을 검사
-                foreach (System.Windows.Forms.Control control in this.Controls)
+                foreach (Control control in this.Controls)
                 {
                     //라벨 검사 + 황금 열쇠가 아닐 경우
-                    if (control is System.Windows.Forms.Label)
+                    if (control is Label)
                     {
                         //폰트 설정
-                        ((System.Windows.Forms.Label)control).Font = font1;
+                        ((Label)control).Font = font1;
                         //라벨 이름 검사
-                        string lblname = ((System.Windows.Forms.Label)control).Name;
+                        string lblname = ((Label)control).Name;
                         if (lblname.Contains("BackScreen"))
                         {
-                            ((System.Windows.Forms.Label)control).BackColor = System.Drawing.ColorTranslator.FromHtml(BackCurrentColor);
+                            ((Label)control).BackColor = System.Drawing.ColorTranslator.FromHtml(BackCurrentColor);
                             continue;
                         }
                         //변함없는 값들은 변경 안하도록 (BackColor = Black)
-                        else if (((System.Windows.Forms.Label)control).BackColor == Color.Black)
+                        else if (((Label)control).BackColor == Color.Black)
                         {
-
                             //투온섬
                             if (lblname.Contains("EZ2ON"))
                             {
-                                ((System.Windows.Forms.Label)control).Image = Properties.Resources.무인도_EZ2v2;
-                                ((System.Windows.Forms.Label)control).BackColor = Color.White;
-                                ((System.Windows.Forms.Label)control).Text = null;
+                                ((Label)control).Image = Properties.Resources.무인도_EZ2v2;
+                                ((Label)control).BackColor = Color.White;
+                                ((Label)control).Text = null;
                             }
                             //디맥섬
                             else if (lblname.Contains("DJMAX"))
                             {
-                                ((System.Windows.Forms.Label)control).Image = Properties.Resources.무인도_DJMAXv2;
-                                ((System.Windows.Forms.Label)control).BackColor = Color.White;
-                                ((System.Windows.Forms.Label)control).Text = null;
+                                ((Label)control).Image = Properties.Resources.무인도_DJMAXv2;
+                                ((Label)control).BackColor = Color.White;
+                                ((Label)control).Text = null;
                             }
                             //출발지점
                             else if (lblname.Contains("Start"))
                             {
-                                ((System.Windows.Forms.Label)control).Image = Properties.Resources.STARTv2;
-                                ((System.Windows.Forms.Label)control).BackColor = Color.White;
-                                ((System.Windows.Forms.Label)control).Text = null;
+                                ((Label)control).Image = Properties.Resources.STARTv2;
+                                ((Label)control).BackColor = Color.White;
+                                ((Label)control).Text = null;
                             }
                             //자유
                             else if (lblname.Contains("Free"))
                             {
-                                ((System.Windows.Forms.Label)control).Image = Properties.Resources.FREEv2;
-                                ((System.Windows.Forms.Label)control).BackColor = Color.Black;
-                                ((System.Windows.Forms.Label)control).Text = null;
+                                ((Label)control).Image = Properties.Resources.FREEv2;
+                                ((Label)control).BackColor = Color.Black;
+                                ((Label)control).Text = null;
                             }
 
                             continue;
                         }
                         //항목 부분
-                        else if (((System.Windows.Forms.Label)control).Text != "")
+                        else if (((Label)control).Text != "")
                         {
                             //색 변경
                             Color randomColor = Color.FromArgb(rd.Next(64, 256), rd.Next(64, 256), rd.Next(64, 256));
@@ -518,29 +591,28 @@ namespace RhythmMonopoly
                                 randomColor = Color.FromArgb(rd.Next(64, 256), rd.Next(64, 256), rd.Next(64, 256));
                             }
 
-                            ((System.Windows.Forms.Label)control).BackColor = randomColor;
-                            ((System.Windows.Forms.Label)control).BorderStyle = BorderStyle.FixedSingle;
-                            ((System.Windows.Forms.Label)control).ForeColor = Color.Black;
+                            ((Label)control).BackColor = randomColor;
+                            ((Label)control).BorderStyle = BorderStyle.FixedSingle;
+                            ((Label)control).ForeColor = Color.Black;
 
                             //라벨 항목마다 텍스트 변경
                             for (int i = stack; i < rdcate_.Length;)
                             {
-                                ((System.Windows.Forms.Label)control).Text = rdcate_[i].ToString();
+                                ((Label)control).Text = rdcate_[i].ToString();
                                 stack++;
                                 break;
                             }
                         }
                         //황금 열쇠 일 경우
-                        if (((System.Windows.Forms.Label)control).Text.Equals("황금 열쇠"))
+                        if (((Label)control).Text.Equals("황금 열쇠"))
                         {
-                            ((System.Windows.Forms.Label)control).BackColor = Color.Yellow;
-                            ((System.Windows.Forms.Label)control).Image = Properties.Resources.golden_keys;
-                            ((System.Windows.Forms.Label)control).Text = null;
+                            ((Label)control).BackColor = Color.Yellow;
+                            ((Label)control).Image = Properties.Resources.golden_keys;
+                            ((Label)control).Text = null;
                         }
                     }
                 }
             }
-
             #endregion
 
             #region :: 구형 변수 ::
@@ -603,59 +675,59 @@ namespace RhythmMonopoly
             //    foreach (System.Windows.Forms.Control control in this.Controls)
             //    {
             //        //라벨마다 반복문 + 황금 열쇠아닐 경우 진행
-            //        if (control is System.Windows.Forms.Label && ((System.Windows.Forms.Label)control).Text != "Golden")
+            //        if (control is Label && ((Label)control).Text != "Golden")
             //        {
 
-            //            ((System.Windows.Forms.Label)control).Font = font1;
+            //            ((Label)control).Font = font1;
 
             //            //변함없는 값들은 변경 안하도록 (BackColor = Black)
-            //            if (((System.Windows.Forms.Label)control).BackColor == Color.Black)
+            //            if (((Label)control).BackColor == Color.Black)
             //            {
-            //                string lblname = ((System.Windows.Forms.Label)control).Name;
+            //                string lblname = ((Label)control).Name;
 
             //                //라벨
             //                if (lblname.Contains("EZ2ON"))
             //                {
-            //                    ((System.Windows.Forms.Label)control).Image = Properties.Resources.무인도_EZ2v2;
-            //                    ((System.Windows.Forms.Label)control).BackColor = Color.White;
-            //                    ((System.Windows.Forms.Label)control).Text = null;
+            //                    ((Label)control).Image = Properties.Resources.무인도_EZ2v2;
+            //                    ((Label)control).BackColor = Color.White;
+            //                    ((Label)control).Text = null;
             //                }
             //                else if (lblname.Contains("DJMAX"))
             //                {
-            //                    ((System.Windows.Forms.Label)control).Image = Properties.Resources.무인도_DJMAXv2;
-            //                    ((System.Windows.Forms.Label)control).BackColor = Color.White;
-            //                    ((System.Windows.Forms.Label)control).Text = null;
+            //                    ((Label)control).Image = Properties.Resources.무인도_DJMAXv2;
+            //                    ((Label)control).BackColor = Color.White;
+            //                    ((Label)control).Text = null;
             //                }
             //                else if (lblname.Contains("Start"))
             //                {
-            //                    ((System.Windows.Forms.Label)control).Image = Properties.Resources.STARTv2;
-            //                    ((System.Windows.Forms.Label)control).BackColor = Color.White;
-            //                    ((System.Windows.Forms.Label)control).Text = null;
+            //                    ((Label)control).Image = Properties.Resources.STARTv2;
+            //                    ((Label)control).BackColor = Color.White;
+            //                    ((Label)control).Text = null;
             //                }
             //                else if (lblname.Contains("Free"))
             //                {
-            //                    ((System.Windows.Forms.Label)control).Image = Properties.Resources.FREEv2;
-            //                    ((System.Windows.Forms.Label)control).BackColor = Color.Black;
-            //                    ((System.Windows.Forms.Label)control).Text = null;
+            //                    ((Label)control).Image = Properties.Resources.FREEv2;
+            //                    ((Label)control).BackColor = Color.Black;
+            //                    ((Label)control).Text = null;
             //                }
 
             //                continue;
             //            }
 
             //            //아닌 항목들은 말처럼 쓸수있도록
-            //            else if (((System.Windows.Forms.Label)control).Text != "")
+            //            else if (((Label)control).Text != "")
             //            {
             //                //색 변경
             //                Color randomColor = Color.FromArgb(rd.Next(100, 256), rd.Next(100, 256), rd.Next(64, 256));
 
-            //                ((System.Windows.Forms.Label)control).BackColor = randomColor;
-            //                ((System.Windows.Forms.Label)control).BorderStyle = BorderStyle.FixedSingle;
-            //                ((System.Windows.Forms.Label)control).ForeColor = Color.Black;
+            //                ((Label)control).BackColor = randomColor;
+            //                ((Label)control).BorderStyle = BorderStyle.FixedSingle;
+            //                ((Label)control).ForeColor = Color.Black;
 
             //                //라벨 항목마다 텍스트 변경
             //                for (int i = stack; i < rdcate_.Length;)
             //                {
-            //                    ((System.Windows.Forms.Label)control).Text = rdcate_[i].ToString();
+            //                    ((Label)control).Text = rdcate_[i].ToString();
             //                    stack++;
             //                    break;
             //                }
@@ -663,12 +735,12 @@ namespace RhythmMonopoly
 
             //        }
             //        //황금열쇠 일 경우
-            //        else if (control is System.Windows.Forms.Label && ((System.Windows.Forms.Label)control).Text.Contains("Golden"))
+            //        else if (control is Label && ((Label)control).Text.Contains("Golden"))
             //        {
-            //            ((System.Windows.Forms.Label)control).BackColor = Color.Yellow;
-            //            ((System.Windows.Forms.Label)control).Image = Properties.Resources.golden_keys;
-            //            ((System.Windows.Forms.Label)control).BorderStyle = BorderStyle.FixedSingle;
-            //            ((System.Windows.Forms.Label)control).Text = null;
+            //            ((Label)control).BackColor = Color.Yellow;
+            //            ((Label)control).Image = Properties.Resources.golden_keys;
+            //            ((Label)control).BorderStyle = BorderStyle.FixedSingle;
+            //            ((Label)control).Text = null;
             //            continue;
             //        }
             //    }
@@ -684,69 +756,69 @@ namespace RhythmMonopoly
             //    foreach (System.Windows.Forms.Control control in this.Controls)
             //    {
             //        //라벨마다 반복문
-            //        if (control is System.Windows.Forms.Label)
+            //        if (control is Label)
             //        {
-            //            ((System.Windows.Forms.Label)control).Font = font1;
+            //            ((Label)control).Font = font1;
 
             //            //밑에 배너
-            //            if (((System.Windows.Forms.Label)control).Name.Equals("lblBanner"))
+            //            if (((Label)control).Name.Equals("lblBanner"))
             //            {
-            //                ((System.Windows.Forms.Label)control).BackColor = Color.White; ;
-            //                ((System.Windows.Forms.Label)control).Text = "* 현재는 판 제작 기능만 제공하고 있습니다.";
+            //                ((Label)control).BackColor = Color.White; ;
+            //                ((Label)control).Text = "* 현재는 판 제작 기능만 제공하고 있습니다.";
             //                continue;
             //            }
             //            //변함없는 값들은 변경 안하도록 (BackColor = Black)
-            //            else if (((System.Windows.Forms.Label)control).BackColor == Color.Black)
+            //            else if (((Label)control).BackColor == Color.Black)
             //            {
-            //                string lblname = ((System.Windows.Forms.Label)control).Name;
+            //                string lblname = ((Label)control).Name;
 
             //                //라벨
             //                if (lblname.Contains("Island"))
             //                {
-            //                    ((System.Windows.Forms.Label)control).Image = Properties.Resources.무인도v2;
-            //                    ((System.Windows.Forms.Label)control).BackColor = Color.White;
-            //                    ((System.Windows.Forms.Label)control).Text = null;
+            //                    ((Label)control).Image = Properties.Resources.무인도v2;
+            //                    ((Label)control).BackColor = Color.White;
+            //                    ((Label)control).Text = null;
             //                }
             //                else if (lblname.Contains("Start"))
             //                {
-            //                    ((System.Windows.Forms.Label)control).Image = Properties.Resources.Start;
-            //                    ((System.Windows.Forms.Label)control).BackColor = Color.White;
-            //                    ((System.Windows.Forms.Label)control).Text = null;
+            //                    ((Label)control).Image = Properties.Resources.Start;
+            //                    ((Label)control).BackColor = Color.White;
+            //                    ((Label)control).Text = null;
             //                }
             //                else if (lblname.Contains("Free"))
             //                {
-            //                    ((System.Windows.Forms.Label)control).Image = Properties.Resources.뱅하싶2;
-            //                    ((System.Windows.Forms.Label)control).BackColor = Color.Black;
-            //                    ((System.Windows.Forms.Label)control).Text = null;
+            //                    ((Label)control).Image = Properties.Resources.뱅하싶2;
+            //                    ((Label)control).BackColor = Color.Black;
+            //                    ((Label)control).Text = null;
             //                }
 
             //                continue;
             //            }
 
             //            //아닌 항목들은 말처럼 쓸수있도록
-            //            else if (((System.Windows.Forms.Label)control).Text != "")
+            //            else if (((Label)control).Text != "")
             //            {
             //                //색 변경
             //                Color randomColor = Color.FromArgb(rd.Next(100, 256), rd.Next(100, 256), rd.Next(64, 256));
 
-            //                ((System.Windows.Forms.Label)control).BackColor = randomColor;
-            //                ((System.Windows.Forms.Label)control).BorderStyle = BorderStyle.FixedSingle;
-            //                ((System.Windows.Forms.Label)control).ForeColor = Color.Black;
+            //                ((Label)control).BackColor = randomColor;
+            //                ((Label)control).BorderStyle = BorderStyle.FixedSingle;
+            //                ((Label)control).ForeColor = Color.Black;
 
             //                //라벨 항목마다 텍스트 변경
             //                for (int i = stack; i < rdcate_.Length;)
             //                {
-            //                    ((System.Windows.Forms.Label)control).Text = rdcate_[i].ToString();
+            //                    ((Label)control).Text = rdcate_[i].ToString();
             //                    stack++;
             //                    break;
             //                }
             //            }
 
-            //            if (((System.Windows.Forms.Label)control).Text.Equals("황금 열쇠"))
+            //            if (((Label)control).Text.Equals("황금 열쇠"))
             //            {
-            //                ((System.Windows.Forms.Label)control).BackColor = Color.Yellow;
-            //                ((System.Windows.Forms.Label)control).Image = Properties.Resources.golden_keys;
-            //                ((System.Windows.Forms.Label)control).Text = null;
+            //                ((Label)control).BackColor = Color.Yellow;
+            //                ((Label)control).Image = Properties.Resources.golden_keys;
+            //                ((Label)control).Text = null;
             //            }
             //        }
             //    }
@@ -758,72 +830,72 @@ namespace RhythmMonopoly
             //    foreach (System.Windows.Forms.Control control in this.Controls)
             //    {
             //        //라벨마다 반복문
-            //        if (control is System.Windows.Forms.Label)
+            //        if (control is Label)
             //        {
-            //            ((System.Windows.Forms.Label)control).Font = font1;
+            //            ((Label)control).Font = font1;
 
             //            //////////////////////////////////////////////////// 여기부터하세요
             //            rdcate_ = CategoryArray.OrderBy(x => rd.Next()).ToArray();
 
             //            //밑에 배너
-            //            if (((System.Windows.Forms.Label)control).Name.Equals("lblBanner"))
+            //            if (((Label)control).Name.Equals("lblBanner"))
             //            {
-            //                ((System.Windows.Forms.Label)control).BackColor = Color.White; ;
-            //                ((System.Windows.Forms.Label)control).Text = "* 현재는 판 제작 기능만 제공하고 있습니다.";
+            //                ((Label)control).BackColor = Color.White; ;
+            //                ((Label)control).Text = "* 현재는 판 제작 기능만 제공하고 있습니다.";
             //                continue;
             //            }
             //            //변함없는 값들은 변경 안하도록 (BackColor = Black)
-            //            else if (((System.Windows.Forms.Label)control).BackColor == Color.Black)
+            //            else if (((Label)control).BackColor == Color.Black)
             //            {
-            //                string lblname = ((System.Windows.Forms.Label)control).Name;
+            //                string lblname = ((Label)control).Name;
 
             //                //라벨
             //                if (lblname.Contains("Island"))
             //                {
-            //                    ((System.Windows.Forms.Label)control).Image = Properties.Resources.무인도v2;
-            //                    ((System.Windows.Forms.Label)control).BackColor = Color.White;
-            //                    ((System.Windows.Forms.Label)control).Text = null;
+            //                    ((Label)control).Image = Properties.Resources.무인도v2;
+            //                    ((Label)control).BackColor = Color.White;
+            //                    ((Label)control).Text = null;
             //                }
             //                else if (lblname.Contains("Start"))
             //                {
-            //                    ((System.Windows.Forms.Label)control).Image = Properties.Resources.Start;
-            //                    ((System.Windows.Forms.Label)control).BackColor = Color.White;
-            //                    ((System.Windows.Forms.Label)control).Text = null;
+            //                    ((Label)control).Image = Properties.Resources.Start;
+            //                    ((Label)control).BackColor = Color.White;
+            //                    ((Label)control).Text = null;
             //                }
             //                else if (lblname.Contains("Free"))
             //                {
-            //                    ((System.Windows.Forms.Label)control).Image = Properties.Resources.뱅하싶2;
-            //                    ((System.Windows.Forms.Label)control).BackColor = Color.Black;
-            //                    ((System.Windows.Forms.Label)control).Text = null;
+            //                    ((Label)control).Image = Properties.Resources.뱅하싶2;
+            //                    ((Label)control).BackColor = Color.Black;
+            //                    ((Label)control).Text = null;
             //                }
 
             //                continue;
             //            }
 
             //            //아닌 항목들은 말처럼 쓸수있도록
-            //            //    else if (((System.Windows.Forms.Label)control).Text != "")
+            //            //    else if (((Label)control).Text != "")
             //            //    {
             //            //        //색 변경
             //            //        Color randomColor = Color.FromArgb(rd.Next(100, 256), rd.Next(100, 256), rd.Next(64, 256));
 
-            //            //        ((System.Windows.Forms.Label)control).BackColor = randomColor;
-            //            //        ((System.Windows.Forms.Label)control).BorderStyle = BorderStyle.FixedSingle;
-            //            //        ((System.Windows.Forms.Label)control).ForeColor = Color.Black;
+            //            //        ((Label)control).BackColor = randomColor;
+            //            //        ((Label)control).BorderStyle = BorderStyle.FixedSingle;
+            //            //        ((Label)control).ForeColor = Color.Black;
 
             //            //        //라벨 항목마다 텍스트 변경
             //            //        for (int i = stack; i < rdcate_.Length;)
             //            //        {
-            //            //            ((System.Windows.Forms.Label)control).Text = rdcate_[i].ToString();
+            //            //            ((Label)control).Text = rdcate_[i].ToString();
             //            //            stack++;
             //            //            break;
             //            //        }
             //            //    }
 
-            //            //    if (((System.Windows.Forms.Label)control).Text.Equals("황금 열쇠"))
+            //            //    if (((Label)control).Text.Equals("황금 열쇠"))
             //            //    {
-            //            //        ((System.Windows.Forms.Label)control).BackColor = Color.Yellow;
-            //            //        ((System.Windows.Forms.Label)control).Image = Properties.Resources.golden_keys;
-            //            //        ((System.Windows.Forms.Label)control).Text = null;
+            //            //        ((Label)control).BackColor = Color.Yellow;
+            //            //        ((Label)control).Image = Properties.Resources.golden_keys;
+            //            //        ((Label)control).Text = null;
             //            //    }
 
             //        }
@@ -836,40 +908,40 @@ namespace RhythmMonopoly
             //    foreach (System.Windows.Forms.Control control in this.Controls)
             //    {
             //        //라벨마다 반복문
-            //        if (control is System.Windows.Forms.Label)
+            //        if (control is Label)
             //        {
-            //            ((System.Windows.Forms.Label)control).Font = font1;
+            //            ((Label)control).Font = font1;
 
             //            //밑에 배너
-            //            if (((System.Windows.Forms.Label)control).Name.Equals("lblBanner"))
+            //            if (((Label)control).Name.Equals("lblBanner"))
             //            {
-            //                ((System.Windows.Forms.Label)control).BackColor = Color.White; ;
-            //                ((System.Windows.Forms.Label)control).Text = "* 현재는 판 제작 기능만 제공하고 있습니다.";
+            //                ((Label)control).BackColor = Color.White; ;
+            //                ((Label)control).Text = "* 현재는 판 제작 기능만 제공하고 있습니다.";
             //                continue;
             //            }
             //            //변함없는 값들은 변경 안하도록 (BackColor = Black)
-            //            else if (((System.Windows.Forms.Label)control).BackColor == Color.Black)
+            //            else if (((Label)control).BackColor == Color.Black)
             //            {
-            //                string lblname = ((System.Windows.Forms.Label)control).Name;
+            //                string lblname = ((Label)control).Name;
 
             //                //라벨
             //                if (lblname.Contains("Island"))
             //                {
-            //                    ((System.Windows.Forms.Label)control).Image = Properties.Resources.무인도v2;
-            //                    ((System.Windows.Forms.Label)control).BackColor = Color.White;
-            //                    ((System.Windows.Forms.Label)control).Text = null;
+            //                    ((Label)control).Image = Properties.Resources.무인도v2;
+            //                    ((Label)control).BackColor = Color.White;
+            //                    ((Label)control).Text = null;
             //                }
             //                else if (lblname.Contains("Start"))
             //                {
-            //                    ((System.Windows.Forms.Label)control).Image = Properties.Resources.Start;
-            //                    ((System.Windows.Forms.Label)control).BackColor = Color.White;
-            //                    ((System.Windows.Forms.Label)control).Text = null;
+            //                    ((Label)control).Image = Properties.Resources.Start;
+            //                    ((Label)control).BackColor = Color.White;
+            //                    ((Label)control).Text = null;
             //                }
             //                else if (lblname.Contains("Free"))
             //                {
-            //                    ((System.Windows.Forms.Label)control).Image = Properties.Resources.뱅하싶2;
-            //                    ((System.Windows.Forms.Label)control).BackColor = Color.Black;
-            //                    ((System.Windows.Forms.Label)control).Text = null;
+            //                    ((Label)control).Image = Properties.Resources.뱅하싶2;
+            //                    ((Label)control).BackColor = Color.Black;
+            //                    ((Label)control).Text = null;
             //                }
 
             //                continue;
@@ -877,136 +949,154 @@ namespace RhythmMonopoly
 
             //            //4그룹으로 나누기
             //            //그룹 A
-            //            else if (((System.Windows.Forms.Label)control).Text.Contains("A"))
+            //            else if (((Label)control).Text.Contains("A"))
             //            {
             //                //색 변경
             //                Color randomColor = Color.FromArgb(rd.Next(100, 256), rd.Next(100, 256), rd.Next(64, 256));
 
-            //                ((System.Windows.Forms.Label)control).BackColor = randomColor;
-            //                ((System.Windows.Forms.Label)control).BorderStyle = BorderStyle.FixedSingle;
-            //                ((System.Windows.Forms.Label)control).ForeColor = Color.Black;
+            //                ((Label)control).BackColor = randomColor;
+            //                ((Label)control).BorderStyle = BorderStyle.FixedSingle;
+            //                ((Label)control).ForeColor = Color.Black;
 
             //                //라벨 항목마다 텍스트 변경
             //                for (int i = stack; i < rdcate_.Length;)
             //                {
-            //                    ((System.Windows.Forms.Label)control).Text = rdcate_[i].ToString();
+            //                    ((Label)control).Text = rdcate_[i].ToString();
             //                    stack++;
             //                    break;
             //                }
             //            }
-            //            if (((System.Windows.Forms.Label)control).Text.Equals("황금 열쇠"))
+            //            if (((Label)control).Text.Equals("황금 열쇠"))
             //            {
-            //                ((System.Windows.Forms.Label)control).BackColor = Color.Yellow;
-            //                ((System.Windows.Forms.Label)control).Image = Properties.Resources.golden_keys;
-            //                ((System.Windows.Forms.Label)control).Text = null;
+            //                ((Label)control).BackColor = Color.Yellow;
+            //                ((Label)control).Image = Properties.Resources.golden_keys;
+            //                ((Label)control).Text = null;
             //            }
 
             //            //그룹 B
-            //            else if (((System.Windows.Forms.Label)control).Text.Contains("B"))
+            //            else if (((Label)control).Text.Contains("B"))
             //            {
             //                //색 변경
             //                Color randomColor = Color.FromArgb(rd.Next(100, 256), rd.Next(100, 256), rd.Next(64, 256));
 
-            //                ((System.Windows.Forms.Label)control).BackColor = randomColor;
-            //                ((System.Windows.Forms.Label)control).BorderStyle = BorderStyle.FixedSingle;
-            //                ((System.Windows.Forms.Label)control).ForeColor = Color.Black;
+            //                ((Label)control).BackColor = randomColor;
+            //                ((Label)control).BorderStyle = BorderStyle.FixedSingle;
+            //                ((Label)control).ForeColor = Color.Black;
 
             //                //라벨 항목마다 텍스트 변경
             //                for (int i = stack; i < rdcate_.Length;)
             //                {
-            //                    ((System.Windows.Forms.Label)control).Text = rdcate_[i].ToString();
+            //                    ((Label)control).Text = rdcate_[i].ToString();
             //                    stack++;
             //                    break;
             //                }
             //            }
-            //            if (((System.Windows.Forms.Label)control).Text.Equals("황금 열쇠"))
+            //            if (((Label)control).Text.Equals("황금 열쇠"))
             //            {
-            //                ((System.Windows.Forms.Label)control).BackColor = Color.Yellow;
-            //                ((System.Windows.Forms.Label)control).Image = Properties.Resources.golden_keys;
-            //                ((System.Windows.Forms.Label)control).Text = null;
+            //                ((Label)control).BackColor = Color.Yellow;
+            //                ((Label)control).Image = Properties.Resources.golden_keys;
+            //                ((Label)control).Text = null;
             //            }
 
             //            //그룹 C
-            //            else if (((System.Windows.Forms.Label)control).Text.Contains("C"))
+            //            else if (((Label)control).Text.Contains("C"))
             //            {
             //                //색 변경
             //                Color randomColor = Color.FromArgb(rd.Next(100, 256), rd.Next(100, 256), rd.Next(64, 256));
 
-            //                ((System.Windows.Forms.Label)control).BackColor = randomColor;
-            //                ((System.Windows.Forms.Label)control).BorderStyle = BorderStyle.FixedSingle;
-            //                ((System.Windows.Forms.Label)control).ForeColor = Color.Black;
+            //                ((Label)control).BackColor = randomColor;
+            //                ((Label)control).BorderStyle = BorderStyle.FixedSingle;
+            //                ((Label)control).ForeColor = Color.Black;
 
             //                //라벨 항목마다 텍스트 변경
             //                for (int i = stack; i < rdcate_.Length;)
             //                {
-            //                    ((System.Windows.Forms.Label)control).Text = rdcate_[i].ToString();
+            //                    ((Label)control).Text = rdcate_[i].ToString();
             //                    stack++;
             //                    break;
             //                }
             //            }
-            //            if (((System.Windows.Forms.Label)control).Text.Equals("황금 열쇠"))
+            //            if (((Label)control).Text.Equals("황금 열쇠"))
             //            {
-            //                ((System.Windows.Forms.Label)control).BackColor = Color.Yellow;
-            //                ((System.Windows.Forms.Label)control).Image = Properties.Resources.golden_keys;
-            //                ((System.Windows.Forms.Label)control).Text = null;
+            //                ((Label)control).BackColor = Color.Yellow;
+            //                ((Label)control).Image = Properties.Resources.golden_keys;
+            //                ((Label)control).Text = null;
             //            }
 
             //            //그룹 D
-            //            else if (((System.Windows.Forms.Label)control).Text.Contains("D"))
+            //            else if (((Label)control).Text.Contains("D"))
             //            {
             //                //색 변경
             //                Color randomColor = Color.FromArgb(rd.Next(100, 256), rd.Next(100, 256), rd.Next(64, 256));
 
-            //                ((System.Windows.Forms.Label)control).BackColor = randomColor;
-            //                ((System.Windows.Forms.Label)control).BorderStyle = BorderStyle.FixedSingle;
-            //                ((System.Windows.Forms.Label)control).ForeColor = Color.Black;
+            //                ((Label)control).BackColor = randomColor;
+            //                ((Label)control).BorderStyle = BorderStyle.FixedSingle;
+            //                ((Label)control).ForeColor = Color.Black;
 
             //                //라벨 항목마다 텍스트 변경
             //                for (int i = stack; i < rdcate_.Length;)
             //                {
-            //                    ((System.Windows.Forms.Label)control).Text = rdcate_[i].ToString();
+            //                    ((Label)control).Text = rdcate_[i].ToString();
             //                    stack++;
             //                    break;
             //                }
             //            }
 
-            //            if (((System.Windows.Forms.Label)control).Text.Equals("황금 열쇠"))
+            //            if (((Label)control).Text.Equals("황금 열쇠"))
             //            {
-            //                ((System.Windows.Forms.Label)control).BackColor = Color.Yellow;
-            //                ((System.Windows.Forms.Label)control).Image = Properties.Resources.golden_keys;
-            //                ((System.Windows.Forms.Label)control).Text = null;
+            //                ((Label)control).BackColor = Color.Yellow;
+            //                ((Label)control).Image = Properties.Resources.golden_keys;
+            //                ((Label)control).Text = null;
             //            }
             //        }
 
             //        //아닌 항목들은 말처럼 쓸수있도록
-            //        //    else if (((System.Windows.Forms.Label)control).Text != "")
+            //        //    else if (((Label)control).Text != "")
             //        //    {
             //        //        //색 변경
             //        //        Color randomColor = Color.FromArgb(rd.Next(100, 256), rd.Next(100, 256), rd.Next(64, 256));
 
-            //        //        ((System.Windows.Forms.Label)control).BackColor = randomColor;
-            //        //        ((System.Windows.Forms.Label)control).BorderStyle = BorderStyle.FixedSingle;
-            //        //        ((System.Windows.Forms.Label)control).ForeColor = Color.Black;
+            //        //        ((Label)control).BackColor = randomColor;
+            //        //        ((Label)control).BorderStyle = BorderStyle.FixedSingle;
+            //        //        ((Label)control).ForeColor = Color.Black;
 
             //        //        //라벨 항목마다 텍스트 변경
             //        //        for (int i = stack; i < rdcate_.Length;)
             //        //        {
-            //        //            ((System.Windows.Forms.Label)control).Text = rdcate_[i].ToString();
+            //        //            ((Label)control).Text = rdcate_[i].ToString();
             //        //            stack++;
             //        //            break;
             //        //        }
             //        //    }
 
-            //        //    if (((System.Windows.Forms.Label)control).Text.Equals("황금 열쇠"))
+            //        //    if (((Label)control).Text.Equals("황금 열쇠"))
             //        //    {
-            //        //        ((System.Windows.Forms.Label)control).BackColor = Color.Yellow;
-            //        //        ((System.Windows.Forms.Label)control).Image = Properties.Resources.golden_keys;
-            //        //        ((System.Windows.Forms.Label)control).Text = null;
+            //        //        ((Label)control).BackColor = Color.Yellow;
+            //        //        ((Label)control).Image = Properties.Resources.golden_keys;
+            //        //        ((Label)control).Text = null;
             //        //    }
             //    }
             //}
             #endregion
 
+        }
+
+        private void InitializeINI(string path)
+        {
+            try
+            {
+                if (!System.IO.File.Exists(path))
+                {
+                    MessageBox.Show("설정 파일이 없어요, 판 개발자를 불러주세요");
+                    Application.Exit();
+                }
+
+                ini.Load(path);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, MethodBase.GetCurrentMethod().Name);
+            }
         }
 
         #region :: ButtonEvent ::

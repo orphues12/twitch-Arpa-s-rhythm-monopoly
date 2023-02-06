@@ -8,6 +8,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,83 +26,11 @@ namespace RhythmMonopoly
         IniFile ini = new IniFile();
         string inipath = Application.StartupPath + "\\Settings.ini";
 
-        //판때기 항목들
-        string TopCategory01 = string.Empty; //상위  
-        string TopCategory02 = string.Empty; //상위
-        string TopCategory03 = string.Empty; //상위
-        string TopCategory04 = string.Empty; //상위
-        string TopCategory05 = string.Empty; //상위
-        string TopCategory06 = string.Empty; //상위
-
-        string BotCategory01 = string.Empty; //상위 + 하위
-        string BotCategory02 = string.Empty; //상위 + 하위
-        string BotCategory03 = string.Empty; //상위 + 하위
-        string BotCategory04 = string.Empty; //상위 + 하위
-        string BotCategory05 = string.Empty; //상위 + 하위
-        string BotCategory06 = string.Empty; //상위 + 하위
-        string BotCategory07 = string.Empty; //상위 + 하위
-        string BotCategory08 = string.Empty; //상위 + 하위
-        string BotCategory09 = string.Empty; //상위 + 하위
-
-
-        //하위 더미데이터 불러오는 곳
-        string bot_SubMenu1_1 = string.Empty;
-        string bot_SubMenu1_2 = string.Empty;
-        string bot_SubMenu1_3 = string.Empty;
-        string bot_SubMenu1_4 = string.Empty;
-        string bot_SubMenu1_5 = string.Empty;
-
-        string bot_SubMenu2_1 = string.Empty;
-        string bot_SubMenu2_2 = string.Empty;
-        string bot_SubMenu2_3 = string.Empty;
-        string bot_SubMenu2_4 = string.Empty;
-        string bot_SubMenu2_5 = string.Empty;
-
-        string bot_SubMenu3_1 = string.Empty;
-        string bot_SubMenu3_2 = string.Empty;
-        string bot_SubMenu3_3 = string.Empty;
-        string bot_SubMenu3_4 = string.Empty;
-        string bot_SubMenu3_5 = string.Empty;
-
-        string bot_SubMenu4_1 = string.Empty;
-        string bot_SubMenu4_2 = string.Empty;
-        string bot_SubMenu4_3 = string.Empty;
-        string bot_SubMenu4_4 = string.Empty;
-        string bot_SubMenu4_5 = string.Empty;
-
-        string bot_SubMenu5_1 = string.Empty;
-        string bot_SubMenu5_2 = string.Empty;
-        string bot_SubMenu5_3 = string.Empty;
-        string bot_SubMenu5_4 = string.Empty;
-        string bot_SubMenu5_5 = string.Empty;
-
-        string bot_SubMenu6_1 = string.Empty;
-        string bot_SubMenu6_2 = string.Empty;
-        string bot_SubMenu6_3 = string.Empty;
-        string bot_SubMenu6_4 = string.Empty;
-        string bot_SubMenu6_5 = string.Empty;
-
-        string bot_SubMenu7_1 = string.Empty;
-        string bot_SubMenu7_2 = string.Empty;
-        string bot_SubMenu7_3 = string.Empty;
-        string bot_SubMenu7_4 = string.Empty;
-        string bot_SubMenu7_5 = string.Empty;
-
-        string bot_SubMenu8_1 = string.Empty;
-        string bot_SubMenu8_2 = string.Empty;
-        string bot_SubMenu8_3 = string.Empty;
-        string bot_SubMenu8_4 = string.Empty;
-        string bot_SubMenu8_5 = string.Empty;
-
-        string bot_SubMenu9_1 = string.Empty;
-        string bot_SubMenu9_2 = string.Empty;
-        string bot_SubMenu9_3 = string.Empty;
-        string bot_SubMenu9_4 = string.Empty;
-        string bot_SubMenu9_5 = string.Empty;
-
         bool Randomize = false;
         bool SuperRandom = false;
         bool GoldenFix = false;
+
+        bool isMake = false;
 
         //Combobox 숫자관련
         int TopNum =  0;
@@ -119,6 +48,11 @@ namespace RhythmMonopoly
         //목차
         int TopIndex = -1;
         int botIndex = 0;
+        
+        //Dict
+        int BotSubQty = 0;
+        int TopQty = 0;
+        int BotQty = 0;
 
         //???????
         int bot1Qty = 0;
@@ -132,6 +66,9 @@ namespace RhythmMonopoly
         int bot9Qty = 0;
 
         //Dict
+        //Top
+        Dictionary<string, string> TopMenuDict = new Dictionary<string, string>();
+        Dictionary<string, string> BotMenuDict = new Dictionary<string, string>();
 
         Dictionary<string, string> botSubMenu1Dict = new Dictionary<string, string>();
         Dictionary<string, string> botSubMenu2Dict = new Dictionary<string, string>();
@@ -282,106 +219,50 @@ namespace RhythmMonopoly
 
                 ini.Load(path);
 
+                TopQty = int.Parse(ini["Option"]["TopQty"].ToString());
+                BotQty = int.Parse(ini["Option"]["BotQty"].ToString());
+
                 #region :: 값 불러오기 ::
 
-                //판때기 항목들
-                TopCategory01 = ini["Top"]["TopCategory1"].ToString(); //상위  
-                TopCategory02 = ini["Top"]["TopCategory2"].ToString(); //상위
-                TopCategory03 = ini["Top"]["TopCategory3"].ToString(); //상위
-                TopCategory04 = ini["Top"]["TopCategory4"].ToString(); //상위
-                TopCategory05 = ini["Top"]["TopCategory5"].ToString(); //상위
-                TopCategory06 = ini["Top"]["TopCategory6"].ToString(); //상위
-
-                BotCategory01 = ini["Bot"]["BotCategory1"].ToString(); //상위 + 하위
-                BotCategory02 = ini["Bot"]["BotCategory2"].ToString(); //상위 + 하위
-                BotCategory03 = ini["Bot"]["BotCategory3"].ToString(); //상위 + 하위
-                BotCategory04 = ini["Bot"]["BotCategory4"].ToString(); //상위 + 하위
-                BotCategory05 = ini["Bot"]["BotCategory5"].ToString(); //상위 + 하위
-                BotCategory06 = ini["Bot"]["BotCategory6"].ToString(); //상위 + 하위
-                BotCategory07 = ini["Bot"]["BotCategory7"].ToString(); //상위 + 하위
-                BotCategory08 = ini["Bot"]["BotCategory8"].ToString(); //상위 + 하위
-                BotCategory09 = ini["Bot"]["BotCategory9"].ToString(); //상위 + 하위
+                if (!isMake)
+                {
+                    for (int i = 0; i < TopQty; i++)
+                    {
+                        TopMenuDict.Add($"TopCategory0{i + 1}", ini["Top"][$"TopCategory{i + 1}"].ToString());
+                    }
+                    for (int i = 0; i < BotQty; i++)
+                    {
+                        BotMenuDict.Add($"BotCategory0{i + 1}", ini["Bot"][$"BotCategory{i + 1}"].ToString());
+                    }
+                    isMake = true;
+                }
 
                 //하위 더미데이터 불러오는 곳
+                BotSubQty = int.Parse(ini["Option"]["BotSubQty"].ToString()); //서브갯수 설정
                 //하위 더미데이터
-                bot_SubMenu1_1 = ini["Bot_SubMenu1"]["BotContent1"].ToString();
-                bot_SubMenu1_2 = ini["Bot_SubMenu1"]["BotContent2"].ToString();
-                bot_SubMenu1_3 = ini["Bot_SubMenu1"]["BotContent3"].ToString();
-                bot_SubMenu1_4 = ini["Bot_SubMenu1"]["BotContent4"].ToString();
-                bot_SubMenu1_5 = ini["Bot_SubMenu1"]["BotContent5"].ToString();
-
                 botSubMenu1Dict = MakeDict("Bot_SubMenu1", 1);
                 bot1Qty = int.Parse(ini["Bot_SubMenu1"]["Qty"].ToString());
-
-
-                bot_SubMenu2_1 = ini["Bot_SubMenu2"]["BotContent1"].ToString();
-                bot_SubMenu2_2 = ini["Bot_SubMenu2"]["BotContent2"].ToString();
-                bot_SubMenu2_3 = ini["Bot_SubMenu2"]["BotContent3"].ToString();
-                bot_SubMenu2_4 = ini["Bot_SubMenu2"]["BotContent4"].ToString();
-                bot_SubMenu2_5 = ini["Bot_SubMenu2"]["BotContent5"].ToString();
 
                 botSubMenu2Dict = MakeDict("Bot_SubMenu2", 2);
                 bot2Qty = int.Parse(ini["Bot_SubMenu2"]["Qty"].ToString());
 
-                bot_SubMenu3_1 = ini["Bot_SubMenu3"]["BotContent1"].ToString();
-                bot_SubMenu3_2 = ini["Bot_SubMenu3"]["BotContent2"].ToString();
-                bot_SubMenu3_3 = ini["Bot_SubMenu3"]["BotContent3"].ToString();
-                bot_SubMenu3_4 = ini["Bot_SubMenu3"]["BotContent4"].ToString();
-                bot_SubMenu3_5 = ini["Bot_SubMenu3"]["BotContent5"].ToString();
-
                 botSubMenu3Dict = MakeDict("Bot_SubMenu3", 3);
                 bot3Qty = int.Parse(ini["Bot_SubMenu3"]["Qty"].ToString());
-
-                bot_SubMenu4_1 = ini["Bot_SubMenu4"]["BotContent1"].ToString();
-                bot_SubMenu4_2 = ini["Bot_SubMenu4"]["BotContent2"].ToString();
-                bot_SubMenu4_3 = ini["Bot_SubMenu4"]["BotContent3"].ToString();
-                bot_SubMenu4_4 = ini["Bot_SubMenu4"]["BotContent4"].ToString();
-                bot_SubMenu4_5 = ini["Bot_SubMenu4"]["BotContent5"].ToString();
 
                 botSubMenu4Dict = MakeDict("Bot_SubMenu4", 4);
                 bot4Qty = int.Parse(ini["Bot_SubMenu4"]["Qty"].ToString());
 
-                bot_SubMenu5_1 = ini["Bot_SubMenu5"]["BotContent1"].ToString();
-                bot_SubMenu5_2 = ini["Bot_SubMenu5"]["BotContent2"].ToString();
-                bot_SubMenu5_3 = ini["Bot_SubMenu5"]["BotContent3"].ToString();
-                bot_SubMenu5_4 = ini["Bot_SubMenu5"]["BotContent4"].ToString();
-                bot_SubMenu5_5 = ini["Bot_SubMenu5"]["BotContent5"].ToString();
-
                 botSubMenu5Dict = MakeDict("Bot_SubMenu5", 5);
                 bot5Qty = int.Parse(ini["Bot_SubMenu5"]["Qty"].ToString());
-
-                bot_SubMenu6_1 = ini["Bot_SubMenu6"]["BotContent1"].ToString();
-                bot_SubMenu6_2 = ini["Bot_SubMenu6"]["BotContent2"].ToString();
-                bot_SubMenu6_3 = ini["Bot_SubMenu6"]["BotContent3"].ToString();
-                bot_SubMenu6_4 = ini["Bot_SubMenu6"]["BotContent4"].ToString();
-                bot_SubMenu6_5 = ini["Bot_SubMenu6"]["BotContent5"].ToString();
 
                 botSubMenu6Dict = MakeDict("Bot_SubMenu6", 6);
                 bot6Qty = int.Parse(ini["Bot_SubMenu6"]["Qty"].ToString());
 
-                bot_SubMenu7_1 = ini["Bot_SubMenu7"]["BotContent1"].ToString();
-                bot_SubMenu7_2 = ini["Bot_SubMenu7"]["BotContent2"].ToString();
-                bot_SubMenu7_3 = ini["Bot_SubMenu7"]["BotContent3"].ToString();
-                bot_SubMenu7_4 = ini["Bot_SubMenu7"]["BotContent4"].ToString();
-                bot_SubMenu7_5 = ini["Bot_SubMenu7"]["BotContent5"].ToString();
-
                 botSubMenu7Dict = MakeDict("Bot_SubMenu7", 7);
                 bot7Qty = int.Parse(ini["Bot_SubMenu7"]["Qty"].ToString());
 
-                bot_SubMenu8_1 = ini["Bot_SubMenu8"]["BotContent1"].ToString();
-                bot_SubMenu8_2 = ini["Bot_SubMenu8"]["BotContent2"].ToString();
-                bot_SubMenu8_3 = ini["Bot_SubMenu8"]["BotContent3"].ToString();
-                bot_SubMenu8_4 = ini["Bot_SubMenu8"]["BotContent4"].ToString();
-                bot_SubMenu8_5 = ini["Bot_SubMenu8"]["BotContent5"].ToString();
-
                 botSubMenu8Dict = MakeDict("Bot_SubMenu8", 8);
                 bot8Qty = int.Parse(ini["Bot_SubMenu8"]["Qty"].ToString());
-
-                bot_SubMenu9_1 = ini["Bot_SubMenu9"]["BotContent1"].ToString();
-                bot_SubMenu9_2 = ini["Bot_SubMenu9"]["BotContent2"].ToString();
-                bot_SubMenu9_3 = ini["Bot_SubMenu9"]["BotContent3"].ToString();
-                bot_SubMenu9_4 = ini["Bot_SubMenu9"]["BotContent4"].ToString();
-                bot_SubMenu9_5 = ini["Bot_SubMenu9"]["BotContent5"].ToString();
 
                 botSubMenu9Dict = MakeDict("Bot_SubMenu9", 9);
                 bot9Qty = int.Parse(ini["Bot_SubMenu9"]["Qty"].ToString());
@@ -396,6 +277,7 @@ namespace RhythmMonopoly
 
                 RandTopNum = int.Parse(ini["CategoryQty"]["RandTopNum"].ToString());
                 RandBotNum = int.Parse(ini["CategoryQty"]["RandBotNum"].ToString());
+
 
                 #endregion
             }
@@ -412,8 +294,14 @@ namespace RhythmMonopoly
             Dictionary<string, string> tempdict = new Dictionary<string, string>();
             int botQty = 0;
 
-            for (int i = 1; i < 6; i++)
+            for (int i = 1; i < BotSubQty + 1; i++)
             {
+                if (ini[$"Bot_SubMenu{a}"][$"BotContent{i}"].ToString() == null)
+                {
+                    ini[$"Bot_SubMenu{a}"][$"BotContent{i}"] = string.Empty;
+                    ini.Save(inipath);
+                }
+
                 tempdict.Add(name + $"_{i}", ini[$"Bot_SubMenu{a}"][$"BotContent{i}"].ToString());
 
                 //값이 있으면 Qty값 증가
@@ -461,29 +349,29 @@ namespace RhythmMonopoly
                 {
                     //상위
                     case var a when text.Contains("상-1"):
-                        txtCategoryTop.Text = TopCategory01;
+                        txtCategoryTop.Text = TopMenuDict["TopCategory01"].ToString();
                         break;
                     case var a when text.Contains("상-2"):
-                        txtCategoryTop.Text = TopCategory02;
+                        txtCategoryTop.Text = TopMenuDict["TopCategory02"].ToString();
                         break;
                     case var a when text.Contains("상-3"):
-                        txtCategoryTop.Text = TopCategory03;
+                        txtCategoryTop.Text = TopMenuDict["TopCategory03"].ToString();
                         break;
                     case var a when text.Contains("상-4"):
-                        txtCategoryTop.Text = TopCategory04;
+                        txtCategoryTop.Text = TopMenuDict["TopCategory04"].ToString();
                         break;
                     case var a when text.Contains("상-5"):
-                        txtCategoryTop.Text = TopCategory05;
+                        txtCategoryTop.Text = TopMenuDict["TopCategory05"].ToString();
                         break;
                     case var a when text.Contains("상-6"):
-                        txtCategoryTop.Text = TopCategory06;
+                        txtCategoryTop.Text = TopMenuDict["TopCategory06"].ToString();
                         break;
                     //하위
                     case var a when text.Contains("하-1"):
                         {
-                            txtCategoryTop.Text = BotCategory01;
+                            txtCategoryTop.Text = BotMenuDict["BotCategory01"].ToString();
 
-                            for (int i = 1; i < 6; i++)
+                            for (int i = 1; i < BotSubQty + 1; i++)
                             {
                                 cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu1Dict[$"Bot_SubMenu1_{i}"]);
                             }
@@ -493,9 +381,9 @@ namespace RhythmMonopoly
                         break;
                     case var a when text.Contains("하-2"):
                         {
-                            txtCategoryTop.Text = BotCategory02;
+                            txtCategoryTop.Text = BotMenuDict["BotCategory02"].ToString();
 
-                            for (int i = 1; i < 6; i++)
+                            for (int i = 1; i < BotSubQty + 1; i++)
                             {
                                 cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu2Dict[$"Bot_SubMenu2_{i}"]);
                             }
@@ -505,9 +393,9 @@ namespace RhythmMonopoly
                         break;
                     case var a when text.Contains("하-3"):
                         {
-                            txtCategoryTop.Text = BotCategory03;
+                            txtCategoryTop.Text = BotMenuDict["BotCategory03"].ToString();
 
-                            for (int i = 1; i < 6; i++)
+                            for (int i = 1; i < BotSubQty + 1; i++)
                             {
                                 cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu3Dict[$"Bot_SubMenu3_{i}"]);
                             }
@@ -517,9 +405,9 @@ namespace RhythmMonopoly
                         break;
                     case var a when text.Contains("하-4"):
                         {
-                            txtCategoryTop.Text = BotCategory04;
+                            txtCategoryTop.Text = BotMenuDict["BotCategory04"].ToString();
 
-                            for (int i = 1; i < 6; i++)
+                            for (int i = 1; i < BotSubQty + 1; i++)
                             {
                                 cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu4Dict[$"Bot_SubMenu4_{i}"]);
                             }
@@ -529,9 +417,9 @@ namespace RhythmMonopoly
                         break;
                     case var a when text.Contains("하-5"):
                         {
-                            txtCategoryTop.Text = BotCategory05;
+                            txtCategoryTop.Text = BotMenuDict["BotCategory05"].ToString();
 
-                            for (int i = 1; i < 6; i++)
+                            for (int i = 1; i < BotSubQty + 1; i++)
                             {
                                 cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu5Dict[$"Bot_SubMenu5_{i}"]);
                             }
@@ -541,9 +429,9 @@ namespace RhythmMonopoly
                         break;
                     case var a when text.Contains("하-6"):
                         {
-                            txtCategoryTop.Text = BotCategory06;
+                            txtCategoryTop.Text = BotMenuDict["BotCategory06"].ToString();
 
-                            for (int i = 1; i < 6; i++)
+                            for (int i = 1; i < BotSubQty + 1; i++)
                             {
                                 cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu6Dict[$"Bot_SubMenu6_{i}"]);
                             }
@@ -553,9 +441,9 @@ namespace RhythmMonopoly
                         break;
                     case var a when text.Contains("하-7"):
                         {
-                            txtCategoryTop.Text = BotCategory07;
+                            txtCategoryTop.Text = BotMenuDict["BotCategory07"].ToString();
 
-                            for (int i = 1; i < 6; i++)
+                            for (int i = 1; i < BotSubQty + 1; i++)
                             {
                                 cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu7Dict[$"Bot_SubMenu7_{i}"]);
                             }
@@ -565,9 +453,9 @@ namespace RhythmMonopoly
                         break;
                     case var a when text.Contains("하-8"):
                         {
-                            txtCategoryTop.Text = BotCategory08;
+                            txtCategoryTop.Text = BotMenuDict["BotCategory08"].ToString();
 
-                            for (int i = 1; i <6; i++)
+                            for (int i = 1; i < BotSubQty + 1; i++)
                             {
                                 cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu8Dict[$"Bot_SubMenu8_{i}"]);
                             }
@@ -577,9 +465,9 @@ namespace RhythmMonopoly
                         break;
                     case var a when text.Contains("하-9"):
                         {
-                            txtCategoryTop.Text = BotCategory09;
+                            txtCategoryTop.Text = BotMenuDict["BotCategory09"].ToString();
 
-                            for (int i = 1; i < 6; i++)
+                            for (int i = 1; i < BotSubQty + 1; i++)
                             {
                                 cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu9Dict[$"Bot_SubMenu9_{i}"]);
                             }
@@ -1024,8 +912,8 @@ namespace RhythmMonopoly
                             {
                                 TopCatadata = String.Format("BotCategory{0}", i.ToString());
 
-                                //항목의 전체개수가 바뀌면 J를 바꿔주세요. (현재는 모든 항목이 5개라서 6 넣어둠)
-                                for (int j = 1; j < 6; j++)
+                                //항목의 전체개수가 바뀌면 J를 바꿔주세요.
+                                for (int j = 1; j < BotSubQty + 1; j++)
                                 {
                                     if (_TempCateBot.Contains(String.Format($"하위{j}")))
                                     {
@@ -1069,7 +957,7 @@ namespace RhythmMonopoly
 
                     InitializeINI(inipath);
 
-                    CataSaveText();
+                    //CataSaveText();
 
                     AddComboboxItems();
 
@@ -1126,259 +1014,259 @@ namespace RhythmMonopoly
 
         private void CataSaveText()
         {
-            if (cmbCategoryTop.Text.Contains("상-1"))
-            {
-                TopCategory01 = txtCategoryTop.Text;
-            }
-            else if (cmbCategoryTop.Text.Contains("상-2"))
-            {
-                TopCategory02 = txtCategoryTop.Text;
-            }
-            else if (cmbCategoryTop.Text.Contains("상-3"))
-            {
-                TopCategory03 = txtCategoryTop.Text;
-            }
-            else if (cmbCategoryTop.Text.Contains("상-4"))
-            {
-                TopCategory04 = txtCategoryTop.Text;
-            }
-            else if (cmbCategoryTop.Text.Contains("상-5"))
-            {
-                TopCategory05 = txtCategoryTop.Text;
-            }
-            else if (cmbCategoryTop.Text.Contains("상-6"))
-            {
-                TopCategory06 = txtCategoryTop.Text;
-            }
-            else if (cmbCategoryTop.Text.Contains("하-1"))
-            {
-                BotCategory01 = txtCategoryTop.Text;
-                string categorytxt = cmbCategoryBottom.Text;
+            //if (cmbCategoryTop.Text.Contains("상-1"))
+            //{
+            //    TopCat = txtCategoryTop.Text;
+            //}
+            //else if (cmbCategoryTop.Text.Contains("상-2"))
+            //{
+            //    TopCategory02 = txtCategoryTop.Text;
+            //}
+            //else if (cmbCategoryTop.Text.Contains("상-3"))
+            //{
+            //    TopCategory03 = txtCategoryTop.Text;
+            //}
+            //else if (cmbCategoryTop.Text.Contains("상-4"))
+            //{
+            //    TopCategory04 = txtCategoryTop.Text;
+            //}
+            //else if (cmbCategoryTop.Text.Contains("상-5"))
+            //{
+            //    TopCategory05 = txtCategoryTop.Text;
+            //}
+            //else if (cmbCategoryTop.Text.Contains("상-6"))
+            //{
+            //    TopCategory06 = txtCategoryTop.Text;
+            //}
+            //else if (cmbCategoryTop.Text.Contains("하-1"))
+            //{
+            //    BotCategory01 = txtCategoryTop.Text;
+            //    string categorytxt = cmbCategoryBottom.Text;
 
-                switch (categorytxt)
-                {
-                    case string read when categorytxt.Contains("하-1"):
-                        txtCategoryBottom.Text = botSubMenu1Dict["Bot_SubMenu1"];
-                        break;
-                    case string read when categorytxt.Contains("하-2"):
-                        txtCategoryBottom.Text = botSubMenu1Dict["Bot_SubMenu2"];
-                        break;
-                    case string read when categorytxt.Contains("하-3"):
-                        txtCategoryBottom.Text = botSubMenu1Dict["Bot_SubMenu3"];
-                        break;
-                    case string read when categorytxt.Contains("하-4"):
-                        txtCategoryBottom.Text = botSubMenu1Dict["Bot_SubMenu4"];
-                        break;
-                    case string read when categorytxt.Contains("하-5"):
-                        txtCategoryBottom.Text = botSubMenu1Dict["Bot_SubMenu5"];
-                        break;
-                }
-            }
-            else if (cmbCategoryTop.Text.Contains("하-2"))
-            {
-                BotCategory02 = txtCategoryTop.Text;
+            //    switch (categorytxt)
+            //    {
+            //        case string read when categorytxt.Contains("하-1"):
+            //            txtCategoryBottom.Text = botSubMenu1Dict["Bot_SubMenu1"];
+            //            break;
+            //        case string read when categorytxt.Contains("하-2"):
+            //            txtCategoryBottom.Text = botSubMenu1Dict["Bot_SubMenu2"];
+            //            break;
+            //        case string read when categorytxt.Contains("하-3"):
+            //            txtCategoryBottom.Text = botSubMenu1Dict["Bot_SubMenu3"];
+            //            break;
+            //        case string read when categorytxt.Contains("하-4"):
+            //            txtCategoryBottom.Text = botSubMenu1Dict["Bot_SubMenu4"];
+            //            break;
+            //        case string read when categorytxt.Contains("하-5"):
+            //            txtCategoryBottom.Text = botSubMenu1Dict["Bot_SubMenu5"];
+            //            break;
+            //    }
+            //}
+            //else if (cmbCategoryTop.Text.Contains("하-2"))
+            //{
+            //    BotCategory02 = txtCategoryTop.Text;
 
-                string categorytxt = cmbCategoryBottom.Text;
+            //    string categorytxt = cmbCategoryBottom.Text;
 
-                switch (categorytxt)
-                {
-                    case string read when categorytxt.Contains("하-1"):
-                        txtCategoryBottom.Text = botSubMenu2Dict["Bot_SubMenu1"];
-                        break;
-                    case string read when categorytxt.Contains("하-2"):
-                        txtCategoryBottom.Text = botSubMenu2Dict["Bot_SubMenu2"];
-                        break;
-                    case string read when categorytxt.Contains("하-3"):
-                        txtCategoryBottom.Text = botSubMenu2Dict["Bot_SubMenu3"];
-                        break;
-                    case string read when categorytxt.Contains("하-4"):
-                        txtCategoryBottom.Text = botSubMenu2Dict["Bot_SubMenu4"];
-                        break;
-                    case string read when categorytxt.Contains("하-5"):
-                        txtCategoryBottom.Text = botSubMenu2Dict["Bot_SubMenu5"];
-                        break;
-                }
+            //    switch (categorytxt)
+            //    {
+            //        case string read when categorytxt.Contains("하-1"):
+            //            txtCategoryBottom.Text = botSubMenu2Dict["Bot_SubMenu1"];
+            //            break;
+            //        case string read when categorytxt.Contains("하-2"):
+            //            txtCategoryBottom.Text = botSubMenu2Dict["Bot_SubMenu2"];
+            //            break;
+            //        case string read when categorytxt.Contains("하-3"):
+            //            txtCategoryBottom.Text = botSubMenu2Dict["Bot_SubMenu3"];
+            //            break;
+            //        case string read when categorytxt.Contains("하-4"):
+            //            txtCategoryBottom.Text = botSubMenu2Dict["Bot_SubMenu4"];
+            //            break;
+            //        case string read when categorytxt.Contains("하-5"):
+            //            txtCategoryBottom.Text = botSubMenu2Dict["Bot_SubMenu5"];
+            //            break;
+            //    }
 
-            }
-            else if (cmbCategoryTop.Text.Contains("하-3"))
-            {
-                BotCategory03 = txtCategoryTop.Text;
+            //}
+            //else if (cmbCategoryTop.Text.Contains("하-3"))
+            //{
+            //    BotCategory03 = txtCategoryTop.Text;
 
-                string categorytxt = cmbCategoryBottom.Text;
+            //    string categorytxt = cmbCategoryBottom.Text;
 
-                switch (categorytxt)
-                {
-                    case string read when categorytxt.Contains("하-1"):
-                        txtCategoryBottom.Text = botSubMenu3Dict["Bot_SubMenu1"];
-                        break;
-                    case string read when categorytxt.Contains("하-2"):
-                        txtCategoryBottom.Text = botSubMenu3Dict["Bot_SubMenu2"];
-                        break;
-                    case string read when categorytxt.Contains("하-3"):
-                        txtCategoryBottom.Text = botSubMenu3Dict["Bot_SubMenu3"];
-                        break;
-                    case string read when categorytxt.Contains("하-4"):
-                        txtCategoryBottom.Text = botSubMenu3Dict["Bot_SubMenu4"];
-                        break;
-                    case string read when categorytxt.Contains("하-5"):
-                        txtCategoryBottom.Text = botSubMenu3Dict["Bot_SubMenu5"];
-                        break;
-                }
+            //    switch (categorytxt)
+            //    {
+            //        case string read when categorytxt.Contains("하-1"):
+            //            txtCategoryBottom.Text = botSubMenu3Dict["Bot_SubMenu1"];
+            //            break;
+            //        case string read when categorytxt.Contains("하-2"):
+            //            txtCategoryBottom.Text = botSubMenu3Dict["Bot_SubMenu2"];
+            //            break;
+            //        case string read when categorytxt.Contains("하-3"):
+            //            txtCategoryBottom.Text = botSubMenu3Dict["Bot_SubMenu3"];
+            //            break;
+            //        case string read when categorytxt.Contains("하-4"):
+            //            txtCategoryBottom.Text = botSubMenu3Dict["Bot_SubMenu4"];
+            //            break;
+            //        case string read when categorytxt.Contains("하-5"):
+            //            txtCategoryBottom.Text = botSubMenu3Dict["Bot_SubMenu5"];
+            //            break;
+            //    }
 
-            }
-            //임시 5/5/3
-            else if (cmbCategoryTop.Text.Contains("하-4"))
-            {
-                BotCategory04 = txtCategoryTop.Text;
+            //}
+            ////임시 5/5/3
+            //else if (cmbCategoryTop.Text.Contains("하-4"))
+            //{
+            //    BotCategory04 = txtCategoryTop.Text;
 
-                string categorytxt = cmbCategoryBottom.Text;
+            //    string categorytxt = cmbCategoryBottom.Text;
 
-                switch (categorytxt)
-                {
-                    case string read when categorytxt.Contains("하-1"):
-                        txtCategoryBottom.Text = botSubMenu4Dict["Bot_SubMenu1"];
-                        break;
-                    case string read when categorytxt.Contains("하-2"):
-                        txtCategoryBottom.Text = botSubMenu4Dict["Bot_SubMenu2"];
-                        break;
-                    case string read when categorytxt.Contains("하-3"):
-                        txtCategoryBottom.Text = botSubMenu4Dict["Bot_SubMenu3"];
-                        break;
-                    case string read when categorytxt.Contains("하-4"):
-                        txtCategoryBottom.Text = botSubMenu4Dict["Bot_SubMenu4"];
-                        break;
-                    case string read when categorytxt.Contains("하-5"):
-                        txtCategoryBottom.Text = botSubMenu4Dict["Bot_SubMenu5"];
-                        break;
-                }
+            //    switch (categorytxt)
+            //    {
+            //        case string read when categorytxt.Contains("하-1"):
+            //            txtCategoryBottom.Text = botSubMenu4Dict["Bot_SubMenu1"];
+            //            break;
+            //        case string read when categorytxt.Contains("하-2"):
+            //            txtCategoryBottom.Text = botSubMenu4Dict["Bot_SubMenu2"];
+            //            break;
+            //        case string read when categorytxt.Contains("하-3"):
+            //            txtCategoryBottom.Text = botSubMenu4Dict["Bot_SubMenu3"];
+            //            break;
+            //        case string read when categorytxt.Contains("하-4"):
+            //            txtCategoryBottom.Text = botSubMenu4Dict["Bot_SubMenu4"];
+            //            break;
+            //        case string read when categorytxt.Contains("하-5"):
+            //            txtCategoryBottom.Text = botSubMenu4Dict["Bot_SubMenu5"];
+            //            break;
+            //    }
 
-            }
-            else if (cmbCategoryTop.Text.Contains("하-5"))
-            {
-                BotCategory05 = txtCategoryTop.Text;
+            //}
+            //else if (cmbCategoryTop.Text.Contains("하-5"))
+            //{
+            //    BotCategory05 = txtCategoryTop.Text;
 
-                string categorytxt = cmbCategoryBottom.Text;
+            //    string categorytxt = cmbCategoryBottom.Text;
 
-                switch (categorytxt)
-                {
-                    case string read when categorytxt.Contains("하-1"):
-                        txtCategoryBottom.Text = botSubMenu5Dict["Bot_SubMenu1"];
-                        break;
-                    case string read when categorytxt.Contains("하-2"):
-                        txtCategoryBottom.Text = botSubMenu5Dict["Bot_SubMenu2"];
-                        break;
-                    case string read when categorytxt.Contains("하-3"):
-                        txtCategoryBottom.Text = botSubMenu5Dict["Bot_SubMenu3"];
-                        break;
-                    case string read when categorytxt.Contains("하-4"):
-                        txtCategoryBottom.Text = botSubMenu5Dict["Bot_SubMenu4"];
-                        break;
-                    case string read when categorytxt.Contains("하-5"):
-                        txtCategoryBottom.Text = botSubMenu5Dict["Bot_SubMenu5"];
-                        break;
-                }
+            //    switch (categorytxt)
+            //    {
+            //        case string read when categorytxt.Contains("하-1"):
+            //            txtCategoryBottom.Text = botSubMenu5Dict["Bot_SubMenu1"];
+            //            break;
+            //        case string read when categorytxt.Contains("하-2"):
+            //            txtCategoryBottom.Text = botSubMenu5Dict["Bot_SubMenu2"];
+            //            break;
+            //        case string read when categorytxt.Contains("하-3"):
+            //            txtCategoryBottom.Text = botSubMenu5Dict["Bot_SubMenu3"];
+            //            break;
+            //        case string read when categorytxt.Contains("하-4"):
+            //            txtCategoryBottom.Text = botSubMenu5Dict["Bot_SubMenu4"];
+            //            break;
+            //        case string read when categorytxt.Contains("하-5"):
+            //            txtCategoryBottom.Text = botSubMenu5Dict["Bot_SubMenu5"];
+            //            break;
+            //    }
 
-            }
-            else if (cmbCategoryTop.Text.Contains("하-6"))
-            {
-                BotCategory06 = txtCategoryTop.Text;
+            //}
+            //else if (cmbCategoryTop.Text.Contains("하-6"))
+            //{
+            //    BotCategory06 = txtCategoryTop.Text;
 
-                string categorytxt = cmbCategoryBottom.Text;
+            //    string categorytxt = cmbCategoryBottom.Text;
 
-                switch (categorytxt)
-                {
-                    case string read when categorytxt.Contains("하-1"):
-                        txtCategoryBottom.Text = botSubMenu6Dict["Bot_SubMenu1"];
-                        break;
-                    case string read when categorytxt.Contains("하-2"):
-                        txtCategoryBottom.Text = botSubMenu6Dict["Bot_SubMenu2"];
-                        break;
-                    case string read when categorytxt.Contains("하-3"):
-                        txtCategoryBottom.Text = botSubMenu6Dict["Bot_SubMenu3"];
-                        break;
-                    case string read when categorytxt.Contains("하-4"):
-                        txtCategoryBottom.Text = botSubMenu6Dict["Bot_SubMenu4"];
-                        break;
-                    case string read when categorytxt.Contains("하-5"):
-                        txtCategoryBottom.Text = botSubMenu6Dict["Bot_SubMenu5"];
-                        break;
-                }
-            }
-            else if (cmbCategoryTop.Text.Contains("하-7"))
-            {
-                BotCategory07 = txtCategoryTop.Text;
+            //    switch (categorytxt)
+            //    {
+            //        case string read when categorytxt.Contains("하-1"):
+            //            txtCategoryBottom.Text = botSubMenu6Dict["Bot_SubMenu1"];
+            //            break;
+            //        case string read when categorytxt.Contains("하-2"):
+            //            txtCategoryBottom.Text = botSubMenu6Dict["Bot_SubMenu2"];
+            //            break;
+            //        case string read when categorytxt.Contains("하-3"):
+            //            txtCategoryBottom.Text = botSubMenu6Dict["Bot_SubMenu3"];
+            //            break;
+            //        case string read when categorytxt.Contains("하-4"):
+            //            txtCategoryBottom.Text = botSubMenu6Dict["Bot_SubMenu4"];
+            //            break;
+            //        case string read when categorytxt.Contains("하-5"):
+            //            txtCategoryBottom.Text = botSubMenu6Dict["Bot_SubMenu5"];
+            //            break;
+            //    }
+            //}
+            //else if (cmbCategoryTop.Text.Contains("하-7"))
+            //{
+            //    BotCategory07 = txtCategoryTop.Text;
 
-                string categorytxt = cmbCategoryBottom.Text;
+            //    string categorytxt = cmbCategoryBottom.Text;
 
-                switch (categorytxt)
-                {
-                    case string read when categorytxt.Contains("하-1"):
-                        txtCategoryBottom.Text = botSubMenu7Dict["Bot_SubMenu1"];
-                        break;
-                    case string read when categorytxt.Contains("하-2"):
-                        txtCategoryBottom.Text = botSubMenu7Dict["Bot_SubMenu2"];
-                        break;
-                    case string read when categorytxt.Contains("하-3"):
-                        txtCategoryBottom.Text = botSubMenu7Dict["Bot_SubMenu3"];
-                        break;
-                    case string read when categorytxt.Contains("하-4"):
-                        txtCategoryBottom.Text = botSubMenu7Dict["Bot_SubMenu4"];
-                        break;
-                    case string read when categorytxt.Contains("하-5"):
-                        txtCategoryBottom.Text = botSubMenu7Dict["Bot_SubMenu5"];
-                        break;
-                }
-            }
-            else if (cmbCategoryTop.Text.Contains("하-8"))
-            {
-                BotCategory08 = txtCategoryTop.Text;
+            //    switch (categorytxt)
+            //    {
+            //        case string read when categorytxt.Contains("하-1"):
+            //            txtCategoryBottom.Text = botSubMenu7Dict["Bot_SubMenu1"];
+            //            break;
+            //        case string read when categorytxt.Contains("하-2"):
+            //            txtCategoryBottom.Text = botSubMenu7Dict["Bot_SubMenu2"];
+            //            break;
+            //        case string read when categorytxt.Contains("하-3"):
+            //            txtCategoryBottom.Text = botSubMenu7Dict["Bot_SubMenu3"];
+            //            break;
+            //        case string read when categorytxt.Contains("하-4"):
+            //            txtCategoryBottom.Text = botSubMenu7Dict["Bot_SubMenu4"];
+            //            break;
+            //        case string read when categorytxt.Contains("하-5"):
+            //            txtCategoryBottom.Text = botSubMenu7Dict["Bot_SubMenu5"];
+            //            break;
+            //    }
+            //}
+            //else if (cmbCategoryTop.Text.Contains("하-8"))
+            //{
+            //    BotCategory08 = txtCategoryTop.Text;
 
-                string categorytxt = cmbCategoryBottom.Text;
+            //    string categorytxt = cmbCategoryBottom.Text;
 
-                switch (categorytxt)
-                {
-                    case string read when categorytxt.Contains("하-1"):
-                        txtCategoryBottom.Text = botSubMenu8Dict["Bot_SubMenu1"];
-                        break;
-                    case string read when categorytxt.Contains("하-2"):
-                        txtCategoryBottom.Text = botSubMenu8Dict["Bot_SubMenu2"];
-                        break;
-                    case string read when categorytxt.Contains("하-3"):
-                        txtCategoryBottom.Text = botSubMenu8Dict["Bot_SubMenu3"];
-                        break;
-                    case string read when categorytxt.Contains("하-4"):
-                        txtCategoryBottom.Text = botSubMenu8Dict["Bot_SubMenu4"];
-                        break;
-                    case string read when categorytxt.Contains("하-5"):
-                        txtCategoryBottom.Text = botSubMenu8Dict["Bot_SubMenu5"];
-                        break;
-                }
-            }
-            else if (cmbCategoryTop.Text.Contains("하-9"))
-            {
-                BotCategory09 = txtCategoryTop.Text;
+            //    switch (categorytxt)
+            //    {
+            //        case string read when categorytxt.Contains("하-1"):
+            //            txtCategoryBottom.Text = botSubMenu8Dict["Bot_SubMenu1"];
+            //            break;
+            //        case string read when categorytxt.Contains("하-2"):
+            //            txtCategoryBottom.Text = botSubMenu8Dict["Bot_SubMenu2"];
+            //            break;
+            //        case string read when categorytxt.Contains("하-3"):
+            //            txtCategoryBottom.Text = botSubMenu8Dict["Bot_SubMenu3"];
+            //            break;
+            //        case string read when categorytxt.Contains("하-4"):
+            //            txtCategoryBottom.Text = botSubMenu8Dict["Bot_SubMenu4"];
+            //            break;
+            //        case string read when categorytxt.Contains("하-5"):
+            //            txtCategoryBottom.Text = botSubMenu8Dict["Bot_SubMenu5"];
+            //            break;
+            //    }
+            //}
+            //else if (cmbCategoryTop.Text.Contains("하-9"))
+            //{
+            //    BotCategory09 = txtCategoryTop.Text;
 
-                string categorytxt = cmbCategoryBottom.Text;
+            //    string categorytxt = cmbCategoryBottom.Text;
 
-                switch (categorytxt)
-                {
-                    case string read when categorytxt.Contains("하-1"):
-                        txtCategoryBottom.Text = botSubMenu9Dict["Bot_SubMenu1"];
-                        break;
-                    case string read when categorytxt.Contains("하-2"):
-                        txtCategoryBottom.Text = botSubMenu9Dict["Bot_SubMenu2"];
-                        break;
-                    case string read when categorytxt.Contains("하-3"):
-                        txtCategoryBottom.Text = botSubMenu9Dict["Bot_SubMenu3"];
-                        break;
-                    case string read when categorytxt.Contains("하-4"):
-                        txtCategoryBottom.Text = botSubMenu9Dict["Bot_SubMenu4"];
-                        break;
-                    case string read when categorytxt.Contains("하-5"):
-                        txtCategoryBottom.Text = botSubMenu9Dict["Bot_SubMenu5"];
-                        break;
-                }
-            }
+            //    switch (categorytxt)
+            //    {
+            //        case string read when categorytxt.Contains("하-1"):
+            //            txtCategoryBottom.Text = botSubMenu9Dict["Bot_SubMenu1"];
+            //            break;
+            //        case string read when categorytxt.Contains("하-2"):
+            //            txtCategoryBottom.Text = botSubMenu9Dict["Bot_SubMenu2"];
+            //            break;
+            //        case string read when categorytxt.Contains("하-3"):
+            //            txtCategoryBottom.Text = botSubMenu9Dict["Bot_SubMenu3"];
+            //            break;
+            //        case string read when categorytxt.Contains("하-4"):
+            //            txtCategoryBottom.Text = botSubMenu9Dict["Bot_SubMenu4"];
+            //            break;
+            //        case string read when categorytxt.Contains("하-5"):
+            //            txtCategoryBottom.Text = botSubMenu9Dict["Bot_SubMenu5"];
+            //            break;
+            //    }
+            //}
         }
 
         private void AddComboboxItems()
@@ -1389,8 +1277,8 @@ namespace RhythmMonopoly
             txtCategoryBottom.Text = "";
             txtCategoryTop.Text = "";
 
-            string[] TopList = { TopCategory01, TopCategory02, TopCategory03, TopCategory04, TopCategory05, TopCategory06 };
-            string[] BotList = { BotCategory01, BotCategory02, BotCategory03, BotCategory04, BotCategory05, BotCategory06, BotCategory07, BotCategory08, BotCategory09 };
+            string[] TopList = TopMenuDict.Values.ToArray();
+            string[] BotList = BotMenuDict.Values.ToArray();
 
 
             //수정 : 모든 항목이 전체적으로 다 보이도록 변경되었습니다다다.
@@ -1401,7 +1289,7 @@ namespace RhythmMonopoly
                 //상위 항목 추가
                 if (RandTopNum != 0)
                 {
-                    for (int i = 1; i < 7; i++)
+                    for (int i = 1; i < TopQty; i++)
                     {
                         cmbCategoryTop.Items.Add(String.Format("(상-{0}) - " + TopList[i - 1], i.ToString()));
                     }
@@ -1409,7 +1297,7 @@ namespace RhythmMonopoly
                 //하위 항목 추가
                 if (RandBotNum != 0)
                 {
-                    for (int i = 1; i < 101; i++)
+                    for (int i = 1; i < BotQty; i++)
                     {
                         cmbCategoryTop.Items.Add(String.Format("(하-{0}) - " + BotList[i - 1], i.ToString()));
                     }
@@ -1418,12 +1306,12 @@ namespace RhythmMonopoly
             //랜덤아니면
             else
             {
-                for (int i = 1; i < 7; i++)
+                for (int i = 1; i < TopQty; i++)
                 {
                     cmbCategoryTop.Items.Add(String.Format("(상-{0}) - " + TopList[i - 1], i.ToString()));
                 }
 
-                for (int i = 1; i < 10; i++)
+                for (int i = 1; i < BotQty; i++)
                 {
                     cmbCategoryTop.Items.Add(String.Format("(하-{0}) - " + BotList[i - 1], i.ToString()));
                 }
@@ -1434,7 +1322,7 @@ namespace RhythmMonopoly
             #region :: 몰루  :: 
             if (cmbCategoryTop.Text.Contains("상-1"))
             {
-                txtCategoryTop.Text = TopCategory01;
+                txtCategoryTop.Text = TopMenuDict["TopCategory01"].ToString();
                 txtCategoryTop.Enabled = true;
                 cmbCategoryBottom.Enabled = false;
                 txtCategoryBottom.Enabled = false;
@@ -1443,7 +1331,7 @@ namespace RhythmMonopoly
             }
             else if (cmbCategoryTop.Text.Contains("상-2"))
             {
-                txtCategoryTop.Text = TopCategory02;
+                txtCategoryTop.Text = TopMenuDict["TopCategory02"].ToString();
                 txtCategoryTop.Enabled = true;
                 cmbCategoryBottom.Enabled = false;
                 txtCategoryBottom.Enabled = false;
@@ -1452,7 +1340,7 @@ namespace RhythmMonopoly
             }
             else if (cmbCategoryTop.Text.Contains("상-3"))
             {
-                txtCategoryTop.Text = TopCategory03;
+                txtCategoryTop.Text = TopMenuDict["TopCategory03"].ToString();
                 txtCategoryTop.Enabled = true;
                 cmbCategoryBottom.Enabled = false;
                 txtCategoryBottom.Enabled = false;
@@ -1461,7 +1349,7 @@ namespace RhythmMonopoly
             }
             else if (cmbCategoryTop.Text.Contains("상-4"))
             {
-                txtCategoryTop.Text = TopCategory04;
+                txtCategoryTop.Text = TopMenuDict["TopCategory04"].ToString();
                 txtCategoryTop.Enabled = true;
                 cmbCategoryBottom.Enabled = false;
                 txtCategoryBottom.Enabled = false;
@@ -1470,7 +1358,7 @@ namespace RhythmMonopoly
             }
             else if (cmbCategoryTop.Text.Contains("상-5"))
             {
-                txtCategoryTop.Text = TopCategory05;
+                txtCategoryTop.Text = TopMenuDict["TopCategory05"].ToString();
                 txtCategoryTop.Enabled = true;
                 cmbCategoryBottom.Enabled = false;
                 txtCategoryBottom.Enabled = false;
@@ -1479,7 +1367,7 @@ namespace RhythmMonopoly
             }
             else if (cmbCategoryTop.Text.Contains("상-6"))
             {
-                txtCategoryTop.Text = TopCategory06;
+                txtCategoryTop.Text = TopMenuDict["TopCategory06"].ToString();
                 txtCategoryTop.Enabled = true;
 
                 cmbCategoryBottom.Enabled = false;
@@ -1489,14 +1377,14 @@ namespace RhythmMonopoly
             }
             else if (cmbCategoryTop.Text.Contains("하-1"))
             {
-                txtCategoryTop.Text = BotCategory01;
+                txtCategoryTop.Text = BotMenuDict["BotCategory01"].ToString();
                 txtCategoryTop.Enabled = true;
                 cmbCategoryBottom.Enabled = true;
                 txtCategoryBottom.Enabled = true;
 
                 cmbCategoryBottom.Items.Clear();
 
-                for (int i = 1; i < 6; i++)
+                for (int i = 1; i < BotSubQty + 1; i++)
                 {
                     cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu1Dict[$"Bot_SubMenu1_{i}"]);
                 }
@@ -1505,7 +1393,7 @@ namespace RhythmMonopoly
             }
             else if (cmbCategoryTop.Text.Contains("하-2"))
             {
-                txtCategoryTop.Text = BotCategory02;
+                txtCategoryTop.Text = BotMenuDict["BotCategory02"].ToString();
                 txtCategoryTop.Enabled = true;
 
                 cmbCategoryBottom.Enabled = true;
@@ -1513,7 +1401,7 @@ namespace RhythmMonopoly
 
                 cmbCategoryBottom.Items.Clear();
 
-                for (int i = 1; i < 6; i++)
+                for (int i = 1; i < BotSubQty + 1; i++)
                 {
                     cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu2Dict[$"Bot_SubMenu2_{i}"]);
                 }
@@ -1522,7 +1410,7 @@ namespace RhythmMonopoly
             }
             else if (cmbCategoryTop.Text.Contains("하-3"))
             {
-                txtCategoryTop.Text = BotCategory03;
+                txtCategoryTop.Text = BotMenuDict["BotCategory03"].ToString();
                 txtCategoryTop.Enabled = true;
 
                 cmbCategoryBottom.Enabled = true;
@@ -1530,7 +1418,7 @@ namespace RhythmMonopoly
 
                 cmbCategoryBottom.Items.Clear();
 
-                for (int i = 1; i < 6; i++)
+                for (int i = 1; i < BotSubQty + 1; i++)
                 {
                     cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu3Dict[$"Bot_SubMenu3_{i}"]);
                 }
@@ -1539,7 +1427,7 @@ namespace RhythmMonopoly
             }
             else if (cmbCategoryTop.Text.Contains("하-4"))
             {
-                txtCategoryTop.Text = BotCategory04;
+                txtCategoryTop.Text = BotMenuDict["BotCategory04"].ToString();
                 txtCategoryTop.Enabled = true;
 
                 cmbCategoryBottom.Enabled = true;
@@ -1547,7 +1435,7 @@ namespace RhythmMonopoly
 
                 cmbCategoryBottom.Items.Clear();
 
-                for (int i = 1; i < 6; i++)
+                for (int i = 1; i < BotSubQty + 1; i++)
                 {
                     cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu4Dict[$"Bot_SubMenu4_{i}"]);
                 }
@@ -1556,7 +1444,7 @@ namespace RhythmMonopoly
             }
             else if (cmbCategoryTop.Text.Contains("하-5"))
             {
-                txtCategoryTop.Text = BotCategory05;
+                txtCategoryTop.Text = BotMenuDict["BotCategory05"].ToString();
                 txtCategoryTop.Enabled = true;
 
                 cmbCategoryBottom.Enabled = true;
@@ -1564,7 +1452,7 @@ namespace RhythmMonopoly
 
                 cmbCategoryBottom.Items.Clear();
 
-                for (int i = 1; i < 6; i++)
+                for (int i = 1; i < BotSubQty + 1; i++)
                 {
                     cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu5Dict[$"Bot_SubMenu5_{i}"]);
                 }
@@ -1573,7 +1461,7 @@ namespace RhythmMonopoly
             }
             else if (cmbCategoryTop.Text.Contains("하-6"))
             {
-                txtCategoryTop.Text = BotCategory06;
+                txtCategoryTop.Text = BotMenuDict["BotCategory06"].ToString();
                 txtCategoryTop.Enabled = true;
 
                 cmbCategoryBottom.Enabled = true;
@@ -1581,7 +1469,7 @@ namespace RhythmMonopoly
 
                 cmbCategoryBottom.Items.Clear();
 
-                for (int i = 1; i < 6; i++)
+                for (int i = 1; i < BotSubQty + 1; i++)
                 {
                     cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu6Dict[$"Bot_SubMenu6_{i}"]);
                 }
@@ -1589,7 +1477,7 @@ namespace RhythmMonopoly
             }
             else if (cmbCategoryTop.Text.Contains("하-7"))
             {
-                txtCategoryTop.Text = BotCategory07;
+                txtCategoryTop.Text = BotMenuDict["BotCategory07"].ToString();
                 txtCategoryTop.Enabled = true;
 
                 cmbCategoryBottom.Enabled = true;
@@ -1597,7 +1485,7 @@ namespace RhythmMonopoly
 
                 cmbCategoryBottom.Items.Clear();
 
-                for (int i = 1; i < 6; i++)
+                for (int i = 1; i < BotSubQty + 1; i++)
                 {
                     cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu7Dict[$"Bot_SubMenu7_{i}"]);
                 }
@@ -1606,7 +1494,7 @@ namespace RhythmMonopoly
             }
             else if (cmbCategoryTop.Text.Contains("하-8"))
             {
-                txtCategoryTop.Text = BotCategory08;
+                txtCategoryTop.Text = BotMenuDict["BotCategory08"].ToString();
                 txtCategoryTop.Enabled = true;
 
                 cmbCategoryBottom.Enabled = true;
@@ -1614,7 +1502,7 @@ namespace RhythmMonopoly
 
                 cmbCategoryBottom.Items.Clear();
 
-                for (int i = 1; i < 6; i++)
+                for (int i = 1; i < BotSubQty + 1; i++)
                 {
                     cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu8Dict[$"Bot_SubMenu8_{i}"]);
                 }
@@ -1623,7 +1511,7 @@ namespace RhythmMonopoly
             }
             else if (cmbCategoryTop.Text.Contains("하-9"))
             {
-                txtCategoryTop.Text = BotCategory09;
+                txtCategoryTop.Text = BotMenuDict["BotCategory09"].ToString();
                 txtCategoryTop.Enabled = true;
 
                 cmbCategoryBottom.Enabled = true;
@@ -1631,7 +1519,7 @@ namespace RhythmMonopoly
 
                 cmbCategoryBottom.Items.Clear();
 
-                for (int i = 1; i < 6; i++)
+                for (int i = 1; i < BotSubQty + 1; i++)
                 {
                     cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu9Dict[$"Bot_SubMenu9_{i}"]);
                 }
@@ -1698,8 +1586,19 @@ namespace RhythmMonopoly
             SaveChecked2 = true;
         }
 
-        //슈랜 체크 
+        private void chkSuperRandom_CheckedChanged(object sender, EventArgs e)
+        {
+            bool _TempRandomize = chkSuperRandom.Checked;
+            if (_TempRandomize == SuperRandom)
+            {
+                SaveChecked2 = false;
+                return;
+            }
+            ini["Option"]["SuperRandom"] = _TempRandomize;
+            ini.Save(inipath);
 
+            SaveChecked2 = true;
+        }
 
         #endregion
 
@@ -2041,20 +1940,5 @@ namespace RhythmMonopoly
 
         #endregion
 
-        private void chkSuperRandom_CheckedChanged(object sender, EventArgs e)
-        {
-
-            bool _TempRandomize = chkSuperRandom.Checked;
-
-            if (_TempRandomize == Randomize)
-            {
-                SaveChecked2 = false;
-                return;
-            }
-            ini["Option"]["SuperRandom"] = _TempRandomize;
-            ini.Save(inipath);
-
-            SaveChecked2 = true;
-        }
     }
 }

@@ -429,7 +429,7 @@
             // 
             // labelLogo
             // 
-            this.labelLogo.BackColor = System.Drawing.Color.White;
+            this.labelLogo.BackColor = System.Drawing.Color.Transparent;
             this.labelLogo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.labelLogo.Image = global::RhythmMonopoly.Properties.Resources.고급;
             this.labelLogo.Location = new System.Drawing.Point(320, 180);

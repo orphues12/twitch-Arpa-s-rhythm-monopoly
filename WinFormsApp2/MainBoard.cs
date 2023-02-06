@@ -17,10 +17,13 @@ namespace RhythmMonopoly
 {
     public partial class MainBoard : Form
     {
+        #region :: 전역 변수 ;:
         IniFile ini = new IniFile();
         string inipath = Application.StartupPath + @"/Settings.ini";
         //라벨 위치 변수
         bool Labellocation = false;
+
+        #endregion 
 
         public MainBoard()
         {
@@ -41,150 +44,184 @@ namespace RhythmMonopoly
             this.MinimumSize = new Size(1920, 1080);
             this.MaximumSize = new Size(1920, 1080);
 
-            //로고 좌표
+            //로고 좌표bot_SubMenu1_1
             labelLogo.Left = (this.ClientSize.Width - labelLogo.Width) / 2;
             labelLogo.Top = (this.ClientSize.Height - labelLogo.Height) / 2;
 
+
+            int dict_idx = 0;
             #endregion
 
             #region :: 변수 불러오기 ::
-
             //판때기 항목들
-            string TopCategory01 = Properties.Settings.Default.TopCategory01; //상위  
-            string TopCategory02 = Properties.Settings.Default.TopCategory02; //상위
-            string TopCategory03 = Properties.Settings.Default.TopCategory03; //상위
-            string TopCategory04 = Properties.Settings.Default.TopCategory04; //상위
-            string TopCategory05 = Properties.Settings.Default.TopCategory05; //상위
-            string TopCategory06 = Properties.Settings.Default.TopCategory06; //상위
+            ini.Load(inipath);
 
-            string BotCategory01 = Properties.Settings.Default.BotCategory01; //상위 + 하위
-            string BotCategory02 = Properties.Settings.Default.BotCategory02; //상위 + 하위
-            string BotCategory03 = Properties.Settings.Default.BotCategory03; //상위 + 하위
-            string BotCategory04 = Properties.Settings.Default.BotCategory04; //상위 + 하위
-            string BotCategory05 = Properties.Settings.Default.BotCategory05; //상위 + 하위
-            string BotCategory06 = Properties.Settings.Default.BotCategory06; //상위 + 하위
+            Dictionary<string, string> topCategorydict = new Dictionary<string, string>();
+            Dictionary<string, string> botCategorydict = new Dictionary<string, string>();
 
+            for (int i = 1; i < int.Parse(ini["Option"]["TopBotQty"].ToString()) + 1; i++)
+            {
+                topCategorydict.Add($"topCategory0{i}", ini["Top"][$"TopCategory{i}"].ToString());
+                botCategorydict.Add($"botCategory0{i}", ini["Bot"][$"BotCategory{i}"].ToString());
+            }
+
+            string topCategory01 = ini["Top"]["TopCategory1"].ToString(); //상위  
+            string topCategory02 = ini["Top"]["TopCategory2"].ToString(); //상위
+            string topCategory03 = ini["Top"]["TopCategory3"].ToString(); //상위
+            string topCategory04 = ini["Top"]["TopCategory4"].ToString(); //상위
+            string topCategory05 = ini["Top"]["TopCategory5"].ToString(); //상위
+            string topCategory06 = ini["Top"]["TopCategory6"].ToString(); //상위
+
+            string botCategory01 = ini["Bot"]["BotCategory1"].ToString(); //상위 + 하위
+            string botCategory02 = ini["Bot"]["BotCategory2"].ToString(); //상위 + 하위
+            string botCategory03 = ini["Bot"]["BotCategory3"].ToString(); //상위 + 하위
+            string botCategory04 = ini["Bot"]["BotCategory4"].ToString(); //상위 + 하위
+            string botCategory05 = ini["Bot"]["BotCategory5"].ToString(); //상위 + 하위
+            string botCategory06 = ini["Bot"]["BotCategory6"].ToString(); //상위 + 하위
+
+
+            Dictionary<string, string> bot_SubMenu1 = new Dictionary<string, string>();
+            Dictionary<string, string> bot_SubMenu2 = new Dictionary<string, string>();
+            Dictionary<string, string> bot_SubMenu3 = new Dictionary<string, string>();
+            Dictionary<string, string> bot_SubMenu4 = new Dictionary<string, string>();
+            Dictionary<string, string> bot_SubMenu5 = new Dictionary<string, string>();
+            Dictionary<string, string> bot_SubMenu6 = new Dictionary<string, string>();
+
+            for (int i = 1; i < int.Parse(ini["Option"]["BotSubQty"].ToString())+1; i++)
+            {
+                bot_SubMenu1.Add($"bot_SubMenu1_{i}", ini["Bot_SubMenu1"][$"BotContent{i}"].ToString());
+                bot_SubMenu2.Add($"bot_SubMenu2_{i}", ini["Bot_SubMenu2"][$"BotContent{i}"].ToString());
+                bot_SubMenu3.Add($"bot_SubMenu3_{i}", ini["Bot_SubMenu3"][$"BotContent{i}"].ToString());
+                bot_SubMenu4.Add($"bot_SubMenu4_{i}", ini["Bot_SubMenu4"][$"BotContent{i}"].ToString());
+                bot_SubMenu5.Add($"bot_SubMenu5_{i}", ini["Bot_SubMenu5"][$"BotContent{i}"].ToString());
+                bot_SubMenu6.Add($"bot_SubMenu6_{i}", ini["Bot_SubMenu6"][$"BotContent{i}"].ToString());
+            }
 
             //하위 더미데이터
-            string dummycontent1_1 = Properties.Settings.Default.dummycontent1_1;
-            string dummycontent1_2 = Properties.Settings.Default.dummycontent1_2;
-            string dummycontent1_3 = Properties.Settings.Default.dummycontent1_3;
+            string bot_SubMenu1_1 = ini["Bot_SubMenu1"]["BotContent1"].ToString();
+            string bot_SubMenu1_2 = ini["Bot_SubMenu1"]["BotContent2"].ToString();
+            string bot_SubMenu1_3 = ini["Bot_SubMenu1"]["BotContent3"].ToString();
+            string bot_SubMenu1_4 = ini["Bot_SubMenu1"]["BotContent4"].ToString();
+            string bot_SubMenu1_5 = ini["Bot_SubMenu1"]["BotContent5"].ToString();
 
-            string dummycontent2_1 = Properties.Settings.Default.dummycontent2_1;
-            string dummycontent2_2 = Properties.Settings.Default.dummycontent2_2;
-            string dummycontent2_3 = Properties.Settings.Default.dummycontent2_3;
-            string dummycontent2_4 = Properties.Settings.Default.dummycontent2_4;
+            string bot_SubMenu2_1 = ini["Bot_SubMenu2"]["BotContent1"].ToString();
+            string bot_SubMenu2_2 = ini["Bot_SubMenu2"]["BotContent2"].ToString();
+            string bot_SubMenu2_3 = ini["Bot_SubMenu2"]["BotContent3"].ToString();
+            string bot_SubMenu2_4 = ini["Bot_SubMenu2"]["BotContent4"].ToString();
+            string bot_SubMenu2_5 = ini["Bot_SubMenu2"]["BotContent5"].ToString();
 
-            string dummycontent3_1 = Properties.Settings.Default.dummycontent3_1;
-            string dummycontent3_2 = Properties.Settings.Default.dummycontent3_2;
-            string dummycontent3_3 = Properties.Settings.Default.dummycontent3_3;
-            string dummycontent3_4 = Properties.Settings.Default.dummycontent3_4;
-            string dummycontent3_5 = Properties.Settings.Default.dummycontent3_5;
+            string bot_SubMenu3_1 = ini["Bot_SubMenu3"]["BotContent1"].ToString();
+            string bot_SubMenu3_2 = ini["Bot_SubMenu3"]["BotContent2"].ToString();
+            string bot_SubMenu3_3 = ini["Bot_SubMenu3"]["BotContent3"].ToString();
+            string bot_SubMenu3_4 = ini["Bot_SubMenu3"]["BotContent4"].ToString();
+            string bot_SubMenu3_5 = ini["Bot_SubMenu3"]["BotContent5"].ToString();
 
-            string dummycontent4_1 = Properties.Settings.Default.dummycontent4_1;
-            string dummycontent4_2 = Properties.Settings.Default.dummycontent4_2;
-            string dummycontent4_3 = Properties.Settings.Default.dummycontent4_3;
-            string dummycontent4_4 = Properties.Settings.Default.dummycontent4_4;
-            string dummycontent4_5 = Properties.Settings.Default.dummycontent4_5;
+            string bot_SubMenu4_1 = ini["Bot_SubMenu4"]["BotContent1"].ToString();
+            string bot_SubMenu4_2 = ini["Bot_SubMenu4"]["BotContent2"].ToString();
+            string bot_SubMenu4_3 = ini["Bot_SubMenu4"]["BotContent3"].ToString();
+            string bot_SubMenu4_4 = ini["Bot_SubMenu4"]["BotContent4"].ToString();
+            string bot_SubMenu4_5 = ini["Bot_SubMenu4"]["BotContent5"].ToString();
 
-            string dummycontent5_1 = Properties.Settings.Default.dummycontent5_1;
-            string dummycontent5_2 = Properties.Settings.Default.dummycontent5_2;
-            string dummycontent5_3 = Properties.Settings.Default.dummycontent5_3;
-            string dummycontent5_4 = Properties.Settings.Default.dummycontent5_4;
-            string dummycontent5_5 = Properties.Settings.Default.dummycontent5_5;
+            string bot_SubMenu5_1 = ini["Bot_SubMenu5"]["BotContent1"].ToString();
+            string bot_SubMenu5_2 = ini["Bot_SubMenu5"]["BotContent2"].ToString();
+            string bot_SubMenu5_3 = ini["Bot_SubMenu5"]["BotContent3"].ToString();
+            string bot_SubMenu5_4 = ini["Bot_SubMenu5"]["BotContent4"].ToString();
+            string bot_SubMenu5_5 = ini["Bot_SubMenu5"]["BotContent5"].ToString();
 
-            string dummycontent6_1 = Properties.Settings.Default.dummycontent6_1;
-            string dummycontent6_2 = Properties.Settings.Default.dummycontent6_2;
-            string dummycontent6_3 = Properties.Settings.Default.dummycontent6_3;
+            string bot_SubMenu6_1 = ini["Bot_SubMenu6"]["BotContent1"].ToString();
+            string bot_SubMenu6_2 = ini["Bot_SubMenu6"]["BotContent2"].ToString();
+            string bot_SubMenu6_3 = ini["Bot_SubMenu6"]["BotContent3"].ToString();
+            string bot_SubMenu6_4 = ini["Bot_SubMenu6"]["BotContent4"].ToString();
+            string bot_SubMenu6_5 = ini["Bot_SubMenu6"]["BotContent5"].ToString();
 
             //항목 숫자 변수 (랜덤X)
-            int AlphaNum = Properties.Settings.Default.AlphaNum;
-            int ConsoNum = Properties.Settings.Default.ConsoNum;
-            int TopNum = Properties.Settings.Default.TopNum;
-            int BotNum = Properties.Settings.Default.BottomNum;
-            int GoldenNum = Properties.Settings.Default.GoldenNum;
+            int alphaNum = int.Parse(ini["CategoryQty"]["AlphaNum"].ToString());
+            int consoNum = int.Parse(ini["CategoryQty"]["ConsoNum"].ToString());
+            int topNum = int.Parse(ini["CategoryQty"]["TopNum"].ToString());
+            int botNum = int.Parse(ini["CategoryQty"]["BotNum"].ToString());
+            int goldenNum = int.Parse(ini["CategoryQty"]["GoldenNum"].ToString());
 
             //항목 숫자 변수 (랜덤O)
-            int AlphaNum2 = Properties.Settings.Default.AlphaNum2;
-            int ConsoNum2 = Properties.Settings.Default.ConsoNum2;
-            int TopNum2 = Properties.Settings.Default.TopNum2;
-            int BotNum2 = Properties.Settings.Default.BottomNum2;
-            int GoldenNum2 = Properties.Settings.Default.GoldenNum2;
+            int randAlphaNum = int.Parse(ini["CategoryQty"]["RandAlphaNum"].ToString());
+            int randConsoNum = int.Parse(ini["CategoryQty"]["RandConsoNum"].ToString());
+            int randTopNum = int.Parse(ini["CategoryQty"]["RandTopNum"].ToString());
+            int randBotNum = int.Parse(ini["CategoryQty"]["RandBotNum"].ToString());
+            int randGoldenNum = int.Parse(ini["CategoryQty"]["RandGoldenNum"].ToString());
 
             //랜덤변수
-            bool Randomize = Properties.Settings.Default.Randomize;
-            bool GoldenFix = Properties.Settings.Default.GoldenFix;
+            bool isRandomize = bool.Parse(ini["Option"]["Randomize"].ToString());
+            bool isGoldenFix = bool.Parse(ini["Option"]["GoldenFix"].ToString());
 
             //뒷배경
-            string BackCurrentColor = Properties.Settings.Default.BackCurrentColor;
+            string BackCurrentColor = ini["Option"]["backCurrentColor"].ToString();
 
-            #region :: INI 저장 하는 곳 (Data 연동)
-            ini["Top"]["TopCategory1"] = TopCategory01;
-            ini["Top"]["TopCategory2"] = TopCategory02;
-            ini["Top"]["TopCategory3"] = TopCategory03;
-            ini["Top"]["TopCategory4"] = TopCategory04;
-            ini["Top"]["TopCategory5"] = TopCategory05;
-            ini["Top"]["TopCategory6"] = TopCategory06;
+            #region :: INI 저장 하는 곳 (Data 연동) ::
+            //ini["Top"]["topCategory1"] = topCategory01;
+            //ini["Top"]["topCategory2"] = topCategory02;
+            //ini["Top"]["topCategory3"] = topCategory03;
+            //ini["Top"]["topCategory4"] = topCategory04;
+            //ini["Top"]["topCategory5"] = topCategory05;
+            //ini["Top"]["topCategory6"] = topCategory06;
 
-            ini["Bot"]["BotCategory1"] = BotCategory01;
-            ini["Bot"]["BotCategory2"] = BotCategory02;
-            ini["Bot"]["BotCategory3"] = BotCategory03;
-            ini["Bot"]["BotCategory4"] = BotCategory04;
-            ini["Bot"]["BotCategory5"] = BotCategory05;
-            ini["Bot"]["BotCategory6"] = BotCategory06;
+            //ini["Bot"]["botCategory1"] = botCategory01;
+            //ini["Bot"]["botCategory2"] = botCategory02;
+            //ini["Bot"]["botCategory3"] = botCategory03;
+            //ini["Bot"]["botCategory4"] = botCategory04;
+            //ini["Bot"]["botCategory5"] = botCategory05;
+            //ini["Bot"]["botCategory6"] = botCategory06;
 
-            ini["Top_Menu1"]["TopContent1"] = dummycontent1_1;
-            ini["Top_Menu1"]["TopContent2"] = dummycontent1_2;
-            ini["Top_Menu1"]["TopContent3"] = dummycontent1_3;
+            //ini["Bot_SubMenu1"]["TopContent1"] = bot_SubMenu1_1;
+            //ini["Bot_SubMenu1"]["TopContent2"] = bot_SubMenu1_2;
+            //ini["Bot_SubMenu1"]["TopContent3"] = bot_SubMenu1_3;
 
-            ini["Top_Menu2"]["TopContent1"] = dummycontent2_1;
-            ini["Top_Menu2"]["TopContent2"] = dummycontent2_2;
-            ini["Top_Menu2"]["TopContent3"] = dummycontent2_3;
-            ini["Top_Menu2"]["TopContent4"] = dummycontent2_4;
+            //ini["Bot_SubMenu2"]["TopContent1"] = bot_SubMenu2_1;
+            //ini["Bot_SubMenu2"]["TopContent2"] = bot_SubMenu2_2;
+            //ini["Bot_SubMenu2"]["TopContent3"] = bot_SubMenu2_3;
+            //ini["Bot_SubMenu2"]["TopContent4"] = bot_SubMenu2_4;
 
-            ini["Top_Menu3"]["TopContent1"] = dummycontent3_1;
-            ini["Top_Menu3"]["TopContent2"] = dummycontent3_2;
-            ini["Top_Menu3"]["TopContent3"] = dummycontent3_3;
-            ini["Top_Menu3"]["TopContent4"] = dummycontent3_4;
-            ini["Top_Menu3"]["TopContent4"] = dummycontent3_5;
+            //ini["Bot_SubMenu3"]["TopContent1"] = bot_SubMenu3_1;
+            //ini["Bot_SubMenu3"]["TopContent2"] = bot_SubMenu3_2;
+            //ini["Bot_SubMenu3"]["TopContent3"] = bot_SubMenu3_3;
+            //ini["Bot_SubMenu3"]["TopContent4"] = bot_SubMenu3_4;
+            //ini["Bot_SubMenu3"]["TopContent4"] = bot_SubMenu3_5;
 
-            ini["Top_Menu4"]["TopContent1"] = dummycontent4_1;
-            ini["Top_Menu4"]["TopContent2"] = dummycontent4_2;
-            ini["Top_Menu4"]["TopContent3"] = dummycontent4_3;
-            ini["Top_Menu4"]["TopContent4"] = dummycontent4_4;
-            ini["Top_Menu4"]["TopContent4"] = dummycontent4_5;
+            //ini["Bot_SubMenu4"]["TopContent1"] = bot_SubMenu4_1;
+            //ini["Bot_SubMenu4"]["TopContent2"] = bot_SubMenu4_2;
+            //ini["Bot_SubMenu4"]["TopContent3"] = bot_SubMenu4_3;
+            //ini["Bot_SubMenu4"]["TopContent4"] = bot_SubMenu4_4;
+            //ini["Bot_SubMenu4"]["TopContent4"] = bot_SubMenu4_5;
 
-            ini["Top_Menu5"]["TopContent1"] = dummycontent5_1;
-            ini["Top_Menu5"]["TopContent2"] = dummycontent5_2;
-            ini["Top_Menu5"]["TopContent3"] = dummycontent5_3;
-            ini["Top_Menu5"]["TopContent4"] = dummycontent5_4;
-            ini["Top_Menu5"]["TopContent4"] = dummycontent5_5;
+            //ini["Bot_SubMenu5"]["TopContent1"] = bot_SubMenu5_1;
+            //ini["Bot_SubMenu5"]["TopContent2"] = bot_SubMenu5_2;
+            //ini["Bot_SubMenu5"]["TopContent3"] = bot_SubMenu5_3;
+            //ini["Bot_SubMenu5"]["TopContent4"] = bot_SubMenu5_4;
+            //ini["Bot_SubMenu5"]["TopContent4"] = bot_SubMenu5_5;
 
-            ini["Top_Menu6"]["TopContent1"] = dummycontent6_1;
-            ini["Top_Menu6"]["TopContent2"] = dummycontent6_2;
-            ini["Top_Menu6"]["TopContent3"] = dummycontent6_3;
+            //ini["Bot_SubMenu6"]["TopContent1"] = bot_SubMenu6_1;
+            //ini["Bot_SubMenu6"]["TopContent2"] = bot_SubMenu6_2;
+            //ini["Bot_SubMenu6"]["TopContent3"] = bot_SubMenu6_3;
 
 
-            //항목 숫자 변수 (랜덤X)
-            ini["CategoryQty"]["AlphaNum"] = AlphaNum;
-            ini["CategoryQty"]["ConsoNum"]  = ConsoNum;
-            ini["CategoryQty"]["TopNum"]  = TopNum;
-            ini["CategoryQty"]["BotNum"]  = BotNum;
-            ini["CategoryQty"]["GoldenNum"]  = GoldenNum;
+            ////항목 숫자 변수 (랜덤X)
+            //ini["CategoryQty"]["AlphaNum"]  = AlphaNum;
+            //ini["CategoryQty"]["ConsoNum"]  = ConsoNum;
+            //ini["CategoryQty"]["TopNum"]    = TopNum;
+            //ini["CategoryQty"]["BotNum"]    = BotNum;
+            //ini["CategoryQty"]["GoldenNum"]  = GoldenNum;
 
-            //항목 숫자 변수 (랜덤O)
-            ini["CategoryQty"]["RandAlphaNum"] = AlphaNum2;
-            ini["CategoryQty"]["RandConsoNum"] = ConsoNum2;
-            ini["CategoryQty"]["RandTopNum"] = TopNum2;
-            ini["CategoryQty"]["RandBotNum"] = BotNum2;
-            ini["CategoryQty"]["RandGoldenNum"] = GoldenNum2;
+            ////항목 숫자 변수 (랜덤O)
+            //ini["CategoryQty"]["RandAlphaNum"] = AlphaNum2;
+            //ini["CategoryQty"]["RandConsoNum"] = ConsoNum2;
+            //ini["CategoryQty"]["RandTopNum"] = TopNum2;
+            //ini["CategoryQty"]["RandBotNum"] = BotNum2;
+            //ini["CategoryQty"]["RandGoldenNum"] = GoldenNum2;
 
-            //랜덤 관련
-            ini["Option"]["Randomize"] = Randomize;
-            ini["Option"]["GoldenFix"] = GoldenFix;
-            ini["Option"]["backCurrentColor"] = BackCurrentColor;
+            ////랜덤 관련
+            //ini["Option"]["Randomize"] = Randomize;
+            //ini["Option"]["GoldenFix"] = GoldenFix;
+            //ini["Option"]["backCurrentColor"] = BackCurrentColor;
 
-            ini.Save(inipath);
+            //ini.Save(inipath);
             #endregion
 
 
@@ -192,12 +229,12 @@ namespace RhythmMonopoly
 
             #region :: 변수 텍스트 ::
             //알파벳
-            string Alpha1_1 = "알파벳 ";
-            string Alpha1_2 = " 로 시작되는 곡";
+            string alpha1_1 = "알파벳 ";
+            string alpha1_2 = " 로 시작되는 곡";
 
             //자음 (2) - 8
-            string Conso1_1 = "발음이 ";
-            string Conso1_2 = " 로 시작되는 곡";
+            string conso1_1 = "발음이 ";
+            string conso1_2 = " 로 시작되는 곡";
 
             //항목회전용
             int stack = 0;
@@ -207,7 +244,6 @@ namespace RhythmMonopoly
             //바꿀 필요 없는 것
             //알파벳
             string[] alphabet_ = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
-
             //버튼
             string[] button_ = { "1", "5", "6", "8" };
             //계절
@@ -217,19 +253,18 @@ namespace RhythmMonopoly
             //자음
             string[] consonant_ = { "ㄱ", "ㄴ", "ㄷ", "ㄹ", "ㅁ", "ㅂ", "ㅅ", "ㅇ", "ㅈ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"};
 
-            //추가적으로 제공되는 더미 데이터들 저장소 (3,4,5)
-            string[] Dummy1_ = { dummycontent1_1, dummycontent1_2, dummycontent1_3};
-            string[] Dummy2_ = { dummycontent2_1, dummycontent2_2, dummycontent2_3, dummycontent2_4};
-            string[] Dummy3_ = { dummycontent3_1, dummycontent3_2, dummycontent3_3, dummycontent3_4, dummycontent3_5};
-            string[] Dummy4_ = { dummycontent4_1, dummycontent4_2, dummycontent4_3, dummycontent4_4, dummycontent4_5};
-            string[] Dummy5_ = { dummycontent5_1, dummycontent5_2, dummycontent5_3, dummycontent5_4, dummycontent5_5};
-            string[] Dummy6_ = { dummycontent6_1, dummycontent6_2, dummycontent6_3 };
+            string[] Dummy1_ = { bot_SubMenu1_1, bot_SubMenu1_2, bot_SubMenu1_3, bot_SubMenu1_4, bot_SubMenu1_5 };
+            string[] Dummy2_ = { bot_SubMenu2_1, bot_SubMenu2_2, bot_SubMenu2_3, bot_SubMenu2_4, bot_SubMenu2_5 };
+            string[] Dummy3_ = { bot_SubMenu3_1, bot_SubMenu3_2, bot_SubMenu3_3, bot_SubMenu3_4, bot_SubMenu3_5 };
+            string[] Dummy4_ = { bot_SubMenu4_1, bot_SubMenu4_2, bot_SubMenu4_3, bot_SubMenu4_4, bot_SubMenu4_5 };
+            string[] Dummy5_ = { bot_SubMenu5_1, bot_SubMenu5_2, bot_SubMenu5_3, bot_SubMenu5_4, bot_SubMenu5_5 };
+            string[] Dummy6_ = { bot_SubMenu6_1, bot_SubMenu6_2, bot_SubMenu6_3, bot_SubMenu6_4, bot_SubMenu6_5 };
 
             ///배열 섞기
             //변경 불가능
             /// 랜덤으로 돌리기
             string[] rdalphabet_ = alphabet_.OrderBy(x => rd.Next()).ToArray();
-            string[] rdConsonant_ = consonant_.OrderBy(x => rd.Next()).ToArray();
+            string[] rdconsonant_ = consonant_.OrderBy(x => rd.Next()).ToArray();
             string[] rdbutton_ = button_.OrderBy(x => rd.Next()).ToArray();
             string[] rdseason_ = season_.OrderBy(x => rd.Next()).ToArray();
             string[] rdgameclass_ = gameclass_.OrderBy(x => rd.Next()).ToArray();
@@ -254,10 +289,29 @@ namespace RhythmMonopoly
             string textAlpha8 = rdalphabet_[21].ToString() + ", " + rdalphabet_[22].ToString() + ", " + rdalphabet_[23].ToString();
 
             //자음 최대 4개까지
-            string textConso1 = rdConsonant_[0].ToString() + ", " + rdConsonant_[1].ToString() + ", " + rdConsonant_[2].ToString();
-            string textConso2 = rdConsonant_[3].ToString() + ", " + rdConsonant_[4].ToString() + ", " + rdConsonant_[5].ToString();
-            string textConso3 = rdConsonant_[6].ToString() + ", " + rdConsonant_[7].ToString() + ", " + rdConsonant_[8].ToString();
-            string textConso4 = rdConsonant_[9].ToString() + ", " + rdConsonant_[10].ToString() + ", " + rdConsonant_[11].ToString();
+            string textConso1 = rdconsonant_[0].ToString() + ", " + rdconsonant_[1].ToString() + ", " + rdconsonant_[2].ToString();
+            string textConso2 = rdconsonant_[3].ToString() + ", " + rdconsonant_[4].ToString() + ", " + rdconsonant_[5].ToString();
+            string textConso3 = rdconsonant_[6].ToString() + ", " + rdconsonant_[7].ToString() + ", " + rdconsonant_[8].ToString();
+            string textConso4 = rdconsonant_[9].ToString() + ", " + rdconsonant_[10].ToString() + ", " + rdconsonant_[11].ToString();
+
+            //알파벳 짬통
+            Dictionary<string, string> alphadict = new Dictionary<string, string>();
+
+            dict_idx  = 0;
+            for (int i = 1; i < 9; i++)
+            {
+                alphadict.Add($"textAlpha{i}", $"{rdalphabet_[dict_idx]}, {rdalphabet_[dict_idx + 1]}, {rdalphabet_[dict_idx + 2]}");
+                dict_idx += 3;
+            }
+
+            //한글짬통
+            Dictionary<string, string> consodict = new Dictionary<string, string>();
+
+            dict_idx = 0;
+            for (int j = 1; j < 5; j++)
+            {
+                consodict.Add($"textConsoo{j}", $"{rdconsonant_[dict_idx]}, {rdconsonant_[dict_idx + 1]}, {rdconsonant_[dict_idx + 2]}");
+            }
 
             //X버튼 1개
             string textButton1 = rdbutton_[0].ToString();
@@ -278,42 +332,42 @@ namespace RhythmMonopoly
             #region :: 신형 변수 ::
 
             //알파벳 변수
-            string CateAlpha1 = Alpha1_1 + textAlpha1 + Alpha1_2;
-            string CateAlpha2 = Alpha1_1 + textAlpha2 + Alpha1_2;
-            string CateAlpha3 = Alpha1_1 + textAlpha3 + Alpha1_2;
-            string CateAlpha4 = Alpha1_1 + textAlpha4 + Alpha1_2;
-            string CateAlpha5 = Alpha1_1 + textAlpha5 + Alpha1_2;
-            string CateAlpha6 = Alpha1_1 + textAlpha6 + Alpha1_2;
-            string CateAlpha7 = Alpha1_1 + textAlpha7 + Alpha1_2;
-            string CateAlpha8 = Alpha1_1 + textAlpha8 + Alpha1_2;
+            string CateAlpha1 = alpha1_1 + textAlpha1 + alpha1_2;
+            string CateAlpha2 = alpha1_1 + textAlpha2 + alpha1_2;
+            string CateAlpha3 = alpha1_1 + textAlpha3 + alpha1_2;
+            string CateAlpha4 = alpha1_1 + textAlpha4 + alpha1_2;
+            string CateAlpha5 = alpha1_1 + textAlpha5 + alpha1_2;
+            string CateAlpha6 = alpha1_1 + textAlpha6 + alpha1_2;
+            string CateAlpha7 = alpha1_1 + textAlpha7 + alpha1_2;
+            string CateAlpha8 = alpha1_1 + textAlpha8 + alpha1_2;
 
             string[] CateAlpha = { CateAlpha1, CateAlpha2, CateAlpha3, CateAlpha4, CateAlpha5, CateAlpha6, CateAlpha7, CateAlpha8 }; 
 
             //자음 변수
-            string CateConso1 = Conso1_1 + textConso1 + Conso1_2;
-            string CateConso2 = Conso1_1 + textConso2 + Conso1_2;
-            string CateConso3 = Conso1_1 + textConso3 + Conso1_2;
-            string CateConso4 = Conso1_1 + textConso4 + Conso1_2;
+            string CateConso1 = conso1_1 + textConso1 + conso1_2;
+            string CateConso2 = conso1_1 + textConso2 + conso1_2;
+            string CateConso3 = conso1_1 + textConso3 + conso1_2;
+            string CateConso4 = conso1_1 + textConso4 + conso1_2;
 
             string[] CateConso = { CateConso1, CateConso2, CateConso3, CateConso4 };
 
             //상위만
-            string CateTop1 = TopCategory01;
-            string CateTop2 = TopCategory02;
-            string CateTop3 = TopCategory03;
-            string CateTop4 = TopCategory04;
-            string CateTop5 = TopCategory05;
-            string CateTop6 = TopCategory06;
+            string CateTop1 = topCategorydict["topCategory01"];
+            string CateTop2 = topCategorydict["topCategory02"];
+            string CateTop3 = topCategorydict["topCategory03"];
+            string CateTop4 = topCategorydict["topCategory04"];
+            string CateTop5 = topCategorydict["topCategory05"];
+            string CateTop6 = topCategorydict["topCategory06"];
 
             string[] CateTop = { CateTop1, CateTop2, CateTop3, CateTop4, CateTop5, CateTop6 };
 
             //하위만
-            string CateBot1 = textDummy1 + BotCategory01;
-            string CateBot2 = textDummy2 + BotCategory02;
-            string CateBot3 = textDummy3 + BotCategory03;
-            string CateBot4 = textDummy4 + BotCategory04;
-            string CateBot5 = textDummy5 + BotCategory05;
-            string CateBot6 = textDummy6 + BotCategory06;
+            string CateBot1 = textDummy1 + botCategory01;
+            string CateBot2 = textDummy2 + botCategory02;
+            string CateBot3 = textDummy3 + botCategory03;
+            string CateBot4 = textDummy4 + botCategory04;
+            string CateBot5 = textDummy5 + botCategory05;
+            string CateBot6 = textDummy6 + botCategory06;
 
             string[] CateBot = { CateBot1, CateBot2, CateBot3, CateBot4, CateBot5, CateBot6 };
 
@@ -359,28 +413,28 @@ namespace RhythmMonopoly
             CateDictionary.Add("CateSeason", CateSeason);
 
             //랜덤아닌 배열 제작
-            if (!Randomize)
+            if (!isRandomize)
             {
                 //알파벳 항목들을 Dictionary에 추가
-                for (int i = 1; i < AlphaNum + 1; i++)
+                for (int i = 1; i < alphaNum + 1; i++)
                 {
                     CateDictionary.Add(String.Format("CateAlpha{0}", i.ToString()), CateAlpha[i - 1]);
                 }
 
                 //자음 항목들을 Dictionary에 추가
-                for (int i = 1; i < ConsoNum + 1; i++)
+                for (int i = 1; i < consoNum + 1; i++)
                 {
                     CateDictionary.Add(String.Format("CateConso{0}", i.ToString()), CateConso[i - 1]);
                 }
 
                 //상위 항목들을 Dictionary에 추가
-                for (int i = 1; i < TopNum + 1; i++)
+                for (int i = 1; i < topNum + 1; i++)
                 {
                     CateDictionary.Add(String.Format("CateTop{0}", i.ToString()), CateTop[i - 1]);
                 }
 
                 //상위 + 하위 항목들을 Dictionary에 추가
-                for (int i = 1; i < BotNum + 1; i++)
+                for (int i = 1; i < botNum + 1; i++)
                 {
                     CateDictionary.Add(String.Format("CateBot{0}", i.ToString()), CateBot[i - 1]);
                 }
@@ -389,31 +443,31 @@ namespace RhythmMonopoly
             else
             {
                 //알파벳 항목들을 Dictionary에 추가
-                for (int i = 1; i < AlphaNum2 + 1; i++)
+                for (int i = 1; i < randAlphaNum + 1; i++)
                 {
                     CateDictionary.Add(String.Format("CateAlpha{0}", i.ToString()), CateAlpha[i - 1]);
                 }
 
                 //자음 항목들을 Dictionary에 추가
-                for (int i = 1; i < ConsoNum2 + 1; i++)
+                for (int i = 1; i < randConsoNum + 1; i++)
                 {
                     CateDictionary.Add(String.Format("CateConso{0}", i.ToString()), CateConso[i - 1]);
                 }
 
                 //상위 항목들을 Dictionary에 추가
-                for (int i = 1; i < TopNum2 + 1; i++)
+                for (int i = 1; i < randTopNum + 1; i++)
                 {
                     CateDictionary.Add(String.Format("CateTop{0}", i.ToString()), CateTop[i - 1]);
                 }
 
                 //상위 + 하위 항목들을 Dictionary에 추가
-                for (int i = 1; i < BotNum2 + 1; i++)
+                for (int i = 1; i < randBotNum + 1; i++)
                 {
                     CateDictionary.Add(String.Format("CateBot{0}", i.ToString()), CateBot[i - 1]);
                 }
 
                 //황금열쇠 항목들을 Dictionary에 추가
-                for (int i = 1; i < GoldenNum2 + 1; i++)
+                for (int i = 1; i < randGoldenNum + 1; i++)
                 {
                     CateDictionary.Add(String.Format("CateGolden{0}", i.ToString()), CateGolden[i - 1]);
                 }
@@ -428,14 +482,14 @@ namespace RhythmMonopoly
             //제작 리스트에서 무작위 배열로 담을 Array 지정
             string[] rdcate_ = { };
             //황금열쇠 위치 고정일 시
-            if (!Randomize)
+            if (!isRandomize)
             {
                 rdcate_ = CateList.OrderBy(x => rd.Next()).ToArray();
             }
 
 
             /* 황금 열쇠가 정해진 위치 + 다른 항목들은 랜덤으로 배치 */
-            if (!Randomize)
+            if (!isRandomize)
             {
                 //모든 컨트롤을 검사
                 foreach (System.Windows.Forms.Control control in this.Controls)
@@ -525,7 +579,7 @@ namespace RhythmMonopoly
 
             }
             //전체 랜덤 체크 시
-            else if (Randomize)
+            else if (isRandomize)
             {
                 // 새롭게 무작위
                 rdcate_ = CateList.OrderBy(x => rd.Next()).ToArray();
@@ -1175,7 +1229,8 @@ namespace RhythmMonopoly
             if (!Labellocation)
             {
                 string ChangedColor = Properties.Settings.Default.BackCurrentColor;
-                BackScreen.BackColor = System.Drawing.ColorTranslator.FromHtml(ChangedColor);
+                //BackScreen.BackColor = System.Drawing.ColorTranslator.FromHtml(ChangedColor);
+                BackScreen.BackColor = Color.Gray;
 
                 BackScreen.BringToFront();
                 Labellocation = true;

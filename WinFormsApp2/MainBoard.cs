@@ -234,7 +234,8 @@ namespace RhythmMonopoly
             string[] Dummy5_ = { bot_SubMenu5_1, bot_SubMenu5_2, bot_SubMenu5_3, bot_SubMenu5_4, bot_SubMenu5_5 };
             string[] Dummy6_ = { bot_SubMenu6_1, bot_SubMenu6_2, bot_SubMenu6_3, bot_SubMenu6_4, bot_SubMenu6_5 };
 
-            ///배열 섞기
+
+
             //변경 불가능
             /// 랜덤으로 돌리기
             string[] rdalphabet_ = alphabet_.OrderBy(x => rd.Next()).ToArray();
@@ -243,13 +244,13 @@ namespace RhythmMonopoly
             string[] rdseason_ = season_.OrderBy(x => rd.Next()).ToArray();
             string[] rdgameclass_ = gameclass_.OrderBy(x => rd.Next()).ToArray();
 
-            //변경 가능한 더미
-            string[] rddummy1_ = Dummy1_.OrderBy(x => rd.Next()).ToArray();
-            string[] rddummy2_ = Dummy2_.OrderBy(x => rd.Next()).ToArray();
-            string[] rddummy3_ = Dummy3_.OrderBy(x => rd.Next()).ToArray();
-            string[] rddummy4_ = Dummy4_.OrderBy(x => rd.Next()).ToArray();
-            string[] rddummy5_ = Dummy5_.OrderBy(x => rd.Next()).ToArray();
-            string[] rddummy6_ = Dummy6_.OrderBy(x => rd.Next()).ToArray();
+            //변경 가능한 더미 + 공백 제거
+            string[] rddummy1_ = Dummy1_.OrderBy(x => rd.Next()).Where(x => x != string.Empty).ToArray();
+            string[] rddummy2_ = Dummy2_.OrderBy(x => rd.Next()).Where(x => x != string.Empty).ToArray();
+            string[] rddummy3_ = Dummy3_.OrderBy(x => rd.Next()).Where(x => x != string.Empty).ToArray();
+            string[] rddummy4_ = Dummy4_.OrderBy(x => rd.Next()).Where(x => x != string.Empty).ToArray();
+            string[] rddummy5_ = Dummy5_.OrderBy(x => rd.Next()).Where(x => x != string.Empty).ToArray();
+            string[] rddummy6_ = Dummy6_.OrderBy(x => rd.Next()).Where(x => x != string.Empty).ToArray();
 
 
             //배열 변수 문자열

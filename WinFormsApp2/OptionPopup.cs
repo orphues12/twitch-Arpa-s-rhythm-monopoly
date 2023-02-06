@@ -218,8 +218,6 @@ namespace RhythmMonopoly
 
             //폰트설정
             Font font1 = new Font(FontManager.fontFamilys[0], 16, FontStyle.Regular, GraphicsUnit.Point, ((byte)(129)));
-            Font font2 = new Font(FontManager.fontFamilys[0], 40, FontStyle.Regular, GraphicsUnit.Point, ((byte)(129)));
-            Font font3 = new Font(FontManager.fontFamilys[0], 24, FontStyle.Regular, GraphicsUnit.Point, ((byte)(129)));
 
             ChkRandom.Font = font1;
             ChkRandom.Checked = Randomize;
@@ -234,20 +232,10 @@ namespace RhythmMonopoly
                     string lblname = ((Label)control).Name;
                     //일반 라벨
                     ((Label)control).Font = font1;
-                    //패널 라벨
-                    if (lblname.Contains("Panel"))
-                    {
-                        ((Label)control).Font = font2;
-                    }
-                    //타이틀 라벨
-                    else if (lblname.Contains("Title"))
-                    {
-                        ((Label)control).Font = font3;
-                    }
                 }
             }
             //콤보박스 항목 추가 이벤트
-            addCombobox();
+            AddComboboxItems();
 
             //콤보박스 설정에 대한 사용가능 여부 초기 값(False)
             txtCategoryTop.Enabled = false;
@@ -884,7 +872,7 @@ namespace RhythmMonopoly
 
                     CataSaveText();
 
-                    addCombobox();
+                    AddComboboxItems();
 
                 }
             }
@@ -1132,12 +1120,8 @@ namespace RhythmMonopoly
             }
         }
 
-        private void addCombobox()
+        private void AddComboboxItems()
         {
-            //하위 항목만 저장했을때 안바뀌도록
-            if (cmbCategoryTop.Items.Contains(txtCategoryTop.Text) && txtCategoryTop.Text != "")
-            {
-            }
             cmbCategoryTop.Items.Clear();
             cmbCategoryBottom.Items.Clear();
 

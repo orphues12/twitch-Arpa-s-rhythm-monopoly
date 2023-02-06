@@ -23,8 +23,12 @@ namespace RhythmMonopoly
         //라벨 위치 변수
         bool Labellocation = false;
 
-        #endregion 
+        //랜덤함수
+        Random rd = new Random();
 
+        #endregion
+
+        #region FORM Event ::
         public MainBoard()
         {
             InitializeComponent();
@@ -32,8 +36,6 @@ namespace RhythmMonopoly
             InitializeINI(inipath);
 
             #region :: 어플 설정 ::
-            //랜덤함수
-            Random rd = new Random();
             //폰트설정
             Font font1 = new Font(FontManager.fontFamilys[0], 16, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
 
@@ -48,22 +50,11 @@ namespace RhythmMonopoly
             labelLogo.Left = (this.ClientSize.Width - labelLogo.Width) / 2;
             labelLogo.Top = (this.ClientSize.Height - labelLogo.Height) / 2;
 
-
-            int dict_idx = 0;
             #endregion
 
             #region :: 변수 불러오기 ::
             //판때기 항목들
             ini.Load(inipath);
-
-            Dictionary<string, string> topCategorydict = new Dictionary<string, string>();
-            Dictionary<string, string> botCategorydict = new Dictionary<string, string>();
-
-            for (int i = 1; i < int.Parse(ini["Option"]["TopBotQty"].ToString()) + 1; i++)
-            {
-                topCategorydict.Add($"topCategory0{i}", ini["Top"][$"TopCategory{i}"].ToString());
-                botCategorydict.Add($"botCategory0{i}", ini["Bot"][$"BotCategory{i}"].ToString());
-            }
 
             string topCategory01 = ini["Top"]["TopCategory1"].ToString(); //상위  
             string topCategory02 = ini["Top"]["TopCategory2"].ToString(); //상위
@@ -79,23 +70,6 @@ namespace RhythmMonopoly
             string botCategory05 = ini["Bot"]["BotCategory5"].ToString(); //상위 + 하위
             string botCategory06 = ini["Bot"]["BotCategory6"].ToString(); //상위 + 하위
 
-
-            Dictionary<string, string> bot_SubMenu1 = new Dictionary<string, string>();
-            Dictionary<string, string> bot_SubMenu2 = new Dictionary<string, string>();
-            Dictionary<string, string> bot_SubMenu3 = new Dictionary<string, string>();
-            Dictionary<string, string> bot_SubMenu4 = new Dictionary<string, string>();
-            Dictionary<string, string> bot_SubMenu5 = new Dictionary<string, string>();
-            Dictionary<string, string> bot_SubMenu6 = new Dictionary<string, string>();
-
-            for (int i = 1; i < int.Parse(ini["Option"]["BotSubQty"].ToString())+1; i++)
-            {
-                bot_SubMenu1.Add($"bot_SubMenu1_{i}", ini["Bot_SubMenu1"][$"BotContent{i}"].ToString());
-                bot_SubMenu2.Add($"bot_SubMenu2_{i}", ini["Bot_SubMenu2"][$"BotContent{i}"].ToString());
-                bot_SubMenu3.Add($"bot_SubMenu3_{i}", ini["Bot_SubMenu3"][$"BotContent{i}"].ToString());
-                bot_SubMenu4.Add($"bot_SubMenu4_{i}", ini["Bot_SubMenu4"][$"BotContent{i}"].ToString());
-                bot_SubMenu5.Add($"bot_SubMenu5_{i}", ini["Bot_SubMenu5"][$"BotContent{i}"].ToString());
-                bot_SubMenu6.Add($"bot_SubMenu6_{i}", ini["Bot_SubMenu6"][$"BotContent{i}"].ToString());
-            }
 
             //하위 더미데이터
             string bot_SubMenu1_1 = ini["Bot_SubMenu1"]["BotContent1"].ToString();
@@ -155,7 +129,7 @@ namespace RhythmMonopoly
             //뒷배경
             string BackCurrentColor = ini["Option"]["backCurrentColor"].ToString();
 
-            #region :: INI 저장 하는 곳 (Data 연동) ::
+            #region :: INI 저장 하려고 임시로 만듬 (Data 연동) ::
             //ini["Top"]["topCategory1"] = topCategory01;
             //ini["Top"]["topCategory2"] = topCategory02;
             //ini["Top"]["topCategory3"] = topCategory03;
@@ -268,6 +242,7 @@ namespace RhythmMonopoly
             string[] rdbutton_ = button_.OrderBy(x => rd.Next()).ToArray();
             string[] rdseason_ = season_.OrderBy(x => rd.Next()).ToArray();
             string[] rdgameclass_ = gameclass_.OrderBy(x => rd.Next()).ToArray();
+
             //변경 가능한 더미
             string[] rddummy1_ = Dummy1_.OrderBy(x => rd.Next()).ToArray();
             string[] rddummy2_ = Dummy2_.OrderBy(x => rd.Next()).ToArray();
@@ -294,35 +269,25 @@ namespace RhythmMonopoly
             string textConso3 = rdconsonant_[6].ToString() + ", " + rdconsonant_[7].ToString() + ", " + rdconsonant_[8].ToString();
             string textConso4 = rdconsonant_[9].ToString() + ", " + rdconsonant_[10].ToString() + ", " + rdconsonant_[11].ToString();
 
-            //알파벳 짬통
-            Dictionary<string, string> alphadict = new Dictionary<string, string>();
+            //Dictionary<string, string> alphadict = new Dictionary<string, string>();
 
-            dict_idx  = 0;
-            for (int i = 1; i < 9; i++)
-            {
-                alphadict.Add($"textAlpha{i}", $"{rdalphabet_[dict_idx]}, {rdalphabet_[dict_idx + 1]}, {rdalphabet_[dict_idx + 2]}");
-                dict_idx += 3;
-            }
-
-            //한글짬통
-            Dictionary<string, string> consodict = new Dictionary<string, string>();
-
-            dict_idx = 0;
-            for (int j = 1; j < 5; j++)
-            {
-                consodict.Add($"textConsoo{j}", $"{rdconsonant_[dict_idx]}, {rdconsonant_[dict_idx + 1]}, {rdconsonant_[dict_idx + 2]}");
-            }
+            //dict_idx  = 0;
+            //for (int i = 1; i < 9; i++)
+            //{
+            //    alphadict.Add($"textAlpha{i}", $"{rdalphabet_[dict_idx]}, {rdalphabet_[dict_idx + 1]}, {rdalphabet_[dict_idx + 2]}");
+            //    dict_idx += 3;
+            //}
 
             //X버튼 1개
             string textButton1 = rdbutton_[0].ToString();
             //계절 1개
-            string textSeason1 = rdseason_[0].ToString();
+            string textNumber1 = rdseason_[0].ToString();
             //기종 1개
             string textGameclass1 = rdgameclass_[0].ToString();
 
             //하위 항목 6개
             string textDummy1 = rddummy1_[0].ToString();
-            string textDummy2 = rddummy2_[0].ToString();
+            string textDummy2 = rddummy2_[0].ToString(); //여기서 예외처리뜨면 다시켜주세요 왜 뜨는지 저도모름
             string textDummy3 = rddummy3_[0].ToString();
             string textDummy4 = rddummy4_[0].ToString();
             string textDummy5 = rddummy5_[0].ToString();
@@ -351,15 +316,7 @@ namespace RhythmMonopoly
 
             string[] CateConso = { CateConso1, CateConso2, CateConso3, CateConso4 };
 
-            //상위만
-            string CateTop1 = topCategorydict["topCategory01"];
-            string CateTop2 = topCategorydict["topCategory02"];
-            string CateTop3 = topCategorydict["topCategory03"];
-            string CateTop4 = topCategorydict["topCategory04"];
-            string CateTop5 = topCategorydict["topCategory05"];
-            string CateTop6 = topCategorydict["topCategory06"];
-
-            string[] CateTop = { CateTop1, CateTop2, CateTop3, CateTop4, CateTop5, CateTop6 };
+            string[] CateTop = { topCategory01, topCategory02, topCategory03, topCategory04, topCategory05, topCategory06 };
 
             //하위만
             string CateBot1 = textDummy1 + botCategory01;
@@ -371,35 +328,20 @@ namespace RhythmMonopoly
 
             string[] CateBot = { CateBot1, CateBot2, CateBot3, CateBot4, CateBot5, CateBot6 };
 
-            //황금 열쇠
-            string CateGolden1 = "황금 열쇠";
-            string CateGolden2 = "황금 열쇠";
-            string CateGolden3 = "황금 열쇠";
-            string CateGolden4 = "황금 열쇠";
-            string CateGolden5 = "황금 열쇠";
-            string CateGolden6 = "황금 열쇠";
-            string CateGolden7 = "황금 열쇠";
-            string CateGolden8 = "황금 열쇠";
-            string CateGolden9 = "황금 열쇠";
-            string CateGolden10 = "황금 열쇠";
-            string CateGolden11 = "황금 열쇠";
-            string CateGolden12 = "황금 열쇠";
-            string CateGolden13 = "황금 열쇠";
-            string CateGolden14 = "황금 열쇠";
-            string CateGolden15 = "황금 열쇠";
-            string CateGolden16 = "황금 열쇠";
-            string CateGolden17 = "황금 열쇠";
-            string CateGolden18 = "황금 열쇠";
-            string CateGolden19 = "황금 열쇠";
-            string CateGolden20 = "황금 열쇠";
-            string CateGolden21 = "황금 열쇠";
+            //황열
+            Dictionary<string, string> goldenDict = new Dictionary<string, string>();
 
-            string[] CateGolden = { CateGolden1, CateGolden2, CateGolden3, CateGolden4, CateGolden5, CateGolden6, CateGolden7, CateGolden8, CateGolden9, CateGolden10, CateGolden11, CateGolden12, CateGolden13, CateGolden14, CateGolden15, CateGolden16, CateGolden17, CateGolden18, CateGolden19, CateGolden20, CateGolden21};
+            for (int i = 1; i < 22; i++)
+            {
+                goldenDict.Add($"CateGolden{i}", "황금 열쇠");
+            }
+
+            string[] CateGolden = goldenDict.Values.ToArray();
 
             //고정 항목
             string CateButton = textButton1 + " 라인 리듬게임";
             string CateGameClass = textGameclass1 + " 플랫폼 리듬게임";
-            string CateSeason = textSeason1 + "글자 곡";
+            string CateNumber = textNumber1 + "글자 곡";
             #endregion
 
             #region :: 신형 배열 제작 ::
@@ -410,7 +352,7 @@ namespace RhythmMonopoly
             //고정 항목들을 Dictionary에 추가
             CateDictionary.Add("CateButton", CateButton);
             CateDictionary.Add("CateGameClass", CateGameClass);
-            CateDictionary.Add("CateSeason", CateSeason);
+            CateDictionary.Add("CateSeason", CateNumber);
 
             //랜덤아닌 배열 제작
             if (!isRandomize)
@@ -492,7 +434,7 @@ namespace RhythmMonopoly
             if (!isRandomize)
             {
                 //모든 컨트롤을 검사
-                foreach (System.Windows.Forms.Control control in this.Controls)
+                foreach (Control control in this.Controls)
                 {
                     //라벨 검사 + 황금 열쇠가 아닐 경우
                     if (control is Label && ((Label)control).Text != "Golden")
@@ -503,7 +445,7 @@ namespace RhythmMonopoly
                         string lblname = ((Label)control).Name;
                         if (lblname.Contains("BackScreen"))
                         {
-                            ((Label)control).BackColor = System.Drawing.ColorTranslator.FromHtml(BackCurrentColor);
+                            ((Label)control).BackColor = ColorTranslator.FromHtml(BackCurrentColor);
                             continue;
                         }
                         //변함없는 값들은 변경 안하도록 (BackColor = Black)
@@ -596,7 +538,7 @@ namespace RhythmMonopoly
                         string lblname = ((Label)control).Name;
                         if (lblname.Contains("BackScreen"))
                         {
-                            ((Label)control).BackColor = System.Drawing.ColorTranslator.FromHtml(BackCurrentColor);
+                            ((Label)control).BackColor = ColorTranslator.FromHtml(BackCurrentColor);
                             continue;
                         }
                         //변함없는 값들은 변경 안하도록 (BackColor = Black)
@@ -639,7 +581,7 @@ namespace RhythmMonopoly
                             //색 변경
                             Color randomColor = Color.FromArgb(rd.Next(64, 256), rd.Next(64, 256), rd.Next(64, 256));
 
-                            //크로마 키 용 화면이랑 색이 같을 경우 다시 색을 조정함 (16진수 - 10진수 //나중에 수정해야됨)
+                            //크로마 키 용 화면이랑 색이 같을 경우 다시 색을 조정함
                             if (randomColor.ToString().Equals(BackCurrentColor))
                             {
                                 randomColor = Color.FromArgb(rd.Next(64, 256), rd.Next(64, 256), rd.Next(64, 256));
@@ -1141,7 +1083,7 @@ namespace RhythmMonopoly
             {
                 if (!System.IO.File.Exists(path))
                 {
-                    MessageBox.Show("설정 파일이 없어요, 판 개발자를 불러주세요");
+                    MessageBox.Show("설정 파일이 없어요. 누가 가지고 있을까요?");
                     Application.Exit();
                 }
 
@@ -1150,10 +1092,13 @@ namespace RhythmMonopoly
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, MethodBase.GetCurrentMethod().Name);
+                return;
             }
         }
 
-        #region :: ButtonEvent ::
+        #endregion
+
+        #region :: Button Event ::
 
         //종료 버튼 클릭 이벤트
         private void btnexit_Click(object sender, EventArgs e)
@@ -1179,7 +1124,7 @@ namespace RhythmMonopoly
         //항목 설정 버튼 클릭 이벤트
         private void buttonSetup_Click(object sender, EventArgs e)
         {
-            Popup popup = new Popup();
+            OptionPopup popup = new OptionPopup();
             popup.ShowDialog();
         }
 
@@ -1198,8 +1143,8 @@ namespace RhythmMonopoly
             {
                 MessageBox.Show("확인을 누르시면 3초 뒤 스크린 캡쳐가 됩니다.", "저장 확인", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                //저장 위치 지정 (프로그램 폴더)
-                string localpath = System.Environment.CurrentDirectory;
+                //저장 위치 지정 (프로그램 폴더로 되어있음)
+                string localpath = Application.StartupPath;
                 string filename = "\\판때기.png";
                 string _path = localpath + filename;
 
@@ -1211,7 +1156,7 @@ namespace RhythmMonopoly
 
                 //라벨 색 최종 확인
                 string ChangedColor = Properties.Settings.Default.BackCurrentColor;
-                BackScreen.BackColor = System.Drawing.ColorTranslator.FromHtml(ChangedColor);
+                BackScreen.BackColor = ColorTranslator.FromHtml(ChangedColor);
 
                 if (!Labellocation)  BackScreen.BringToFront();
 
@@ -1229,8 +1174,8 @@ namespace RhythmMonopoly
             if (!Labellocation)
             {
                 string ChangedColor = Properties.Settings.Default.BackCurrentColor;
-                //BackScreen.BackColor = System.Drawing.ColorTranslator.FromHtml(ChangedColor);
-                BackScreen.BackColor = Color.Gray;
+                BackScreen.BackColor = System.Drawing.ColorTranslator.FromHtml(ChangedColor);
+                //BackScreen.BackColor = Color.Gray;  -> Form TransparentKey로 Gray가 지정되어 있음. (쓰면 가운데 뻥 뚫림.)
 
                 BackScreen.BringToFront();
                 Labellocation = true;
@@ -1270,9 +1215,9 @@ namespace RhythmMonopoly
 
             if (Filepath != string.Empty)
             {
-                using (System.Drawing.Bitmap bitmap = new System.Drawing.Bitmap((int)_imgW, (int)_imgH))
+                using (Bitmap bitmap = new Bitmap((int)_imgW, (int)_imgH))
                 {
-                    using (System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(bitmap))
+                    using (Graphics g = Graphics.FromImage(bitmap))
                     {
                         Delay(2555);
                         g.CopyFromScreen(_refX, _refY, 0, 0, bitmap.Size);
@@ -1281,6 +1226,7 @@ namespace RhythmMonopoly
                 }
             }
         }
+
         //딜레이 이벤트
         public void Delay(int ms)
         {
@@ -1289,7 +1235,7 @@ namespace RhythmMonopoly
             DateTime dateTimeAdd = dateTimeNow.Add(duration);
             while (dateTimeAdd >= dateTimeNow)
             {
-                System.Windows.Forms.Application.DoEvents();
+                Application.DoEvents();
                 dateTimeNow = DateTime.Now;
             }
             return;

@@ -57,7 +57,7 @@ namespace RhythmMonopoly
             this.MaximumSize = new Size(300, 420);
 
             //랜덤 (황금 열쇠 변동과 연동됨)
-            Popup popup1 = new Popup();
+            OptionPopup popup1 = new OptionPopup();
             Randomize = popup1.RandomizeCheck;
             popup1.Close();
 

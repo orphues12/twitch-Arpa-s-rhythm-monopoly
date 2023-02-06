@@ -40,13 +40,15 @@
             this.btnController = new System.Windows.Forms.Button();
             this.ChkRandom = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkSuperRandom = new System.Windows.Forms.CheckBox();
             this.btnOpenINI = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // Savebutton1
             // 
-            this.Savebutton1.Location = new System.Drawing.Point(34, 263);
+            this.Savebutton1.Location = new System.Drawing.Point(34, 293);
             this.Savebutton1.Name = "Savebutton1";
             this.Savebutton1.Size = new System.Drawing.Size(93, 23);
             this.Savebutton1.TabIndex = 4;
@@ -146,7 +148,7 @@
             // 
             this.ChkRandom.AutoSize = true;
             this.ChkRandom.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ChkRandom.Location = new System.Drawing.Point(15, 22);
+            this.ChkRandom.Location = new System.Drawing.Point(17, 31);
             this.ChkRandom.Name = "ChkRandom";
             this.ChkRandom.Size = new System.Drawing.Size(122, 19);
             this.ChkRandom.TabIndex = 31;
@@ -156,6 +158,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.chkSuperRandom);
             this.groupBox1.Controls.Add(this.btnOpenINI);
             this.groupBox1.Controls.Add(this.ChkRandom);
             this.groupBox1.Controls.Add(this.btnController);
@@ -175,15 +179,33 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "설정";
             // 
+            // chkSuperRandom
+            // 
+            this.chkSuperRandom.AutoSize = true;
+            this.chkSuperRandom.Location = new System.Drawing.Point(222, 258);
+            this.chkSuperRandom.Name = "chkSuperRandom";
+            this.chkSuperRandom.Size = new System.Drawing.Size(15, 14);
+            this.chkSuperRandom.TabIndex = 33;
+            this.chkSuperRandom.UseVisualStyleBackColor = true;
+            this.chkSuperRandom.CheckedChanged += new System.EventHandler(this.chkSuperRandom_CheckedChanged);
+            // 
             // btnOpenINI
             // 
-            this.btnOpenINI.Location = new System.Drawing.Point(214, 212);
+            this.btnOpenINI.Location = new System.Drawing.Point(34, 253);
             this.btnOpenINI.Name = "btnOpenINI";
             this.btnOpenINI.Size = new System.Drawing.Size(138, 23);
             this.btnOpenINI.TabIndex = 32;
             this.btnOpenINI.Text = "설정 INI 파일 열기";
             this.btnOpenINI.UseVisualStyleBackColor = true;
             this.btnOpenINI.Click += new System.EventHandler(this.btnOpenINI_Click);
+            // 
+            // label1
+            // 
+            this.label1.Image = global::RhythmMonopoly.Properties.Resources.SuperRandom;
+            this.label1.Location = new System.Drawing.Point(253, 212);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(99, 103);
+            this.label1.TabIndex = 34;
             // 
             // OptionPopup
             // 
@@ -216,5 +238,7 @@
         private CheckBox ChkRandom;
         private GroupBox groupBox1;
         private Button btnOpenINI;
+        private CheckBox chkSuperRandom;
+        private Label label1;
     }
 }

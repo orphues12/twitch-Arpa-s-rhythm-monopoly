@@ -146,6 +146,7 @@ namespace RhythmMonopoly
             //랜덤변수
             bool isRandomize = bool.Parse(ini["Option"]["Randomize"].ToString());
             bool isGoldenFix = bool.Parse(ini["Option"]["GoldenFix"].ToString());
+            bool isSuperRandom = bool.Parse(ini["Option"]["SuperRandom"].ToString());
 
             //뒷배경
             string BackCurrentColor = ini["Option"]["backCurrentColor"].ToString();
@@ -335,6 +336,13 @@ namespace RhythmMonopoly
             string CateBot9 = textDummy9 + botCategory09;
 
             string[] CateBot = { CateBot1, CateBot2, CateBot3, CateBot4, CateBot5, CateBot6, CateBot7, CateBot8, CateBot9 };
+
+            //슈퍼랜덤: 상위와 하위를 전부 섞습니다.
+            if (isSuperRandom)
+            {
+                CateTop = CateTop.OrderBy(x => rd.Next()).ToArray();
+                CateBot = CateBot.OrderBy(x => rd.Next()).ToArray();
+            }
 
             //황열 (21개 - 이론상 최대개수)
             Dictionary<string, string> goldenDict = new Dictionary<string, string>();

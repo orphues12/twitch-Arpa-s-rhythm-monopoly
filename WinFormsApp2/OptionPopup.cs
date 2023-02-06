@@ -100,6 +100,7 @@ namespace RhythmMonopoly
         string bot_SubMenu9_5 = string.Empty;
 
         bool Randomize = false;
+        bool SuperRandom = false;
         bool GoldenFix = false;
 
         //Combobox 숫자관련
@@ -246,6 +247,7 @@ namespace RhythmMonopoly
 
             ChkRandom.Font = font1;
             ChkRandom.Checked = Randomize;
+            chkSuperRandom.Checked = SuperRandom;
 
             //모든 컨트롤 점검
             foreach (Control control in this.Controls)
@@ -386,6 +388,7 @@ namespace RhythmMonopoly
 
                 Randomize = bool.Parse(ini["Option"]["Randomize"].ToString());
                 GoldenFix = bool.Parse(ini["Option"]["GoldenFix"].ToString());
+                SuperRandom = bool.Parse(ini["Option"]["SuperRandom"].ToString());
 
                 //숫자관련
                 TopNum = int.Parse(ini["CategoryQty"]["TopNum"].ToString());
@@ -1689,11 +1692,14 @@ namespace RhythmMonopoly
                 SaveChecked2 = false;
                 return;
             }
-            Properties.Settings.Default.Randomize = _TempRandomize;
-            Properties.Settings.Default.Save();
+            ini["Option"]["Randomize"] = _TempRandomize;
+            ini.Save(inipath);
 
             SaveChecked2 = true;
         }
+
+        //슈랜 체크 
+
 
         #endregion
 
@@ -2035,5 +2041,20 @@ namespace RhythmMonopoly
 
         #endregion
 
+        private void chkSuperRandom_CheckedChanged(object sender, EventArgs e)
+        {
+
+            bool _TempRandomize = chkSuperRandom.Checked;
+
+            if (_TempRandomize == Randomize)
+            {
+                SaveChecked2 = false;
+                return;
+            }
+            ini["Option"]["SuperRandom"] = _TempRandomize;
+            ini.Save(inipath);
+
+            SaveChecked2 = true;
+        }
     }
 }

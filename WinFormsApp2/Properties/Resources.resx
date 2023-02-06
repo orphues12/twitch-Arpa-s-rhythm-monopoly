@@ -121,23 +121,26 @@
   <data name="뱅하싶2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\뱅하싶2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="STARTv2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\STARTv2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Maplestory_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Release\Maplestory Light.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="Start" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Start.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="17b661e272747eb00" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\17b661e272747eb00.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="golden_keys" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\golden keys.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="뱅하싶" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\뱅하싶.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="SuperRandom" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SuperRandom1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ck02" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\ck02.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="LOGOv3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LOGOv3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="고급" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\고급1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="STARTv2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\STARTv2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="BK___" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\bk_-_.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -148,11 +151,11 @@
   <data name="LOGO" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LOGO.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ck001" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\ck001.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Start" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Start.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="LOGOv2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LOGOv2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="뱅하싶" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\뱅하싶.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="무인도_EZ2v2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\무인도_EZ2v2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -160,8 +163,8 @@
   <data name="무인도_EZ2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\무인도_EZ2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="17b661e272747eb00" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\17b661e272747eb00.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ck001" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\ck001.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="고급LOGO" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\고급.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -181,13 +184,16 @@
   <data name="P" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\P.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="LOGOv3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LOGOv3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="FREEv2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FREEv2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Maplestory_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Release\Maplestory Light.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="LOGOv2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LOGOv2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="고급" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\고급1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="SuperRandom1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SuperRandom.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

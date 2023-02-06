@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnHelp = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.SpinGolden = new System.Windows.Forms.NumericUpDown();
             this.button1 = new System.Windows.Forms.Button();
@@ -40,7 +41,6 @@
             this.SpinTop = new System.Windows.Forms.NumericUpDown();
             this.SpinConso = new System.Windows.Forms.NumericUpDown();
             this.SpinAlpha = new System.Windows.Forms.NumericUpDown();
-            this.btnHelp = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SpinGolden)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpinBot)).BeginInit();
@@ -68,6 +68,16 @@
             this.groupBox1.Size = new System.Drawing.Size(260, 357);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // btnHelp
+            // 
+            this.btnHelp.Location = new System.Drawing.Point(33, 320);
+            this.btnHelp.Name = "btnHelp";
+            this.btnHelp.Size = new System.Drawing.Size(75, 23);
+            this.btnHelp.TabIndex = 11;
+            this.btnHelp.Text = "도움말";
+            this.btnHelp.UseVisualStyleBackColor = true;
+            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
             // label5
             // 
@@ -140,7 +150,7 @@
             // 
             this.SpinBot.Location = new System.Drawing.Point(195, 206);
             this.SpinBot.Maximum = new decimal(new int[] {
-            6,
+            9,
             0,
             0,
             0});
@@ -183,16 +193,6 @@
             this.SpinAlpha.Name = "SpinAlpha";
             this.SpinAlpha.Size = new System.Drawing.Size(40, 23);
             this.SpinAlpha.TabIndex = 0;
-            // 
-            // btnHelp
-            // 
-            this.btnHelp.Location = new System.Drawing.Point(33, 320);
-            this.btnHelp.Name = "btnHelp";
-            this.btnHelp.Size = new System.Drawing.Size(75, 23);
-            this.btnHelp.TabIndex = 11;
-            this.btnHelp.Text = "도움말";
-            this.btnHelp.UseVisualStyleBackColor = true;
-            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
             // Controller
             // 

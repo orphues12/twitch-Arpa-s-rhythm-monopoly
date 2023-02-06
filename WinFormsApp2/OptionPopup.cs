@@ -25,7 +25,6 @@ namespace RhythmMonopoly
         IniFile ini = new IniFile();
         string inipath = Application.StartupPath + "\\Settings.ini";
 
-
         //판때기 항목들
         string TopCategory01 = string.Empty; //상위  
         string TopCategory02 = string.Empty; //상위
@@ -40,7 +39,9 @@ namespace RhythmMonopoly
         string BotCategory04 = string.Empty; //상위 + 하위
         string BotCategory05 = string.Empty; //상위 + 하위
         string BotCategory06 = string.Empty; //상위 + 하위
-
+        string BotCategory07 = string.Empty; //상위 + 하위
+        string BotCategory08 = string.Empty; //상위 + 하위
+        string BotCategory09 = string.Empty; //상위 + 하위
 
 
         //하위 더미데이터 불러오는 곳
@@ -80,6 +81,24 @@ namespace RhythmMonopoly
         string bot_SubMenu6_4 = string.Empty;
         string bot_SubMenu6_5 = string.Empty;
 
+        string bot_SubMenu7_1 = string.Empty;
+        string bot_SubMenu7_2 = string.Empty;
+        string bot_SubMenu7_3 = string.Empty;
+        string bot_SubMenu7_4 = string.Empty;
+        string bot_SubMenu7_5 = string.Empty;
+
+        string bot_SubMenu8_1 = string.Empty;
+        string bot_SubMenu8_2 = string.Empty;
+        string bot_SubMenu8_3 = string.Empty;
+        string bot_SubMenu8_4 = string.Empty;
+        string bot_SubMenu8_5 = string.Empty;
+
+        string bot_SubMenu9_1 = string.Empty;
+        string bot_SubMenu9_2 = string.Empty;
+        string bot_SubMenu9_3 = string.Empty;
+        string bot_SubMenu9_4 = string.Empty;
+        string bot_SubMenu9_5 = string.Empty;
+
         bool Randomize = false;
         bool GoldenFix = false;
 
@@ -107,6 +126,9 @@ namespace RhythmMonopoly
         int bot4Qty = 0;
         int bot5Qty = 0;
         int bot6Qty = 0;
+        int bot7Qty = 0;
+        int bot8Qty = 0;
+        int bot9Qty = 0;
 
         //Dict
 
@@ -116,6 +138,9 @@ namespace RhythmMonopoly
         Dictionary<string, string> botSubMenu4Dict = new Dictionary<string, string>();
         Dictionary<string, string> botSubMenu5Dict = new Dictionary<string, string>();
         Dictionary<string, string> botSubMenu6Dict = new Dictionary<string, string>();
+        Dictionary<string, string> botSubMenu7Dict = new Dictionary<string, string>();
+        Dictionary<string, string> botSubMenu8Dict = new Dictionary<string, string>();
+        Dictionary<string, string> botSubMenu9Dict = new Dictionary<string, string>();
 
         #region :: 백업 ::
         ////판때기 항목들
@@ -271,8 +296,9 @@ namespace RhythmMonopoly
                 BotCategory04 = ini["Bot"]["BotCategory4"].ToString(); //상위 + 하위
                 BotCategory05 = ini["Bot"]["BotCategory5"].ToString(); //상위 + 하위
                 BotCategory06 = ini["Bot"]["BotCategory6"].ToString(); //상위 + 하위
-
-
+                BotCategory07 = ini["Bot"]["BotCategory7"].ToString(); //상위 + 하위
+                BotCategory08 = ini["Bot"]["BotCategory8"].ToString(); //상위 + 하위
+                BotCategory09 = ini["Bot"]["BotCategory9"].ToString(); //상위 + 하위
 
                 //하위 더미데이터 불러오는 곳
                 //하위 더미데이터
@@ -331,6 +357,33 @@ namespace RhythmMonopoly
                 botSubMenu6Dict = MakeDict("Bot_SubMenu6", 6);
                 bot6Qty = int.Parse(ini["Bot_SubMenu6"]["Qty"].ToString());
 
+                bot_SubMenu7_1 = ini["Bot_SubMenu7"]["BotContent1"].ToString();
+                bot_SubMenu7_2 = ini["Bot_SubMenu7"]["BotContent2"].ToString();
+                bot_SubMenu7_3 = ini["Bot_SubMenu7"]["BotContent3"].ToString();
+                bot_SubMenu7_4 = ini["Bot_SubMenu7"]["BotContent4"].ToString();
+                bot_SubMenu7_5 = ini["Bot_SubMenu7"]["BotContent5"].ToString();
+
+                botSubMenu7Dict = MakeDict("Bot_SubMenu7", 7);
+                bot7Qty = int.Parse(ini["Bot_SubMenu7"]["Qty"].ToString());
+
+                bot_SubMenu8_1 = ini["Bot_SubMenu8"]["BotContent1"].ToString();
+                bot_SubMenu8_2 = ini["Bot_SubMenu8"]["BotContent2"].ToString();
+                bot_SubMenu8_3 = ini["Bot_SubMenu8"]["BotContent3"].ToString();
+                bot_SubMenu8_4 = ini["Bot_SubMenu8"]["BotContent4"].ToString();
+                bot_SubMenu8_5 = ini["Bot_SubMenu8"]["BotContent5"].ToString();
+
+                botSubMenu8Dict = MakeDict("Bot_SubMenu8", 8);
+                bot8Qty = int.Parse(ini["Bot_SubMenu8"]["Qty"].ToString());
+
+                bot_SubMenu9_1 = ini["Bot_SubMenu9"]["BotContent1"].ToString();
+                bot_SubMenu9_2 = ini["Bot_SubMenu9"]["BotContent2"].ToString();
+                bot_SubMenu9_3 = ini["Bot_SubMenu9"]["BotContent3"].ToString();
+                bot_SubMenu9_4 = ini["Bot_SubMenu9"]["BotContent4"].ToString();
+                bot_SubMenu9_5 = ini["Bot_SubMenu9"]["BotContent5"].ToString();
+
+                botSubMenu9Dict = MakeDict("Bot_SubMenu9", 9);
+                bot9Qty = int.Parse(ini["Bot_SubMenu9"]["Qty"].ToString());
+
                 Randomize = bool.Parse(ini["Option"]["Randomize"].ToString());
                 GoldenFix = bool.Parse(ini["Option"]["GoldenFix"].ToString());
 
@@ -371,7 +424,6 @@ namespace RhythmMonopoly
 
         #endregion
 
-        
         #region ::: 항목 추가 설정 이벤트 모음 :::
 
         #region :: Combobox Event ::
@@ -379,197 +431,291 @@ namespace RhythmMonopoly
         {
             try
             {
+                string text = cmbCategoryTop.Text;
+
+                switch (text)
+                {
+                    case var a when text.Contains("상-"):
+                        {
+                            txtCategoryTop.Enabled = true;
+                            cmbCategoryBottom.Enabled = false;
+                            txtCategoryBottom.Enabled = false;
+                            cmbCategoryBottom.Items.Clear();
+                            txtCategoryBottom.Text = "";
+                        }
+                        break;
+                    case var a when text.Contains("하-"):
+                        {
+                            txtCategoryTop.Enabled = true;
+                            cmbCategoryBottom.Enabled = true;
+                            txtCategoryBottom.Enabled = true;
+                            cmbCategoryBottom.Items.Clear();
+                        }
+                        break;
+                }
+
+                switch (text)
+                {
+                    //상위
+                    case var a when text.Contains("상-1"):
+                        txtCategoryTop.Text = TopCategory01;
+                        break;
+                    case var a when text.Contains("상-2"):
+                        txtCategoryTop.Text = TopCategory02;
+                        break;
+                    case var a when text.Contains("상-3"):
+                        txtCategoryTop.Text = TopCategory03;
+                        break;
+                    case var a when text.Contains("상-4"):
+                        txtCategoryTop.Text = TopCategory04;
+                        break;
+                    case var a when text.Contains("상-5"):
+                        txtCategoryTop.Text = TopCategory05;
+                        break;
+                    case var a when text.Contains("상-6"):
+                        txtCategoryTop.Text = TopCategory06;
+                        break;
+                    //하위
+                    case var a when text.Contains("하-1"):
+                        {
+                            txtCategoryTop.Text = BotCategory01;
+
+                            for (int i = 1; i < 6; i++)
+                            {
+                                cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu1Dict[$"Bot_SubMenu1_{i}"]);
+                            }
+
+                            cmbCategoryBottom.SelectedIndex = 0;
+                        }
+                        break;
+                    case var a when text.Contains("하-2"):
+                        {
+                            txtCategoryTop.Text = BotCategory02;
+
+                            for (int i = 1; i < 6; i++)
+                            {
+                                cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu2Dict[$"Bot_SubMenu2_{i}"]);
+                            }
+
+                            cmbCategoryBottom.SelectedIndex = 0;
+                        }
+                        break;
+                    case var a when text.Contains("하-3"):
+                        {
+                            txtCategoryTop.Text = BotCategory03;
+
+                            for (int i = 1; i < 6; i++)
+                            {
+                                cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu3Dict[$"Bot_SubMenu3_{i}"]);
+                            }
+
+                            cmbCategoryBottom.SelectedIndex = 0;
+                        }
+                        break;
+                    case var a when text.Contains("하-4"):
+                        {
+                            txtCategoryTop.Text = BotCategory04;
+
+                            for (int i = 1; i < 6; i++)
+                            {
+                                cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu4Dict[$"Bot_SubMenu4_{i}"]);
+                            }
+
+                            cmbCategoryBottom.SelectedIndex = 0;
+                        }
+                        break;
+                    case var a when text.Contains("하-5"):
+                        {
+                            txtCategoryTop.Text = BotCategory05;
+
+                            for (int i = 1; i < 6; i++)
+                            {
+                                cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu5Dict[$"Bot_SubMenu5_{i}"]);
+                            }
+
+                            cmbCategoryBottom.SelectedIndex = 0;
+                        }
+                        break;
+                    case var a when text.Contains("하-6"):
+                        {
+                            txtCategoryTop.Text = BotCategory06;
+
+                            for (int i = 1; i < 6; i++)
+                            {
+                                cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu6Dict[$"Bot_SubMenu6_{i}"]);
+                            }
+
+                            cmbCategoryBottom.SelectedIndex = 0;
+                        }
+                        break;
+                    case var a when text.Contains("하-7"):
+                        {
+                            txtCategoryTop.Text = BotCategory07;
+
+                            for (int i = 1; i < 6; i++)
+                            {
+                                cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu7Dict[$"Bot_SubMenu7_{i}"]);
+                            }
+
+                            cmbCategoryBottom.SelectedIndex = 0;
+                        }
+                        break;
+                    case var a when text.Contains("하-8"):
+                        {
+                            txtCategoryTop.Text = BotCategory08;
+
+                            for (int i = 1; i <6; i++)
+                            {
+                                cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu8Dict[$"Bot_SubMenu8_{i}"]);
+                            }
+
+                            cmbCategoryBottom.SelectedIndex = 0;
+                        }
+                        break;
+                    case var a when text.Contains("하-9"):
+                        {
+                            txtCategoryTop.Text = BotCategory09;
+
+                            for (int i = 1; i < 6; i++)
+                            {
+                                cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu9Dict[$"Bot_SubMenu9_{i}"]);
+                            }
+
+                            cmbCategoryBottom.SelectedIndex = 0;
+                        }
+                        break;
+                }
+
+                #region :: 구형 ::
                 //상위 항목 선택 후 그것에 대한 설정
-                if (cmbCategoryTop.Text.Contains("상-1"))
-                {
-                    txtCategoryTop.Text = TopCategory01;
-                    txtCategoryTop.Enabled = true;
-                    cmbCategoryBottom.Enabled = false;
-                    txtCategoryBottom.Enabled = false;
-                    cmbCategoryBottom.Items.Clear();
-                    txtCategoryBottom.Text = "";
-                    return;
-                }
-                else if (cmbCategoryTop.Text.Contains("상-2"))
-                {
-                    txtCategoryTop.Text = TopCategory02;
-                    txtCategoryTop.Enabled = true;
-                    cmbCategoryBottom.Enabled = false;
-                    txtCategoryBottom.Enabled = false;
-                    cmbCategoryBottom.Items.Clear();
-                    txtCategoryBottom.Text = "";
-                    return;
-                }
-                else if (cmbCategoryTop.Text.Contains("상-3"))
-                {
-                    txtCategoryTop.Text = TopCategory03;
-                    txtCategoryTop.Enabled = true;
-                    cmbCategoryBottom.Enabled = false;
-                    txtCategoryBottom.Enabled = false;
-                    cmbCategoryBottom.Items.Clear();
-                    txtCategoryBottom.Text = "";
-                    return;
-                }
-                else if (cmbCategoryTop.Text.Contains("상-4"))
-                {
-                    txtCategoryTop.Text = TopCategory04;
-                    txtCategoryTop.Enabled = true;
-                    cmbCategoryBottom.Enabled = false;
-                    txtCategoryBottom.Enabled = false;
-                    cmbCategoryBottom.Items.Clear();
-                    txtCategoryBottom.Text = "";
-                    return;
-                }
-                else if (cmbCategoryTop.Text.Contains("상-5"))
-                {
-                    txtCategoryTop.Text = TopCategory05;
-                    txtCategoryTop.Enabled = true;
-                    cmbCategoryBottom.Enabled = false;
-                    txtCategoryBottom.Enabled = false;
-                    cmbCategoryBottom.Items.Clear();
-                    txtCategoryBottom.Text = "";
-                    return;
-                }
-                else if (cmbCategoryTop.Text.Contains("상-6"))
-                {
-                    txtCategoryTop.Text = TopCategory06;
-                    txtCategoryTop.Enabled = true;
+                //if (cmbCategoryTop.Text.Contains("상-1"))
+                //{
+                //    txtCategoryTop.Text = TopCategory01;
+                //}
+                //else if (cmbCategoryTop.Text.Contains("상-2"))
+                //{
+                //    txtCategoryTop.Text = TopCategory02;
+                //}
+                //else if (cmbCategoryTop.Text.Contains("상-3"))
+                //{
+                //    txtCategoryTop.Text = TopCategory03;
+                //}
+                //else if (cmbCategoryTop.Text.Contains("상-4"))
+                //{
+                //    txtCategoryTop.Text = TopCategory04;
+                //}
+                //else if (cmbCategoryTop.Text.Contains("상-5"))
+                //{
+                //    txtCategoryTop.Text = TopCategory05;
+                //}
+                //else if (cmbCategoryTop.Text.Contains("상-6"))
+                //{
+                //    txtCategoryTop.Text = TopCategory06;
+                //}
+                //if (cmbCategoryTop.Text.Contains("하-1"))
+                // {
+                //     txtCategoryTop.Text = BotCategory01;
 
-                    cmbCategoryBottom.Enabled = false;
-                    txtCategoryBottom.Enabled = false;
-                    cmbCategoryBottom.Items.Clear();
-                    txtCategoryBottom.Text = "";
-                    return;
-                }
-                else if (cmbCategoryTop.Text.Contains("하-1"))
-                {
-                    txtCategoryTop.Text = BotCategory01;
-                    txtCategoryTop.Enabled = true;
-                    cmbCategoryBottom.Enabled = true;
-                    txtCategoryBottom.Enabled = true;
+                //     for (int i = 1; i < bot1Qty+1; i++)
+                //     {
+                //         cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu1Dict[$"Bot_SubMenu1_{i}"]);
+                //     }
 
-                    cmbCategoryBottom.Items.Clear();
+                //     cmbCategoryBottom.SelectedIndex = 0;
+                // }
+                // else if (cmbCategoryTop.Text.Contains("하-2"))
+                // {
+                //     txtCategoryTop.Text = BotCategory02;
 
-                    for (int i = 1; i < bot1Qty+1; i++)
-                    {
-                        cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu1Dict[$"Bot_SubMenu1_{i}"]);
-                    }
+                //     for (int i = 1; i < bot2Qty + 1; i++)
+                //     {
+                //         cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu2Dict[$"Bot_SubMenu2_{i}"]);
+                //     }
 
-                    //cmbCategoryBottom.Items.Add("하위1 - " + dummycontent1_1);
-                    //cmbCategoryBottom.Items.Add("하위2 - " + dummycontent1_2);
-                    //cmbCategoryBottom.Items.Add("하위3 - " + dummycontent1_3);
+                //     cmbCategoryBottom.SelectedIndex = 0;
+                // }
+                // else if (cmbCategoryTop.Text.Contains("하-3"))
+                // {
+                //     txtCategoryTop.Text = BotCategory03;
 
-                    cmbCategoryBottom.SelectedIndex = 0;
-                    return;
-                }
-                else if (cmbCategoryTop.Text.Contains("하-2"))
-                {
-                    txtCategoryTop.Text = BotCategory02;
-                    txtCategoryTop.Enabled = true;
+                //     for (int i = 1; i < bot3Qty + 1; i++)
+                //     {
+                //         cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu3Dict[$"Bot_SubMenu3_{i}"]);
+                //     }
 
-                    cmbCategoryBottom.Enabled = true;
-                    txtCategoryBottom.Enabled = true;
+                //     cmbCategoryBottom.SelectedIndex = 0;
+                // }
+                // else if (cmbCategoryTop.Text.Contains("하-4"))
+                // {
+                //     txtCategoryTop.Text = BotCategory04;
 
-                    cmbCategoryBottom.Items.Clear();
+                //     cmbCategoryBottom.Items.Clear();
 
-                    for (int i = 1; i < bot2Qty + 1; i++)
-                    {
-                        cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu2Dict[$"Bot_SubMenu2_{i}"]);
-                    }
+                //     for (int i = 1; i < bot4Qty + 1; i++)
+                //     {
+                //         cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu4Dict[$"Bot_SubMenu4_{i}"]);
+                //     }
+                //     cmbCategoryBottom.SelectedIndex = 0;
+                // }
+                // else if (cmbCategoryTop.Text.Contains("하-5"))
+                // {
+                //     txtCategoryTop.Text = BotCategory05;
 
+                //     for (int i = 1; i < bot5Qty + 1; i++)
+                //     {
+                //         cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu5Dict[$"Bot_SubMenu5_{i}"]);
+                //     }
+                //     cmbCategoryBottom.SelectedIndex = 0;
+                // }
+                // else if (cmbCategoryTop.Text.Contains("하-6"))
+                // {
+                //     txtCategoryTop.Text = BotCategory06;
 
-                    //cmbCategoryBottom.Items.Add("하위1 - " + dummycontent2_1);
-                    //cmbCategoryBottom.Items.Add("하위2 - " + dummycontent2_2);
-                    //cmbCategoryBottom.Items.Add("하위3 - " + dummycontent2_3);
-                    //cmbCategoryBottom.Items.Add("하위4 - " + dummycontent2_4);
+                //     cmbCategoryBottom.Items.Clear();
 
-                    cmbCategoryBottom.SelectedIndex = 0;
-                    return;
-                }
-                else if (cmbCategoryTop.Text.Contains("하-3"))
-                {
-                    txtCategoryTop.Text = BotCategory03;
-                    txtCategoryTop.Enabled = true;
+                //     for (int i = 1; i < bot6Qty + 1; i++)
+                //     {
+                //         cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu6Dict[$"Bot_SubMenu6_{i}"]);
+                //     }
+                //     cmbCategoryBottom.SelectedIndex = 0;
+                // }
+                // else if (cmbCategoryTop.Text.Contains("하-7"))
+                // {
+                //     txtCategoryTop.Text = BotCategory07;
 
-                    cmbCategoryBottom.Enabled = true;
-                    txtCategoryBottom.Enabled = true;
+                //     cmbCategoryBottom.Items.Clear();
 
-                    cmbCategoryBottom.Items.Clear();
+                //     for (int i = 1; i < bot7Qty + 1; i++)
+                //     {
+                //         cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu7Dict[$"Bot_SubMenu7_{i}"]);
+                //     }
+                //     cmbCategoryBottom.SelectedIndex = 0;
+                // }
+                // else if (cmbCategoryTop.Text.Contains("하-8"))
+                // {
+                //     txtCategoryTop.Text = BotCategory08;
 
-                    for (int i = 1; i < bot3Qty + 1; i++)
-                    {
-                        cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu3Dict[$"Bot_SubMenu3_{i}"]);
-                    }
+                //     cmbCategoryBottom.Items.Clear();
 
+                //     for (int i = 1; i < bot8Qty + 1; i++)
+                //     {
+                //         cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu8Dict[$"Bot_SubMenu8_{i}"]);
+                //     }
+                //     cmbCategoryBottom.SelectedIndex = 0;
+                // }
+                // else if (cmbCategoryTop.Text.Contains("하-9"))
+                // {
+                //     txtCategoryTop.Text = BotCategory09;
 
+                //     cmbCategoryBottom.Items.Clear();
 
-                    //cmbCategoryBottom.Items.Add("하위1 - " + dummycontent3_1);
-                    //cmbCategoryBottom.Items.Add("하위2 - " + dummycontent3_2);
-                    //cmbCategoryBottom.Items.Add("하위3 - " + dummycontent3_3);
-                    //cmbCategoryBottom.Items.Add("하위4 - " + dummycontent3_4);
-                    //cmbCategoryBottom.Items.Add("하위5 - " + dummycontent3_5);
-
-                    cmbCategoryBottom.SelectedIndex = 0;
-                    return;
-                }
-                else if (cmbCategoryTop.Text.Contains("하-4"))
-                {
-                    txtCategoryTop.Text = BotCategory04;
-                    txtCategoryTop.Enabled = true;
-
-                    cmbCategoryBottom.Enabled = true;
-                    txtCategoryBottom.Enabled = true;
-
-                    cmbCategoryBottom.Items.Clear();
-
-                    for (int i = 1; i < bot4Qty + 1; i++)
-                    {
-                        cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu4Dict[$"Bot_SubMenu4_{i}"]);
-                    }
-
-
-                    //cmbCategoryBottom.Items.Add("하위1 - " + dummycontent4_1);
-                    //cmbCategoryBottom.Items.Add("하위2 - " + dummycontent4_2);
-                    //cmbCategoryBottom.Items.Add("하위3 - " + dummycontent4_3);
-                    //cmbCategoryBottom.Items.Add("하위4 - " + dummycontent4_4);
-                    //cmbCategoryBottom.Items.Add("하위5 - " + dummycontent4_5);
-
-                    cmbCategoryBottom.SelectedIndex = 0;
-                    return;
-                }
-                else if (cmbCategoryTop.Text.Contains("하-5"))
-                {
-                    txtCategoryTop.Text = BotCategory05;
-                    txtCategoryTop.Enabled = true;
-
-                    cmbCategoryBottom.Enabled = true;
-                    txtCategoryBottom.Enabled = true;
-
-                    cmbCategoryBottom.Items.Clear();
-
-                    for (int i = 1; i < bot5Qty + 1; i++)
-                    {
-                        cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu5Dict[$"Bot_SubMenu5_{i}"]);
-                    }
-                    cmbCategoryBottom.SelectedIndex = 0;
-                }
-                else if (cmbCategoryTop.Text.Contains("하-6"))
-                {
-                    txtCategoryTop.Text = BotCategory06;
-                    txtCategoryTop.Enabled = true;
-
-                    cmbCategoryBottom.Enabled = true;
-                    txtCategoryBottom.Enabled = true;
-
-                    cmbCategoryBottom.Items.Clear();
-
-                    for (int i = 1; i < bot6Qty + 1; i++)
-                    {
-                        cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu6Dict[$"Bot_SubMenu6_{i}"]);
-                    }
-
-                    cmbCategoryBottom.SelectedIndex = 0;
-                }
+                //     for (int i = 1; i < bot9Qty + 1; i++)
+                //     {
+                //         cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu9Dict[$"Bot_SubMenu9_{i}"]);
+                //     }
+                //     cmbCategoryBottom.SelectedIndex = 0;
+                // }
+                #endregion
             }
             catch (Exception ex)
             {
@@ -607,19 +753,6 @@ namespace RhythmMonopoly
                             txtCategoryBottom.Text = botSubMenu1Dict["Bot_SubMenu5"];
                             break;
                     }
-
-                    //if (cmbCategoryBottom.Text.Contains("하위1"))
-                    //{
-                    //    txtCategoryBottom.Text = dummycontent1_1;
-                    //}
-                    //else if (cmbCategoryBottom.Text.Contains("하위2"))
-                    //{
-                    //    txtCategoryBottom.Text = dummycontent1_2;
-                    //}
-                    //else if (cmbCategoryBottom.Text.Contains("하위3"))
-                    //{
-                    //    txtCategoryBottom.Text = dummycontent1_3;
-                    //}
                 }
                 else if (cmbCategoryTop.Text.Contains("하-2"))
                 {
@@ -710,19 +843,82 @@ namespace RhythmMonopoly
                     switch (categorytxt)
                     {
                         case string read when categorytxt.Contains("하-1"):
-                            txtCategoryBottom.Text = botSubMenu1Dict["Bot_SubMenu1"];
+                            txtCategoryBottom.Text = botSubMenu6Dict["Bot_SubMenu1"];
                             break;
                         case string read when categorytxt.Contains("하-2"):
-                            txtCategoryBottom.Text = botSubMenu1Dict["Bot_SubMenu2"];
+                            txtCategoryBottom.Text = botSubMenu6Dict["Bot_SubMenu2"];
                             break;
                         case string read when categorytxt.Contains("하-3"):
-                            txtCategoryBottom.Text = botSubMenu1Dict["Bot_SubMenu3"];
+                            txtCategoryBottom.Text = botSubMenu6Dict["Bot_SubMenu3"];
                             break;
                         case string read when categorytxt.Contains("하-4"):
-                            txtCategoryBottom.Text = botSubMenu1Dict["Bot_SubMenu4"];
+                            txtCategoryBottom.Text = botSubMenu6Dict["Bot_SubMenu4"];
                             break;
                         case string read when categorytxt.Contains("하-5"):
-                            txtCategoryBottom.Text = botSubMenu1Dict["Bot_SubMenu5"];
+                            txtCategoryBottom.Text = botSubMenu6Dict["Bot_SubMenu5"];
+                            break;
+                    }
+                }
+                else if (cmbCategoryTop.Text.Contains("하-7"))
+                {
+                    switch (categorytxt)
+                    {
+                        case string read when categorytxt.Contains("하-1"):
+                            txtCategoryBottom.Text = botSubMenu7Dict["Bot_SubMenu1"];
+                            break;
+                        case string read when categorytxt.Contains("하-2"):
+                            txtCategoryBottom.Text = botSubMenu7Dict["Bot_SubMenu2"];
+                            break;
+                        case string read when categorytxt.Contains("하-3"):
+                            txtCategoryBottom.Text = botSubMenu7Dict["Bot_SubMenu3"];
+                            break;
+                        case string read when categorytxt.Contains("하-4"):
+                            txtCategoryBottom.Text = botSubMenu7Dict["Bot_SubMenu4"];
+                            break;
+                        case string read when categorytxt.Contains("하-5"):
+                            txtCategoryBottom.Text = botSubMenu7Dict["Bot_SubMenu5"];
+                            break;
+                    }
+                }
+                else if (cmbCategoryTop.Text.Contains("하-8"))
+                {
+                    switch (categorytxt)
+                    {
+                        case string read when categorytxt.Contains("하-1"):
+                            txtCategoryBottom.Text = botSubMenu8Dict["Bot_SubMenu1"];
+                            break;
+                        case string read when categorytxt.Contains("하-2"):
+                            txtCategoryBottom.Text = botSubMenu8Dict["Bot_SubMenu2"];
+                            break;
+                        case string read when categorytxt.Contains("하-3"):
+                            txtCategoryBottom.Text = botSubMenu8Dict["Bot_SubMenu3"];
+                            break;
+                        case string read when categorytxt.Contains("하-4"):
+                            txtCategoryBottom.Text = botSubMenu8Dict["Bot_SubMenu4"];
+                            break;
+                        case string read when categorytxt.Contains("하-5"):
+                            txtCategoryBottom.Text = botSubMenu8Dict["Bot_SubMenu5"];
+                            break;
+                    }
+                }
+                else if (cmbCategoryTop.Text.Contains("하-9"))
+                {
+                    switch (categorytxt)
+                    {
+                        case string read when categorytxt.Contains("하-1"):
+                            txtCategoryBottom.Text = botSubMenu9Dict["Bot_SubMenu1"];
+                            break;
+                        case string read when categorytxt.Contains("하-2"):
+                            txtCategoryBottom.Text = botSubMenu9Dict["Bot_SubMenu2"];
+                            break;
+                        case string read when categorytxt.Contains("하-3"):
+                            txtCategoryBottom.Text = botSubMenu9Dict["Bot_SubMenu3"];
+                            break;
+                        case string read when categorytxt.Contains("하-4"):
+                            txtCategoryBottom.Text = botSubMenu9Dict["Bot_SubMenu4"];
+                            break;
+                        case string read when categorytxt.Contains("하-5"):
+                            txtCategoryBottom.Text = botSubMenu9Dict["Bot_SubMenu5"];
                             break;
                     }
                 }
@@ -974,19 +1170,6 @@ namespace RhythmMonopoly
                         txtCategoryBottom.Text = botSubMenu1Dict["Bot_SubMenu5"];
                         break;
                 }
-
-                //if (cmbCategoryBottom.Text.Contains("하위1"))
-                //{
-                //    dummycontent1_1 = txtCategoryBottom.Text;
-                //}
-                //else if (cmbCategoryBottom.Text.Contains("하위2"))
-                //{
-                //    dummycontent1_2 = txtCategoryBottom.Text;
-                //}
-                //else if (cmbCategoryBottom.Text.Contains("하위3"))
-                //{
-                //    dummycontent1_3 = txtCategoryBottom.Text;
-                //}
             }
             else if (cmbCategoryTop.Text.Contains("하-2"))
             {
@@ -1118,6 +1301,81 @@ namespace RhythmMonopoly
                         break;
                 }
             }
+            else if (cmbCategoryTop.Text.Contains("하-7"))
+            {
+                BotCategory07 = txtCategoryTop.Text;
+
+                string categorytxt = cmbCategoryBottom.Text;
+
+                switch (categorytxt)
+                {
+                    case string read when categorytxt.Contains("하-1"):
+                        txtCategoryBottom.Text = botSubMenu7Dict["Bot_SubMenu1"];
+                        break;
+                    case string read when categorytxt.Contains("하-2"):
+                        txtCategoryBottom.Text = botSubMenu7Dict["Bot_SubMenu2"];
+                        break;
+                    case string read when categorytxt.Contains("하-3"):
+                        txtCategoryBottom.Text = botSubMenu7Dict["Bot_SubMenu3"];
+                        break;
+                    case string read when categorytxt.Contains("하-4"):
+                        txtCategoryBottom.Text = botSubMenu7Dict["Bot_SubMenu4"];
+                        break;
+                    case string read when categorytxt.Contains("하-5"):
+                        txtCategoryBottom.Text = botSubMenu7Dict["Bot_SubMenu5"];
+                        break;
+                }
+            }
+            else if (cmbCategoryTop.Text.Contains("하-8"))
+            {
+                BotCategory08 = txtCategoryTop.Text;
+
+                string categorytxt = cmbCategoryBottom.Text;
+
+                switch (categorytxt)
+                {
+                    case string read when categorytxt.Contains("하-1"):
+                        txtCategoryBottom.Text = botSubMenu8Dict["Bot_SubMenu1"];
+                        break;
+                    case string read when categorytxt.Contains("하-2"):
+                        txtCategoryBottom.Text = botSubMenu8Dict["Bot_SubMenu2"];
+                        break;
+                    case string read when categorytxt.Contains("하-3"):
+                        txtCategoryBottom.Text = botSubMenu8Dict["Bot_SubMenu3"];
+                        break;
+                    case string read when categorytxt.Contains("하-4"):
+                        txtCategoryBottom.Text = botSubMenu8Dict["Bot_SubMenu4"];
+                        break;
+                    case string read when categorytxt.Contains("하-5"):
+                        txtCategoryBottom.Text = botSubMenu8Dict["Bot_SubMenu5"];
+                        break;
+                }
+            }
+            else if (cmbCategoryTop.Text.Contains("하-9"))
+            {
+                BotCategory09 = txtCategoryTop.Text;
+
+                string categorytxt = cmbCategoryBottom.Text;
+
+                switch (categorytxt)
+                {
+                    case string read when categorytxt.Contains("하-1"):
+                        txtCategoryBottom.Text = botSubMenu9Dict["Bot_SubMenu1"];
+                        break;
+                    case string read when categorytxt.Contains("하-2"):
+                        txtCategoryBottom.Text = botSubMenu9Dict["Bot_SubMenu2"];
+                        break;
+                    case string read when categorytxt.Contains("하-3"):
+                        txtCategoryBottom.Text = botSubMenu9Dict["Bot_SubMenu3"];
+                        break;
+                    case string read when categorytxt.Contains("하-4"):
+                        txtCategoryBottom.Text = botSubMenu9Dict["Bot_SubMenu4"];
+                        break;
+                    case string read when categorytxt.Contains("하-5"):
+                        txtCategoryBottom.Text = botSubMenu9Dict["Bot_SubMenu5"];
+                        break;
+                }
+            }
         }
 
         private void AddComboboxItems()
@@ -1129,15 +1387,18 @@ namespace RhythmMonopoly
             txtCategoryTop.Text = "";
 
             string[] TopList = { TopCategory01, TopCategory02, TopCategory03, TopCategory04, TopCategory05, TopCategory06 };
-            string[] BotList = { BotCategory01, BotCategory02, BotCategory03, BotCategory04, BotCategory05, BotCategory06 };
+            string[] BotList = { BotCategory01, BotCategory02, BotCategory03, BotCategory04, BotCategory05, BotCategory06, BotCategory07, BotCategory08, BotCategory09 };
 
+
+            //수정 : 모든 항목이 전체적으로 다 보이도록 변경되었습니다다다.
+            //원래는 랜덤시와 비랜덤시가 구분되어있었는데 전체적으로 수정가능하게 변경되어서 .. ㅋㅋ
             //랜덤
             if (Randomize)
             {
                 //상위 항목 추가
                 if (RandTopNum != 0)
                 {
-                    for (int i = 1; i < RandTopNum + 1; i++)
+                    for (int i = 1; i < 7; i++)
                     {
                         cmbCategoryTop.Items.Add(String.Format("(상-{0}) - " + TopList[i - 1], i.ToString()));
                     }
@@ -1145,7 +1406,7 @@ namespace RhythmMonopoly
                 //하위 항목 추가
                 if (RandBotNum != 0)
                 {
-                    for (int i = 1; i < RandBotNum + 1; i++)
+                    for (int i = 1; i < 101; i++)
                     {
                         cmbCategoryTop.Items.Add(String.Format("(하-{0}) - " + BotList[i - 1], i.ToString()));
                     }
@@ -1154,12 +1415,12 @@ namespace RhythmMonopoly
             //랜덤아니면
             else
             {
-                for (int i = 1; i < TopNum + 1; i++)
+                for (int i = 1; i < 7; i++)
                 {
                     cmbCategoryTop.Items.Add(String.Format("(상-{0}) - " + TopList[i - 1], i.ToString()));
                 }
 
-                for (int i = 1; i < BotNum + 1; i++)
+                for (int i = 1; i < 10; i++)
                 {
                     cmbCategoryTop.Items.Add(String.Format("(하-{0}) - " + BotList[i - 1], i.ToString()));
                 }
@@ -1232,7 +1493,7 @@ namespace RhythmMonopoly
 
                 cmbCategoryBottom.Items.Clear();
 
-                for (int i = 1; i < bot1Qty + 1; i++)
+                for (int i = 1; i < 6; i++)
                 {
                     cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu1Dict[$"Bot_SubMenu1_{i}"]);
                 }
@@ -1249,7 +1510,7 @@ namespace RhythmMonopoly
 
                 cmbCategoryBottom.Items.Clear();
 
-                for (int i = 1; i < bot2Qty + 1; i++)
+                for (int i = 1; i < 6; i++)
                 {
                     cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu2Dict[$"Bot_SubMenu2_{i}"]);
                 }
@@ -1266,7 +1527,7 @@ namespace RhythmMonopoly
 
                 cmbCategoryBottom.Items.Clear();
 
-                for (int i = 1; i < bot3Qty + 1; i++)
+                for (int i = 1; i < 6; i++)
                 {
                     cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu3Dict[$"Bot_SubMenu3_{i}"]);
                 }
@@ -1283,7 +1544,7 @@ namespace RhythmMonopoly
 
                 cmbCategoryBottom.Items.Clear();
 
-                for (int i = 1; i < bot4Qty + 1; i++)
+                for (int i = 1; i < 6; i++)
                 {
                     cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu4Dict[$"Bot_SubMenu4_{i}"]);
                 }
@@ -1300,7 +1561,7 @@ namespace RhythmMonopoly
 
                 cmbCategoryBottom.Items.Clear();
 
-                for (int i = 1; i < bot5Qty + 1; i++)
+                for (int i = 1; i < 6; i++)
                 {
                     cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu5Dict[$"Bot_SubMenu5_{i}"]);
                 }
@@ -1317,10 +1578,61 @@ namespace RhythmMonopoly
 
                 cmbCategoryBottom.Items.Clear();
 
-                for (int i = 1; i < bot6Qty + 1; i++)
+                for (int i = 1; i < 6; i++)
                 {
                     cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu6Dict[$"Bot_SubMenu6_{i}"]);
                 }
+                cmbCategoryBottom.SelectedIndex = 0;
+            }
+            else if (cmbCategoryTop.Text.Contains("하-7"))
+            {
+                txtCategoryTop.Text = BotCategory07;
+                txtCategoryTop.Enabled = true;
+
+                cmbCategoryBottom.Enabled = true;
+                txtCategoryBottom.Enabled = true;
+
+                cmbCategoryBottom.Items.Clear();
+
+                for (int i = 1; i < 6; i++)
+                {
+                    cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu7Dict[$"Bot_SubMenu7_{i}"]);
+                }
+
+                cmbCategoryBottom.SelectedIndex = 0;
+            }
+            else if (cmbCategoryTop.Text.Contains("하-8"))
+            {
+                txtCategoryTop.Text = BotCategory08;
+                txtCategoryTop.Enabled = true;
+
+                cmbCategoryBottom.Enabled = true;
+                txtCategoryBottom.Enabled = true;
+
+                cmbCategoryBottom.Items.Clear();
+
+                for (int i = 1; i < 6; i++)
+                {
+                    cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu8Dict[$"Bot_SubMenu8_{i}"]);
+                }
+
+                cmbCategoryBottom.SelectedIndex = 0;
+            }
+            else if (cmbCategoryTop.Text.Contains("하-9"))
+            {
+                txtCategoryTop.Text = BotCategory09;
+                txtCategoryTop.Enabled = true;
+
+                cmbCategoryBottom.Enabled = true;
+                txtCategoryBottom.Enabled = true;
+
+                cmbCategoryBottom.Items.Clear();
+
+                for (int i = 1; i < 6; i++)
+                {
+                    cmbCategoryBottom.Items.Add($"하위{i} - " + botSubMenu9Dict[$"Bot_SubMenu9_{i}"]);
+                }
+
                 cmbCategoryBottom.SelectedIndex = 0;
             }
             #endregion

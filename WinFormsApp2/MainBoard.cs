@@ -69,6 +69,9 @@ namespace RhythmMonopoly
             string botCategory04 = ini["Bot"]["BotCategory4"].ToString(); //상위 + 하위
             string botCategory05 = ini["Bot"]["BotCategory5"].ToString(); //상위 + 하위
             string botCategory06 = ini["Bot"]["BotCategory6"].ToString(); //상위 + 하위
+            string botCategory07 = ini["Bot"]["BotCategory7"].ToString(); //상위 + 하위
+            string botCategory08 = ini["Bot"]["BotCategory8"].ToString(); //상위 + 하위
+            string botCategory09 = ini["Bot"]["BotCategory9"].ToString(); //상위 + 하위
 
 
             //하위 더미데이터
@@ -107,6 +110,24 @@ namespace RhythmMonopoly
             string bot_SubMenu6_3 = ini["Bot_SubMenu6"]["BotContent3"].ToString();
             string bot_SubMenu6_4 = ini["Bot_SubMenu6"]["BotContent4"].ToString();
             string bot_SubMenu6_5 = ini["Bot_SubMenu6"]["BotContent5"].ToString();
+                              
+            string bot_SubMenu7_1 = ini["Bot_SubMenu7"]["BotContent1"].ToString();
+            string bot_SubMenu7_2 = ini["Bot_SubMenu7"]["BotContent2"].ToString();
+            string bot_SubMenu7_3 = ini["Bot_SubMenu7"]["BotContent3"].ToString();
+            string bot_SubMenu7_4 = ini["Bot_SubMenu7"]["BotContent4"].ToString();
+            string bot_SubMenu7_5 = ini["Bot_SubMenu7"]["BotContent5"].ToString();
+
+            string bot_SubMenu8_1 = ini["Bot_SubMenu8"]["BotContent1"].ToString();
+            string bot_SubMenu8_2 = ini["Bot_SubMenu8"]["BotContent2"].ToString();
+            string bot_SubMenu8_3 = ini["Bot_SubMenu8"]["BotContent3"].ToString();
+            string bot_SubMenu8_4 = ini["Bot_SubMenu8"]["BotContent4"].ToString();
+            string bot_SubMenu8_5 = ini["Bot_SubMenu8"]["BotContent5"].ToString();
+
+            string bot_SubMenu9_1 = ini["Bot_SubMenu9"]["BotContent1"].ToString();
+            string bot_SubMenu9_2 = ini["Bot_SubMenu9"]["BotContent2"].ToString();
+            string bot_SubMenu9_3 = ini["Bot_SubMenu9"]["BotContent3"].ToString();
+            string bot_SubMenu9_4 = ini["Bot_SubMenu9"]["BotContent4"].ToString();
+            string bot_SubMenu9_5 = ini["Bot_SubMenu9"]["BotContent5"].ToString();
 
             //항목 숫자 변수 (랜덤X)
             int alphaNum = int.Parse(ini["CategoryQty"]["AlphaNum"].ToString());
@@ -218,12 +239,6 @@ namespace RhythmMonopoly
             //바꿀 필요 없는 것
             //알파벳
             string[] alphabet_ = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
-            //버튼
-            string[] button_ = { "1", "5", "6", "8" };
-            //계절
-            string[] season_ = { "3", "4", "5", "6" };
-            //기종
-            string[] gameclass_ = { "PC", "모바일", "콘솔" };
             //자음
             string[] consonant_ = { "ㄱ", "ㄴ", "ㄷ", "ㄹ", "ㅁ", "ㅂ", "ㅅ", "ㅇ", "ㅈ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"};
 
@@ -233,16 +248,14 @@ namespace RhythmMonopoly
             string[] Dummy4_ = { bot_SubMenu4_1, bot_SubMenu4_2, bot_SubMenu4_3, bot_SubMenu4_4, bot_SubMenu4_5 };
             string[] Dummy5_ = { bot_SubMenu5_1, bot_SubMenu5_2, bot_SubMenu5_3, bot_SubMenu5_4, bot_SubMenu5_5 };
             string[] Dummy6_ = { bot_SubMenu6_1, bot_SubMenu6_2, bot_SubMenu6_3, bot_SubMenu6_4, bot_SubMenu6_5 };
-
-
+            string[] Dummy7_ = { bot_SubMenu7_1, bot_SubMenu7_2, bot_SubMenu7_3, bot_SubMenu7_4, bot_SubMenu7_5 };
+            string[] Dummy8_ = { bot_SubMenu8_1, bot_SubMenu8_2, bot_SubMenu8_3, bot_SubMenu8_4, bot_SubMenu8_5 };
+            string[] Dummy9_ = { bot_SubMenu9_1, bot_SubMenu9_2, bot_SubMenu9_3, bot_SubMenu9_4, bot_SubMenu9_5 };
 
             //변경 불가능
             /// 랜덤으로 돌리기
             string[] rdalphabet_ = alphabet_.OrderBy(x => rd.Next()).ToArray();
             string[] rdconsonant_ = consonant_.OrderBy(x => rd.Next()).ToArray();
-            string[] rdbutton_ = button_.OrderBy(x => rd.Next()).ToArray();
-            string[] rdseason_ = season_.OrderBy(x => rd.Next()).ToArray();
-            string[] rdgameclass_ = gameclass_.OrderBy(x => rd.Next()).ToArray();
 
             //변경 가능한 더미 + 공백 제거
             string[] rddummy1_ = Dummy1_.OrderBy(x => rd.Next()).Where(x => x != string.Empty).ToArray();
@@ -251,6 +264,9 @@ namespace RhythmMonopoly
             string[] rddummy4_ = Dummy4_.OrderBy(x => rd.Next()).Where(x => x != string.Empty).ToArray();
             string[] rddummy5_ = Dummy5_.OrderBy(x => rd.Next()).Where(x => x != string.Empty).ToArray();
             string[] rddummy6_ = Dummy6_.OrderBy(x => rd.Next()).Where(x => x != string.Empty).ToArray();
+            string[] rddummy7_ = Dummy7_.OrderBy(x => rd.Next()).Where(x => x != string.Empty).ToArray();
+            string[] rddummy8_ = Dummy8_.OrderBy(x => rd.Next()).Where(x => x != string.Empty).ToArray();
+            string[] rddummy9_ = Dummy9_.OrderBy(x => rd.Next()).Where(x => x != string.Empty).ToArray();
 
 
             //배열 변수 문자열
@@ -270,21 +286,6 @@ namespace RhythmMonopoly
             string textConso3 = rdconsonant_[6].ToString() + ", " + rdconsonant_[7].ToString() + ", " + rdconsonant_[8].ToString();
             string textConso4 = rdconsonant_[9].ToString() + ", " + rdconsonant_[10].ToString() + ", " + rdconsonant_[11].ToString();
 
-            //Dictionary<string, string> alphadict = new Dictionary<string, string>();
-
-            //dict_idx  = 0;
-            //for (int i = 1; i < 9; i++)
-            //{
-            //    alphadict.Add($"textAlpha{i}", $"{rdalphabet_[dict_idx]}, {rdalphabet_[dict_idx + 1]}, {rdalphabet_[dict_idx + 2]}");
-            //    dict_idx += 3;
-            //}
-
-            //X버튼 1개
-            string textButton1 = rdbutton_[0].ToString();
-            //계절 1개
-            string textNumber1 = rdseason_[0].ToString();
-            //기종 1개
-            string textGameclass1 = rdgameclass_[0].ToString();
 
             //하위 항목 6개
             string textDummy1 = rddummy1_[0].ToString();
@@ -293,6 +294,9 @@ namespace RhythmMonopoly
             string textDummy4 = rddummy4_[0].ToString();
             string textDummy5 = rddummy5_[0].ToString();
             string textDummy6 = rddummy6_[0].ToString();
+            string textDummy7 = rddummy7_[0].ToString();
+            string textDummy8 = rddummy8_[0].ToString();
+            string textDummy9 = rddummy9_[0].ToString();
             #endregion
 
             #region :: 신형 변수 ::
@@ -326,12 +330,14 @@ namespace RhythmMonopoly
             string CateBot4 = textDummy4 + botCategory04;
             string CateBot5 = textDummy5 + botCategory05;
             string CateBot6 = textDummy6 + botCategory06;
+            string CateBot7 = textDummy7 + botCategory07;
+            string CateBot8 = textDummy8 + botCategory08;
+            string CateBot9 = textDummy9 + botCategory09;
 
-            string[] CateBot = { CateBot1, CateBot2, CateBot3, CateBot4, CateBot5, CateBot6 };
+            string[] CateBot = { CateBot1, CateBot2, CateBot3, CateBot4, CateBot5, CateBot6, CateBot7, CateBot8, CateBot9 };
 
-            //황열
+            //황열 (21개 - 이론상 최대개수)
             Dictionary<string, string> goldenDict = new Dictionary<string, string>();
-
             for (int i = 1; i < 22; i++)
             {
                 goldenDict.Add($"CateGolden{i}", "황금 열쇠");
@@ -339,21 +345,12 @@ namespace RhythmMonopoly
 
             string[] CateGolden = goldenDict.Values.ToArray();
 
-            //고정 항목
-            string CateButton = textButton1 + " 라인 리듬게임";
-            string CateGameClass = textGameclass1 + " 플랫폼 리듬게임";
-            string CateNumber = textNumber1 + "글자 곡";
             #endregion
 
             #region :: 신형 배열 제작 ::
 
             //항목들을 담을 Dictionary 생성
             Dictionary<string, string> CateDictionary = new Dictionary<string, string>();
-
-            //고정 항목들을 Dictionary에 추가
-            CateDictionary.Add("CateButton", CateButton);
-            CateDictionary.Add("CateGameClass", CateGameClass);
-            CateDictionary.Add("CateSeason", CateNumber);
 
             //랜덤아닌 배열 제작
             if (!isRandomize)
@@ -418,6 +415,9 @@ namespace RhythmMonopoly
 
             //Dictionary에서 Value 값 추출 후 새 리스트 제작 
             List<string> CateList = new List<string>(CateDictionary.Values);
+
+
+
             #endregion
 
             #region :: 항목 삽입 ::

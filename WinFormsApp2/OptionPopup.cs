@@ -918,7 +918,7 @@ namespace RhythmMonopoly
                                     if (_TempCateBot.Contains(String.Format($"하위{j}")))
                                     {
                                         BotCatadata = $"BotContent{j}";
-                                        botidx = i;
+                                        botidx = j;
                                         break;
                                     }
                                 }
